@@ -1,0 +1,12 @@
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: App\Entity\User
+    from_email:
+        address: "noemail@cashback.tk"
+        sender_name: "Робот кешбек"
+    service:
+        mailer: fos_user.mailer.twig_swift
+    registration:
+        confirmation:
+            enabled: true
