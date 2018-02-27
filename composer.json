@@ -8,6 +8,7 @@
         "sensio/framework-extra-bundle": "^5.0",
         "sensiolabs/security-checker": "^4.1",
         "sonata-project/admin-bundle": "^3.31",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.4",
         "swiftmailer/swiftmailer": "^6.0",
         "symfony/console": "^3.4",
         "symfony/flex": "^1.0",
