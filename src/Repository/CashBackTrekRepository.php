@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * Ценоанализатор
+ *
+ * @author Попов Иван
+ *
+ * @see   http://ценоанализатор.рф
+ */
+
+namespace AppBundle\Repository\CashBack;
+
+use AppBundle\DBAL\Types\Enum\Users\UserBalanceHistoryStatusEnumType;
+use AppBundle\Entity\Users\User;
+use Doctrine\ORM\EntityRepository;
+
+/**
+ * Репозиторий треков кешбеков.
+ *
+ * @author Попов Иван
+ *
+ * @see   http://ценоанализатор.рф
+ */
+class CashBackTrekRepository extends EntityRepository
+{
+    /**
+     * Получить количество кешбеков в ожидании по пользователю.
+     *
+     * @param User $user
+     *
+     * @return int
+     */
+    public function getAwaitingCount(User $user): int
+    {
+        $qb = $this->createQueryBuilder('cbt');
+
+        return (int) $qb
+            ->select($qb->expr()->count('cbt'))
+            ->join('cbt.balanceHistory', 'bh')
+            ->where($qb->expr()->eq('cbt.user', ':user'))
+            ->andWhere($qb->expr()->in('bh.status', ':status'))
+            ->setParameter('user', $user->getId())
+            ->setParameter('status', UserBalanceHistoryStatusEnumType::STATUS_WAIT)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Количество подтвержденных кешбеков.
+     *
+     * @param User $user
+     *
+     * @return int
+     */
+    public function getConfirmedCount(User $user): int
+    {
+        $qb = $this->createQueryBuilder('cbt');
+
+        return (int) $qb
+            ->select($qb->expr()->count('cbt'))
+            ->join('cbt.balanceHistory', 'bh')
+            ->where($qb->expr()->eq('cbt.user', ':user'))
+            ->andWhere($qb->expr()->in('bh.status', ':status'))
+            ->setParameter('user', $user->getId())
+            ->setParameter('status', UserBalanceHistoryStatusEnumType::STATUS_APPROVED)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+}
