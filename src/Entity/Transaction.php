@@ -39,8 +39,6 @@ class Transaction
     use CreatedAtLifecycleTrait;
 
     /**
-     * Пользователь.
-     *
      * @ORM\ManyToOne(
      *     targetEntity="AppBundle\Entity\Users\User",
      *     fetch="EXTRA_LAZY",
@@ -56,8 +54,6 @@ class Transaction
     protected $user;
 
     /**
-     * Баланс
-     *
      * @ORM\ManyToOne(
      *     targetEntity="AppBundle\Entity\Users\UserBalance",
      *     fetch="EXTRA_LAZY",
@@ -73,8 +69,6 @@ class Transaction
     protected $balance;
 
     /**
-     * ID операции.
-     *
      * @JMSAnnotation\Type("string")
      * @JMSAnnotation\Since("1.0")
      *
@@ -128,8 +122,6 @@ class Transaction
     protected $comment;
 
     /**
-     * Текущий баланс после проведения транзакции.
-     *
      * @JmsAnnotation\Type("double")
      * @JmsAnnotation\Since("1.0")
      *

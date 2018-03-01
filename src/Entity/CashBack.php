@@ -20,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Others\CashBackRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CashBack\CashBackTrekRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CashBack
@@ -45,10 +45,6 @@ class CashBack
     protected $title;
 
     /**
-     * Описание.
-     *
-     *      *
-     *
      * @ORM\Column(
      *     name="description",
      *     type="text",
@@ -64,10 +60,6 @@ class CashBack
     protected $description;
 
     /**
-     * Условия(только для внутреннего использования).
-     *
-     *      *
-     *
      * @ORM\Column(
      *     name="cashback_condition",
      *     type="text",
@@ -84,10 +76,6 @@ class CashBack
     protected $condition;
 
     /**
-     * Url кешбек сервиса для построения ссылки.
-     *
-     *      *
-     *
      * @ORM\Column(
      *     name="url",
      *     type="string",
@@ -104,10 +92,6 @@ class CashBack
     protected $url;
 
     /**
-     * Url сайта для перехода.
-     *
-     *      *
-     *
      * @ORM\Column(
      *     name="site_url",
      *     type="string",
@@ -124,10 +108,6 @@ class CashBack
     protected $siteUrl = '';
 
     /**
-     * Минимальный, максимальный кешбек в виде процентов или рублей.
-     *
-     *      *
-     *
      * @ORM\Column(
      *     name="cash",
      *     type="string",
@@ -143,10 +123,6 @@ class CashBack
     protected $cash;
 
     /**
-     * Id у площадки.
-     *
-     *      *
-     *
      * @ORM\Column(
      *     name="external_id",
      *     type="integer",
@@ -158,8 +134,6 @@ class CashBack
     protected $externalId;
 
     /**
-     * Площадка размещения кешбека.
-     *
      * @ORM\ManyToOne(
      *     targetEntity="AppBundle\Entity\Stock\CashBackPlatform",
      *     cascade={},

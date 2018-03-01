@@ -4,6 +4,9 @@ namespace App\DBAL\Types\Enum;
 
 use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
+/**
+ * CashBackStatusEnumType
+ */
 class CashBackStatusEnumType extends AbstractEnumType
 {
     public const STATUS_NOT_PARTNER = 'NOT_PARTNER';
