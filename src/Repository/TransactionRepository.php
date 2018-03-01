@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Repository;
 
-use AppBundle\DBAL\Types\Enum\Users\UserBalanceHistoryStatusEnumType;
-use AppBundle\DBAL\Types\Enum\Users\UserBalanceOperationsEnumType;
-use AppBundle\Entity\Users\Transaction;
-use AppBundle\Entity\Users\UserBalanceHistory;
+use App\DBAL\Types\Enum\TransactionStatusEnumType;
+use App\Entity\Transaction;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
 
@@ -17,14 +15,12 @@ use Doctrine\ORM\EntityRepository;
 class TransactionRepository extends EntityRepository
 {
     /**
-     * Возвращает количество транзакций выводе после переданной.
-     *
-     * @param UserBalanceHistory $transaction
-     * @param string             $status
+     * @param Transaction $transaction
+     * @param string      $status
      *
      * @return int
      */
-    public function getCountOfWithdrawAfter(Transaction $transaction, $status = UserBalanceHistoryStatusEnumType::STATUS_APPROVED): int
+    public function getCountOfWithdrawAfter(Transaction $transaction, $status = TransactionStatusEnumType::STATUS_APPROVED): int
     {
         $user = $transaction->getUser();
 
@@ -39,7 +35,7 @@ class TransactionRepository extends EntityRepository
             ->andWhere($qb->expr()->gte('ubh.createdAt', ':date'))
             ->setParameter('user', $user->getId())
             ->setParameter('amount', -$transaction->getAmount())
-            ->setParameter('operationId', UserBalanceOperationsEnumType::BALANCE_OPERATION_WITHDRAW_PHONE)
+            ->setParameter('operationId', UserBalanceOperationsEnumType::BALANCE_OPERATION_WITHDRAW_PHONE) //TODO
             ->setParameter('status', $status)
             ->setParameter('date', $transaction->getCreatedAt(), Type::DATETIME)
             ->getQuery()

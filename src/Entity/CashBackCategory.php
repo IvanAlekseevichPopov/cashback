@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Entity;
 
@@ -51,6 +51,7 @@ class CashBackCategory
      * @var string
      */
     protected $cash;
+
     /**
      * @ORM\Column(
      *     name="external_id",
@@ -61,6 +62,7 @@ class CashBackCategory
      * @var int
      */
     protected $externalId;
+
     /**
      * @ORM\ManyToOne(
      *     targetEntity="App\Entity\CashBack",

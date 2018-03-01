@@ -2,16 +2,14 @@
 
 namespace AppBundle\Repository\Others;
 
-use AppBundle\DBAL\Types\Enum\CashBackStatusEnumType;
+use App\DBAL\Types\Enum\CashBackStatusEnumType;
 use AppBundle\Entity\Stock\CashBackPlatform;
-use AppBundle\Repository\EntityRepositoryAbstract;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\EntityRepository;
 
-class CashBackRepository extends EntityRepositoryAbstract
+class CashBackRepository extends EntityRepository
 {
     /**
-     * Поиск всех внешних id по платформе.
-     *
      * @param CashBackPlatform $cashBackPlatform
      *
      * @return array
@@ -86,13 +84,15 @@ class CashBackRepository extends EntityRepositoryAbstract
         return $qb
             ->where($qb->expr()->eq('cb.cashBackPlatform', ':cashback_platform'))
             ->andWhere($qb->expr()->lt('cb.createdAt', ':date'))
-            ->andWhere($qb->expr()->orX(
-                $qb->expr()->andX(
-                    $qb->expr()->in('cb.active', ':active'),
-                    $qb->expr()->in('cb.status', ':approved')
-                ),
-                $qb->expr()->in('cb.status', ':awaiting')
-            ))
+            ->andWhere(
+                $qb->expr()->orX(
+                    $qb->expr()->andX(
+                        $qb->expr()->in('cb.active', ':active'),
+                        $qb->expr()->in('cb.status', ':approved')
+                    ),
+                    $qb->expr()->in('cb.status', ':awaiting')
+                )
+            )
             ->andWhere()
             ->setParameter('approved', CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP)
             ->setParameter('awaiting', CashBackStatusEnumType::STATUS_AWAITING_PARTNERSHIP)

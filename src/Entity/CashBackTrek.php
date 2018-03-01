@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CashBack\CashBackTrekRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CashBack\CashBackTrekRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CashBackTrek

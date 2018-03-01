@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Repository\CashBack;
 
-//use AppBundle\DBAL\Types\Enum\Users\UserBalanceHistoryStatusEnumType;
-//use AppBundle\Entity\Users\User;
+use App\DBAL\Types\Enum\TransactionStatusEnumType;
+use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -14,8 +14,6 @@ use Doctrine\ORM\EntityRepository;
 class CashBackTrekRepository extends EntityRepository
 {
     /**
-     * Получить количество кешбеков в ожидании по пользователю.
-     *
      * @param User $user
      *
      * @return int
@@ -30,14 +28,12 @@ class CashBackTrekRepository extends EntityRepository
             ->where($qb->expr()->eq('cbt.user', ':user'))
             ->andWhere($qb->expr()->in('bh.status', ':status'))
             ->setParameter('user', $user->getId())
-            ->setParameter('status', UserBalanceHistoryStatusEnumType::STATUS_WAIT)
+            ->setParameter('status', TransactionStatusEnumType::STATUS_WAIT)
             ->getQuery()
             ->getSingleScalarResult();
     }
 
     /**
-     * Количество подтвержденных кешбеков.
-     *
      * @param User $user
      *
      * @return int
@@ -52,7 +48,7 @@ class CashBackTrekRepository extends EntityRepository
             ->where($qb->expr()->eq('cbt.user', ':user'))
             ->andWhere($qb->expr()->in('bh.status', ':status'))
             ->setParameter('user', $user->getId())
-            ->setParameter('status', UserBalanceHistoryStatusEnumType::STATUS_APPROVED)
+            ->setParameter('status', TransactionStatusEnumType::STATUS_APPROVED)
             ->getQuery()
             ->getSingleScalarResult();
     }
