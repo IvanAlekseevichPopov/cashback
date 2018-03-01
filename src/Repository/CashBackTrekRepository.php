@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Repository\CashBack;
 
@@ -9,7 +9,7 @@ namespace App\Repository\CashBack;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * CashBackTrekRepository
+ * CashBackTrekRepository.
  */
 class CashBackTrekRepository extends EntityRepository
 {

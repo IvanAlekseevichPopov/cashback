@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AppBundle\Manager\Users;
 
@@ -21,11 +21,9 @@ use AppBundle\QueueKey;
 use AppBundle\Traits\AwareTraits\Manager\Currency\CurrencyManagerAwareTrait;
 use AppBundle\Traits\AwareTraits\Services\QueueProducerAwareTrait;
 use AppBundle\Utils\UserBalanceTransaction;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * TransactionManager
+ * TransactionManager.
  */
 class TransactionManager extends AppManagerAbstract
 {

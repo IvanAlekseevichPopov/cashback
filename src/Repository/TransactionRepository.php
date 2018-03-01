@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -8,21 +8,18 @@ use AppBundle\DBAL\Types\Enum\Users\UserBalanceHistoryStatusEnumType;
 use AppBundle\DBAL\Types\Enum\Users\UserBalanceOperationsEnumType;
 use AppBundle\Entity\Users\Transaction;
 use AppBundle\Entity\Users\UserBalanceHistory;
-use AppBundle\Repository\EntityRepositoryAbstract;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * TransactionRepository
+ * TransactionRepository.
  */
 class TransactionRepository extends EntityRepository
 {
-
     /**
-     * Возвращает количество транзакций выводе после переданной
+     * Возвращает количество транзакций выводе после переданной.
      *
      * @param UserBalanceHistory $transaction
-     *
      * @param string             $status
      *
      * @return int
@@ -54,7 +51,7 @@ class TransactionRepository extends EntityRepository
      * [
      *  'cnt'  => 100,
      *  'amnt' => -3423
-     * ]
+     * ].
      *
      * @param \DateTime $from
      * @param \DateTime $to
@@ -83,7 +80,7 @@ class TransactionRepository extends EntityRepository
      * [
      *  'cnt'  => 15,
      *  'amnt' => 350
-     * ]
+     * ].
      *
      * @return array|null
      */
@@ -100,6 +97,4 @@ class TransactionRepository extends EntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
-
-
 }

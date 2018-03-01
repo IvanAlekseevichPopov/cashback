@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Listener\EntityListener;
 
@@ -9,11 +9,10 @@ use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * TransactionListener
+ * TransactionListener.
  */
 class TransactionListener
 {
-
     /** @var ContainerInterface */
     protected $container;
 
