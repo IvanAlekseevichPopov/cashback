@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Event\EntityListener;
+namespace App\Listener\EntityListener;
 
 use App\Entity\CashBackImage;
 use Doctrine\ORM\Mapping\PostPersist;

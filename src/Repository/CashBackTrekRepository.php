@@ -1,25 +1,15 @@
 <?php
 
-/**
- * Ценоанализатор
- *
- * @author Попов Иван
- *
- * @see   http://ценоанализатор.рф
- */
+declare(strict_types = 1);
 
-namespace AppBundle\Repository\CashBack;
+namespace App\Repository\CashBack;
 
-use AppBundle\DBAL\Types\Enum\Users\UserBalanceHistoryStatusEnumType;
-use AppBundle\Entity\Users\User;
+//use AppBundle\DBAL\Types\Enum\Users\UserBalanceHistoryStatusEnumType;
+//use AppBundle\Entity\Users\User;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Репозиторий треков кешбеков.
- *
- * @author Попов Иван
- *
- * @see   http://ценоанализатор.рф
+ * CashBackTrekRepository
  */
 class CashBackTrekRepository extends EntityRepository
 {
