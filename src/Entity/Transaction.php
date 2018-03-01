@@ -17,15 +17,15 @@ use JMS\Serializer\Annotation as JmsAnnotation;
  * @ORM\Table(
  *     name="transaction",
  *     options={
- *          "collate"="utf8mb4_unicode_ci",
- *          "charset"="utf8mb4",
- *          "comment"="History of balance changes"
+ *         "collate": "utf8mb4_unicode_ci",
+ *         "charset": "utf8mb4",
+ *         "comment": "History of balance changes"
  *     }
  * )
  *
  * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
  * @ORM\EntityListeners({"AppBundle\EventListener\BalanceHistorySubscriber"})
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks
  */
 class Transaction
 {
@@ -39,7 +39,7 @@ class Transaction
     use CreatedAtLifecycleTrait;
 
     /**
-     * Пользователь
+     * Пользователь.
      *
      * @ORM\ManyToOne(
      *     targetEntity="AppBundle\Entity\Users\User",
@@ -73,7 +73,7 @@ class Transaction
     protected $balance;
 
     /**
-     * ID операции
+     * ID операции.
      *
      * @JMSAnnotation\Type("string")
      * @JMSAnnotation\Since("1.0")
@@ -82,7 +82,7 @@ class Transaction
      *     name="operation_id",
      *     type="UserBalanceOperationsEnumType",
      *     options={
-     *          "comment" = "ID операции"
+     *         "comment": "ID операции"
      *     }
      * )
      *
@@ -91,7 +91,7 @@ class Transaction
     protected $operationId;
 
     /**
-     * Статус операции
+     * Статус операции.
      *
      * @JMSAnnotation\Type("string")
      * @JMSAnnotation\Since("1.0")
@@ -100,7 +100,7 @@ class Transaction
      *     name="status",
      *     type="UserBalanceHistoryStatusEnumType",
      *     options={
-     *          "comment" = "Статус операции"
+     *         "comment": "Статус операции"
      *     }
      * )
      *
@@ -108,9 +108,8 @@ class Transaction
      */
     protected $status;
 
-
     /**
-     * Комментарий
+     * Комментарий.
      *
      * @JMSAnnotation\Type("string")
      * @JMSAnnotation\Since("1.0")
@@ -120,7 +119,7 @@ class Transaction
      *     type="string",
      *     nullable=true,
      *     options={
-     *          "comment" = "Комментарий"
+     *         "comment": "Комментарий"
      *     }
      * )
      *
@@ -129,7 +128,7 @@ class Transaction
     protected $comment;
 
     /**
-     * Текущий баланс после проведения транзакции
+     * Текущий баланс после проведения транзакции.
      *
      * @JmsAnnotation\Type("double")
      * @JmsAnnotation\Since("1.0")
@@ -141,7 +140,7 @@ class Transaction
      *     scale=8,
      *     nullable=false,
      *     options={
-     *         "comment" = "Текущий баланс"
+     *         "comment": "Текущий баланс"
      *     }
      * )
      *
@@ -150,7 +149,7 @@ class Transaction
     protected $currentBalance = 0;
 
     /**
-     * Сеттер баланса
+     * Сеттер баланса.
      *
      * @param UserBalance $userBalance
      *
@@ -164,7 +163,7 @@ class Transaction
     }
 
     /**
-     * Сеттер ID операции
+     * Сеттер ID операции.
      *
      * @param string $operationId
      *
@@ -178,7 +177,7 @@ class Transaction
     }
 
     /**
-     * Геттер баланса
+     * Геттер баланса.
      *
      * @return UserBalance
      */
@@ -188,7 +187,7 @@ class Transaction
     }
 
     /**
-     * Геттер ID операции
+     * Геттер ID операции.
      *
      * @return string
      */
@@ -198,7 +197,7 @@ class Transaction
     }
 
     /**
-     * Set comment
+     * Set comment.
      *
      * @param string $comment
      *
@@ -212,7 +211,7 @@ class Transaction
     }
 
     /**
-     * Get comment
+     * Get comment.
      *
      * @return string
      */
@@ -222,7 +221,7 @@ class Transaction
     }
 
     /**
-     * Set currentBalance
+     * Set currentBalance.
      *
      * @param string $currentBalance
      *
@@ -236,7 +235,7 @@ class Transaction
     }
 
     /**
-     * Get currentBalance
+     * Get currentBalance.
      *
      * @return string
      */
@@ -246,7 +245,7 @@ class Transaction
     }
 
     /**
-     * Сеттер статуса
+     * Сеттер статуса.
      *
      * @param string $status
      *
@@ -260,7 +259,7 @@ class Transaction
     }
 
     /**
-     * Геттер статуса
+     * Геттер статуса.
      *
      * @return string
      */
