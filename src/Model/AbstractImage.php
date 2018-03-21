@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use App\Traits\Column\UuidColumn;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -13,17 +14,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 abstract class AbstractImage
 {
-    public const BASE_PATH = 'static/images';
+    use UuidColumn;
 
-    //TODO uuid
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned": true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    protected $id;
+    public const BASE_PATH = 'static/images';
 
     /**
      * @var string
@@ -90,14 +83,6 @@ abstract class AbstractImage
         $this->extension = $extension;
 
         return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     /**

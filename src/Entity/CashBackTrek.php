@@ -1,18 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AppBundle\Entity\Stock;
 
 use App\Entity\User;
+use App\Traits\Column\IntegerAutoIncrementIdColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * CashBackTrek.
+ *
  * @ORM\Table(
  *     name="cash_back_trek",
  *     options={
- *         "collate": "utf8mb4_unicode_ci",
- *         "charset": "utf8mb4",
  *         "comment": "Cashback treks"
  *     }
  * )
@@ -22,12 +23,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CashBackTrek
 {
-    use UuidIdColumn;
-    use CreatedAtColumn;
-    use UpdatedAtColumn;
+    use IntegerAutoIncrementIdColumn;
 
-    use CreatedAtLifecycleTrait;
-    use UpdatedAtLifecycleTrait;
+//    use CreatedAtColumn;
+//    use UpdatedAtColumn;
+//
+//    use CreatedAtLifecycleTrait;
+//    use UpdatedAtLifecycleTrait;
 
     /**
      * @ORM\ManyToOne(
@@ -41,7 +43,7 @@ class CashBackTrek
      *
      * @var User
      */
-    protected $user;
+    private $user;
 
     /**
      * @ORM\ManyToOne(
@@ -55,7 +57,7 @@ class CashBackTrek
      *
      * @var CashBack
      */
-    protected $cashBack;
+    private $cashBack;
 
     /**
      * @ORM\ManyToOne(
@@ -70,7 +72,7 @@ class CashBackTrek
      *
      * @var UserBalanceHistory|null
      */
-    protected $balanceHistory;
+    private $balanceHistory;
 
     /**
      * @return User

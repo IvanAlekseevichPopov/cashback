@@ -1,46 +1,49 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Entity;
 
-use AppBundle\Traits\Doctrine\Accessor\UserAccessor;
-use AppBundle\Traits\Doctrine\Column\AmountColumn;
-use AppBundle\Traits\Doctrine\Column\CreatedAtColumn;
-use AppBundle\Traits\Doctrine\Column\CurrencyColumn;
-use AppBundle\Traits\Doctrine\Column\UuidIdColumn;
-use AppBundle\Traits\Doctrine\LifecycleCallbacks\CreatedAtLifecycleTrait;
+use App\DBAL\Types\Enum\TransactionEnumType;
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as JmsAnnotation;
+use Ramsey\Uuid\Uuid;
 
 /**
+ * Transaction.
+ *
  * @ORM\Table(
  *     name="transaction",
  *     options={
- *         "collate": "utf8mb4_unicode_ci",
- *         "charset": "utf8mb4",
  *         "comment": "History of balance changes"
  *     }
  * )
  *
  * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
- * @ORM\EntityListeners({"AppBundle\EventListener\BalanceHistorySubscriber"})
  * @ORM\HasLifecycleCallbacks
  */
-class Transaction
+class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHistorySubscriber"}) //TODO перенести лисенер по необходимости
 {
-    use UuidIdColumn;
-    use AmountColumn;
-    use CurrencyColumn;
-    use CreatedAtColumn;
+    /**
+     * @var Uuid
+     *
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+     */
+    private $id;
 
-    use UserAccessor;
-
-    use CreatedAtLifecycleTrait;
+//    use AmountColumn;
+//    use CurrencyColumn;
+//    use CreatedAtColumn;
+//
+//    use UserAccessor;
+//
+//    use CreatedAtLifecycleTrait;
 
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="AppBundle\Entity\Users\User",
+     *     targetEntity="User",
      *     fetch="EXTRA_LAZY",
      *     inversedBy="balanceHistory"
      * )
@@ -51,48 +54,42 @@ class Transaction
      *
      * @var User
      */
-    protected $user;
+    private $user;
+
+//    /**
+//     * @ORM\ManyToOne(
+//     *     targetEntity="AppBundle\Entity\Users\UserBalance",
+//     *     fetch="EXTRA_LAZY",
+//     *     inversedBy="balanceHistory"
+//     * )
+//     * @Doctrine\ORM\Mapping\JoinColumn(
+//     *     name="balance_id",
+//     *     referencedColumnName="id",
+//     * )
+//     *
+//     * @var UserBalance
+//     */
+//    private $balance;
 
     /**
-     * @ORM\ManyToOne(
-     *     targetEntity="AppBundle\Entity\Users\UserBalance",
-     *     fetch="EXTRA_LAZY",
-     *     inversedBy="balanceHistory"
-     * )
-     * @Doctrine\ORM\Mapping\JoinColumn(
-     *     name="balance_id",
-     *     referencedColumnName="id",
-     * )
-     *
-     * @var UserBalance
-     */
-    protected $balance;
-
-    /**
-     * @JMSAnnotation\Type("string")
-     * @JMSAnnotation\Since("1.0")
-     *
      * @ORM\Column(
-     *     name="operation_id",
-     *     type="UserBalanceOperationsEnumType",
+     *     name="operation_type",
+     *     type="TransactionEnumType",
      *     options={
-     *         "comment": "ID операции"
+     *         "comment": "operation type"
      *     }
      * )
      *
      * @var string
      */
-    protected $operationId;
+    private $type;
 
     /**
      * Статус операции.
      *
-     * @JMSAnnotation\Type("string")
-     * @JMSAnnotation\Since("1.0")
-     *
      * @ORM\Column(
      *     name="status",
-     *     type="UserBalanceHistoryStatusEnumType",
+     *     type="TransactionStatusEnumType",
      *     options={
      *         "comment": "Статус операции"
      *     }
@@ -100,13 +97,10 @@ class Transaction
      *
      * @var string
      */
-    protected $status;
+    private $status;
 
     /**
      * Комментарий.
-     *
-     * @JMSAnnotation\Type("string")
-     * @JMSAnnotation\Since("1.0")
      *
      * @ORM\Column(
      *     name="comment",
@@ -119,26 +113,30 @@ class Transaction
      *
      * @var string
      */
-    protected $comment;
+    private $comment;
 
-    /**
-     * @JmsAnnotation\Type("double")
-     * @JmsAnnotation\Since("1.0")
-     *
-     * @Doctrine\ORM\Mapping\Column(
-     *     name="current_balance",
-     *     type="decimal",
-     *     precision=20,
-     *     scale=8,
-     *     nullable=false,
-     *     options={
-     *         "comment": "Текущий баланс"
-     *     }
-     * )
-     *
-     * @var float
-     */
-    protected $currentBalance = 0;
+    //TODO или привязаннй баланс или эта хрень, что-нить одно
+//    /**
+//     * @Doctrine\ORM\Mapping\Column(
+//     *     name="current_balance",
+//     *     type="decimal",
+//     *     precision=20,
+//     *     scale=8,
+//     *     nullable=false,
+//     *     options={
+//     *         "comment": "Текущий баланс"
+//     *     }
+//     * )
+//     *
+//     * @var float
+//     */
+//    private $currentBalance = 0;
+
+    public function __construct()
+    {
+        $this->type = TransactionEnumType::BALANCE_OPERATION_CREATE;
+        //TODO проверять при сохранении, что операция создания только одна
+    }
 
     /**
      * Сеттер баланса.
@@ -155,20 +153,6 @@ class Transaction
     }
 
     /**
-     * Сеттер ID операции.
-     *
-     * @param string $operationId
-     *
-     * @return $this
-     */
-    public function setOperationId(string $operationId)
-    {
-        $this->operationId = $operationId;
-
-        return $this;
-    }
-
-    /**
      * Геттер баланса.
      *
      * @return UserBalance
@@ -176,16 +160,6 @@ class Transaction
     public function getBalance(): ?UserBalance
     {
         return $this->balance;
-    }
-
-    /**
-     * Геттер ID операции.
-     *
-     * @return string
-     */
-    public function getOperationId(): ?string
-    {
-        return $this->operationId;
     }
 
     /**
@@ -258,5 +232,65 @@ class Transaction
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @return Uuid
+     */
+    public function getId(): Uuid
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param Uuid $id
+     *
+     * @return $this
+     */
+    public function setId(Uuid $id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Transaction
+     */
+    public function setUser(User $user): Transaction
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return Transaction
+     */
+    public function setType(string $type): Transaction
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

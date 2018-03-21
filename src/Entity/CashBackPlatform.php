@@ -1,19 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace AppBundle\Entity\Stock;
+namespace App\Entity;
 
-use AppBundle\Traits\Doctrine\Column\UuidIdColumn;
+use App\Traits\Column\IntegerAutoIncrementIdColumn;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * CashBackPlatform.
+ *
  * @ORM\Table(
  *     name="cash_back_platform",
  *     options={
- *         "collate": "utf8mb4_unicode_ci",
- *         "charset": "utf8mb4",
  *         "comment": "Cashback platforms"
  *     }
  * )
@@ -25,7 +25,7 @@ class CashBackPlatform
 {
     public const ADMITAD_PLATFORM_ID = '2a10bc8e-2389-c04d-1328-ff9000efd802';
 
-    use UuidIdColumn;
+    use IntegerAutoIncrementIdColumn;
 
     /**
      * @ORM\Column(
@@ -37,8 +37,10 @@ class CashBackPlatform
      *         "fixed": false
      *     }
      * )
+     *
+     * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      * @ORM\Column(
@@ -50,8 +52,10 @@ class CashBackPlatform
      *         "fixed": false
      *     }
      * )
+     *
+     * @var string
      */
-    protected $baseUrl;
+    private $baseUrl;
 
     /**
      * @ORM\Column(
@@ -63,8 +67,10 @@ class CashBackPlatform
      *         "fixed": false
      *     }
      * )
+     *
+     * @var string
      */
-    protected $clientId;
+    private $clientId;
 
     /**
      * @ORM\Column(
@@ -79,7 +85,7 @@ class CashBackPlatform
      *
      * @var string
      */
-    protected $authHeader;
+    private $authHeader;
 
     /**
      * @ORM\Column(
@@ -94,7 +100,7 @@ class CashBackPlatform
      *
      * @var string
      */
-    protected $externalPlatformId;
+    private $externalPlatformId;
 
     /**
      * @ORM\Column(
@@ -109,7 +115,7 @@ class CashBackPlatform
      *
      * @var string
      */
-    protected $token;
+    private $token;
 
     /**
      * @Doctrine\ORM\Mapping\Column(
@@ -123,17 +129,17 @@ class CashBackPlatform
      *
      * @var \DateTime
      */
-    protected $expiredAt;
+    private $expiredAt;
 
     /**
      * @ORM\OneToMany(
-     *     targetEntity="AppBundle\Entity\Stock\CashBack",
+     *     targetEntity="CashBack",
      *     mappedBy="cashBackPlatform",
      * )
      *
-     * @var ArrayCollection
+     * @var ArrayCollection|Cashback[]
      */
-    protected $cashBacks;
+    private $cashBacks;
 
     public function __construct()
     {

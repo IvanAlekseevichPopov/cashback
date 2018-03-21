@@ -1,27 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Entity;
 
 use App\Model\AbstractImage;
+use App\Traits\Column\UuidColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * CashBackImage.
+ *
  * @ORM\Table(
  *     name="cash_back_image",
  *     options={
- *         "collate": "utf8mb4_unicode_ci",
- *         "charset": "utf8mb4",
  *         "comment": "Cashback images"
  *     }
  * )
  *
+ * @ORM\EntityListeners({"App\Listener\EntityListener\CashbackImageListener"})
  * @ORM\Entity
- * @ORM\EntityListeners({"App\Listener\EntityListener\CashBackImageListener"})
  */
 class CashBackImage extends AbstractImage
 {
+    use UuidColumn;
+
     /**
      * @return string
      */
