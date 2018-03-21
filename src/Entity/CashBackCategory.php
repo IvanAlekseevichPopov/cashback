@@ -5,15 +5,14 @@ declare(strict_types = 1);
 namespace App\Entity;
 
 use App\Traits\Column\IntegerAutoIncrementIdColumn;
-use AppBundle\Entity\Stock\CashBack;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * CashBackCategory.
+ *
  * @ORM\Table(
  *     name="cash_back_category",
  *     options={
- *         "collate": "utf8mb4_unicode_ci",
- *         "charset": "utf8mb4",
  *         "comment": "Cashback categories"
  *     }
  * )
@@ -38,7 +37,7 @@ class CashBackCategory
      *
      * @var string
      */
-    protected $title;
+    private $title;
 
     /**
      * @ORM\Column(
@@ -50,7 +49,7 @@ class CashBackCategory
      *
      * @var string
      */
-    protected $cash;
+    private $cash;
 
     /**
      * @ORM\Column(
@@ -61,7 +60,7 @@ class CashBackCategory
      *
      * @var int
      */
-    protected $externalId;
+    private $externalId;
 
     /**
      * @ORM\ManyToOne(

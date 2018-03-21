@@ -1,16 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace AppBundle\Entity\Stock;
+namespace App\Entity;
 
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
-use App\Entity\CashBackCategory;
-use App\Entity\CashBackImage;
+use App\Traits\Column\UuidColumn;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * CashBack.
+ *
  * @ORM\Table(
  *     name="cash_back",
  *     options={
@@ -20,17 +21,15 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  *
- * @ORM\Entity(repositoryClass="App\Repository\CashBack\CashBackTrekRepository")
+ * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class CashBack
 {
-    use UuidIdColumn;
+    use UuidColumn;
 
     /**
      * @var string
-     *
-     *      *
      *
      * @ORM\Column(
      *     name="title",
@@ -42,7 +41,7 @@ class CashBack
      *     }
      * )
      */
-    protected $title;
+    private $title;
 
     /**
      * @ORM\Column(
@@ -57,7 +56,7 @@ class CashBack
      *
      * @var string
      */
-    protected $description;
+    private $description;
 
     /**
      * @ORM\Column(
@@ -73,7 +72,7 @@ class CashBack
      *
      * @var string
      */
-    protected $condition;
+    private $condition;
 
     /**
      * @ORM\Column(
@@ -89,7 +88,7 @@ class CashBack
      *
      * @var string
      */
-    protected $url;
+    private $url;
 
     /**
      * @ORM\Column(
@@ -105,7 +104,7 @@ class CashBack
      *
      * @var string
      */
-    protected $siteUrl = '';
+    private $siteUrl = '';
 
     /**
      * @ORM\Column(
@@ -120,7 +119,7 @@ class CashBack
      *
      * @var string
      */
-    protected $cash;
+    private $cash;
 
     /**
      * @ORM\Column(
@@ -131,11 +130,11 @@ class CashBack
      *
      * @var int
      */
-    protected $externalId;
+    private $externalId;
 
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="AppBundle\Entity\Stock\CashBackPlatform",
+     *     targetEntity="CashBackPlatform",
      *     cascade={},
      *     fetch="LAZY",
      *     inversedBy="cashBacks"
@@ -147,11 +146,11 @@ class CashBack
      *
      * @var CashBackPlatform
      */
-    protected $cashBackPlatform;
+    private $cashBackPlatform;
 
     /**
      * @ORM\OneToOne(
-     *     targetEntity="AppBundle\Entity\Stock\CashBackImage",
+     *     targetEntity="CashBackImage",
      *     fetch="EXTRA_LAZY"
      * )
      * @ORM\JoinColumns({
@@ -164,11 +163,11 @@ class CashBack
      *
      * @var CashBackImage
      */
-    protected $cashBackImage;
+    private $cashBackImage;
 
     /**
      * @ORM\OneToMany(
-     *     targetEntity="AppBundle\Entity\Stock\CashBackCategory",
+     *     targetEntity="CashBackCategory",
      *     mappedBy="cashBack",
      *     orphanRemoval=true,
      *     cascade={"ALL"},
@@ -177,7 +176,7 @@ class CashBack
      *
      * @var ArrayCollection
      */
-    protected $categories;
+    private $categories;
 
     /**
      * @ORM\Column(
@@ -187,7 +186,7 @@ class CashBack
      *
      * @var bool
      */
-    protected $active = false;
+    private $active = false;
 
     /**
      * @ORM\Column(
@@ -200,7 +199,7 @@ class CashBack
      *
      * @var string
      */
-    protected $status = CashBackStatusEnumType::STATUS_NOT_PARTNER;
+    private $status = CashBackStatusEnumType::STATUS_NOT_PARTNER;
 
     /**
      * @Doctrine\ORM\Mapping\Column(
@@ -216,12 +215,12 @@ class CashBack
      *
      * @var float
      */
-    protected $rating = 0;
+    private $rating = 0;
 
     /**
      * @var string
      */
-    protected $trekUrl;
+    private $trekUrl;
 
     public function __construct()
     {
