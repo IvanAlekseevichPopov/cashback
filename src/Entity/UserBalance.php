@@ -4,42 +4,52 @@ declare(strict_types = 1);
 
 namespace App\Entity;
 
-use App\DBAL\Types\Enum\TransactionEnumType;
 use App\Traits\Column\IntegerAutoIncrementIdColumn;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
 
 /**
- * User Balance
- *
  * @ORM\Table(
- *     name="user_balance",
+ *     name="users_balances",
  *     options={
- *         "comment": "Users balances"
+ *          "comment"="Users balances"
+ *     },
+ *      uniqueConstraints={
+ *         @ORM\UniqueConstraint(
+ *             name="user_balance_relations",
+ *                 columns={
+ *                     "user_id",
+ *                     "currency_id"
+ *                 }
+ *          )
  *     }
- *
  * )
  *
- * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class UserBalance
 {
     use IntegerAutoIncrementIdColumn;
 
+    //    use CurrencyColumn;
 //    use AmountColumn;
-//    use CurrencyColumn;
 //    use CreatedAtColumn;
+//    use UpdatedAtColumn;
 //
 //    use UserAccessor;
 //
 //    use CreatedAtLifecycleTrait;
+//    use UpdatedAtLifecycleTrait;
 
     /**
+     * Пользователь
+     *
      * @ORM\ManyToOne(
      *     targetEntity="User",
      *     fetch="EXTRA_LAZY",
-     *     inversedBy="balanceHistory"
+     *     inversedBy="balances"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(
      *     name="user_id",
@@ -48,243 +58,75 @@ class UserBalance
      *
      * @var User
      */
-    private $user;
-
-//    /**
-//     * @ORM\ManyToOne(
-//     *     targetEntity="AppBundle\Entity\Users\UserBalance",
-//     *     fetch="EXTRA_LAZY",
-//     *     inversedBy="balanceHistory"
-//     * )
-//     * @Doctrine\ORM\Mapping\JoinColumn(
-//     *     name="balance_id",
-//     *     referencedColumnName="id",
-//     * )
-//     *
-//     * @var UserBalance
-//     */
-//    private $balance;
+    protected $user;
 
     /**
-     * @ORM\Column(
-     *     name="operation_type",
-     *     type="TransactionEnumType",
-     *     options={
-     *         "comment": "operation type"
+     * @ORM\OneToMany(
+     *     targetEntity="Transaction",
+     *     mappedBy="balance",
+     *     cascade={
+     *         "persist",
+     *         "remove"
      *     }
      * )
      *
-     * @var string
+     * @var ArrayCollection
      */
-    private $type;
-
-    /**
-     * Статус операции.
-     *
-     * @ORM\Column(
-     *     name="status",
-     *     type="TransactionStatusEnumType",
-     *     options={
-     *         "comment": "Статус операции"
-     *     }
-     * )
-     *
-     * @var string
-     */
-    private $status;
-
-    /**
-     * Комментарий.
-     *
-     * @ORM\Column(
-     *     name="comment",
-     *     type="string",
-     *     nullable=true,
-     *     options={
-     *         "comment": "Комментарий"
-     *     }
-     * )
-     *
-     * @var string
-     */
-    private $comment;
-
-    //TODO или привязаннй баланс или эта хрень, что-нить одно
-//    /**
-//     * @Doctrine\ORM\Mapping\Column(
-//     *     name="current_balance",
-//     *     type="decimal",
-//     *     precision=20,
-//     *     scale=8,
-//     *     nullable=false,
-//     *     options={
-//     *         "comment": "Текущий баланс"
-//     *     }
-//     * )
-//     *
-//     * @var float
-//     */
-//    private $currentBalance = 0;
+    protected $transactions;
 
     public function __construct()
     {
-        $this->type = TransactionEnumType::BALANCE_OPERATION_CREATE;
-        //TODO проверять при сохранении, что операция создания только одна
+        $this->transactions = new ArrayCollection;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->getId();
     }
 
     /**
-     * Сеттер баланса.
-     *
-     * @param UserBalance $userBalance
+     * @param Transaction $transaction
      *
      * @return $this
      */
-    public function setBalance(UserBalance $userBalance)
+    public function addTransaction(Transaction $transaction)
     {
-        $this->balance = $userBalance;
+        if (false === $this->transactions->contains($transaction)) {
+            $this->transactions->add($transaction);
+            $transaction->setBalance($this);
+        }
 
         return $this;
     }
 
     /**
-     * Геттер баланса.
+     * @param Transaction $transaction
      *
      * @return UserBalance
      */
-    public function getBalance(): ?UserBalance
+    public function addBalanceHistory(Transaction $transaction): UserBalance
     {
-        return $this->balance;
-    }
-
-    /**
-     * Set comment.
-     *
-     * @param string $comment
-     *
-     * @return Transaction
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
+        if (false === $this->transactions->contains($transaction)) {
+            $this->transactions->add($transaction);
+        }
 
         return $this;
     }
 
     /**
-     * Get comment.
-     *
-     * @return string
+     * @return Collection
      */
-    public function getComment()
+    public function getTransactions(): Collection
     {
-        return $this->comment;
+        return $this->transactions;
     }
 
     /**
-     * Set currentBalance.
-     *
-     * @param string $currentBalance
-     *
-     * @return Transaction
+     * @param Transaction $transaction
      */
-    public function setCurrentBalance($currentBalance)
+    public function removeTransaction(Transaction $transaction)
     {
-        $this->currentBalance = $currentBalance;
-
-        return $this;
-    }
-
-    /**
-     * Get currentBalance.
-     *
-     * @return string
-     */
-    public function getCurrentBalance()
-    {
-        return $this->currentBalance;
-    }
-
-    /**
-     * Сеттер статуса.
-     *
-     * @param string $status
-     *
-     * @return Transaction
-     */
-    public function setStatus(string $status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Геттер статуса.
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @return Uuid
-     */
-    public function getId(): Uuid
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param Uuid $id
-     *
-     * @return $this
-     */
-    public function setId(Uuid $id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * @return User
-     */
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return Transaction
-     */
-    public function setUser(User $user): Transaction
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return Transaction
-     */
-    public function setType(string $type): Transaction
-    {
-        $this->type = $type;
-
-        return $this;
+        // сам метод нужно оставить иначе не отрисовывается форма
+        //$this->balanceHistory->removeElement($balanceHistory);
     }
 }
