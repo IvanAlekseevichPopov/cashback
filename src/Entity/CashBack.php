@@ -15,8 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(
  *     name="cash_back",
  *     options={
- *         "collate": "utf8mb4_unicode_ci",
- *         "charset": "utf8mb4",
  *         "comment": "Cashbacks"
  *     }
  * )
