@@ -2,9 +2,8 @@
 
 declare(strict_types = 1);
 
-namespace AppBundle\Entity\Stock;
+namespace App\Entity;
 
-use App\Entity\User;
 use App\Traits\Column\IntegerAutoIncrementIdColumn;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,15 +24,9 @@ class CashBackTrek
 {
     use IntegerAutoIncrementIdColumn;
 
-//    use CreatedAtColumn;
-//    use UpdatedAtColumn;
-//
-//    use CreatedAtLifecycleTrait;
-//    use UpdatedAtLifecycleTrait;
-
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="AppBundle\Entity\Users\User",
+     *     targetEntity="User",
      *     fetch="EXTRA_LAZY"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(
@@ -47,7 +40,7 @@ class CashBackTrek
 
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="AppBundle\Entity\Stock\CashBack",
+     *     targetEntity="CashBack",
      *     fetch="EXTRA_LAZY"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(
@@ -61,18 +54,18 @@ class CashBackTrek
 
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="TransactionRepository",
+     *     targetEntity="Transaction",
      *     fetch="LAZY",
      * )
      * @ORM\JoinColumn(
-     *     name="balance_history_id",
+     *     name="transaction_id",
      *     nullable=true,
      *     referencedColumnName="id"
      * )
      *
-     * @var UserBalanceHistory|null
+     * @var Transaction|null
      */
-    private $balanceHistory;
+    private $transaction;
 
     /**
      * @return User
@@ -115,21 +108,21 @@ class CashBackTrek
     }
 
     /**
-     * @return UserBalanceHistory|null
+     * @return Transaction|null
      */
-    public function getBalanceHistory(): ?UserBalanceHistory
+    public function getBalanceHistory(): ?Transaction
     {
-        return $this->balanceHistory;
+        return $this->transaction;
     }
 
     /**
-     * @param UserBalanceHistory|null $balanceHistory
+     * @param Transaction $transaction
      *
      * @return $this
      */
-    public function setBalanceHistory(?UserBalanceHistory $balanceHistory)
+    public function setBalanceHistory(Transaction $transaction)
     {
-        $this->balanceHistory = $balanceHistory;
+        $this->transaction = $transaction;
 
         return $this;
     }
