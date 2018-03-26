@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Listener\EntityListener;
 
 use App\Entity\Transaction;
+use App\Manager\TransactionManager;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -13,12 +14,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class TransactionListener
 {
-    /** @var ContainerInterface */
-    protected $container;
+    /** @var TransactionManager */
+    protected $transactionManager;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(TransactionManager $manager)
     {
-        $this->container = $container;
+        $this->transactionManager = $manager;
     }
 
     public function postUpdate(Transaction $transaction, LifecycleEventArgs $args)
@@ -34,8 +35,7 @@ class TransactionListener
     protected function recalc(Transaction $transaction, LifecycleEventArgs $args)
     {
         if ($transaction->getBalance()) {
-            $this->container->get('app.manager.users.user_balance_manager')
-                ->recalculateBalance($transaction->getBalance());
+            $this->transactionManager->recalculateBalance($transaction->getUser());
         }
     }
 }

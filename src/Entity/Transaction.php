@@ -13,15 +13,13 @@ use Ramsey\Uuid\Uuid;
  *
  * @ORM\Table(
  *     name="transaction",
- *     options={
- *         "comment": "History of balance changes"
- *     }
  * )
  *
  * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
+ * @ORM\EntityListeners({"App\Listener\EntityListener\TransactionListener"})
  * @ORM\HasLifecycleCallbacks
  */
-class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHistorySubscriber"}) //TODO перенести лисенер по необходимости
+class Transaction
 {
     /**
      * @var Uuid
@@ -32,14 +30,6 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
     private $id;
-
-//    use AmountColumn;
-//    use CurrencyColumn;
-//    use CreatedAtColumn;
-//
-//    use UserAccessor;
-//
-//    use CreatedAtLifecycleTrait;
 
     /**
      * @ORM\ManyToOne(
@@ -111,6 +101,18 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
      * @var string
      */
     private $comment;
+
+    /**
+     * @ORM\Column(
+     *     type="decimal",
+     *     precision=16,
+     *     scale=4,
+     *     nullable=false,
+     * )
+     *
+     * @var float
+     */
+    protected $amount = 0;
 
     public function __construct()
     {
@@ -254,6 +256,26 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
     public function setType(string $type): Transaction
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount(): ?float
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     *
+     * @return Transaction
+     */
+    public function setAmount(float $amount): Transaction
+    {
+        $this->amount = $amount;
 
         return $this;
     }
