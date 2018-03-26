@@ -11,54 +11,20 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(
- *     name="users_balances",
+ *     name="balance",
  *     options={
- *          "comment"="Users balances"
- *     },
- *      uniqueConstraints={
- *         @ORM\UniqueConstraint(
- *             name="user_balance_relations",
- *                 columns={
- *                     "user_id",
- *                     "currency_id"
- *                 }
- *          )
+ *          "comment"="User balance"
  *     }
  * )
  *
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class UserBalance
+class Balance
 {
     use IntegerAutoIncrementIdColumn;
 
-    //    use CurrencyColumn;
-//    use AmountColumn;
-//    use CreatedAtColumn;
-//    use UpdatedAtColumn;
-//
-//    use UserAccessor;
-//
-//    use CreatedAtLifecycleTrait;
-//    use UpdatedAtLifecycleTrait;
-
-    /**
-     * Пользователь
-     *
-     * @ORM\ManyToOne(
-     *     targetEntity="User",
-     *     fetch="EXTRA_LAZY",
-     *     inversedBy="balances"
-     * )
-     * @Doctrine\ORM\Mapping\JoinColumn(
-     *     name="user_id",
-     *     referencedColumnName="id"
-     * )
-     *
-     * @var User
-     */
-    protected $user;
+    //TODO CurrencyColumn если понадобится
 
     /**
      * @ORM\OneToMany(
@@ -70,9 +36,21 @@ class UserBalance
      *     }
      * )
      *
-     * @var ArrayCollection
+     * @var ArrayCollection|Transaction[]
      */
     protected $transactions;
+
+    /**
+     * @ORM\Column(
+     *     type="decimal",
+     *     precision=16,
+     *     scale=4,
+     *     nullable=false,
+     * )
+     *
+     * @var float
+     */
+    protected $amount = 0;
 
     public function __construct()
     {
@@ -100,20 +78,6 @@ class UserBalance
     }
 
     /**
-     * @param Transaction $transaction
-     *
-     * @return UserBalance
-     */
-    public function addBalanceHistory(Transaction $transaction): UserBalance
-    {
-        if (false === $this->transactions->contains($transaction)) {
-            $this->transactions->add($transaction);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection
      */
     public function getTransactions(): Collection
@@ -128,5 +92,25 @@ class UserBalance
     {
         // сам метод нужно оставить иначе не отрисовывается форма
         //$this->balanceHistory->removeElement($balanceHistory);
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     *
+     * @return Balance
+     */
+    public function setAmount(float $amount): Balance
+    {
+        $this->amount = $amount;
+
+        return $this;
     }
 }

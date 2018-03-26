@@ -45,7 +45,7 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
      * @ORM\ManyToOne(
      *     targetEntity="User",
      *     fetch="EXTRA_LAZY",
-     *     inversedBy="balanceHistory"
+     *     inversedBy="transactions"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(
      *     name="user_id",
@@ -56,20 +56,20 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
      */
     private $user;
 
-//    /**
-//     * @ORM\ManyToOne(
-//     *     targetEntity="AppBundle\Entity\Users\UserBalance",
-//     *     fetch="EXTRA_LAZY",
-//     *     inversedBy="balanceHistory"
-//     * )
-//     * @Doctrine\ORM\Mapping\JoinColumn(
-//     *     name="balance_id",
-//     *     referencedColumnName="id",
-//     * )
-//     *
-//     * @var UserBalance
-//     */
-//    private $balance;
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity="Balance",
+     *     fetch="EXTRA_LAZY",
+     *     inversedBy="transactions"
+     * )
+     * @Doctrine\ORM\Mapping\JoinColumn(
+     *     name="balance_id",
+     *     referencedColumnName="id",
+     * )
+     *
+     * @var Balance
+     */
+    private $balance;
 
     /**
      * @ORM\Column(
@@ -106,31 +106,11 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
      *     name="comment",
      *     type="string",
      *     nullable=true,
-     *     options={
-     *         "comment": "Комментарий"
-     *     }
      * )
      *
      * @var string
      */
     private $comment;
-
-    //TODO или привязаннй баланс или эта хрень, что-нить одно
-//    /**
-//     * @Doctrine\ORM\Mapping\Column(
-//     *     name="current_balance",
-//     *     type="decimal",
-//     *     precision=20,
-//     *     scale=8,
-//     *     nullable=false,
-//     *     options={
-//     *         "comment": "Текущий баланс"
-//     *     }
-//     * )
-//     *
-//     * @var float
-//     */
-//    private $currentBalance = 0;
 
     public function __construct()
     {
@@ -139,37 +119,31 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
     }
 
     /**
-     * Сеттер баланса.
-     *
-     * @param UserBalance $userBalance
+     * @param Balance $Balance
      *
      * @return $this
      */
-    public function setBalance(UserBalance $userBalance)
+    public function setBalance(Balance $Balance)
     {
-        $this->balance = $userBalance;
+        $this->balance = $Balance;
 
         return $this;
     }
 
     /**
-     * Геттер баланса.
-     *
-     * @return UserBalance
+     * @return Balance
      */
-    public function getBalance(): ?UserBalance
+    public function getBalance(): ?Balance
     {
         return $this->balance;
     }
 
     /**
-     * Set comment.
-     *
      * @param string $comment
      *
      * @return Transaction
      */
-    public function setComment($comment)
+    public function setComment(string $comment): Transaction
     {
         $this->comment = $comment;
 
@@ -177,42 +151,34 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
     }
 
     /**
-     * Get comment.
-     *
      * @return string
      */
-    public function getComment()
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
     /**
-     * Set currentBalance.
-     *
-     * @param string $currentBalance
+     * @param Balance $balance
      *
      * @return Transaction
      */
-    public function setCurrentBalance($currentBalance)
+    public function setCurrentBalance(Balance $balance): Transaction
     {
-        $this->currentBalance = $currentBalance;
+        $this->balance = $balance;
 
         return $this;
     }
 
     /**
-     * Get currentBalance.
-     *
-     * @return string
+     * @return Balance|null
      */
-    public function getCurrentBalance()
+    public function getCurrentBalance(): ?Balance
     {
-        return $this->currentBalance;
+        return $this->balance;
     }
 
     /**
-     * Сеттер статуса.
-     *
      * @param string $status
      *
      * @return Transaction
@@ -225,8 +191,6 @@ class Transaction //* @ORM\EntityListeners({"AppBundle\EventListener\BalanceHist
     }
 
     /**
-     * Геттер статуса.
-     *
      * @return string
      */
     public function getStatus()
