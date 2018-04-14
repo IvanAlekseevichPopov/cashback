@@ -10,6 +10,7 @@ Fast start
 * Clone repository
 * `docker-compose build`
 * `docker-compose up -d`
+* set `127.0.0.1 cb.tk` to hosts
 * Done ) Go to [local server](http://localhost)
 
 More docks
