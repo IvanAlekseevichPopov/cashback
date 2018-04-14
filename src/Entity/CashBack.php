@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -12,12 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CashBack.
  *
- * @ORM\Table(
- *     name="cash_back",
- *     options={
- *         "comment": "Cashbacks"
- *     }
- * )
+ * @ORM\Table(name="cash_back")
  *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
@@ -62,10 +57,6 @@ class CashBack
      *     type="text",
      *     length=65535,
      *     nullable=false,
-     *     options={
-     *         "fixed": false,
-     *         "comment": "Условия кешбека",
-     *     }
      * )
      *
      * @var string
@@ -78,10 +69,6 @@ class CashBack
      *     type="string",
      *     length=255,
      *     nullable=false,
-     *     options={
-     *         "fixed": false,
-     *         "comment": "адрес кешбек сервиса"
-     *     }
      * )
      *
      * @var string
@@ -95,7 +82,6 @@ class CashBack
      *     length=255,
      *     nullable=false,
      *     options={
-     *         "fixed": false,
      *         "comment": "адрес сайта-заказчика"
      *     }
      * )
@@ -110,9 +96,6 @@ class CashBack
      *     type="string",
      *     length=255,
      *     nullable=false,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -133,11 +116,10 @@ class CashBack
     /**
      * @ORM\ManyToOne(
      *     targetEntity="CashBackPlatform",
-     *     cascade={},
      *     fetch="LAZY",
      *     inversedBy="cashBacks"
      * )
-     * @Doctrine\ORM\Mapping\JoinColumn(
+     * @ORM\JoinColumn(
      *     name="cash_back_platform_id",
      *     referencedColumnName="id"
      * )
@@ -151,13 +133,11 @@ class CashBack
      *     targetEntity="CashBackImage",
      *     fetch="EXTRA_LAZY"
      * )
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(
-     *         name="cash_back_image_id",
-     *         referencedColumnName="id",
-     *         nullable=false,
-     *     )
-     * })
+     * @ORM\JoinColumn(
+     *     name="cash_back_image_id",
+     *     referencedColumnName="id",
+     *     nullable=false,
+     * )
      *
      * @var CashBackImage
      */
@@ -168,7 +148,7 @@ class CashBack
      *     targetEntity="CashBackCategory",
      *     mappedBy="cashBack",
      *     orphanRemoval=true,
-     *     cascade={"ALL"},
+     *     cascade={"all"},
      *     fetch="EXTRA_LAZY"
      * )
      *
@@ -200,8 +180,7 @@ class CashBack
     private $status = CashBackStatusEnumType::STATUS_NOT_PARTNER;
 
     /**
-     * @Doctrine\ORM\Mapping\Column(
-     *     name="rating",
+     * @ORM\Column(
      *     type="decimal",
      *     precision=4,
      *     scale=1,

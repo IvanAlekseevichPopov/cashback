@@ -1,35 +1,30 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Traits\Column\IntegerAutoIncrementIdColumn;
+use App\Traits\Column\UuidColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CashBackTrek.
  *
- * @ORM\Table(
- *     name="cash_back_trek",
- *     options={
- *         "comment": "Cashback treks"
- *     }
- * )
+ * @ORM\Table(name="cash_back_trek")
  *
  * @ORM\Entity(repositoryClass="App\Repository\CashBack\CashBackTrekRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CashBackTrek
 {
-    use IntegerAutoIncrementIdColumn;
+    use UuidColumn;
 
     /**
      * @ORM\ManyToOne(
      *     targetEntity="User",
      *     fetch="EXTRA_LAZY"
      * )
-     * @Doctrine\ORM\Mapping\JoinColumn(
+     * @ORM\JoinColumn(
      *     name="user_id",
      *     referencedColumnName="id"
      * )
@@ -110,7 +105,7 @@ class CashBackTrek
     /**
      * @return Transaction|null
      */
-    public function getBalanceHistory(): ?Transaction
+    public function getTransaction(): ?Transaction
     {
         return $this->transaction;
     }
@@ -120,7 +115,7 @@ class CashBackTrek
      *
      * @return $this
      */
-    public function setBalanceHistory(Transaction $transaction)
+    public function setTransaction(Transaction $transaction)
     {
         $this->transaction = $transaction;
 

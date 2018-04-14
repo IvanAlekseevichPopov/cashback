@@ -5,7 +5,7 @@ namespace App\DBAL\Types\Enum;
 use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
 /**
- * CashBackStatusEnumType
+ * CashBackStatusEnumType.
  */
 class CashBackStatusEnumType extends AbstractEnumType
 {
