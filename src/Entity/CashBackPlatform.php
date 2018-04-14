@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -11,12 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CashBackPlatform.
  *
- * @ORM\Table(
- *     name="cash_back_platform",
- *     options={
- *         "comment": "Cashback platforms"
- *     }
- * )
+ * @ORM\Table(name="cash_back_platform")
  *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
@@ -29,13 +24,9 @@ class CashBackPlatform
 
     /**
      * @ORM\Column(
-     *     name="title",
      *     type="string",
      *     length=64,
      *     nullable=false,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -44,13 +35,9 @@ class CashBackPlatform
 
     /**
      * @ORM\Column(
-     *     name="base_url",
      *     type="string",
      *     length=128,
      *     nullable=false,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -59,13 +46,9 @@ class CashBackPlatform
 
     /**
      * @ORM\Column(
-     *     name="client_id",
      *     type="string",
      *     length=64,
      *     nullable=false,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -74,13 +57,9 @@ class CashBackPlatform
 
     /**
      * @ORM\Column(
-     *     name="auth_header",
      *     type="string",
      *     length=128,
      *     nullable=false,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -89,13 +68,9 @@ class CashBackPlatform
 
     /**
      * @ORM\Column(
-     *     name="external_platform_id",
      *     type="string",
      *     length=32,
      *     nullable=true,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -104,13 +79,9 @@ class CashBackPlatform
 
     /**
      * @ORM\Column(
-     *     name="token",
      *     type="string",
      *     length=64,
      *     nullable=true,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -118,8 +89,7 @@ class CashBackPlatform
     private $token;
 
     /**
-     * @Doctrine\ORM\Mapping\Column(
-     *     name="expired_at",
+     * @ORM\Column(
      *     type="datetime",
      *     nullable=true,
      *     options={

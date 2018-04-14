@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -10,12 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CashBackCategory.
  *
- * @ORM\Table(
- *     name="cash_back_category",
- *     options={
- *         "comment": "Cashback categories"
- *     }
- * )
+ * @ORM\Table(name="cash_back_category")
  *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
@@ -26,7 +21,6 @@ class CashBackCategory
 
     /**
      * @ORM\Column(
-     *     name="title",
      *     type="string",
      *     length=64,
      *     nullable=false,
@@ -41,7 +35,6 @@ class CashBackCategory
 
     /**
      * @ORM\Column(
-     *     name="cash",
      *     type="string",
      *     length=255,
      *     nullable=false,

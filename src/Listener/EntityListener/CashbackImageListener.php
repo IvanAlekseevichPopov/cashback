@@ -1,10 +1,10 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Listener\EntityListener;
 
-use App\Entity\CashBackImage;
+use App\Model\AbstractImage;
 use Doctrine\ORM\Mapping\PostPersist;
 use Doctrine\ORM\Mapping\PreRemove;
 
@@ -13,23 +13,38 @@ use Doctrine\ORM\Mapping\PreRemove;
  */
 class CashbackImageListener
 {
+    public const PUBLIC_FOLDER = '/public/';
+
+    /** @var string */
+    private $projectDir;
+
+    /**
+     * ImageListener constructor.
+     *
+     * @param string $projectDir
+     */
+    public function __construct(string $projectDir)
+    {
+        $this->projectDir = $projectDir.self::PUBLIC_FOLDER;
+    }
+
     /**
      * @PostPersist
      *
-     * @param CashBackImage $image
+     * @param AbstractImage $image
      */
-    public function postPersistHandler(CashBackImage $image)
+    public function postPersistHandler(AbstractImage $image)
     {
-        $image->saveFile();
+        $image->saveFile($this->projectDir);
     }
 
     /**
      * @PreRemove
      *
-     * @param CashBackImage $image
+     * @param AbstractImage $image
      */
-    public function preRemoveHandler(CashBackImage $image)
+    public function preRemoveHandler(AbstractImage $image)
     {
-        $image->removeFile();
+        $image->removeFile($this->projectDir);
     }
 }

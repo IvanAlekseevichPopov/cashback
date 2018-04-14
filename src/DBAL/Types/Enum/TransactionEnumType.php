@@ -1,19 +1,19 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\DBAL\Types\Enum;
 
 use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
 /**
- * TransactionEnumType
+ * TransactionEnumType.
  */
 class TransactionEnumType extends AbstractEnumType
 {
-    const BALANCE_OPERATION_CREATE         = 'create';
-    const BALANCE_OPERATION_DECREASE       = 'decrease';
-    const BALANCE_OPERATION_INCREASE       = 'increase';
+    public const BALANCE_OPERATION_CREATE = 'create';
+    public const BALANCE_OPERATION_DECREASE = 'decrease';
+    public const BALANCE_OPERATION_INCREASE = 'increase';
 
     /** @var array */
     protected static $choices = [

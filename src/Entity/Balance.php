@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -13,18 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(
  *     name="balance",
  *     options={
- *          "comment"="User balance"
+ *         "comment": "User balance"
  *     }
  * )
  *
- * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Balance
 {
     use IntegerAutoIncrementIdColumn;
-
-    //TODO CurrencyColumn если понадобится
 
     /**
      * @ORM\OneToMany(
@@ -54,12 +52,12 @@ class Balance
 
     public function __construct()
     {
-        $this->transactions = new ArrayCollection;
+        $this->transactions = new ArrayCollection();
     }
 
     public function __toString()
     {
-        return (string)$this->getId();
+        return (string) $this->getId();
     }
 
     /**

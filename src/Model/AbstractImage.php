@@ -7,7 +7,7 @@ namespace App\Model;
 use App\Traits\Column\UuidColumn;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * AbstractImage.
@@ -26,35 +26,35 @@ abstract class AbstractImage
     protected $extension;
 
     /**
-     * @var UploadedFile
+     * @var File
      */
-    protected $uploadedFile;
+    protected $file;
 
     /**
-     * @param UploadedFile $file
+     * @return null|File
+     */
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
      *
      * @throws \Exception
      *
      * @return $this
      */
-    public function setFile(UploadedFile $file)
+    public function setFile(File $file)
     {
-        if (!$file->isValid()) {
-            throw new \Exception('file upload error');
+        if (!$file->isReadable()) {
+            throw new \Exception('file read error');
         }
 
-        $this->uploadedFile = $file;
+        $this->file = $file;
         $this->setExtension($this->genExtension($file));
 
         return $this;
-    }
-
-    /**
-     * @return null|UploadedFile
-     */
-    public function getFile(): ?UploadedFile
-    {
-        return $this->uploadedFile;
     }
 
     /**
@@ -86,23 +86,27 @@ abstract class AbstractImage
     }
 
     /**
-     * Moves tmp file to it place.
+     * Puts file to filesystem.
+     *
+     * @param null|string $projectPath
      */
-    final public function saveFile()
+    final public function saveFile(?string $projectPath = null)
     {
         $fs = new FileSystem();
         $fs->mkdir($this->getBasePath());
 
-        $this->uploadedFile->move($this->getBasePath(), $this->getFileName());
+        $this->file->move($projectPath.$this->getBasePath(), $this->getFileName());
     }
 
     /**
-     * Removes file from filesystem.
+     * Removes reference file.
+     *
+     * @param null|string $projectPath
      */
-    final public function removeFile()
+    final public function removeFile(?string $projectPath = null)
     {
         $fs = new FileSystem();
-        $fs->remove($this->getFilePath());
+        $fs->remove($projectPath.$this->getFilePath());
     }
 
     final protected function getBasePath(): string
@@ -117,9 +121,9 @@ abstract class AbstractImage
 
     abstract protected function getSubDir(): string;
 
-    protected function genExtension(UploadedFile $uploadedFile)
+    protected function genExtension(File $file)
     {
-        list(, $type) = explode('/', $uploadedFile->getMimeType(), 2);
+        list(, $type) = explode('/', $file->getMimeType(), 2);
         switch ($type) {
             case 'pjpeg':
             case 'jpeg':
