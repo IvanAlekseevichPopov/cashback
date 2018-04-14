@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Listener\EntityListener;
 
 use App\Entity\Transaction;
 use App\Manager\TransactionManager;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * TransactionListener.
@@ -32,7 +31,7 @@ class TransactionListener
         $this->recalc($transaction, $args);
     }
 
-    protected function recalc(Transaction $transaction, LifecycleEventArgs $args)
+    protected function recalc(Transaction $transaction)
     {
         if ($transaction->getBalance()) {
             $this->transactionManager->recalculateBalance($transaction->getUser());

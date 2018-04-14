@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -11,12 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CashBackImage.
  *
- * @ORM\Table(
- *     name="cash_back_image",
- *     options={
- *         "comment": "Cashback images"
- *     }
- * )
+ * @ORM\Table(name="cash_back_image")
  *
  * @ORM\EntityListeners({"App\Listener\EntityListener\CashbackImageListener"})
  * @ORM\Entity
