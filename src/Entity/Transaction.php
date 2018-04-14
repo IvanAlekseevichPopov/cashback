@@ -1,19 +1,18 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
 use App\DBAL\Types\Enum\TransactionEnumType;
+use App\Traits\Column\UuidColumn;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
  * Transaction.
  *
- * @ORM\Table(
- *     name="transaction",
- * )
+ * @ORM\Table(name="transaction")
  *
  * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
  * @ORM\EntityListeners({"App\Listener\EntityListener\TransactionListener"})
@@ -21,15 +20,7 @@ use Ramsey\Uuid\Uuid;
  */
 class Transaction
 {
-    /**
-     * @var Uuid
-     *
-     * @ORM\Id
-     * @ORM\Column(type="uuid", unique=true)
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-     */
-    private $id;
+    use UuidColumn;
 
     /**
      * @ORM\ManyToOne(
@@ -52,7 +43,7 @@ class Transaction
      *     fetch="EXTRA_LAZY",
      *     inversedBy="transactions"
      * )
-     * @Doctrine\ORM\Mapping\JoinColumn(
+     * @ORM\JoinColumn(
      *     name="balance_id",
      *     referencedColumnName="id",
      * )
@@ -75,8 +66,6 @@ class Transaction
     private $type;
 
     /**
-     * Статус операции.
-     *
      * @ORM\Column(
      *     name="status",
      *     type="TransactionStatusEnumType",
@@ -90,8 +79,6 @@ class Transaction
     private $status;
 
     /**
-     * Комментарий.
-     *
      * @ORM\Column(
      *     name="comment",
      *     type="string",
@@ -158,26 +145,6 @@ class Transaction
     public function getComment(): ?string
     {
         return $this->comment;
-    }
-
-    /**
-     * @param Balance $balance
-     *
-     * @return Transaction
-     */
-    public function setCurrentBalance(Balance $balance): Transaction
-    {
-        $this->balance = $balance;
-
-        return $this;
-    }
-
-    /**
-     * @return Balance|null
-     */
-    public function getCurrentBalance(): ?Balance
-    {
-        return $this->balance;
     }
 
     /**

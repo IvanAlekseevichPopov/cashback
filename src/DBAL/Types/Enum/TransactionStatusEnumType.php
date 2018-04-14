@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\DBAL\Types\Enum;
 
@@ -11,9 +11,9 @@ use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
  */
 class TransactionStatusEnumType extends AbstractEnumType
 {
-    public const STATUS_WAIT            = 'wait';
-    public const STATUS_APPROVED        = 'approved';
-    public const STATUS_REJECT          = 'reject';
+    public const STATUS_WAIT = 'wait';
+    public const STATUS_APPROVED = 'approved';
+    public const STATUS_REJECT = 'reject';
     public const STATUS_WAIT_MODERATION = 'wait_moderation';
 
     /** @var array */

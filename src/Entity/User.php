@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -11,9 +11,7 @@ use FOS\UserBundle\Model\User as FOSUser;
 /**
  * User.
  *
- * @ORM\Table(
- *     name="user"
- * )
+ * @ORM\Table(name="user")
  * @ORM\Entity
  */
 class User extends FOSUser
@@ -32,10 +30,10 @@ class User extends FOSUser
 
     /**
      * @ORM\Column(
-     *     name     = "phone",
-     *     type     = "bigint",
-     *     nullable = true,
-     *     length   = 11,
+     *     name="phone",
+     *     type="bigint",
+     *     nullable=true,
+     *     length=11,
      * )
      *
      * @var string
@@ -44,8 +42,8 @@ class User extends FOSUser
 
     /**
      * @ORM\OneToOne(
-     *     targetEntity = "Balance",
-     *     cascade      = {
+     *     targetEntity="Balance",
+     *     cascade={
      *         "persist",
      *         "remove"
      *     }
