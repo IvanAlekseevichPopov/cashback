@@ -18,10 +18,11 @@ services:
         ports:
             - "${SERVER_HTTP_PORT}:80"
         volumes:
+            - ./config/docker/nginx/symfony.conf:/etc/nginx/sites-available/symfony.conf
             - .:/var/www/html
             - ./var/log:/var/log/nginx
     db:
-        image: mysql:5.7
+        image: mariadb:10.1
         ports:
             - "3306:3306"
         volumes:
