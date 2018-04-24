@@ -24,10 +24,12 @@
     },
     "require-dev": {
         "deployer/deployer": "^6.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "friendsofphp/php-cs-fixer": "^2.8",
         "symfony/debug-pack": "^1.0",
         "symfony/dotenv": "^3.4",
-        "symfony/maker-bundle": "^1.0"
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^3.4"
     },
     "config": {
         "preferred-install": {
