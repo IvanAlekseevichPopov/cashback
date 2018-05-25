@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CashBackPlatform
 {
-    public const ADMITAD_PLATFORM_ID = '2a10bc8e-2389-c04d-1328-ff9000efd802';
+    public const ADMITAD_PLATFORM_ID = 1;
 
     use IntegerAutoIncrementIdColumn;
 

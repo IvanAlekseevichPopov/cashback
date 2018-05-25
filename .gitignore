@@ -16,3 +16,4 @@
 .phpunit
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+/public/static/images/
