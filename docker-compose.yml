@@ -37,6 +37,13 @@ services:
             HISTFILESIZE: 20000
             HISTFILE: '/var/lib/mysql/bash_history_db'
             MYSQL_HISTFILE: '/var/lib/mysql/bash_history_db_mysql'
+    db_test:
+        image: mariadb:10.1
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
