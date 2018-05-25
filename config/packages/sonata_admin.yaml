@@ -9,6 +9,11 @@ sonata_admin:
                 icon:   '<i class="fa fa-user"></i>'
                 items:
                     - sonata.user
+            sonata.group.cashback:
+                label: 'Кешбэки'
+                icon:   '<i class="fa fa-money"></i>'
+                items:
+                    - sonata.cashback_source
 sonata_block:
     blocks:
         sonata.admin.block.admin_list:
@@ -20,3 +25,8 @@ services:
         arguments: [~, App\Entity\User, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'Пользователи' }
+    sonata.cashback_source:
+        class: App\Admin\CashBackPlatformAdmin
+        arguments: [~, App\Entity\CashBackPlatform, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Источники кешбеков' }

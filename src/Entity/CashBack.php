@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="cash_back")
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CashBackRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CashBack
@@ -27,11 +27,8 @@ class CashBack
      * @ORM\Column(
      *     name="title",
      *     type="string",
-     *     length=64,
-     *     nullable=false,
-     *     options={
-     *         "fixed": false
-     *     }
+     *     length=128,
+     *     nullable=false
      * )
      */
     private $title;

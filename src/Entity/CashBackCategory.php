@@ -22,7 +22,7 @@ class CashBackCategory
     /**
      * @ORM\Column(
      *     type="string",
-     *     length=64,
+     *     length=128,
      *     nullable=false,
      *     options={
      *         "fixed": false
