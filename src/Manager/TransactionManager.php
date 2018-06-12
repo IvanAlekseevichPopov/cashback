@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Manager;
 
@@ -8,7 +8,6 @@ use App\DBAL\Types\Enum\TransactionStatusEnumType;
 use App\Entity\Transaction;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Entity;
 
 /**
  * TransactionManager.
@@ -85,5 +84,4 @@ class TransactionManager
         $this->persist($entity);
         $this->flush();
     }
-
 }

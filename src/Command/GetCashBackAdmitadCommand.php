@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Command;
 
@@ -19,19 +19,18 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
 /**
- * GetCashBackAdmitadCommand
+ * GetCashBackAdmitadCommand.
  */
 class GetCashBackAdmitadCommand extends ContainerAwareCommand
 {
-    const TMP_FILE = "/tmp/temporary_image_cashback_tratata";
+    public const TMP_FILE = '/tmp/temporary_image_cashback_tratata';
 
     /** @var AdmitadApiHandler */
     protected $admitadApiHandler;
-    /** @var TransactionManager  */
+    /** @var TransactionManager */
     protected $transactionManager;
-    /** @var EntityManagerInterface  */
+    /** @var EntityManagerInterface */
     protected $em;
 
     protected $admitadIds = null;
@@ -79,7 +78,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
     }
 
     /**
-     * Берет акции адмитада с limit и offset
+     * Берет акции адмитада с limit и offset.
      *
      * @param CashBackPlatform $admitadPlatform
      *
@@ -96,7 +95,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
 
             $count = 0;
             foreach ($admitadResponse['results'] as $item) {
-                $count++;
+                ++$count;
 
                 //Проверка, подходит ли нам кешбек
                 if ($item['connected']) {
@@ -151,7 +150,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
     }
 
     /**
-     * Возвращает массив внешних id адмитада забинденых в системе
+     * Возвращает массив внешних id адмитада забинденых в системе.
      *
      * @param CashBackPlatform $admitadPlatform
      *
@@ -171,7 +170,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
     }
 
     /**
-     * Обновление уже существующих площадок
+     * Обновление уже существующих площадок.
      *
      * @param CashBackPlatform $admitadPlatform
      * @param \DateTime        $now
@@ -188,7 +187,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
             $admitadResponse = $this->admitadApiHandler->checkCampaign($admitadPlatform, $cashBack);
 
             if (isset($admitadResponse['update_result']) && $admitadResponse['update_result']) {
-                $updatesCounter++;
+                ++$updatesCounter;
             }
         }
 
@@ -196,11 +195,9 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
     }
 
     /**
-     * Обновляет информацию о начислениях за кешбеки
+     * Обновляет информацию о начислениях за кешбеки.
      *
      * @param $admitadPlatform
-     *
-     * @return void
      */
     protected function updatePayments($admitadPlatform)
     {
@@ -235,7 +232,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
                 $cashBackTransaction = $cashBackTrek->getTransaction();
 
                 if (!empty($cashBackTransaction)) {
-                    if ($cashBackTransaction->getStatus() === TransactionStatusEnumType::STATUS_APPROVED || $cashBackTransaction->getStatus() === TransactionStatusEnumType::STATUS_REJECT) {
+                    if (TransactionStatusEnumType::STATUS_APPROVED === $cashBackTransaction->getStatus() || TransactionStatusEnumType::STATUS_REJECT === $cashBackTransaction->getStatus()) {
                         //Транзакция закрыта - кешбек уже обработан не нужно ничего делать
                         continue;
                     }
@@ -263,7 +260,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
                             continue;
                         }
 
-                        if ($cashBackTransaction->getStatus() === TransactionStatusEnumType::STATUS_WAIT) {
+                        if (TransactionStatusEnumType::STATUS_WAIT === $cashBackTransaction->getStatus()) {
                             //Если сумма в транзакции не совпадает с подтвержденной суммой - меняем сумму транзакции(в случае, когда кешбек подтвержден частично)
                             if ($cashBackTransaction->getAmount() !== (float) $payment['payment_sum_approved']) {
                                 $cashBackTransaction->setAmount((float) $payment['payment_sum_approved']);
@@ -285,7 +282,6 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
                             $this->createCashBackTransaction($cashBackTrek, (float) $payment['payment_sum_declined'], TransactionStatusEnumType::STATUS_REJECT);
 
 //                            $this->getPushSender()->sendPush($cashBackTrek->getUser(), PushMessage::MESSAGE_CASHBACK_REJECTED);
-
                         } elseif ($cashBackTransaction->getAmount() === (float) $payment['payment_sum_declined']) {
                             //Если транзакция была, и ее сумма совпадает с суммой отвергнутой части - отменяем транзакцию
                             $cashBackTransaction->setStatus(TransactionStatusEnumType::STATUS_REJECT);
@@ -302,11 +298,10 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
             }
             $offset += $limit;
         } while ($paymentsCollection['_meta']['count'] > $offset);
-
     }
 
     /**
-     * Геттер репозитория кешбеков
+     * Геттер репозитория кешбеков.
      *
      * @return CashBackRepository
      */
@@ -316,7 +311,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
     }
 
     /**
-     * Геттер репозитория отслеживаний кешбеков
+     * Геттер репозитория отслеживаний кешбеков.
      *
      * @return \Doctrine\ORM\EntityRepository
      */
@@ -345,12 +340,10 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
 
     /**
      * @param string $message
-     *
-     * @return void
      */
     protected function logAndShow(string $message): void
     {
-        echo($message.PHP_EOL);
+        echo $message.PHP_EOL;
         $this->getLogger()->addInfo($message);
     }
 
@@ -359,8 +352,9 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
      * @param float        $amount
      * @param string       $status
      *
-     * @return Transaction
      * @throws \Exception
+     *
+     * @return Transaction
      */
     protected function createCashBackTransaction(CashBackTrek $cashBackTrek, float $amount, string $status): Transaction
     {

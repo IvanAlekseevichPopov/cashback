@@ -16,22 +16,22 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
- * AdmitadApiHandler
+ * AdmitadApiHandler.
  */
 class AdmitadApiHandler
 {
     use ContainerAwareTrait;
 
-    const TIME_APPROXIMATION        = '-1 hour';
-    const WRONG_PLATFORM_ID         = 'Id переданной платформы не совпадает с константным';
-    const CONNECTION_STATUS_ACTIVE  = 'active';
-    const POST_METHOD               = 'POST';
-    const GET_METHOD                = 'GET';
-    const TMP_FILE                  = '/tmp/asdfasdfasdfasdfasd';
-    const DATE_FORMAT               = 'd.m.Y';
-    const OLDEST_PAYMENT_CHECK      = '-70 days';
-    const NEWEST_PAYMENT_CHECK      = '-2 days';
-    const ADMITAD_MESSAGE_NOT_FOUND = 'Not Found';
+    public const TIME_APPROXIMATION = '-1 hour';
+    public const WRONG_PLATFORM_ID = 'Id переданной платформы не совпадает с константным';
+    public const CONNECTION_STATUS_ACTIVE = 'active';
+    public const POST_METHOD = 'POST';
+    public const GET_METHOD = 'GET';
+    public const TMP_FILE = '/tmp/asdfasdfasdfasdfasd';
+    public const DATE_FORMAT = 'd.m.Y';
+    public const OLDEST_PAYMENT_CHECK = '-70 days';
+    public const NEWEST_PAYMENT_CHECK = '-2 days';
+    public const ADMITAD_MESSAGE_NOT_FOUND = 'Not Found';
 
     /** Самая ранняя дата для поиска выплат по кешбекам */
     private $startDate;
@@ -44,7 +44,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Запрос авторизационного токена у Admitad
+     * Запрос авторизационного токена у Admitad.
      *
      * @param CashBackPlatform $admitadCashBackPlatform
      *
@@ -56,15 +56,15 @@ class AdmitadApiHandler
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, $admitadCashBackPlatform->getBaseUrl() . 'token/');
+        curl_setopt($ch, CURLOPT_URL, $admitadCashBackPlatform->getBaseUrl().'token/');
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Basic ' . $admitadCashBackPlatform->getAuthHeader()]);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Basic '.$admitadCashBackPlatform->getAuthHeader()]);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, [
             'grant_type' => 'client_credentials',
-            'client_id'  => $admitadCashBackPlatform->getClientId(),
-            'scope'      => 'advcampaigns arecords banners websites advcampaigns_for_website manage_advcampaigns statistics',
+            'client_id' => $admitadCashBackPlatform->getClientId(),
+            'scope' => 'advcampaigns arecords banners websites advcampaigns_for_website manage_advcampaigns statistics',
         ]);
 
         $data = curl_exec($ch);
@@ -74,23 +74,21 @@ class AdmitadApiHandler
     }
 
     /**
-     * Обновление временного токена авторизации адмитада
+     * Обновление временного токена авторизации адмитада.
      *
      * @param CashBackPlatform $admitadPlatform
-     *
-     * @return void
      */
     public function updateAccessToken(CashBackPlatform $admitadPlatform): void
     {
         $now = new \DateTime(self::TIME_APPROXIMATION);
 
-        $token     = $admitadPlatform->getToken();
+        $token = $admitadPlatform->getToken();
         $expiredAt = $admitadPlatform->getExpiredAt();
         if (empty($token) || $expiredAt < $now) {
             $tokenJson = $this->getAccessToken($admitadPlatform);
             $admitadPlatform
                 ->setToken($tokenJson['access_token'])
-                ->setExpiredAt($now->add(new \DateInterval('PT' . $tokenJson['expires_in'] . 'S')));
+                ->setExpiredAt($now->add(new \DateInterval('PT'.$tokenJson['expires_in'].'S')));
 
             $this->getManager()->persist($admitadPlatform);
             $this->getManager()->flush();
@@ -98,13 +96,15 @@ class AdmitadApiHandler
     }
 
     /**
-     * Проверяет статус выбранной компании
+     * Проверяет статус выбранной компании.
      *
      * @param CashBackPlatform $admitadPlatform
      * @param CashBack         $cashBack
      *
-     * @return array|null
      * @throws \Exception
+     *
+     * @return array|null
+     *
      * @internal param $cashBackPlatform
      */
     public function checkCampaign(CashBackPlatform $admitadPlatform, CashBack $cashBack): ?array
@@ -115,7 +115,7 @@ class AdmitadApiHandler
 
         $this->updateAccessToken($admitadPlatform);
         $admitadResponse = $this->getData(
-            $admitadPlatform->getBaseUrl() . 'advcampaigns/' . $cashBack->getExternalId() . '/website/' . $admitadPlatform->getExternalPlatformId() . '/', $admitadPlatform->getToken()
+            $admitadPlatform->getBaseUrl().'advcampaigns/'.$cashBack->getExternalId().'/website/'.$admitadPlatform->getExternalPlatformId().'/', $admitadPlatform->getToken()
         );
 
         if (empty($admitadResponse)) {
@@ -134,7 +134,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Возвращает из адмитада список подключенных с нашей стороны сайтов
+     * Возвращает из адмитада список подключенных с нашей стороны сайтов.
      *
      * @return array|null
      */
@@ -143,16 +143,17 @@ class AdmitadApiHandler
         $admitadPlatform = $this->getAdmitadPlatform();
         $this->updateAccessToken($admitadPlatform);
 
-        return $this->getData($admitadPlatform->getBaseUrl() . 'websites/', $admitadPlatform->getToken());
+        return $this->getData($admitadPlatform->getBaseUrl().'websites/', $admitadPlatform->getToken());
     }
 
     /**
-     * Возвращает внутренний статус по строковому представлению внешнего статуса
+     * Возвращает внутренний статус по строковому представлению внешнего статуса.
      *
      * @param string $externalStatus
      *
-     * @return string
      * @throws \Exception
+     *
+     * @return string
      */
     public static function statusMatching(string $externalStatus): string
     {
@@ -164,7 +165,7 @@ class AdmitadApiHandler
             case 'declined':
                 return CashBackStatusEnumType::STATUS_REJECTED_PARTNERSHIP;
             default:
-                throw new \Exception('unknown status - ' . $externalStatus);
+                throw new \Exception('unknown status - '.$externalStatus);
         }
     }
 
@@ -175,18 +176,19 @@ class AdmitadApiHandler
      * @param int              $offset
      * @param int              $limit
      *
-     * @return array
      * @throws \Exception
+     *
+     * @return array
      */
     public function getCashBackPayments(cashBackPlatform $admitadPlatform, int $offset, int $limit): array
     {
         $this->updateAccessToken($admitadPlatform);
 
         $url =
-            $admitadPlatform->getBaseUrl() . 'statistics/sub_ids/?offset=' . $offset .
-            '&limit=' . $limit .
-            '&date_start=' . $this->getStartDate() .
-            '&date_end=' . $this->getEndDate();
+            $admitadPlatform->getBaseUrl().'statistics/sub_ids/?offset='.$offset.
+            '&limit='.$limit.
+            '&date_start='.$this->getStartDate().
+            '&date_end='.$this->getEndDate();
 
         $admitadResponse = $this->getData($url, $admitadPlatform->getToken());
 
@@ -198,13 +200,14 @@ class AdmitadApiHandler
     }
 
     /**
-     * Запрос на партнерку с магазином в Admitad
+     * Запрос на партнерку с магазином в Admitad.
      *
      * @param CashBackPlatform $admitadPlatform
      * @param CashBack         $cashBack
      *
-     * @return array
      * @throws \Exception
+     *
+     * @return array
      */
     public function requirePartnership(CashBackPlatform $admitadPlatform, CashBack $cashBack): array
     {
@@ -218,7 +221,7 @@ class AdmitadApiHandler
         }
 
         //Заявка еще не подана - отправляем
-        $url             = $admitadPlatform->getBaseUrl() . 'advcampaigns/' . $cashBack->getExternalId() . '/attach/' . $admitadPlatform->getExternalPlatformId() . '/';
+        $url = $admitadPlatform->getBaseUrl().'advcampaigns/'.$cashBack->getExternalId().'/attach/'.$admitadPlatform->getExternalPlatformId().'/';
         $admitadResponse = $this->getData($url, $admitadPlatform->getToken(), self::POST_METHOD);
 
         if (empty($admitadResponse)) {
@@ -231,7 +234,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Получает компании из адмитада с offset, limit
+     * Получает компании из адмитада с offset, limit.
      *
      * @param CashBackPlatform $admitadPlatform
      * @param int              $offset
@@ -241,13 +244,13 @@ class AdmitadApiHandler
      */
     public function getCampaigns(CashBackPlatform $admitadPlatform, int $offset, int $limit): array
     {
-        $url = $admitadPlatform->getBaseUrl() . 'advcampaigns/?offset=' . $offset . '&limit=' . $limit;
+        $url = $admitadPlatform->getBaseUrl().'advcampaigns/?offset='.$offset.'&limit='.$limit;
 
         return $this->getData($url, $admitadPlatform->getToken());
     }
 
     /**
-     * Геттер инстанса платформы адмитада
+     * Геттер инстанса платформы адмитада.
      *
      * @return CashBackPlatform
      */
@@ -257,7 +260,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Создание нового кешбека по данным с адмитада
+     * Создание нового кешбека по данным с адмитада.
      *
      * @param CashBackPlatform $admitadPlatform
      * @param array            $item
@@ -269,13 +272,13 @@ class AdmitadApiHandler
     {
         $cashBackImage = $this->createCashBackImage($item);
 
-        $condition = html_entity_decode(strip_tags($item['description']), ENT_HTML5) . '|' . html_entity_decode(strip_tags($item['more_rules']), ENT_HTML5);
+        $condition = html_entity_decode(strip_tags($item['description']), ENT_HTML5).'|'.html_entity_decode(strip_tags($item['more_rules']), ENT_HTML5);
 
         $cashBack = new CashBack();
         $cashBack
             ->setActive(false)
             ->setExternalId($item['id'])
-            ->setRating((int)$item['rating'])
+            ->setRating((int) $item['rating'])
             ->setCash('')
             ->setTitle($item['name'])
             ->setCondition($condition)
@@ -304,16 +307,15 @@ class AdmitadApiHandler
     }
 
     /**
-     * Универсальный метод для запроса данных из Admitad
+     * Универсальный метод для запроса данных из Admitad.
      *
      * @param string $url
      * @param string $token
-     *
      * @param string $method
      *
      * @return array|null
      */
-    protected function getData(string $url, string $token, $method = self::GET_METHOD):?array
+    protected function getData(string $url, string $token, $method = self::GET_METHOD): ?array
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -322,7 +324,7 @@ class AdmitadApiHandler
         if (self::POST_METHOD === $method) {
             curl_setopt($ch, CURLOPT_POST, true);
         }
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . $token]);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer '.$token]);
         $data = curl_exec($ch);
         curl_close($ch);
 
@@ -330,7 +332,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Обновляет поля уже существующего кешбека
+     * Обновляет поля уже существующего кешбека.
      *
      * @param CashBack $cashBack
      * @param array    $admitadResponse
@@ -346,7 +348,7 @@ class AdmitadApiHandler
             $updateFlag = true;
         }
 
-        $rating = (float)$admitadResponse['rating'];
+        $rating = (float) $admitadResponse['rating'];
         if ($cashBack->getRating() !== $rating) {
             $cashBack->setRating($rating);
             $updateFlag = true;
@@ -376,7 +378,7 @@ class AdmitadApiHandler
             $updateFlag = true;
         }
 
-        /** @var CashBackCategory $category */
+        /* @var CashBackCategory $category */
         foreach ($admitadResponse['actions'] as $admitadAction) {
             $founded = false;
             foreach ($cashBack->getCategories() as $category) {
@@ -394,7 +396,7 @@ class AdmitadApiHandler
                     }
                 } else {
                     if ($category->getTitle() === $admitadAction['name'] && $category->getCash() === $admitadAction['payment_size']) {
-                        $founded    = true;
+                        $founded = true;
                         $updateFlag = true;
                         $category->setExternalId($admitadAction['id']);
 
@@ -405,7 +407,7 @@ class AdmitadApiHandler
 
             if (!$founded) {
                 $updateFlag = true;
-                $category   = new CashBackCategory();
+                $category = new CashBackCategory();
                 $category
                     ->setCashBack($cashBack)
                     ->setExternalId($admitadAction['id'])
@@ -426,11 +428,10 @@ class AdmitadApiHandler
     }
 
     /**
-     * Проверка ID платформы, этот хендлер работает только с ADMITAD
+     * Проверка ID платформы, этот хендлер работает только с ADMITAD.
      *
      * @param CashBackPlatform $admitadCashBackPlatform
      *
-     * @return void
      * @throws \Exception
      */
     protected function checkPlatformId(CashBackPlatform $admitadCashBackPlatform): void
@@ -441,7 +442,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Геттер менеджера
+     * Геттер менеджера.
      *
      * @return EntityManager
      */
@@ -451,7 +452,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Создаем изображение кешбека
+     * Создаем изображение кешбека.
      *
      * @param array $item
      *
@@ -460,7 +461,7 @@ class AdmitadApiHandler
     protected function createCashBackImage(array $item): ?CashBackImage
     {
         file_put_contents(self::TMP_FILE, fopen($item['image'], 'rb'));
-        $fileName     = substr($item['image'], strrpos($item['image'], '/'));
+        $fileName = substr($item['image'], strrpos($item['image'], '/'));
 
         $cashBackImage = new CashBackImage();
         $cashBackImage->setFile(new File(self::TMP_FILE, $fileName));
@@ -471,7 +472,7 @@ class AdmitadApiHandler
     }
 
     /**
-     * Обработка ошибки от адмитада
+     * Обработка ошибки от адмитада.
      *
      * @param CashBack $cashBack
      * @param array    $admitadResponse
@@ -480,7 +481,7 @@ class AdmitadApiHandler
      */
     protected function proceedError(CashBack $cashBack, array $admitadResponse): bool
     {
-        if ($admitadResponse['error'] === self::ADMITAD_MESSAGE_NOT_FOUND) {
+        if (self::ADMITAD_MESSAGE_NOT_FOUND === $admitadResponse['error']) {
             $cashBack->setActive(false);
 
             $this->getManager()->persist($cashBack);
@@ -489,7 +490,7 @@ class AdmitadApiHandler
             return true;
         }
 
-        $this->getLogger()->addCritical('Do not now how proceed error - ' . $cashBack->getId());
+        $this->getLogger()->addCritical('Do not now how proceed error - '.$cashBack->getId());
 
         return false;
     }
@@ -504,9 +505,9 @@ class AdmitadApiHandler
      *
      * @return string
      */
-    final private function getStartDate(): string
+    private function getStartDate(): string
     {
-        if ($this->startDate === null) {
+        if (null === $this->startDate) {
             $this->startDate = (new \DateTime(self::OLDEST_PAYMENT_CHECK))->format(self::DATE_FORMAT);
         }
 
@@ -518,9 +519,9 @@ class AdmitadApiHandler
      *
      * @return string
      */
-    final private function getEndDate(): string
+    private function getEndDate(): string
     {
-        if ($this->endDate === null) {
+        if (null === $this->endDate) {
             $this->endDate = (new \DateTime(self::NEWEST_PAYMENT_CHECK))->format(self::DATE_FORMAT);
         }
 

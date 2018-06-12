@@ -114,11 +114,12 @@ class CashBack
      * @ORM\ManyToOne(
      *     targetEntity="CashBackPlatform",
      *     fetch="LAZY",
-     *     inversedBy="cashBacks"
+     *     inversedBy="cashBacks",
      * )
      * @ORM\JoinColumn(
      *     name="cash_back_platform_id",
-     *     referencedColumnName="id"
+     *     referencedColumnName="id",
+     *     onDelete="CASCADE"
      * )
      *
      * @var CashBackPlatform
@@ -128,12 +129,14 @@ class CashBack
     /**
      * @ORM\OneToOne(
      *     targetEntity="CashBackImage",
-     *     fetch="EXTRA_LAZY"
+     *     fetch="EXTRA_LAZY",
+     *     cascade={"persist"},
+     *     orphanRemoval=true
      * )
      * @ORM\JoinColumn(
      *     name="cash_back_image_id",
      *     referencedColumnName="id",
-     *     nullable=false,
+     *     nullable=false
      * )
      *
      * @var CashBackImage
