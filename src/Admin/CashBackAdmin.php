@@ -5,24 +5,25 @@ declare(strict_types=1);
 namespace App\Admin;
 
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
+use App\Entity\CashBack;
 use App\Entity\CashBackImage;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\CoreBundle\Form\Type\DatePickerType;
 use Sonata\CoreBundle\Validator\ErrorElement;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * CashBackAdmin
+ * CashBackAdmin.
  */
 class CashBackAdmin extends AbstractAdmin
 {
-
-    const MESSAGE_NO_IMAGE_UPLOADED = 'Вы должны прикрепить изображение!';
+    public const MESSAGE_NO_IMAGE_UPLOADED = 'Вы должны прикрепить изображение!';
 
     public function configureRoutes(RouteCollection $collection)
     {
@@ -30,11 +31,10 @@ class CashBackAdmin extends AbstractAdmin
     }
 
     /**
-     * Проверка на непустой файл
+     * Проверка на непустой файл.
      *
      * @param ErrorElement $errorElement
      * @param mixed        $cashBack
-     *
      */
     public function validate(ErrorElement $errorElement, $cashBack)
     {
@@ -42,7 +42,7 @@ class CashBackAdmin extends AbstractAdmin
 
         $cashBackImage = $cashBack->getCashBackImage();
         /** @var UploadedFile $uploadedFile */
-        $uploadedFile = $this->getForm()->get('file')->getData();
+        $uploadedFile = $this->getForm()->get('cashBackImage')->getData();
         if (empty($uploadedFile) && empty($cashBackImage)) {
             $errorElement->with('file')->addViolation(self::MESSAGE_NO_IMAGE_UPLOADED);
         } elseif (!empty($uploadedFile)) {
@@ -50,29 +50,22 @@ class CashBackAdmin extends AbstractAdmin
         }
     }
 
+    public function configure()
+    {
+//        $this->setTemplate('list', 'AppBundle:Admin\Sonata\CashBack:cashback_list.html.twig');
+//        $this->setTemplate('edit', 'AppBundle:Admin\Sonata\CashBack:cashback_edit.html.twig');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $cashBackImage = $this->getSubject()->getCashBackImage();
-
-        $fileFieldOptions = [
-            'mapped'   => false,
-            'required' => false,
-        ];
-
-        if (!empty($cashBackImage)) {
-            $fileFieldOptions['help'] = $this->getImagePath($cashBackImage);
-        }
-
         $formMapper
             ->add('id', null, [
-                'read_only' => true,
-                'disabled'  => true,
+                'disabled' => true,
             ])
-            ->add('status', 'choice', [
-                'choices'   => CashBackStatusEnumType::getChoices(),
-                'read_only' => true,
-                'disabled'  => true,
-                'help'      => 'Это поле меняется только системой',
+            ->add('status', ChoiceType::class, [
+                'choices' => CashBackStatusEnumType::getChoices(),
+                'disabled' => true,
+                'help' => 'Это поле меняется только системой',
             ])
             ->add('externalId')
             ->add('rating')
@@ -82,16 +75,16 @@ class CashBackAdmin extends AbstractAdmin
             ->add('title', null, [
                 'label' => 'Название кешбека/магазина',
             ])
-            ->add('file', 'file', $fileFieldOptions)
-            ->add('description', 'textarea', [
+            ->add('cashBackImage', FileType::class, $this->getImageOptions())
+            ->add('description', TextareaType::class, [
                 'label' => 'Описание(для пользователя)',
-                'required' => false,
-                'attr'  => ['style' => 'height:100px'],
+                'required' => true,
+                'attr' => ['style' => 'height:100px'],
             ])
-            ->add('condition', 'textarea', [
-                'label'    => 'Условия(Только для внутреннего использования)',
+            ->add('condition', TextareaType::class, [
+                'label' => 'Условия(Только для внутреннего использования)',
                 'required' => false,
-                'attr'     => ['style' => 'height:200px'],
+                'attr' => ['style' => 'height:200px'],
             ])
             ->add('url', null, [
                 'label' => 'Заготовка для генерации кешбек-url',
@@ -101,23 +94,13 @@ class CashBackAdmin extends AbstractAdmin
             ])
             ->add('cash', null, [
                 'required' => false,
-                'label'    => 'Выплаты',
-                'attr' => ['class' => 'payment_size']
+                'label' => 'Выплаты',
+                'attr' => ['class' => 'payment_size'],
             ])
             ->add('cashBackPlatform', null, [
-                'property' => 'name',
-                'label'    => 'Платформа',
+                'label' => 'Платформа',
             ])
-            ->add('categories', 'sonata_type_collection',
-                [
-                    'required'     => false,
-                    'by_reference' => false,
-                ],
-                [
-                    'edit'   => 'inline',
-                    'inline' => 'table',
-                ]
-            );
+        ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -125,64 +108,56 @@ class CashBackAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('rating')
-            ->add('title')
-            ->add('condition')
-            ->add('active')
-            ->add('status', null, [], 'choice', [
-                'choices' => CashBackStatusEnumType::getChoices(),
-            ])
-            ->add('cashBackPlatform', null, [
-                'label' => 'Платформа',
-            ])
-            ->add('updatedAt', 'doctrine_orm_datetime_range', [], 'sonata_type_datetime_range_picker',
-                [
-                    'field_options_start' => ['format' => 'yyyy-MM-dd HH:mm:ss'],
-                    'field_options_end'   => ['format' => 'yyyy-MM-dd HH:mm:ss'],
-                ]
-            )
-            ->add('createdAt', 'doctrine_orm_datetime_range', [], 'sonata_type_datetime_range_picker',
-                [
-                    'field_options_start' => ['format' => 'yyyy-MM-dd HH:mm:ss'],
-                    'field_options_end'   => ['format' => 'yyyy-MM-dd HH:mm:ss'],
-                ]
-            );
+            ->add('title');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('id')
             ->add('_action', null, [
-                'label'   => 'Действия',
+                'label' => 'Действия',
                 'actions' => [
-                    'actions' => ['template' => 'AppBundle:Admin\Sonata\CashBack:cash_back_list_actions.html.twig'],
+                    'actions' => ['template' => 'admin/cashback/list_actions.html.twig'],
                 ],
             ])
-            ->add('rating', null, [
-                'template' => 'AppBundle:Admin\Sonata\CashBack:cashback_list_rating.html.twig',
-            ])
+            ->add('rating')
             ->add('title')
-//                   ->add('description')
-            ->add('url', null, [
-                'template' => 'AppBundle:Admin\Sonata\CashBack:cashback_list_url.html.twig',
+            ->add('description')
+            ->add('url')
+            ->add('condition', null, [
+                'collapse' => true,
+                'header_style' => 'width:10%;',
             ])
-//                   ->add('condition')
             ->add('cash')
             ->add('categories', null, [
-                'template' => 'AppBundle:Admin\Sonata\CashBack:cashback_list_category.html.twig',
+                'associated_property' => 'title',
+//                'template' => 'admin/cashback/list_category.html.twig', //TODO починить это дерьмо(не работает замещение блока twig)
+//                'collapse' => true
             ])
             ->add('active', null, [
                 'editable' => true,
             ])
             ->add('status', 'choice', [
                 'choices' => CashBackStatusEnumType::getChoices(),
-                'template' => 'AppBundle:Admin\Sonata\CashBack:cashback_list_status.html.twig',
+                'template' => 'admin/cashback/list_status.html.twig',
             ])
-            ->add('cashBackPlatform', null, [
-                'label' => 'Платформа',
-            ])
-            ->add('createdAt', null, ['label' => 'Создан'])
-            ->add('updatedAt', null, ['label' => 'Обновлён']);
+        ;
+    }
 
+    /**
+     * Замена/присоединение изображения для кешбека.
+     *
+     * @param UploadedFile $uploadedFile
+     * @param CashBack     $cashBack
+     *
+     * @throws \Exception
+     */
+    protected function replaceImage(UploadedFile $uploadedFile, CashBack $cashBack)
+    {
+        $newCashBackImage = new CashBackImage();
+        $newCashBackImage->setFile($uploadedFile);
+
+        $cashBack->setCashBackImage($newCashBackImage);
     }
 
     protected function getFlashBag()
@@ -190,72 +165,22 @@ class CashBackAdmin extends AbstractAdmin
         return $this->getConfigurationPool()->getContainer()->get('session')->getFlashBag();
     }
 
-//    /**
-//     * Геттер сервиса для работы с изображениями
-//     *
-//     * @return RebateReceiptImageHandler
-//     */
-//    protected function getImageHandler(): RebateReceiptImageHandler
-//    {
-//        return $this->getConfigurationPool()->getContainer()->get('app.file_manager.rebate_receipt');
-//    }
-//
-//    /**
-//     * Геттер менеджера
-//     *
-//     * @return EntityManager
-//     */
-//    protected function getManager(): EntityManager
-//    {
-//        return $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
-//    }
-//
-//    /**
-//     * Замена/присоединение изображения для кешбека
-//     *
-//     * @param UploadedFile $uploadedFile
-//     * @param CashBack     $cashBack
-//     *
-//     * @return void
-//     * @throws \Exception
-//     */
-//    protected function replaceImage(UploadedFile $uploadedFile, CashBack $cashBack)
-//    {
-//        $cashBackImage = $cashBack->getCashBackImage();
-//
-//        $newCashBackImage = new CashBackImage();
-//        $result           = $this->getImageHandler()->saveEntityAndFile($newCashBackImage, $uploadedFile);
-//
-//        if (!$result) {
-//            throw new \Exception('Сохранение не удалось');
-//        }
-//
-//        $cashBack->setCashBackImage($newCashBackImage);
-//        $this->getManager()->persist($cashBack);
-//        $this->getManager()->flush();
-//
-//        if (!empty($cashBackImage)) {
-//            $this->getImageHandler()->deleteEntityFile($cashBackImage);
-//        }
-//    }
-
-    /**
-     * Возвращает изображение
-     *
-     * @param CashBackImage $cashBackImage
-     *
-     * @return string
-     */
-    protected function getImagePath(CashBackImage $cashBackImage)
+    private function getImageOptions()
     {
-        $fullPath = $cashBackImage->getFilePath();
+        /** @var CashBack $cashback */
+        $cashback = $this->getSubject();
+        /** @var CashBackImage $image */
+        $image = $cashback->getCashBackImage();
 
-        return '<a target="_blank" href="' . $fullPath . '"><img style="max-width: 100px" src="' . $fullPath . '" class="admin-preview" /></a>';
-    }
+        $fileFieldOptions = ['mapped' => false, 'required' => false];
+        if (null !== $image && $webPath = $image->getFilePath()) {
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request_stack')->getCurrentRequest()->getBasePath().'/'.$webPath;
+            $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="admin-preview"/>'; //TODO маленькая превьюшка изображения
+        } else {
+            $fileFieldOptions['required'] = true;
+        }
 
-    public function configure()
-    {
-        $this->setTemplate('list', 'AppBundle:Admin\Sonata\CashBack:cashback_list.html.twig');
-        $this->setTemplate('edit', 'AppBundle:Admin\Sonata\CashBack:cashback_edit.html.twig');
+        return $fileFieldOptions;
     }
 }

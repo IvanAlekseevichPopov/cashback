@@ -12,7 +12,7 @@ use Sonata\CoreBundle\Form\Type\DatePickerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 /**
- * CashBackPlatformAdmin
+ * CashBackPlatformAdmin.
  */
 class CashBackPlatformAdmin extends AbstractAdmin
 {
@@ -20,22 +20,22 @@ class CashBackPlatformAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('id', null, [
-                'disabled'  => true,
+                'disabled' => true,
             ])
             ->add('externalPlatformId', null, [
-                'label' => 'Внешний Id учетной записи у кешбек сервиса',
+                'label' => 'Внешний Id учетной записи у кешбек сервиса(id web-мастера)',
             ])
             ->add('name', null, [
                 'label' => 'Название',
             ])
             ->add('baseUrl', null, [
-                'label' => 'Базовый URL',
+                'label' => 'Базовый URL для работы с api',
             ])
             ->add('authHeader', null, [
-                'label' => 'Авторизационный заголовок',
+                'label' => 'Авторизационный заголовок(Закодированный base64 заголовок авторизации)',
             ])
             ->add('clientId', null, [
-                'label' => 'Id клиента',
+                'label' => 'Id клиента(Идентификатор)',
             ])
             ->add('token', null, [
                 'label' => 'Временный токен авторизации',
@@ -44,7 +44,6 @@ class CashBackPlatformAdmin extends AbstractAdmin
 //                'format' => DateType::HTML5_FORMAT,
 //            ])
         ;
-
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -71,7 +70,8 @@ class CashBackPlatformAdmin extends AbstractAdmin
             ->add('clientId', null, [
                 'label' => 'Id клиента',
             ])
-            ->add('createdAt', null, ['label' => 'Создан'])
-            ->add('updatedAt', null, ['label' => 'Обновлён']);
+//            ->add('createdAt', null, ['label' => 'Создан'])
+//            ->add('updatedAt', null, ['label' => 'Обновлён'])
+        ;
     }
 }
