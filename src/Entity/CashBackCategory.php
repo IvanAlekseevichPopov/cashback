@@ -60,12 +60,11 @@ class CashBackCategory
      *     targetEntity="App\Entity\CashBack",
      *     inversedBy="categories"
      * )
-     * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(
-     *         name="cash_back_id",
-     *         referencedColumnName="id"
-     *     )
-     * })
+     * @ORM\JoinColumn(
+     *     name="cash_back_id",
+     *     referencedColumnName="id",
+     *     onDelete="CASCADE"
+     * )
      *
      * @var CashBack
      */
