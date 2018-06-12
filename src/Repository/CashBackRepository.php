@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Repository\Others;
+namespace App\Repository;
 
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
-use AppBundle\Entity\Stock\CashBackPlatform;
+use App\Entity\CashBackPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
 
@@ -16,15 +16,15 @@ class CashBackRepository extends EntityRepository
      */
     public function findPlatformIds(CashBackPlatform $cashBackPlatform): array
     {
-        $qb = $this->createQueryBuilder('cbp');
+        $qb = $this->createQueryBuilder('cb');
 
-        $qb
-            ->select('cbp.externalId')
-            ->where($qb->expr()->eq('cbp.cashBackPlatform', ':platform'))
-            ->andWhere($qb->expr()->isNotNull('cbp.externalId'))
-            ->setParameter('platform', $cashBackPlatform);
-
-        return $qb->getQuery()->getArrayResult();
+        return $qb
+            ->select('cb.externalId')
+            ->where($qb->expr()->eq('cb.cashBackPlatform', ':platform'))
+            ->andWhere($qb->expr()->isNotNull('cb.externalId'))
+            ->setParameter('platform', $cashBackPlatform->getId())
+            ->getQuery()
+            ->getArrayResult();
     }
 
     /**
