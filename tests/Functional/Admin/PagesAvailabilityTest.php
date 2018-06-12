@@ -28,6 +28,8 @@ class PagesAvailabilityTest extends WebTestCase
     private function urlsToTest(): array
     {
         return [
+            '/admin/app/cashback/list',
+            '/admin/app/cashbackplatform/list',
             '/admin/app/user/list',
             '/admin/dashboard',
         ];
