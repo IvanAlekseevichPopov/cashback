@@ -29,6 +29,7 @@ class PagesAvailabilityTest extends WebTestCase
     {
         return [
             '/cashback',
+            '/',
         ];
     }
 }
