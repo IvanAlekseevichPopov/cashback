@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <h1>asdfasdf</h1>
+    </div>
+    <div>
+        {% for cashback in cashbacks %}
+            <div>
+                {{ cashback.id }} - {{ cashback.title }} - {{ cashback.url }} - {{ cashback.cash }}
+                <img src="{{ cashback.cashBackImage.filePath }}">
+                {{ cashback.description }}
+                {{ cashback.rating }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
