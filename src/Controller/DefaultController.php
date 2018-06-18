@@ -15,7 +15,7 @@ class DefaultController extends Controller
         //TODO передать пользователя если есть без субзапроса во все шаблоны
 
         return $this->render('public/main.html.twig', [
-            'tst' => 'ads'
+            'tst' => 'ads',
         ]);
     }
 }
