@@ -28,8 +28,10 @@ class PagesAvailabilityTest extends WebTestCase
     private function urlsToTest(): array
     {
         return [
-            '/cashback',
             '/',
+            '/cashback',
+            '/register/',
+            '/login',
         ];
     }
 }
