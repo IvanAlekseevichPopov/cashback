@@ -3,25 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>CashBerry</title>
-    <!--<link rel="stylesheet" href="main.css">-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="scss/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+            integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+            crossorigin="anonymous"></script>
 </head>
 
 
-<body>
+<body class="container-color">
 <header>
-    <div class="navbar navbar-light bg-light box-shadow">
+    <div class="navbar navbar-dark bg-white box-shadow">
         <div class="container d-flex justify-content-between">
             <a href="#" class="navbar-brand d-flex align-items-center mr-md-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                <strong>CashBerry</strong>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                <strong class="black">CashBerry</strong>
             </a>
             <a href="#" class="navbar-brand d-flex align-items-center">
                 <strong>Вход</strong>
+            </a>
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>/</strong>
             </a>
             <a href="#" class="navbar-brand d-flex align-items-center">
                 <strong>Регистрация</strong>
@@ -32,72 +47,77 @@
 
 <div class="container">
     <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex">
-            <a class="p-2 text-muted" href="#">Главная</a>
-            <a class="p-2 text-muted" href="#">Каталог магазинов</a>
-            <a class="p-2 text-muted" href="#">Вопросы и ответы</a>
+        <nav class="nav d-flex menu-font">
+            <a class="p-2" href="#">Главная</a>
+            <a class="p-2" href="#">Каталог магазинов</a>
+            <a class="p-2" href="#">Вопросы и ответы</a>
 
         </nav>
     </div>
 
-    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+
+
+    <div class="jumbotron p-3 p-md-5 text-black rounded carousel-color">
         <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Совершайте покупки и экономьте деньги</h1>
-            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+            <h1 class="display-4 font-weight-normal">Совершайте покупки и экономьте деньги</h1>
+            <p class="lead my-3">Здесь нужно написать что-то полезное</p>
 
         </div>
     </div>
 
-    <div class="row">
+    <div class="row p-3">
         <div class="col-lg-4 text-center">
-            <img class src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <i class="fas fa-6x fa-desktop"></i>
             <h4>Выбирайте любой магазин</h4>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4 text-center">
-            <img class src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <i class="fas fa-6x fa-shopping-basket"></i>
             <h4>Совершайте покупки</h4>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4 text-center">
-            <img class src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <i class="fas fa-6x fa-credit-card"></i>
             <h4>Получайте часть денег обратно</h4>
 
         </div><!-- /.col-lg-4 -->
     </div>
 </div>
 
-<footer class="pt-4 border-top">
-    <div class="row">
-        <div class="col-12 col-md">
-            <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-            <small class="d-block mb-3 text-muted">© 2017-2018</small>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Информация</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Как работает кэшбэк</a></li>
-                <li><a class="text-muted" href="#">Условия использования</a></li>
-                <li><a class="text-muted" href="#">Партнерская программа</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Сервисы</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Все магазины</a></li>
-                <li><a class="text-muted" href="#">Личный кабинет</a></li>
-                <li><a class="text-muted" href="#">Добавить магазин</a></li>
+<footer class="pt-4 border-top bg-dark">
+    <div class="container">
 
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Обратная связь</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Контакты</a></li>
-                <li><a class="text-muted" href="#">Отзывы о нас</a></li>
-                <li><a class="text-muted" href="#">Вопросы и ответы</a></li>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h5>Информация</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Условия использования</a></li>
+                    <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5>Сервисы</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Все магазины</a></li>
+                    <li><a class="text-muted" href="#">Личный кабинет</a></li>
 
-            </ul>
+
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5>Обратная связь</h5>
+                <ul class="list-unstyled text-small">
+                     <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                     <li><a class="text-muted" href="#">help@cashberry.ru</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 col-md text-center">
+                <small class="d-block mb-12 text-muted">© CashBerry 2018-2019</small>
+            </div>
         </div>
     </div>
 </footer>
