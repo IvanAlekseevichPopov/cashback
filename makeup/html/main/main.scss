@@ -1,0 +1,58 @@
+$fontMainColor: #FF6000;
+$fontSecondaryColor: #212529;
+$backgroundMainColor: #FCD2A4;
+$backgroundBodyColor: #E6E6E6;
+
+body {
+    margin: 0;
+}
+.header {
+    width: 100%;
+    height: 50px;
+}
+
+.welcome {
+    width: 100%;
+    height: 850px;
+}
+
+.footer {
+    width: 100%;
+    height: 150px;
+    background-color: #424242;
+}
+
+.bg-white {
+    background-color: #ffffff;
+
+    a.navbar-brand {
+        color: $fontMainColor;
+    }
+}
+
+div.carousel-color  {
+    background-color: $backgroundMainColor;
+    color: $fontSecondaryColor;
+    font-family: sans-serif;
+}
+
+.container-color {
+    background-color: $backgroundBodyColor;
+}
+
+
+.menu-font{
+    a{
+        color: $fontMainColor;
+        font-size: 18px;
+        font-weight: bolder;
+        &:hover {
+            color: #4e555b;
+            text-decoration: none;
+        }
+    }
+}
+
+ {
+    background-color: $fontMainColor;
+}
