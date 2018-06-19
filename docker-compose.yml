@@ -21,6 +21,16 @@ services:
             - ./config/docker/nginx/symfony.conf:/etc/nginx/sites-available/symfony.conf
             - .:/var/www/html
             - ./var/log:/var/log/nginx
+    node:
+        image: node:8-alpine
+        working_dir: /home/node/front
+        command: npm install node-sass; npm run node-sass
+        user: node
+        volumes:
+            - ./makeup/html/main:/home/node/front
+        ports:
+          - 9000:9000
+
     db:
         image: mariadb:10.1
         ports:
