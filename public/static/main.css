@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+}
+
+.welcome {
+    width: 100%;
+    height: 850px;
+}
+
+.footer {
+    width: 100%;
+    height: 150px;
+    background-color: #424242;
+    position: absolute;
+    bottom: 0;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.bg-white a.navbar-brand {
+    color: #FF6000;
+}
+
+div.carousel-color {
+    background-color: #FCD2A4;
+    color: #212529;
+    font-family: sans-serif;
+}
+
+.container-color {
+    background-color: #E6E6E6;
+}
+
+.menu-font a {
+    color: #FF6000;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.menu-font a:hover {
+    color: #4e555b;
+    text-decoration: none;
+}
+/*# sourceMappingURL=main.css.map */
