@@ -1,0 +1,20 @@
+{
+  "name": "webpack-pixi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/node-sass ./html/main/main.scss",
+    "dev": "./node_modules/.bin/node-sass ./html/main/main.scss  -wo html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.3"
+  }
+}

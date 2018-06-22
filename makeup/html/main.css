@@ -12,7 +12,9 @@ body {
 .footer {
   width: 100%;
   height: 150px;
-  background-color: #424242; }
+  background-color: #424242;
+  position: absolute;
+  bottom: 0; }
 
 .bg-white {
   background-color: #ffffff; }
@@ -34,5 +36,3 @@ div.carousel-color {
   .menu-font a:hover {
     color: #4e555b;
     text-decoration: none; }
-
-/*# sourceMappingURL=main.css.map */

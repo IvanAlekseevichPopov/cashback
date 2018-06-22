@@ -24,10 +24,10 @@ services:
     node:
         image: node:8-alpine
         working_dir: /home/node/front
-        command: npm install node-sass; npm run node-sass
+        command: sh -c "npm install; npm run dev;"
         user: node
         volumes:
-            - ./makeup/html/main:/home/node/front
+            - ./makeup/:/home/node/front
         ports:
           - 9000:9000
 
