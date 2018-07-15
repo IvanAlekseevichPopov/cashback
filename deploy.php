@@ -75,7 +75,7 @@ task('deploy:vendors', function () {
 
 task('deploy:up:db', function () {
     run('cd {{release_path}}; {{docker-compose}} up -d db');
-    run('sleep 2');
+    run('sleep 5');
 });
 
 task('deploy:up:all', function () {
