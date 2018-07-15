@@ -1,6 +1,6 @@
 dev:
     hostname: ivan-popov.tk
     deploy_path: /root/projects/cashback
-    branch: dev
+    branch: feature/#24-deploy
     user: root
     stage: dev
