@@ -5,7 +5,6 @@ services:
         build: ./config/docker/php
         volumes:
             - .:/var/www/html
-            - trash:/var/www/
         env_file:
           - .env
         entrypoint:
