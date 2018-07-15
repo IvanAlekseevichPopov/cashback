@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+    php:
+        build: ./config/docker/php
+        volumes:
+            - .:/var/www/html
+            - trash:/var/www/
+        env_file:
+          - .env
+        entrypoint:
+          - "./config/docker/php/docker-entrypoint.sh"
+    nginx:
+        image: 4xxi/nginx:flex
+        ports:
+            - 80:8080
+        volumes:
+            - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.prod.conf
+            - .:/var/www/html
+            - ./var/log:/var/log/nginx
+    db:
+        image: mariadb:10.1
+        volumes:
+            - /root/projects/cashback/shared/database:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
