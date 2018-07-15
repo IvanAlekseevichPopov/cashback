@@ -15,6 +15,7 @@ set('ssh_multiplexing', false);
 set('allow_anonymous_stats', false);
 set('git_tty', true);
 set('docker-compose', 'docker-compose -f docker-compose-prod.yml');
+set('keep_releases', 2);
 
 // Shared and writable files/dirs between deploys
 add('shared_files', ['.env']);
