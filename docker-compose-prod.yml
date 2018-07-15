@@ -7,6 +7,8 @@ services:
             - .:/var/www/html
         env_file:
           - .env
+        environment: #Variables does not extract for another variable from ^
+            DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}
         entrypoint:
           - "./config/docker/php/docker-entrypoint.sh"
     nginx:
@@ -26,3 +28,6 @@ services:
             MYSQL_DATABASE: ${MYSQL_DATABASE}
             MYSQL_USER: ${MYSQL_USER}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+#TODO шареный volume для vendor
+#TODO копирование шареных папок вместо линкования(var/sessions, public/static??)
