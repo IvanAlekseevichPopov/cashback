@@ -57,9 +57,9 @@ task('deploy:copy', function () {
     }
 });
 
-task('deploy:down:current', function () {
-    run('cd {{release_path}}; {{docker-compose}} down || true');
-});
+//task('deploy:down:current', function () {
+//    run('cd {{release_path}}; {{docker-compose}} down || true');
+//});
 
 task('deploy:build', function () {
     run('cd {{release_path}}; {{docker-compose}} build');
@@ -67,7 +67,7 @@ task('deploy:build', function () {
 
 task('deploy:up:php', function () {
     run('cd {{release_path}}; {{docker-compose}} up -d php');
-    run('sleep 1');
+    run('sleep 2');
 });
 
 task('deploy:vendors', function () {
@@ -75,12 +75,9 @@ task('deploy:vendors', function () {
 });
 
 task('deploy:up:db', function () {
+    run('cd {{previous_release}}; {{docker-compose}} stop db');
     run('cd {{release_path}}; {{docker-compose}} up -d db');
-    run('sleep 5');
-});
-
-task('deploy:up:all', function () {
-    run('cd {{release_path}}; {{docker-compose}} up -d');
+    run('sleep 3');
 });
 
 task('database:migrate', function () {
@@ -99,6 +96,15 @@ task('deploy:down:previous', function () {
     run('cd {{previous_release}}; {{docker-compose}} down');
 });
 
+task('deploy:up:all', function () {
+    run('cd {{release_path}}; {{docker-compose}} up -d');
+});
+
+task('deploy:failed', function () {
+    run('cd {{release_path}}; {{docker-compose}} down || true');
+    run('cd {{previous_release}}; {{docker-compose}} start');
+})->setPrivate();
+
 // Additional pre and post deploy jobs
 before('deploy:symlink', 'database:migrate');
 after('deploy:failed', 'deploy:unlock');
@@ -107,7 +113,7 @@ task('deploy', [
     'deploy:info',
     'deploy:prepare',
     'deploy:lock',
-    'deploy:down:current',
+//    'deploy:down:current',
     'deploy:release',
     'deploy:update_code',
     'deploy:clear_paths',
