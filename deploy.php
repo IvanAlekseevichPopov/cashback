@@ -23,10 +23,6 @@ set('clear_paths', []);
 //set('shared_dirs', ['var/log', 'var/sessions']);
 set('writable_dirs', ['var/cache', 'var/log', 'var/sessions']);
 
-//task('deploy:assets:install', function () {
-//    run('{{bin/php}} {{bin/console}} assets:install {{console_options}} {{release_path}}/public');
-//})->desc('Install bundle assets');
-
 task('deploy:copy', function () {
     $sharedPath = "{{deploy_path}}/shared";
 
@@ -57,10 +53,6 @@ task('deploy:copy', function () {
     }
 });
 
-//task('deploy:down:current', function () {
-//    run('cd {{release_path}}; {{docker-compose}} down || true');
-//});
-
 task('deploy:build', function () {
     run('cd {{release_path}}; {{docker-compose}} build');
 });
@@ -75,7 +67,9 @@ task('deploy:vendors', function () {
 });
 
 task('deploy:up:db', function () {
-    run('cd {{previous_release}}; {{docker-compose}} stop db');
+    if(has('previous_release')) {
+        run('cd {{previous_release}}; {{docker-compose}} stop db');
+    }
     run('cd {{release_path}}; {{docker-compose}} up -d db');
     run('sleep 3');
 });
@@ -93,7 +87,9 @@ task('deploy:cache:warmup', function () {
 });
 
 task('deploy:down:previous', function () {
-    run('cd {{previous_release}}; {{docker-compose}} down');
+    if(has('previous_release')) {
+        run('cd {{previous_release}}; {{docker-compose}} down');
+    }
 });
 
 task('deploy:up:all', function () {
@@ -102,7 +98,9 @@ task('deploy:up:all', function () {
 
 task('deploy:failed', function () {
     run('cd {{release_path}}; {{docker-compose}} down || true');
-    run('cd {{previous_release}}; {{docker-compose}} start');
+    if(has('previous_release')) {
+        run('cd {{previous_release}}; {{docker-compose}} start');
+    }
 })->setPrivate();
 
 // Additional pre and post deploy jobs
