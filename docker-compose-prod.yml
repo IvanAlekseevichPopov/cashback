@@ -5,8 +5,8 @@ services:
         build: ./config/docker/php
         volumes:
             - .:/var/www/html
-            - {VENDOR_DIR}:/var/www/html/vendor
-            - {SESSIONS_DIR}:/var/www/html/var/sessions
+            - ${VENDOR_DIR}:/var/www/html/vendor
+            - ${SESSIONS_DIR}:/var/www/html/var/sessions
         env_file:
           - .env
         environment: #Variables does not extract for another variable from ^
@@ -24,7 +24,7 @@ services:
     db:
         image: mariadb:10.1
         volumes:
-            - {DB_DIR}:/var/lib/mysql
+            - ${DB_DIR}:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${MYSQL_DATABASE}
