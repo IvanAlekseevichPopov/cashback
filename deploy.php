@@ -127,10 +127,10 @@ task('deploy', [
     'deploy:cache:clear',
     'deploy:cache:warmup',
 //    'deploy:writable',
-    'deploy:up:db',
+    'deploy:up:db', //Вот тут простой отсюда и ->
     'deploy:symlink',
     'deploy:down:previous',
-    'deploy:up:all',
+    'deploy:up:all', //До cюда
     'deploy:unlock',
     'cleanup',
 ])->desc('Deploy your project');
