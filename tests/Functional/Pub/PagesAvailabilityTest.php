@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functional\Admin;
+namespace App\Tests\Functional\Pub;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -28,10 +28,10 @@ class PagesAvailabilityTest extends WebTestCase
     private function urlsToTest(): array
     {
         return [
-            '/admin/app/cashback/list',
-            '/admin/app/cashbackplatform/list',
-            '/admin/app/user/list',
-            '/admin/dashboard',
+            '/',
+            '/cashback',
+            '/register/',
+            '/login',
         ];
     }
 }
