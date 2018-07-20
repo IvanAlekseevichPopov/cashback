@@ -11,14 +11,14 @@ use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
  */
 class TransactionEnumType extends AbstractEnumType
 {
-    public const BALANCE_OPERATION_CREATE = 'create';
-    public const BALANCE_OPERATION_DECREASE = 'decrease';
-    public const BALANCE_OPERATION_INCREASE = 'increase';
+    public const CREATE = 'create';
+    public const DECREASE = 'decrease';
+    public const INCREASE = 'increase';
 
     /** @var array */
     protected static $choices = [
-        self::BALANCE_OPERATION_CREATE => 'Создание',
-        self::BALANCE_OPERATION_DECREASE => 'Списание',
-        self::BALANCE_OPERATION_INCREASE => 'Пополнение',
+        self::CREATE => 'Создание',
+        self::DECREASE => 'Списание',
+        self::INCREASE => 'Пополнение',
     ];
 }

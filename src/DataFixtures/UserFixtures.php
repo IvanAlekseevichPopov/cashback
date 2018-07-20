@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\DBAL\Types\Enum\ContractorEnumType;
-use App\Entity\Contractor;
-use App\Entity\Reference\NatureOfBusiness;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -21,7 +18,7 @@ class UserFixtures extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        $user = new User;
+        $user = new User();
 
         $user
             ->setPhone('234223423')
