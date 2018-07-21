@@ -7,8 +7,8 @@ services:
             - .:/var/www/html
             - ${VENDOR_DIR}:/var/www/html/vendor
             - ${SESSIONS_DIR}:/var/www/html/var/sessions
-#            - ./config/docker/php/symfony-prod.ini:/usr/local/etc/php/conf.d/symfony-prod.ini
-#            - ./config/docker/php/symfony.pool-prod.conf:/usr/local/etc/php-fpm.d/symfony.pool-prod.conf
+            - ./config/docker/php/symfony-prod.ini:/usr/local/etc/php/conf.d/symfony-prod.ini
+            - ./config/docker/php/symfony.pool-prod.conf:/usr/local/etc/php-fpm.d/symfony.pool-prod.conf
         env_file:
           - .env
         environment: #Variables does not extract for another variable from ^
