@@ -86,6 +86,10 @@ task('deploy:cache:warmup', function () {
     run('cd {{release_path}}; {{docker-compose}} exec -T php bin/console cache:warmup');
 });
 
+task('deploy:writable', function () {
+    run('cd {{release_path}}; chmod -R 777 var/*');
+});
+
 task('deploy:down:previous', function () {
     if(has('previous_release')) {
         run('cd {{previous_release}}; {{docker-compose}} down');
