@@ -2,6 +2,7 @@ Cashback Service project
 ==========
 
 This is project of web application for users, who wants get cashbacks from various online stores and manage it.
+[ ![Codeship Status for IvanAlekseevichPopov/cashback](https://app.codeship.com/projects/64b516c0-425c-0136-640e-6e467d7daecf/status?branch=master)](https://app.codeship.com/projects/291542)
 
 Fast start
 ==========
