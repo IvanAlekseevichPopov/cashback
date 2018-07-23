@@ -22,6 +22,7 @@ services:
         volumes:
             - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.prod.conf
             - .:/var/www/html
+            - ${VENDOR_DIR}:/var/www/html/vendor
             - ./var/log:/var/log/nginx
     db:
         image: mariadb:10.1
