@@ -6,6 +6,8 @@ services:
         volumes:
             - .:/var/www/html
             - trash:/var/www/
+            - ./config/docker/php/symfony.ini:/usr/local/etc/php/conf.d/symfony.ini
+            - ./config/docker/php/symfony.pool.conf:/usr/local/etc/php-fpm.d/symfony.pool.conf
         expose:
             - "9000"
         environment:
@@ -16,7 +18,7 @@ services:
     nginx:
         image: 4xxi/nginx:flex
         ports:
-            - "${SERVER_HTTP_PORT}:80"
+            - 80:80
         volumes:
             - ./config/docker/nginx/symfony.conf:/etc/nginx/sites-available/symfony.conf
             - .:/var/www/html
@@ -37,6 +39,13 @@ services:
             HISTFILESIZE: 20000
             HISTFILE: '/var/lib/mysql/bash_history_db'
             MYSQL_HISTFILE: '/var/lib/mysql/bash_history_db_mysql'
+    db_test:
+        image: mariadb:10.1
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:

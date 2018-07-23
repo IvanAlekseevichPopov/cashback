@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+    php:
+        build: ./config/docker/php
+        volumes:
+            - .:/var/www/html
+            - ${VENDOR_DIR}:/var/www/html/vendor
+            - ${SESSIONS_DIR}:/var/www/html/var/sessions
+            - ./config/docker/php/symfony-prod.ini:/usr/local/etc/php/conf.d/symfony-prod.ini
+            - ./config/docker/php/symfony.pool-prod.conf:/usr/local/etc/php-fpm.d/symfony.pool-prod.conf
+        env_file:
+          - .env
+        environment: #Variables does not extract for another variable from ^
+            DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}
+        entrypoint:
+          - "./config/docker/php/docker-entrypoint.sh"
+    nginx:
+        image: 4xxi/nginx:flex
+        ports:
+            - 8080:80
+        volumes:
+            - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.prod.conf
+            - .:/var/www/html
+            - ${VENDOR_DIR}:/var/www/html/vendor
+            - ./var/log:/var/log/nginx
+    db:
+        image: mariadb:10.1
+        volumes:
+            - ${DB_DIR}:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
