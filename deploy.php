@@ -21,7 +21,7 @@ set('keep_releases', 2);
 add('shared_files', ['.env']);
 set('clear_paths', []);
 //set('shared_dirs', ['var/log', 'var/sessions']);
-set('writable_dirs', ['var/cache', 'var/log', 'var/sessions']);
+set('writable_dirs', ['var']);
 
 task('deploy:copy', function () {
     $sharedPath = "{{deploy_path}}/shared";
@@ -86,6 +86,10 @@ task('deploy:cache:warmup', function () {
     run('cd {{release_path}}; {{docker-compose}} exec -T php bin/console cache:warmup');
 });
 
+task('deploy:writable', function () {
+    run('cd {{release_path}}; chmod -R 777 var/*');
+});
+
 task('deploy:down:previous', function () {
     if(has('previous_release')) {
         run('cd {{previous_release}}; {{docker-compose}} down');
@@ -126,7 +130,7 @@ task('deploy', [
 //    'deploy:assetic:dump',
     'deploy:cache:clear',
     'deploy:cache:warmup',
-//    'deploy:writable',
+    'deploy:writable',
     'deploy:up:db', //Вот тут простой отсюда и ->
     'deploy:symlink',
     'deploy:down:previous',
