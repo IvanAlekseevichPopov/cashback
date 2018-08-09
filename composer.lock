@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "45e91855d567b923407506d8ff57fa02",
+    "content-hash": "6890ccb375034a552a7421931334c8eb",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -3458,16 +3458,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.0.80",
+            "version": "v1.0.89",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "729aee08d62b47224e85b83c97e2824ff7d1735e"
+                "reference": "26be754f42c3c3f21139af2bdd74118ef8f82757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/729aee08d62b47224e85b83c97e2824ff7d1735e",
-                "reference": "729aee08d62b47224e85b83c97e2824ff7d1735e",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/26be754f42c3c3f21139af2bdd74118ef8f82757",
+                "reference": "26be754f42c3c3f21139af2bdd74118ef8f82757",
                 "shasum": ""
             },
             "require": {
@@ -3500,7 +3500,8 @@
                     "email": "fabien.potencier@gmail.com"
                 }
             ],
-            "time": "2018-05-02T19:08:56+00:00"
+            "description": "Composer plugin for Symfony",
+            "time": "2018-07-29T16:20:30+00:00"
         },
         {
             "name": "symfony/form",
@@ -3699,16 +3700,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.4.11",
+            "version": "v3.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "a7b5fc605d1c215cea1122359044b1e682eb70c0"
+                "reference": "19a3267828046a2a4a05e3dc2954bbd2e0ad9fa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a7b5fc605d1c215cea1122359044b1e682eb70c0",
-                "reference": "a7b5fc605d1c215cea1122359044b1e682eb70c0",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/19a3267828046a2a4a05e3dc2954bbd2e0ad9fa6",
+                "reference": "19a3267828046a2a4a05e3dc2954bbd2e0ad9fa6",
                 "shasum": ""
             },
             "require": {
@@ -3749,7 +3750,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-05-25T11:07:31+00:00"
+            "time": "2018-08-01T14:04:26+00:00"
         },
         {
             "name": "symfony/http-kernel",

@@ -15,6 +15,7 @@
         "symfony/console": "^3.4",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^3.4",
+        "symfony/http-foundation": "^3.4",
         "symfony/lts": "^3",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "^1.0",
