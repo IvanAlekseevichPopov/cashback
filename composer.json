@@ -31,7 +31,7 @@
         "symfony/debug-pack": "^1.0",
         "symfony/dotenv": "^3.4",
         "symfony/maker-bundle": "^1.0",
-        "symfony/phpunit-bridge": "^3.4"
+        "phpunit/phpunit": "^7.2"
     },
     "config": {
         "preferred-install": {
