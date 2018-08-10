@@ -16,10 +16,9 @@ $runCommand = function ($command) {
 
 (new \Symfony\Component\Dotenv\Dotenv())->load(__DIR__.'/../.env');
 
-//if (isset($_ENV['BOOTSTRAP_DB'])) {
-    echo 'Preparing database...'.PHP_EOL;
-    $runCommand('bin/console doctrine:schema:drop --full-database --force');
-    $runCommand('bin/console doctrine:migrations:migrate --no-interaction');
-    $runCommand('bin/console doctrine:schema:validate');
-    $runCommand('bin/console doctrine:fixtures:load --no-interaction --append');
-//}
+echo 'Preparing database...'.PHP_EOL;
+$runCommand('bin/console doctrine:schema:drop --full-database --force');
+$runCommand('bin/console doctrine:migrations:migrate --no-interaction');
+$runCommand('bin/console doctrine:schema:validate');
+$runCommand('bin/console doctrine:fixtures:load --no-interaction --append');
+
