@@ -12,3 +12,4 @@
 .php_cs.cache
 ###< friendsofphp/php-cs-fixer ###
 /makeup/node_modules/
+/public/static/images/cashback
