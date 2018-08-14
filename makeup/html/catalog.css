@@ -1,0 +1,63 @@
+body {
+    overflow-x: hidden;
+}
+
+.catalog {
+    display: block;
+}
+
+.catalog .col-sm-4 .row_cat {
+    display: inline-block;
+    background-color: #FCD2A4;
+    margin-left: 380px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 19px;
+    width: 230px;
+    padding-left: 15px;
+}
+
+.catalog .row_cat a {
+    color: black;
+}
+
+.catalog .row_cat .cell {
+    padding-bottom: 5px;
+}
+
+.catalog a:hover {
+    color: #FF6000;
+}
+
+.col-sm-8 .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.col-sm-8 .row .find input {
+    width: 350px;
+    padding-left: 10px;
+    margin-left: 14px;
+}
+
+.col-sm-8 .row {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 400px;
+}
+
+.col-sm-8 .col-sm-4 {
+    padding-bottom: 40px;
+    padding-right: 20px;
+}
+
+.shop-window img {
+    width: 200px;
+    height: 200px;
+}
+
+body .pt-4 .row h5 {
+    color: #A4A4A4;
+}
+
+
