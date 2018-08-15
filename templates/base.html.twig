@@ -27,16 +27,16 @@
     <header>
         <div class="navbar bg-white box-shadow">
             <div class="container d-flex justify-content-between">
-                <a href="#" class="navbar-brand d-flex align-items-center">
+                <a href="{{ path('main') }}" class="navbar-brand d-flex align-items-center">
                     <strong class="black">CashTan</strong>
                 </a>
                 <p class="all_menu">
-                    <a class="p-2 main-menu" href="#">Главная</a>
-                    <a class="p-2 main-menu" href="#">Каталог магазинов</a>
-                    <a class="p-2 main-menu" href="#">Вопросы и ответы</a>
+                    <a class="p-2 main-menu" href="{{ path('main') }}">Главная</a>
+                    <a class="p-2 main-menu" href="{{ path('catalog') }}">Каталог магазинов</a>
+                    <a class="p-2 main-menu" href="{{ path('faq') }}">Вопросы и ответы</a>
                 <p class="lost-menu">
-                    <a class="p-2 m4" href="#">Вход</a>
-                    <a class="p-2 m5" href="#">Регистрация</a>
+                    <a class="p-2 m4" href="{{ path('login') }}">Вход</a>
+                    <a class="p-2 m5" href="{{ path('registration') }}">Регистрация</a>
                 </p>
                 </p>
             </div>
@@ -60,8 +60,8 @@
                 <div class="col-md-4 text-center">
                     <h5>Сервисы</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Все магазины</a></li>
-                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                        <li><a class="text-muted" href="{{ path('catalog') }}">Все магазины</a></li>
+                        <li><a class="text-muted" href="{{ path('cabinet') }}">Личный кабинет</a></li>
 
 
                     </ul>
@@ -69,8 +69,8 @@
                 <div class="col-md-4 text-center">
                     <h5>Обратная связь</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Частые вопросы</a></li>
-                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+                        <li><a class="text-muted" href="{{ path('faq') }}">Частые вопросы</a></li>
+                        <li><a class="text-muted" href="mailto:help@cashtan.ru">help@cashtan.ru</a></li>
 
                     </ul>
                 </div>

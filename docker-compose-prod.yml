@@ -20,7 +20,7 @@ services:
         ports:
             - 8080:80
         volumes:
-            - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.prod.conf
+            - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.conf
             - .:/var/www/html
             - ${VENDOR_DIR}:/var/www/html/vendor
             - ./var/log:/var/log/nginx
