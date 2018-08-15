@@ -16,4 +16,21 @@ class UserController extends Controller
     {
         return $this->render('public/cabinet.html.twig');
     }
+
+    /**
+     * @Route("/login", name="login")
+     */
+    public function loginAction()
+    {
+        //TODO realise
+//        return $this->render('public/cabinet.html.twig');
+    }
+
+    /**
+     * @Route("/registration", name="registration")
+     */
+    public function registerAction()
+    {
+//        return $this->render('public/cabinet.html.twig');
+    }
 }

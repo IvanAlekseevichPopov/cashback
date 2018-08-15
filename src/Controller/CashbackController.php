@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CashbackController extends Controller
 {
     /**
-     * @Route("/cashback", name="cashback")
+     * @Route("/catalog", name="catalog")
      *
      * @Method("GET")
      */
