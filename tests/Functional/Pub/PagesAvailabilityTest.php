@@ -2,7 +2,7 @@
 
 namespace App\Tests\Functional\Pub;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\WebTestCase;
 
 /**
  * Class PagesAvailabilityTest.
@@ -29,7 +29,7 @@ class PagesAvailabilityTest extends WebTestCase
     {
         return [
             '/',
-            '/cashback',
+            '/catalog',
             '/register/',
             '/login',
         ];

@@ -9,7 +9,7 @@ services:
             - ./config/docker/php/symfony.ini:/usr/local/etc/php/conf.d/symfony.ini
             - ./config/docker/php/symfony.pool.conf:/usr/local/etc/php-fpm.d/symfony.pool.conf
         expose:
-            - "9000"
+            - 9000
         environment:
           - PARENT_USER_ID
           - APP_ENV
@@ -26,7 +26,7 @@ services:
     db:
         image: mariadb:10.1
         ports:
-            - "3306:3306"
+            - 3306:3306
         volumes:
             - db:/var/lib/mysql
         environment:
@@ -46,10 +46,12 @@ services:
             MYSQL_DATABASE: ${MYSQL_DATABASE}
             MYSQL_USER: ${MYSQL_USER}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - 3307:3306
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
-            - "8080:80"
+            - 8080:80
 volumes:
     db:
     trash:

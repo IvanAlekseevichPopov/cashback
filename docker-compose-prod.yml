@@ -7,8 +7,8 @@ services:
             - .:/var/www/html
             - ${VENDOR_DIR}:/var/www/html/vendor
             - ${SESSIONS_DIR}:/var/www/html/var/sessions
-            - ./config/docker/php/symfony-prod.ini:/usr/local/etc/php/conf.d/symfony-prod.ini
-            - ./config/docker/php/symfony.pool-prod.conf:/usr/local/etc/php-fpm.d/symfony.pool-prod.conf
+            - ./config/docker/php/symfony-prod.ini:/usr/local/etc/php/conf.d/symfony.ini
+            - ./config/docker/php/symfony.pool-prod.conf:/usr/local/etc/php-fpm.d/symfony.pool.conf
         env_file:
           - .env
         environment: #Variables does not extract for another variable from ^
@@ -20,7 +20,7 @@ services:
         ports:
             - 8080:80
         volumes:
-            - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.prod.conf
+            - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.conf
             - .:/var/www/html
             - ${VENDOR_DIR}:/var/www/html/vendor
             - ./var/log:/var/log/nginx

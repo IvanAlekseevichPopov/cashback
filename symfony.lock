@@ -332,6 +332,9 @@
             "ref": "9f94d3ea453cd8a3b95db7f82592d7344fe3a76a"
         }
     },
+    "symfony/css-selector": {
+        "version": "v4.1.3"
+    },
     "symfony/debug": {
         "version": "v3.4.4"
     },
@@ -434,9 +437,6 @@
     "symfony/orm-pack": {
         "version": "v1.0.5"
     },
-    "symfony/polyfill-apcu": {
-        "version": "v1.7.0"
-    },
     "symfony/polyfill-ctype": {
         "version": "v1.8.0"
     },
@@ -446,16 +446,10 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.7.0"
     },
-    "symfony/polyfill-php56": {
-        "version": "v1.7.0"
-    },
     "symfony/polyfill-php70": {
         "version": "v1.7.0"
     },
     "symfony/polyfill-php72": {
-        "version": "v1.7.0"
-    },
-    "symfony/polyfill-util": {
         "version": "v1.7.0"
     },
     "symfony/process": {

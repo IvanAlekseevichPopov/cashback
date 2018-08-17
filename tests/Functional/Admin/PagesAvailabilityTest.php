@@ -2,7 +2,7 @@
 
 namespace App\Tests\Functional\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\WebTestCase;
 
 /**
  * Class PagesAvailabilityTest.
@@ -14,7 +14,7 @@ class PagesAvailabilityTest extends WebTestCase
      */
     public function pagesAreAvailable()
     {
-        $client = static::createClient();
+        $client = $this->authenticateAdmin();
 
         foreach ($this->urlsToTest() as $url) {
             $client->request('GET', $url);
@@ -31,6 +31,7 @@ class PagesAvailabilityTest extends WebTestCase
             '/admin/app/cashback/list',
             '/admin/app/cashbackplatform/list',
             '/admin/app/user/list',
+            '/admin/app/user/1/edit',
             '/admin/dashboard',
         ];
     }
