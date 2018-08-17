@@ -31,6 +31,7 @@ class PagesAvailabilityTest extends WebTestCase
             '/admin/app/cashback/list',
             '/admin/app/cashbackplatform/list',
             '/admin/app/user/list',
+            '/admin/app/user/1/edit',
             '/admin/dashboard',
         ];
     }
