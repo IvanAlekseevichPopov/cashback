@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  position: relative;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 10%;
+}
+
+.footer {
+  width: 100%;
+  height: 25%;
+  background-color: #424242;
+  position: absolute;
+  padding-bottom: 0;
+}
+
+body .pt-4 .row h5 {
+  color: #A4A4A4;
+}
+
+.bg-white {
+  background-color: #ffffff;
+  height: 60px;
+}
+
+.bg-white a.navbar-brand {
+  color: #FF6000;
+}
+
+div.carousel-color {
+  background-color: #FCD2A4;
+  color: #212529;
+  font-family: Roboto;
+  font-weight: bold;
+  height: 430px;
+  margin-top: 30px;
+}
+
+.container-color {
+  background-color: #E6E6E6;
+}
+
+.container h1 span {
+  padding-top: 0px;
+}
+
+.container h1 span1 {
+  padding-left: 70px;
+}
+
+.container h1 span2 {
+  padding-left: 140px;
+}
+
+.container h1 span3 {
+  padding-left: 220px;
+}
+
+.container div p {
+  font-family: Roboto;
+  font-size: 28px;
+  padding-top: 30px;
+}
+
+.container .display-4 {
+  font-weight: 500;
+  font-size: 54px;
+}
+
+.navbar a {
+  color: #FF6000;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.container a:hover {
+  color: #4e555b;
+}
+
+.black, svg {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #FF6000;
+}
+
+.font-icon-color {
+  color: #FF6000;
+}
+
+.all_menu {
+  diplay: inline-block;
+  margin-top: 10px;
+  padding-left: 50px;
+  width: 600px;
+}
+
+.lost-menu {
+  margin-top: 10px;
+  width: 300px;
+  padding-left: 60px;
+}
+
+.container .row .d-block {
+  padding-bottom: 25px;
+}

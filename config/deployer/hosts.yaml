@@ -1,5 +1,5 @@
 dev:
-    hostname: ivan-popov.tk
+    hostname: cashtan.tk
     deploy_path: /root/projects/cashback
     branch: dev
     user: root

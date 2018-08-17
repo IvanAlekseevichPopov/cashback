@@ -1,0 +1,10 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#<script type="text/javascript" src="{{ asset('js/bootbox.min.js') }}"></script>#}
+{% endblock %}
+
+{% block sonata_sidebar_search %}
+{# Disable search input in sidebar #}
+{% endblock %}

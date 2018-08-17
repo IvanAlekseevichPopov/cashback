@@ -18,4 +18,12 @@ class DefaultController extends Controller
             'tst' => 'ads',
         ]);
     }
+
+    /**
+     * @Route("/faq", name="faq")
+     */
+    public function faqAction()
+    {
+        //TODO realise
+    }
 }
