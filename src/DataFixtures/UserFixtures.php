@@ -18,16 +18,29 @@ class UserFixtures extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $admin = self::getUserAdmin();
+
+        $manager->persist($admin);
+        $manager->flush();
+    }
+
+    /**
+     * Returns admin user for tests.
+     *
+     * @return User
+     */
+    public static function getUserAdmin(): User
+    {
         $user = new User();
 
         $user
             ->setPhone('234223423')
-            ->setEmail('asdf@adsf')
+            ->setEmail('admin@test_mail.com')
             ->setUsername('testUserName')
-            ->setPassword('asdfasdfasdf')
+            ->setPlainPassword('asdf3423oerjtrretn')
+            ->setSuperAdmin(true)
             ->setEnabled(true);
 
-        $manager->persist($user);
-        $manager->flush();
+        return $user;
     }
 }

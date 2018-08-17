@@ -18,6 +18,7 @@ class DefaultController extends Controller
             'tst' => 'ads',
         ]);
     }
+
     /**
      * @Route("/faq", name="faq")
      */
@@ -25,5 +26,4 @@ class DefaultController extends Controller
     {
         //TODO realise
     }
-
 }
