@@ -434,9 +434,6 @@
     "symfony/orm-pack": {
         "version": "v1.0.5"
     },
-    "symfony/polyfill-apcu": {
-        "version": "v1.7.0"
-    },
     "symfony/polyfill-ctype": {
         "version": "v1.8.0"
     },
@@ -446,16 +443,10 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.7.0"
     },
-    "symfony/polyfill-php56": {
-        "version": "v1.7.0"
-    },
     "symfony/polyfill-php70": {
         "version": "v1.7.0"
     },
     "symfony/polyfill-php72": {
-        "version": "v1.7.0"
-    },
-    "symfony/polyfill-util": {
         "version": "v1.7.0"
     },
     "symfony/process": {
