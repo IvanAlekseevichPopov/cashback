@@ -51,7 +51,7 @@ class UserAdmin extends AbstractAdmin
     {
         $form
             ->add('id', null, [
-                'attr' => ['readonly' => true,],
+                'attr' => ['readonly' => true],
             ])
             ->add('username')
             ->add('email')
