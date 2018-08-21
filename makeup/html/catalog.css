@@ -50,12 +50,12 @@ body {
     padding-bottom: 40px;
     padding-right: 20px;
 }
-
+/*изображения магазинов*/
 .shop-window img {
     width: 200px;
     height: 200px;
 }
-
+/*цвет заголовка в футере*/
 body .pt-4 .row h5 {
     color: #A4A4A4;
 }
