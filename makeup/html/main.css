@@ -1,13 +1,7 @@
-body {
-    height: 100%;
- }
 
-/*подвал*/
-.footer .pt-4{
-    background-color: #424242;
-    position: absolute;
-    padding-bottom: 0;
-   }
+.ccont {
+    min-height: calc(100vh - 250px);
+}
 
 /*цвет шрифта в подвале*/
 body .pt-4 .row h5 {
@@ -77,7 +71,7 @@ div.carousel-color {
     margin-bottom: 10px;
     color: #FF6000;
 }
-/*цвент текста нижних блоков*/
+/*цвет текста нижних блоков*/
 .font-icon-color {
     color: #FF6000;
 }
