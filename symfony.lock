@@ -1,4 +1,7 @@
 {
+    "clue/stream-filter": {
+        "version": "v1.4.0"
+    },
     "cocur/slugify": {
         "version": "v3.1"
     },
@@ -9,6 +12,9 @@
         "version": "1.4.2"
     },
     "composer/xdebug-handler": {
+        "version": "1.1.0"
+    },
+    "cspoo/swiftmailer-mailgun-bundle": {
         "version": "1.1.0"
     },
     "deployer/deployer": {
@@ -122,6 +128,15 @@
     "friendsofsymfony/user-bundle": {
         "version": "v2.0.2"
     },
+    "guzzlehttp/guzzle": {
+        "version": "6.3.3"
+    },
+    "guzzlehttp/promises": {
+        "version": "v1.3.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.4.2"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -130,6 +145,15 @@
     },
     "knplabs/knp-menu-bundle": {
         "version": "v2.2.1"
+    },
+    "mailgun/mailgun-php": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.3",
+            "ref": "d3188b6cdc58f877ef2884b55ac4798640b4b9be"
+        }
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -157,6 +181,30 @@
     },
     "php-cs-fixer/diff": {
         "version": "v1.2.1"
+    },
+    "php-http/client-common": {
+        "version": "1.7.0"
+    },
+    "php-http/discovery": {
+        "version": "1.4.0"
+    },
+    "php-http/guzzle6-adapter": {
+        "version": "v1.1.1"
+    },
+    "php-http/httplug": {
+        "version": "v1.1.0"
+    },
+    "php-http/message": {
+        "version": "1.7.0"
+    },
+    "php-http/message-factory": {
+        "version": "v1.0.2"
+    },
+    "php-http/multipart-stream-builder": {
+        "version": "1.0.0"
+    },
+    "php-http/promise": {
+        "version": "v1.0.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -202,6 +250,9 @@
     },
     "psr/container": {
         "version": "1.0.0"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
     },
     "psr/log": {
         "version": "1.0.2"
