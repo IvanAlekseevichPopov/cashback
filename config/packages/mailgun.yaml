@@ -1,3 +1,0 @@
-cspoo_swiftmailer_mailgun:
-    key: '%env(MAILGUN_API_KEY)%'
-    domain: "%domain%"
