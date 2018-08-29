@@ -6,6 +6,8 @@
         "ext-iconv": "*",
         "fresh/doctrine-enum-bundle": "^6.2",
         "friendsofsymfony/user-bundle": "^2.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "php-http/guzzle6-adapter": "^1.1",
         "ramsey/uuid-doctrine": "^1.4",
         "sensio/framework-extra-bundle": "^5.0",
         "sensiolabs/security-checker": "^4.1",
