@@ -27,7 +27,7 @@ body {
 
 /*второй заголовок*/
 .main_form h2 {
- padding-top: 30px;
+    padding-top: 40px;
     font-size: 22px;
     margin-bottom: 20px;
 }
@@ -36,14 +36,10 @@ body {
     margin-right: 100px;
     margin-left: 100px;
 }
-/*цвет шрифта у чекбокса*/
-.main_form .fields a {
-    color: #FF6000;
-}
 
 /*cодержимое окна регистрации*/
 .main_form .fields {
-text-align: center;
+    text-align: center;
 }
 
 /*кнопка регистрации*/
@@ -51,6 +47,7 @@ text-align: center;
     width: 160px;
     height: 60px;
     margin-top: 10px;
+    margin-bottom: 20px;
     font-size: 20px;
     border-radius: 8px;
     background-color: #FF6000;
@@ -66,3 +63,11 @@ text-align: center;
     box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
     border-color: rgba(255,96,0,.25);
 }
+/*цвет ссылки на вос. пароля*/
+.fields a {
+    color: #FF6000;
+}
+/*цвет ссылки при наведении курсора*/
+.fields a:hover {
+    color: #FF6000;
+   }
