@@ -1,0 +1,68 @@
+body {
+    overflow-x: hidden;
+}
+
+.ccont {
+    min-height: calc(100vh - 225px);
+}
+
+/*главная форма регистрации*/
+.main_form {
+    display: inline-block;
+    width: 600px;
+    height: 600px;
+    background-color: #FCD2A4;
+    vertical-align: middle;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/*заголовок*/
+.main_form h1 {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+/*второй заголовок*/
+.main_form h2 {
+ padding-top: 30px;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+/*поля ввода*/
+.main_form .form-group {
+    margin-right: 100px;
+    margin-left: 100px;
+}
+/*цвет шрифта у чекбокса*/
+.main_form .fields a {
+    color: #FF6000;
+}
+
+/*cодержимое окна регистрации*/
+.main_form .fields {
+text-align: center;
+}
+
+/*кнопка регистрации*/
+/*.main_form .btn {*/
+    /*width: 160px;*/
+    /*height: 60px;*/
+    /*margin-top: 10px;*/
+    /*font-size: 20px;*/
+    /*border-radius: 8px;*/
+    /*background-color: #FF6000;*/
+    /*color: white;*/
+    /*border: 1px solid #FF6000;*/
+/*}*/
+/*цвет рамки кнопки при наведении*/
+.main_form .btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+}
+/*цвет рамок окон при нажатии*/
+.main_form .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+    border-color: rgba(255,96,0,.25);
+}
