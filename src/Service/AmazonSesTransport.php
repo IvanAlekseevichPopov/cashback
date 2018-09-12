@@ -7,39 +7,38 @@ namespace App\Service;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Psr\Log\LoggerInterface;
+use SimpleEmailService;
+use SimpleEmailServiceMessage;
 use Swift_Events_EventListener;
 use Swift_Mime_SimpleMessage;
 use Swift_Transport;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * MailgunTransport
+ * AmazonSesTransport
  */
-class MailgunTransport implements Swift_Transport
+class AmazonSesTransport implements Swift_Transport
 {
-    const BASE_URI    = 'https://api.mailgun.net';
-    const API_VERSION = 3;
-
-    /** @var string */
-    protected $apiKey;
-
-    /** @var string */
-    protected $domain;
-
     /** @var LoggerInterface */
-    protected $logger;
+    private $logger;
+
+    /** @var string  */
+    private $privateKey;
+
+    /** @var string */
+    private $publicKey;
 
     /**
      * MailgunTransport constructor.
      *
-     * @param string          $apiKey
-     * @param string          $domain
+     * @param string          $publicKey
+     * @param string          $privateKey
      * @param LoggerInterface $logger
      */
-    public function __construct(string $apiKey, string $domain, LoggerInterface $logger)
+    public function __construct(string $publicKey, string $privateKey, LoggerInterface $logger)
     {
-        $this->apiKey = $apiKey;
-        $this->domain = $domain;
+        $this->publicKey = $publicKey;
+        $this->privateKey = $privateKey;
         $this->logger = $logger;
     }
 
@@ -110,39 +109,19 @@ class MailgunTransport implements Swift_Transport
      */
     public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
-        try {
-            $client = new Client(['base_uri' => self::BASE_URI]);
-            $response = $client->request('POST', $this->genUrl(), [
-                'auth' => ['api', $this->apiKey,],
-                'multipart' => [
-                    [
-                        'name' => 'from',
-                        'contents' => $this->genFrom($message->getFrom()),
-                    ],
-                    [
-                        'name' => 'to',
-                        'contents' => $this->genTo($message->getTo()),
-                    ],
-                    [
-                        'name' => 'subject',
-                        'contents' => $message->getSubject(),
-                    ],
-                    [
-                        'name' => 'html',
-                        'contents' => $message->getBody(),
-                    ],
-                ],
-            ]);
-            if (Response::HTTP_OK !== $response->getStatusCode()) {
-                $this->logger->alert('Can not send email', $response->getBody()->getContents());
-            }
-            $sent = count($message->getTo());
-        } catch (ClientException $exception) {
-            $this->logger->alert($exception->getMessage());
-            $sent = 0;
-        }
 
-        return $sent;
+        $m = new SimpleEmailServiceMessage();
+        $m->addTo($this->genTo($message->getTo()));
+        $m->setFrom($this->genFrom($message->getFrom()));
+        $m->setSubject($message->getSubject());
+        $m->setMessageFromString($message->getBody());
+
+        $ses = new SimpleEmailService($this->publicKey, $this->privateKey, SimpleEmailService::AWS_EU_WEST1);
+
+        $response = $ses->sendEmail($m);
+        $this->logger->info('Sent new email', $response);
+
+        return count($message->getTo());
     }
 
     /**
@@ -153,14 +132,6 @@ class MailgunTransport implements Swift_Transport
     public function registerPlugin(Swift_Events_EventListener $plugin)
     {
         // TODO: Implement registerPlugin() method.
-    }
-
-    /**
-     * @return string
-     */
-    private function genUrl(): string
-    {
-        return \sprintf('/v%d/%s/messages', self::API_VERSION, $this->domain);
     }
 
     /**
