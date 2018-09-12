@@ -10,3 +10,11 @@ fos_user:
     registration:
         confirmation:
             enabled: true
+        form:
+            type:                 App\Form\RegistrationFormType
+            name:                 fos_user_registration_form
+            validation_groups: ~
+            //TODO
+                # Defaults:
+#                - Registration
+#                - Default

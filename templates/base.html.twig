@@ -41,7 +41,6 @@
                     <a class="p-2 m4" href="{{ path('fos_user_security_login') }}">Вход</a>
                     <a class="p-2 m5" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
                 </p>
-                </p>
             </div>
         </div>
     </header>
@@ -87,6 +86,7 @@
         </div>
     </footer>
 {% endblock %}
+    <script type="text/javascript" src="{{ asset('static/bootbox.min.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
