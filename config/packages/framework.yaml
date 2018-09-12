@@ -32,3 +32,5 @@ framework:
         #app: cache.adapter.apcu
 parameters:
     domain: 'cashtan.tk'
+    mail_box: 'mail@cashtan.tk'
+    mail_from: 'Робот кешбек'

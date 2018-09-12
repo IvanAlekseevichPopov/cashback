@@ -7,8 +7,8 @@
     <meta name="description" content="Удобный кэшбэк-сервис для выгодных покупок. Выбирайте  товары и услуги в любимых интернет-магазинах и экономьте до 90% вместе с Cashtan.">
     <title>{% block title %}CashTan{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="static/main.css">
-        <link rel="stylesheet" href="static/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('static/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('static/bootstrap.min.css') }}">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
                 integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
                 crossorigin="anonymous"></script>
@@ -22,7 +22,7 @@
                 integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
                 crossorigin="anonymous"></script>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" href="static/images/cashtan_favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('static/images/cashtan_favicon.ico') }}" type="image/x-icon">
     {% endblock %}
 </head>
 <body class="container-color">
