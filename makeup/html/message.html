@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>CashTan</title>
+    <style type="text/css">
+        @media only screen and (max-device-width: 480px) {
+            .card-td{
+                padding: 16px!important;
+            }
+            .card-table{
+                margin-top: 24px!important;
+                margin-bottom: 24px!important;
+            }
+            .btn{
+                width: 100%!important;
+            }
+        }
+    </style>
+</head>
+<body bgcolor="#fff" style="font-family: Arial, Helvetica, sans-serif;margin: 0;padding: 0;color: #37454d;min-width: 100%!important;">
+<!-- wrapper -->
+<table width="100%" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" style="border: 0;border-spacing: 0;">
+    <!-- header -->
+    <tr>
+        <td style="padding: 0;">
+            <table style="width: 100%;border: 0;border-spacing: 0;">
+                <tr>
+                    <td class="header" style="padding: 21px 0;background-color: #fff;width: 100%; box-shadow: 0px 2px 4px 0px rgba(40,51,56,0.25);">
+                        <img width="128" height="32" alt="{{ 'app.companyName'|trans }}" align="none" src="{{ asset('assets/images/logo_trivago@2x.png', absolute=true) }}" style="outline:none;text-decoration:none;width:128px;max-width:100%;float:none;clear:both;display:block;min-height:32px;margin:0px auto">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- spacer -->
+    <tr>
+        <td class="spacer" style="padding: 0;"></td>
+    </tr>
+    <!-- -->
+
+    <tr>
+        <td style="padding: 0 16px;">
+            <table class="card-table" align="center" style="border: 0;border-spacing: 0;width: 100%;max-width: 614px;margin-top: 48px;margin-bottom:48px;background: #FCD2A4;">
+                <tr>
+                    <td style="padding: 0;">
+                        <table style="border: 0;border-spacing: 0;width: 100%;">
+                            <tr>
+                                <td style="padding: 0; height: 6px;" bgcolor="#FF6000" width="25%">
+                                </td>
+                                <td style="padding: 0; height: 6px;" bgcolor="#FF6000">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0;">
+                        <table height="100%" width="100%" style="border: 0;border-spacing: 0;width: 100%;padding: 0;">
+                            <tr>
+                                <td width="6px" style="padding: 0;">
+                                    <table width="100%" height="100%" style="border: 0;border-spacing: 0;width: 100%; padding: 0;">
+                                        <tr>
+                                            <td bgcolor="#FF6000" width="6px;" style="padding: 0;">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr height="30%">
+                                            <td bgcolor="#FF6000"  width="6px;" style="padding: 0;">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="card-td" style="padding: 26px 26px;">
+                                    {% block content %}{% endblock %}
+                                </td>
+                                <td width="6px" style="padding: 0;">
+                                    <table width="100%" height="100%" style="border: 0;border-spacing: 0;width: 100%; padding: 0;">
+                                        <tr>
+                                            <td bgcolor="#FF6000" width="6px;" style="padding: 0;">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr height="10px">
+                                            <td bgcolor="#FF6000"  width="6px;" style="padding: 0;">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0;">
+                        <table style="border: 0;border-spacing: 0;width: 100%;">
+                            <tr>
+                                <td style="padding: 0; height: 6px;" bgcolor="#FF6000">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- footer -->
+    <tr>
+        <td style="padding: 0; padding-top: 32px;padding-bottom: 32px;background-color: #37454d;">
+            <table style="width: 100%;border: 0;border-spacing: 0;">
+                <tr>
+                    <td align="center" style="padding: 0;padding-bottom: 10px;">
+                        <!--<img width="128" height="32" alt="{{ 'app.companyName'|trans }}" align="none" src="{{ asset('assets/images/logo_trivago_white@2x.png', absolute=true) }}" style="outline:none;text-decoration:none;width:128px;max-width:100%;float:none;clear:both;display:block;min-height:32px;margin:0px auto;">-->
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" style="padding: 0;">
+                        <p style="font-size: 12px;color: #ccc;line-height: 18px;">2018-{{ 'now'|date('Y') }} {{ 'app.companyName'|trans }} {{ 'app.footer.allRightReserved'|trans }}.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr></table>
+</body>
+</html>

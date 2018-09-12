@@ -66,3 +66,48 @@ text-align: center;
     box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
     border-color: rgba(255,96,0,.25);
 }
+
+/*кнопки соц. сетей*/
+.btn-socseti .btn {
+    width: 45px;
+    height: 45px;
+    padding-top: 12px;
+    font-size: 22px;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+/*кнопка вконтакте*/
+.btn-socseti .btn-vk {
+    background-color: #5f83a9;
+    border: none;
+}
+/*кнопка одноклассники*/
+.btn-socseti .btn-od {
+    background-color: #f58220;
+    border: none;
+}
+/*кнопка фейсбук*/
+.btn-socseti .btn-fb {
+    background-color: #395a99;
+    border: none;
+}
+/*кнопка гугл*/
+.btn-socseti .btn-gg {
+    background-color: #d6492e;
+    border: none;
+}
+
+/*цвет svg на всех кнопках*/
+.btn-socseti, svg {
+    color: white;
+}
+/*при клике на кнопку соц.сетей*/
+.btn-socseti .btn:focus {
+    box-shadow: none;
+}
+
+.btn-vk svg {
+    position: relative;
+    left: -2px;
+}
