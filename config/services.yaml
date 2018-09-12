@@ -32,7 +32,7 @@ services:
         tags:
             - { name: doctrine.orm.entity_listener }
             - { name: doctrine.orm.entity_listener, entity_manager: custom }
-    App\Service\MailGunTransport:
+    App\Service\AmazonSesTransport:
         arguments:
-            - '%env(MAILGUN_API_KEY)%'
-            - '%domain%'
+            $publicKey: '%env(AWS_PUBLIC_KEY)%'
+            $privateKey: '%env(AWS_PRIVATE_KEY)%'

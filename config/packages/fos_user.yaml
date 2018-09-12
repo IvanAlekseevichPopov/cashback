@@ -3,8 +3,8 @@ fos_user:
     firewall_name: main
     user_class: App\Entity\User
     from_email:
-        address: "noemail@cashback.tk"
-        sender_name: "Робот кешбек"
+        address: '%mail_box%'
+        sender_name: '%mail_from%'
     service:
         mailer: fos_user.mailer.twig_swift
     registration:
