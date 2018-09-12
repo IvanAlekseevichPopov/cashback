@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('static/registration.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="ccont row">
+            <div class="col-md-4"></div>
+            <div class="main_form col-md-4">
+                <h1 class="title">Регистрация нового<br> пользователя</h1>
+                <div class="fields">
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                        <div class="form-group">
+                            {{ form_errors(form.email) }}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Введите e-mail'}}) }}
+                        </div>
+                        {% for passwordField in form.plainPassword %}
+                        <div class="form-group">
+                            {{ form_errors(passwordField) }}
+                            {{ form_widget(passwordField, {'attr': {'class': 'form-control', 'placeholder': 'Введите пароль'}}) }}
+                        </div>
+                        {% endfor %}
+                        <!--чекбокс-->
+                        <label>
+                            <input type="checkbox" name="conditions">
+                            я принимаю <a href="" target=""> условия использования сервиса</a>
+                        </label><br>
+
+                        <input type="submit" class="btn" value="Регистрация" />
+                    {{ form_end(form) }}
+                    <!--кнопки соц.сетей-->
+                    <h2>или через социальные сети</h2>
+                    <div class="btn-socseti">
+
+                        <a href="#" class="btn btn-vk" title="ВКонтакте">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="btn btn-od" title="Одноклассники">
+                            <i class="fab fa-odnoklassniki"></i>
+                        </a>
+                        <a href="#" class="btn btn-fb" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-gg" title="Google">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+{% endblock %}
