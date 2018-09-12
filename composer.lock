@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccfaa98e4436c2c9620444c739cd61e1",
+    "content-hash": "11ba33cf8deaa598b637cccaff316121",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -126,6 +126,52 @@
                 "tls"
             ],
             "time": "2018-08-08T08:57:40+00:00"
+        },
+        {
+            "name": "daniel-zahariev/php-aws-ses",
+            "version": "0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daniel-zahariev/php-aws-ses.git",
+                "reference": "093c23a2d964937494e199a0f417e64b86128331"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daniel-zahariev/php-aws-ses/zipball/093c23a2d964937494e199a0f417e64b86128331",
+                "reference": "093c23a2d964937494e199a0f417e64b86128331",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Zahariev",
+                    "role": "developer"
+                }
+            ],
+            "description": "Send emails via Amazon Simple Email Service (SES) with REST-like interface",
+            "homepage": "https://github.com/daniel-zahariev/php-aws-ses",
+            "keywords": [
+                "amazon",
+                "api",
+                "aws",
+                "email",
+                "rest",
+                "ses"
+            ],
+            "time": "2018-01-05T10:42:59+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -4623,6 +4669,17 @@
         {
             "name": "symfony/lts",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/lts.git",
+                "reference": "6de50b244bad631a71544b3cc3c8e206c0e5f991"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/lts/zipball/6de50b244bad631a71544b3cc3c8e206c0e5f991",
+                "reference": "6de50b244bad631a71544b3cc3c8e206c0e5f991",
+                "shasum": ""
+            },
             "conflict": {
                 "symfony/asset": ">=5",
                 "symfony/browser-kit": ">=5",
