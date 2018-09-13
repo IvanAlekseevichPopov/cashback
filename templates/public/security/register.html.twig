@@ -22,6 +22,10 @@
                             {{ form_widget(passwordField, {'attr': {'class': 'form-control', 'placeholder': 'Введите пароль'}}) }}
                         </div>
                         {% endfor %}
+                        <div class="form-group">
+                            {{ form_errors(form.recaptcha) }}
+                            {{ form_widget(form.recaptcha, {'attr': {'class': 'form-control', 'style': 'display: inline-block'}}) }}
+                        </div>
                         <!--чекбокс-->
                         <label>
                             <input type="checkbox" name="conditions">
