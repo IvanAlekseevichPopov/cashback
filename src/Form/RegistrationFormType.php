@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Form;
 
@@ -36,8 +36,8 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'constraints' => [
                     new Length(['min' => 6]),
-                    new Regex(['pattern' => "/[a-zA-Z]+/", 'message' => 'password.need_symbol']),
-                    new NotBlank()
+                    new Regex(['pattern' => '/[a-zA-Z]+/', 'message' => 'password.need_symbol']),
+                    new NotBlank(),
                 ],
                 'options' => [
                     'translation_domain' => 'FOSUserBundle',
@@ -108,6 +108,4 @@ class RegistrationFormType extends AbstractType
         $user = $event->getData();
         $user->setUsername($user->getEmail());
     }
-
-
 }
