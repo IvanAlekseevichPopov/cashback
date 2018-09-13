@@ -45,12 +45,17 @@
         </div>
     </header>
 {% endblock %}
+<div>
+    <div class="ccont">
 {% block body %}
 
 {% endblock %}
+    </div>
+</div>
 {% block footer %}
     <footer class="pt-4 border-top bg-dark">
         <div class="container">
+
             <div class="row">
                 <div class="col-md-4 text-center">
                     <h5>Информация</h5>
@@ -62,8 +67,8 @@
                 <div class="col-md-4 text-center">
                     <h5>Сервисы</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="{{ path('catalog') }}">Все магазины</a></li>
-                        <li><a class="text-muted" href="{{ path('cabinet') }}">Личный кабинет</a></li>
+                        <li><a class="text-muted" href="#">Все магазины</a></li>
+                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
 
 
                     </ul>
@@ -71,8 +76,8 @@
                 <div class="col-md-4 text-center">
                     <h5>Обратная связь</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="{{ path('faq') }}">Частые вопросы</a></li>
-                        <li><a class="text-muted" href="mailto:help@cashtan.ru">help@cashtan.ru</a></li>
+                        <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
 
                     </ul>
                 </div>
