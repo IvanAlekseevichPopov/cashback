@@ -28,8 +28,9 @@
                         </div>
                         <!--чекбокс-->
                         <label>
-                            <input type="checkbox" name="conditions">
-                            я принимаю <a href="" target=""> условия использования сервиса</a>
+                            {{ form_errors(form.conditions) }}
+                            {{ form_widget(form.conditions) }}
+                            я принимаю <a href="" target="_blank"> условия использования сервиса</a>
                         </label><br>
 
                         <input type="submit" class="btn" value="Регистрация" />

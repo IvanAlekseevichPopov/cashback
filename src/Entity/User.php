@@ -7,11 +7,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as FOSUser;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User.
  *
  * @ORM\Table(name="user")
+ * @UniqueEntity(fields={"email"}, message="email.already_used")
  * @ORM\Entity
  */
 class User extends FOSUser

@@ -1,0 +1,2 @@
+email.already_used: 'Email уже используется'
+password.need_symbol: 'Пароль должен содержать хотя бы один латинский символ'
