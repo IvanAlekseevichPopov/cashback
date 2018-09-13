@@ -111,3 +111,7 @@ text-align: center;
     position: relative;
     left: -2px;
 }
+
+.g-recaptcha {
+    display: inline-block;
+}

@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace App\Form;
 
 use App\Entity\User;
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -39,6 +41,21 @@ class RegistrationFormType extends AbstractType
                 'first_options' => ['label' => 'form.password'],
                 'second_options' => ['label' => 'form.password_confirmation'],
                 'invalid_message' => 'fos_user.password.mismatch',
+            ])
+            ->add('recaptcha', EWZRecaptchaType::class, [
+                'attr' => [
+                    'options' => [
+                        'theme' => 'light',
+                        'type' => 'image',
+                        'size' => 'normal',
+                        'defer' => true,
+//                        'async' => true,
+                    ],
+                ],
+                'mapped' => false,
+                'constraints' => [
+                    new RecaptchaTrue(),
+                ],
             ]);
 
         $builder->addEventListener(FormEvents::SUBMIT, [$this, 'setUserName']);
@@ -80,7 +97,6 @@ class RegistrationFormType extends AbstractType
         $user = $event->getData();
         $user->setUsername(uniqid('name_', true));
     }
-
 
 
 }
