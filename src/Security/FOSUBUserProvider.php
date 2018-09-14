@@ -51,7 +51,7 @@ class FOSUBUserProvider extends BaseUserProvider
                 /** @var User $user */
                 $user = $this->userManager->createUser();
                 $user->setEmail($response->getEmail());
-                $user->setPlainPassword(md5(uniqid(null, true)));
+                $user->setPlainPassword(md5(uniqid("", true)));
                 $user->setUsername($response->getNickname());
                 $user->setEnabled(true);
                 $user->addRole(User::ROLE_DEFAULT);
