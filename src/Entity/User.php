@@ -66,6 +66,20 @@ class User extends FOSUser
     protected $transactions;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $googleId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $googleAccessToken;
+
+    /**
      * @return Balance
      */
     public function getBalance(): ?Balance
@@ -103,5 +117,37 @@ class User extends FOSUser
         $this->phone = $phone;
 
         return $this;
+    }
+
+    /**
+     * @param string|null $googleId
+     */
+    public function setGoogleId(?string $googleId): void
+    {
+        $this->googleId = $googleId;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getGoogleId(): ?string
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getGoogleAccessToken(): ?string
+    {
+        return $this->googleAccessToken;
+    }
+
+    /**
+     * @param null|string $googleAccessToken
+     */
+    public function setGoogleAccessToken(?string $googleAccessToken): void
+    {
+        $this->googleAccessToken = $googleAccessToken;
     }
 }

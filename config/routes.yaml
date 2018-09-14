@@ -1,5 +1,12 @@
 #index:
 #    path: /
 #    defaults: { _controller: 'App\Controller\DefaultController::index' }
+
+#Redefinded default route after registration first step
 fos_user_registration_check_email:
     path: /
+
+google_login:
+    path: /login/google
+google_connect:
+    path: /connect/google
