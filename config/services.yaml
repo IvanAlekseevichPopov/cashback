@@ -37,3 +37,7 @@ services:
         arguments:
             $publicKey: '%env(AWS_PUBLIC_KEY)%'
             $privateKey: '%env(AWS_PRIVATE_KEY)%'
+
+    App\Security\FOSUBUserProvider:
+        arguments:
+            $properties: { google: googleId }

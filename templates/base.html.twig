@@ -38,8 +38,13 @@
                     <a class="p-2 main-menu" href="{{ path('catalog') }}">Каталог магазинов</a>
                     <a class="p-2 main-menu" href="{{ path('faq') }}">Вопросы и ответы</a>
                 <p class="lost-menu">
-                    <a class="p-2 m4" href="{{ path('fos_user_security_login') }}">Вход</a>
-                    <a class="p-2 m5" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
+                    {% if app.user is not null %}
+                        <a class="p-2 m5" href="#">{{ app.user.username }}</a>
+                        <a class="p-2 m4" href="{{ path('fos_user_security_logout') }}">Выход</a>
+                    {% else %}
+                        <a class="p-2 m4" href="{{ path('fos_user_security_login') }}">Вход</a>
+                        <a class="p-2 m5" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
+                    {% endif %}
                 </p>
             </div>
         </div>
