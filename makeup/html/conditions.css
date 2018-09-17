@@ -1,0 +1,24 @@
+body {
+    overflow-x: hidden;
+}
+/*.info{*/
+    /*min-height: calc(100vh - 225px);*/
+/*}*/
+
+/*колонка текст*/
+.cond .col-sm-6 {
+    width: auto;
+    height: 1600px;
+    background-color: #FCD2A4;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: justify;
+    display: block;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.col-sm-6 h3 {
+    padding-top: 10px;
+    text-align: center;
+}
