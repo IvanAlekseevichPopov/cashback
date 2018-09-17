@@ -24,4 +24,12 @@ class DefaultController extends Controller
     {
         return $this->render('public/faq.html.twig');
     }
+
+    /**
+     * @Route("/conditions", name="conditions")
+     */
+    public function conditionsAction()
+    {
+        return $this->render('public/conditions.html.twig');
+    }
 }
