@@ -14,9 +14,7 @@ class DefaultController extends Controller
     {
         //TODO передать пользователя если есть без субзапроса во все шаблоны
 
-        return $this->render('public/main.html.twig', [
-            'tst' => 'ads',
-        ]);
+        return $this->render('public/main.html.twig');
     }
 
     /**
@@ -24,6 +22,14 @@ class DefaultController extends Controller
      */
     public function faqAction()
     {
-        //TODO realise
+        return $this->render('public/faq.html.twig');
+    }
+
+    /**
+     * @Route("/conditions", name="conditions")
+     */
+    public function conditionsAction()
+    {
+        return $this->render('public/conditions.html.twig');
     }
 }

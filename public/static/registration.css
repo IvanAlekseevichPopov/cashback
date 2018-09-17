@@ -10,10 +10,10 @@ body {
 .main_form {
     display: inline-block;
     width: 600px;
-    height: 600px;
+    height: 680px;
     background-color: #FCD2A4;
     vertical-align: middle;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
 }
 
@@ -110,4 +110,8 @@ text-align: center;
 .btn-vk svg {
     position: relative;
     left: -2px;
+}
+
+.g-recaptcha {
+    display: inline-block;
 }

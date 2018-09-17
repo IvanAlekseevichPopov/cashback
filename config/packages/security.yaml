@@ -8,7 +8,8 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username_email
-
+        hwi_oauth.user.provider:
+            id: hwi_oauth.user.provider
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -17,10 +18,19 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
             logout:       true
             anonymous:    true
             logout_on_user_change: true
+            oauth:
+                resource_owners:
+                    google: google_login
+                login_path: /login
+#                use_forward:       false
+#                failure_path:      /login
+#                default_target_path: after_login
+                provider: hwi_oauth.user.provider
+                oauth_user_provider:
+                    service: App\Security\FOSUBUserProvider
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
