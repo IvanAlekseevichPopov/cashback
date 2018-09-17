@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>CashTan</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="registration.css">
+    <link rel="stylesheet" href="authorization.css">
     <link rel="stylesheet" href="bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -49,46 +49,42 @@
     <div class="ccont row">
         <div class="col-md-4"></div>
         <div class="main_form col-md-4">
-                <h1 class="title">Регистрация нового<br> пользователя</h1>
-                <div class="fields">
-                    <form name="regis" method="post" action="url">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите e-mail">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Введите пароль еще раз">
-                        </div>
-                        <!--чекбокс-->
-                        <label>
-                            <input type="checkbox" name="conditions">
-                            я принимаю <a href="" target=""> условия использования сервиса</a>
-                        </label><br>
+            <h1 class="title">Вход для зарегистрированного <br> пользователя</h1>
+            <div class="fields">
+                <form name="regis" method="post" action="url">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="Введите e-mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Введите пароль">
+                    </div>
 
-                        <button type="submit" class="btn">Регистрация</button>
-                        <!--кнопки соц.сетей-->
-                        <h2>или через социальные сети</h2>
-                        <div class="btn-socseti">
+                    <button type="submit" class="btn">Вход</button>
+                    <div>
+                        <a href="pass">Забыли пароль?</a>
+                    </div>
 
-                            <a href="#" class="btn btn-vk" title="ВКонтакте">
-                                <i class="fab fa-vk"></i>
-                            </a>
-                            <a href="#" class="btn btn-od" title="Одноклассники">
-                                <i class="fab fa-odnoklassniki"></i>
-                            </a>
-                            <a href="#" class="btn btn-fb" title="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="btn btn-gg" title="Google">
-                                <i class="fab fa-google"></i>
-                            </a>
-                        </div>
-
-                    </form>
-                </div>
+                    <!--кнопки соц.сетей-->
+                    <h2>или через социальные сети</h2>
+                    <div class="btn-socseti">
+                        <a href="#" class="btn btn-vk" title="ВКонтакте">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="btn btn-od" title="Одноклассники">
+                            <i class="fab fa-odnoklassniki"></i>
+                        </a>
+                        <a href="#" class="btn btn-fb" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-gg" title="Google">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </form>
             </div>
+        </div>
         <div class="col-md-4"></div>
     </div>
 </div>

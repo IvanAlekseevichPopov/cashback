@@ -1,28 +1,25 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Service;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
 use Psr\Log\LoggerInterface;
 use SimpleEmailService;
 use SimpleEmailServiceMessage;
 use Swift_Events_EventListener;
 use Swift_Mime_SimpleMessage;
 use Swift_Transport;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
- * AmazonSesTransport
+ * AmazonSesTransport.
  */
 class AmazonSesTransport implements Swift_Transport
 {
     /** @var LoggerInterface */
     private $logger;
 
-    /** @var string  */
+    /** @var string */
     private $privateKey;
 
     /** @var string */
@@ -109,7 +106,6 @@ class AmazonSesTransport implements Swift_Transport
      */
     public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
-
         $m = new SimpleEmailServiceMessage();
         $m->addTo($this->genTo($message->getTo()));
         $m->setFrom($this->genFrom($message->getFrom()));

@@ -38,20 +38,52 @@
                     <a class="p-2 main-menu" href="{{ path('catalog') }}">Каталог магазинов</a>
                     <a class="p-2 main-menu" href="{{ path('faq') }}">Вопросы и ответы</a>
                 <p class="lost-menu">
-                    <a class="p-2 m4" href="{{ path('fos_user_security_login') }}">Вход</a>
-                    <a class="p-2 m5" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
-                </p>
+                    {% if app.user is not null %}
+                        <a class="p-2 m5" href="#">{{ app.user.username }}</a>
+                        <a class="p-2 m4" href="{{ path('fos_user_security_logout') }}">Выход</a>
+                    {% else %}
+                        <a class="p-2 m4" href="{{ path('fos_user_security_login') }}">Вход</a>
+                        <a class="p-2 m5" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
+                    {% endif %}
                 </p>
             </div>
         </div>
     </header>
 {% endblock %}
+<div>
+    {% for message in app.flashes(constant('App\\Model\\Flash\\FlashTypes::SUCCESS')) %}
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Сообщение</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ message }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(window).on('load',function(){
+                $('#exampleModal').modal('show');
+            });
+        </script>
+    {% endfor %}
 {% block body %}
 
 {% endblock %}
+</div>
 {% block footer %}
     <footer class="pt-4 border-top bg-dark">
         <div class="container">
+
             <div class="row">
                 <div class="col-md-4 text-center">
                     <h5>Информация</h5>
@@ -63,8 +95,8 @@
                 <div class="col-md-4 text-center">
                     <h5>Сервисы</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="{{ path('catalog') }}">Все магазины</a></li>
-                        <li><a class="text-muted" href="{{ path('cabinet') }}">Личный кабинет</a></li>
+                        <li><a class="text-muted" href="#">Все магазины</a></li>
+                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
 
 
                     </ul>
@@ -73,7 +105,7 @@
                     <h5>Обратная связь</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="{{ path('faq') }}">Частые вопросы</a></li>
-                        <li><a class="text-muted" href="mailto:help@cashtan.ru">help@cashtan.ru</a></li>
+                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
 
                     </ul>
                 </div>
@@ -87,6 +119,7 @@
         </div>
     </footer>
 {% endblock %}
+    <script type="text/javascript" src="{{ asset('static/bootbox.min.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

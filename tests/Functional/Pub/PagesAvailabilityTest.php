@@ -32,6 +32,8 @@ class PagesAvailabilityTest extends WebTestCase
             '/catalog',
             '/register/',
             '/login',
+            '/faq',
+            '/conditions',
         ];
     }
 }
