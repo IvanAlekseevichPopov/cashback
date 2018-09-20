@@ -31,6 +31,7 @@
         <div class="navbar bg-white box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="{{ path('main') }}" class="navbar-brand d-flex align-items-center">
+                    <img class="logo_menu" src="{{ asset('static/images/cashtan-min.png') }}">
                     <strong class="black">CashTan</strong>
                 </a>
                 <p class="all_menu">
@@ -119,7 +120,9 @@
         </div>
     </footer>
 {% endblock %}
-    <script type="text/javascript" src="{{ asset('static/bootbox.min.js') }}"></script>
-{% block javascripts %}{% endblock %}
+
+{% block javascripts %}
+    {#<script type="text/javascript" src="{{ asset('static/bootbox.min.js') }}"></script>#}
+{% endblock %}
 </body>
 </html>
