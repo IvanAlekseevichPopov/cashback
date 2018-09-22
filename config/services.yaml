@@ -2,6 +2,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'ru'
+    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 services:
     # default configuration for services in *this* file
@@ -32,3 +33,11 @@ services:
         tags:
             - { name: doctrine.orm.entity_listener }
             - { name: doctrine.orm.entity_listener, entity_manager: custom }
+    App\Service\AmazonSesTransport:
+        arguments:
+            $publicKey: '%env(AWS_PUBLIC_KEY)%'
+            $privateKey: '%env(AWS_PRIVATE_KEY)%'
+
+    App\Security\FOSUBUserProvider:
+        arguments:
+            $properties: { google: googleId }

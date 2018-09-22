@@ -46,9 +46,52 @@
 </header>
 
 <div>
+    <div class="ccont row">
+        <div class="col-md-4"></div>
+        <div class="main_form col-md-4">
+                <h1 class="title">Регистрация нового<br> пользователя</h1>
+                <div class="fields">
+                    <form name="regis" method="post" action="url">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите e-mail">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Введите пароль еще раз">
+                        </div>
+                        <!--чекбокс-->
+                        <label>
+                            <input type="checkbox" name="conditions">
+                            я принимаю <a href="" target=""> условия использования сервиса</a>
+                        </label><br>
 
+                        <button type="submit" class="btn">Регистрация</button>
+                        <!--кнопки соц.сетей-->
+                        <h2>или через социальные сети</h2>
+                        <div class="btn-socseti">
+
+                            <a href="#" class="btn btn-vk" title="ВКонтакте">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="#" class="btn btn-od" title="Одноклассники">
+                                <i class="fab fa-odnoklassniki"></i>
+                            </a>
+                            <a href="#" class="btn btn-fb" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="btn btn-gg" title="Google">
+                                <i class="fab fa-google"></i>
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        <div class="col-md-4"></div>
+    </div>
 </div>
-
 
 <!--//футер-->
 <footer class="pt-4 border-top bg-dark">
@@ -67,8 +110,6 @@
                 <ul class="list-unstyled text-small">
                     <li><a class="text-muted" href="#">Все магазины</a></li>
                     <li><a class="text-muted" href="#">Личный кабинет</a></li>
-
-
                 </ul>
             </div>
             <div class="col-md-4 text-center">
@@ -76,10 +117,8 @@
                 <ul class="list-unstyled text-small">
                     <li><a class="text-muted" href="#">Частые вопросы</a></li>
                     <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
-
                 </ul>
             </div>
-
         </div>
         <div class="row">
             <div class="col-12 col-md text-center">

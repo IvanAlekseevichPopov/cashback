@@ -1,49 +1,34 @@
-body {
-    margin: 0;
-    position: relative;
-    padding-bottom: 0;
-    box-sizing: border-box;
+.ccont {
+    min-height: calc(100vh - 250px);
 }
 
-.header {
-    width: 100%;
-    height: 10%;
-}
-
-.footer {
-    width: 100%;
-    height: 25%;
-    background-color: #424242;
-    position: absolute;
-    padding-bottom: 0;
-}
-
+/*цвет шрифта в подвале*/
 body .pt-4 .row h5 {
     color: #A4A4A4;
 }
-
+/*шапка*/
 .bg-white {
     background-color: #ffffff;
     height: 60px;
 }
 
+/*цвет текста в шапке*/
 .bg-white a.navbar-brand {
     color: #FF6000;
 }
-
+/*карусель*/
 div.carousel-color {
     background-color: #FCD2A4;
     color: #212529;
     font-family: Roboto;
     font-weight: bold;
-    height: 430px;
     margin-top: 30px;
 }
-
+/*цвет фона контейнера*/
 .container-color {
     background-color: #E6E6E6;
 }
-
+/*расположение текста в карусели*/
 .container h1 span {
     padding-top: 0px;
 }
@@ -59,38 +44,44 @@ div.carousel-color {
 .container h1 span3 {
     padding-left: 220px;
 }
-
+/*нижний текст в карусели*/
 .container div p {
     font-family: Roboto;
     font-size: 28px;
     padding-top: 30px;
 }
-
+/*текст в карусели*/
 .container .display-4 {
     font-weight: 500;
     font-size: 54px;
 }
-
+/*текст в шапке*/
 .navbar a {
     color: #FF6000;
     font-size: 20px;
     font-weight: bolder;
+  }
+
+/*текст в шапке при наведении курсора*/
+.container .p-2:hover {
+    border-bottom: 3px solid #FF6000;
+    text-decoration: none;
+    color: #FF6000;
 }
 
-.container a:hover {
-    color: #4e555b;
-}
-
-.black, svg {
+/*логотип и название*/
+.black{
     font-size: 28px;
     margin-bottom: 10px;
     color: #FF6000;
 }
 
+/*цвет текста нижних блоков*/
 .font-icon-color {
     color: #FF6000;
 }
 
+/*шапка, всё меню*/
 .all_menu {
     diplay: inline-block;
     margin-top: 10px;
@@ -98,12 +89,21 @@ div.carousel-color {
     width: 600px;
 }
 
+/*шапка, вход-рег*/
 .lost-menu {
     margin-top: 10px;
     width: 300px;
     padding-left: 60px;
 }
 
+/*нижний отступ в футере*/
 .container .row .d-block {
     padding-bottom: 25px;
+}
+
+/*листик*/
+.logo_menu {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
 }

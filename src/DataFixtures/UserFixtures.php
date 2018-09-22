@@ -36,7 +36,7 @@ class UserFixtures extends Fixture
         $user
             ->setPhone('234223423')
             ->setEmail('admin@test_mail.com')
-            ->setUsername('testUserName')
+            ->setUsername('admin')
             ->setPlainPassword('asdf3423oerjtrretn')
             ->setSuperAdmin(true)
             ->setEnabled(true);
