@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('static/faq.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="faq row">
+        <div class="col-md-3"></div>
+        <div class="main_form col-md-6">
+            <!--1-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136032">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136032" aria-expanded="false"
+                           aria-controls="collapse136032" class="collapsed">
+                            Что такое кэшбэк?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136032" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136032"
+                     aria-expanded="false" style="height: 0px;">
+                    <div class="panel-body">
+                        <span style="font-size: 13pt;">Cashback (Кэшбэк) — это скидка в виде возврата части стоимости покупки на счёт покупателя в личном кабинете.</span>
+                    </div>
+                </div>
+            </div>
+            <!--2-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136027">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136027" aria-expanded="false" aria-controls="collapse136027" class="collapsed">
+                            Как пользоваться кэшбэк-сервисом?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136027" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136027" aria-expanded="false">
+                    <div class="panel-body">
+                        <span style="font-size: 13pt;">
+                            Для того, чтобы получать кэшбэк, необходимо:<br>1. Зарегистрироваться.<br>2. Выбрать любимый магазин на сайте CashTan в меню Каталог магазинов.<br>3. Ознакомиться с правилами и условиями выплаты кэшбэка в выбранном магазине, после чего нажать на кнопку "Перейти в магазин".<br>4. Выбрать товар, оплатить его.<br>5.	Через некоторое время кэшбэк будет начислен на баланс в личном кабинете.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!--3-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136024">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136024" aria-expanded="false" aria-controls="collapse136024" class="collapsed">
+                            Сколько денег возвращается с покупок?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136024" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136024" aria-expanded="false">
+                    <div class="panel-body">
+                        <p>
+                            <span style="font-size: 13pt;">Процент возврата указан в описании каждого предложения на странице магазина. </span>
+                    </div>
+                </div>
+            </div>
+
+            <!--4-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136021">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136021" aria-expanded="false" aria-controls="collapse136021" class="collapsed">
+                            Через какое время я получу деньги?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136021" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136021" aria-expanded="false">
+                    <div class="panel-body">
+                        <p>
+                            <span style="font-size: 13pt;">
+                                Возврат cashback занимает примерно от 45-60 дней с момента оплаты покупки, в некоторых случаях срок может достигать 120 дней.
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <!--5-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136016">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136016" aria-expanded="false" aria-controls="collapse136016" class="collapsed">
+                            Какие способы вывода доступны для получения кэшбэка?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136016" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136016" aria-expanded="false">
+                    <div class="panel-body">
+                        <span style="font-size: 13pt;">В данный момент доступен вывод на мобильный телефон российских операторов связи.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!--6-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136014">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136014" aria-expanded="false" aria-controls="collapse136014" class="collapsed">
+                            По какой причине размер сэкономленных средств за покупку меньше, чем я рассчитывал?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136014" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136014" aria-expanded="false">
+                    <div class="panel-body">
+                        <span style="font-size: 13pt;">
+                            Возможно, это связано с тем, что размер сэкономленных средств рассчитывается на основе цены покупки, которая не включает доставку, налоги, возврат, гарантию и другие расходы.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!--7-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136013">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136013" aria-expanded="false" aria-controls="collapse136013" class="collapsed">
+                            В каких случаях cashback может не начисляться?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136013" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136013" aria-expanded="false">
+                    <div class="panel-body">
+                        <span style="font-size: 13pt;">
+                            Использование программы Adblock и других аналогичных программ блокировки всплывающих окон, рекламы может повлиять на начисление кэшбэка.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!--8-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136032">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136018" aria-expanded="false" aria-controls="collapse136018" class="collapsed">
+                            Можно ли получить cashback за ранее осуществленные покупки в тех же магазинах, что и представленные на вашем сайте?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136018" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136018" aria-expanded="false" style="height: 0px;">
+                    <div class="panel-body"><span style="font-size: 13pt;">К сожалению, за те покупки, которые были сделаны до регистрации на сайте CashTan.ru, нельзя сделать возврат денежных средств.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!--9-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136029">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136029" aria-expanded="false" aria-controls="collapse136029" class="collapsed">
+                            Безопасно ли это?
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136029" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136029" aria-expanded="false">
+                    <div class="panel-body">
+                        <span style="font-size: 13pt;">
+                            Это совершенно безопасно, поскольку наш сервис работает только с открытыми данными, необходимыми для осуществления перевода денежных средств на Ваш мобильный номер.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--10-->
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading136088">
+                    <h5 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse136088" aria-expanded="false" aria-controls="collapse136088" class="collapsed">
+                            Я не нашел ответа на свой вопрос.
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapse136088" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading136088" aria-expanded="false">
+                    <div class="panel-body">
+                        <span style="font-size: 13pt;">
+                            Вы можете задать свой вопрос, написав нам письмо по адресу help@cashtan.ru. Будем рады ответить на все Ваши вопросы.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}

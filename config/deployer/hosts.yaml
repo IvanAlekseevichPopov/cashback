@@ -1,12 +1,6 @@
 dev:
-    hostname: domain.com                    # Replace with proper domain
-    deploy_path: /var/www/domain.com        # Replace with proper deploy path
-    branch: develop
-    user: deploy
+    hostname: cashtan.tk
+    deploy_path: /root/projects/cashback
+    branch: dev
+    user: root
     stage: dev
-#prod:
-#    hostname: domain.com                   # Replace with proper domain
-#    deploy_path: /var/www/domain.com       # Replace with proper deploy path
-#    branch: master
-#    user: deploy
-#    stage: prod

@@ -1,12 +1,125 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="кэшбек, высокий кэшбэк, cash back, cashback, скидки, скидки интернет магазинов, покупки в интернет-магазинах, возврат суммы, выгодные покупки, возврат денег">
+    <meta name="title" content="Cashtan - выгодные покупки через кэшбэк-сервис">
+    <meta name="description" content="Удобный кэшбэк-сервис для выгодных покупок. Выбирайте  товары и услуги в любимых интернет-магазинах и экономьте до 90% вместе с Cashtan.">
+    <title>{% block title %}CashTan{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('static/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('static/bootstrap.min.css') }}">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+                integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+                crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="{{ asset('static/images/cashtan_favicon.ico') }}" type="image/x-icon">
+    {% endblock %}
+</head>
+<body class="container-color">
+{% block header %}
+    <header>
+        <div class="navbar bg-white box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="{{ path('main') }}" class="navbar-brand d-flex align-items-center">
+                    <strong class="black">CashTan</strong>
+                </a>
+                <p class="all_menu">
+                    <a class="p-2 main-menu" href="{{ path('main') }}">Главная</a>
+                    <a class="p-2 main-menu" href="{{ path('catalog') }}">Каталог магазинов</a>
+                    <a class="p-2 main-menu" href="{{ path('faq') }}">Вопросы и ответы</a>
+                <p class="lost-menu">
+                    {% if app.user is not null %}
+                        <a class="p-2 m5" href="#">{{ app.user.username }}</a>
+                        <a class="p-2 m4" href="{{ path('fos_user_security_logout') }}">Выход</a>
+                    {% else %}
+                        <a class="p-2 m4" href="{{ path('fos_user_security_login') }}">Вход</a>
+                        <a class="p-2 m5" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+<div>
+    {% for message in app.flashes(constant('App\\Model\\Flash\\FlashTypes::SUCCESS')) %}
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Сообщение</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ message }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(window).on('load',function(){
+                $('#exampleModal').modal('show');
+            });
+        </script>
+    {% endfor %}
+{% block body %}
+
+{% endblock %}
+</div>
+{% block footer %}
+    <footer class="pt-4 border-top bg-dark">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <h5>Информация</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Условия использования</a></li>
+                        <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>Сервисы</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Все магазины</a></li>
+                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>Обратная связь</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="{{ path('faq') }}">Частые вопросы</a></li>
+                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 col-md text-center">
+                    <small class="d-block mb-12 text-muted">© CashTan 2018</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+    <script type="text/javascript" src="{{ asset('static/bootbox.min.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>
