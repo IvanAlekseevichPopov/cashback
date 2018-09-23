@@ -7,9 +7,10 @@ framework:
 
     # Enables session support. Note that the session will ONLY be started if you read or write from it.
     # Remove or comment this section to explicitly disable session support.
-    session:
-        handler_id: ~
 
+    session:
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
     #esi: ~
     #fragments: ~
     php_errors:
@@ -29,3 +30,7 @@ framework:
 
         # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
         #app: cache.adapter.apcu
+parameters:
+    domain: 'cashtan.tk'
+    mail_box: 'mail@cashtan.tk'
+    mail_from: 'Робот кешбек'
