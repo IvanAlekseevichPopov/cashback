@@ -80,6 +80,20 @@ class User extends FOSUser
     protected $googleAccessToken;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $vkontakteId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $vkontakteAccessToken;
+
+    /**
      * @return Balance
      */
     public function getBalance(): ?Balance
@@ -149,5 +163,37 @@ class User extends FOSUser
     public function setGoogleAccessToken(?string $googleAccessToken): void
     {
         $this->googleAccessToken = $googleAccessToken;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getVkontakteId(): ?string
+    {
+        return $this->vkontakteId;
+    }
+
+    /**
+     * @param null|string $vkontakteId
+     */
+    public function setVkontakteId(?string $vkontakteId): void
+    {
+        $this->vkontakteId = $vkontakteId;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getVkontakteAccessToken(): ?string
+    {
+        return $this->vkontakteAccessToken;
+    }
+
+    /**
+     * @param null|string $vkontakteAccessToken
+     */
+    public function setVkontakteAccessToken(?string $vkontakteAccessToken): void
+    {
+        $this->vkontakteAccessToken = $vkontakteAccessToken;
     }
 }

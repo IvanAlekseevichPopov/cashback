@@ -7,6 +7,8 @@ namespace App\Security;
 use App\Entity\User;
 use App\Event\AppEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
+use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\GoogleResourceOwner;
+use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\VkontakteResourceOwner;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\Exception\AccountNotLinkedException;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseUserProvider;
@@ -41,18 +43,24 @@ class FOSUBUserProvider extends BaseUserProvider
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
+//        dump($response->getResourceOwner());
+//        dump($response->getData());
+//        dump($response->getUserName());
+        $userName = $this->getUserName($response);
+
         try {
             $user = parent::loadUserByOAuthUserResponse($response);
         } catch (AccountNotLinkedException $e) {
             $user = $this->userManager->findUserByEmail($response->getEmail());
             //TODO add profile picture
+//            dump($user);
 
             if (!$user) {
                 /** @var User $user */
                 $user = $this->userManager->createUser();
                 $user->setEmail($response->getEmail());
                 $user->setPlainPassword(md5(uniqid('', true)));
-                $user->setUsername($response->getNickname());
+                $user->setUsername($userName);
                 $user->setEnabled(true);
                 $user->addRole(User::ROLE_DEFAULT);
 
@@ -70,5 +78,22 @@ class FOSUBUserProvider extends BaseUserProvider
         $accessor->setValue($user, ucfirst($serviceName).'Id', $response->getUsername());
 
         return $user;
+    }
+
+    /**
+     * @param UserResponseInterface $response
+     *
+     * @return string
+     */
+    private function getUserName(UserResponseInterface $response): string
+    {
+        if ($response->getResourceOwner() instanceof VkontakteResourceOwner) {
+            return $response->getFirstName().' '.$response->getLastName();
+        } elseif ($response->getResourceOwner() instanceof GoogleResourceOwner) {
+            return $response->getNickname();
+        }
+
+        //TODO other social networks
+        return $response->getNickname();
     }
 }

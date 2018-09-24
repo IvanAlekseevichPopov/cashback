@@ -11,3 +11,8 @@ hwi_oauth:
             client_id:           '%env(GOOGLE_ID)%'
             client_secret:       '%env(GOOGLE_SECRET)%'
             scope:               'email profile'
+        vkontakte:
+            type:                vkontakte
+            client_id:           '%env(VK_ID)%'
+            client_secret:       '%env(VK_SECRET)%'
+            scope:               'email status'
