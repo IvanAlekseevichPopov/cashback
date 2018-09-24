@@ -70,12 +70,15 @@ div.carousel-color {
 }
 
 /*логотип и название*/
-.black{
-    font-size: 28px;
+svg {
     margin-bottom: 10px;
-    color: #FF6000;
 }
 
+.black {
+    font-size: 28px;
+    margin-bottom: 7px;
+    color: #FF6000;
+}
 /*цвет текста нижних блоков*/
 .font-icon-color {
     color: #FF6000;
@@ -109,3 +112,43 @@ div.carousel-color {
     margin-right: 3px;
 }
 
+/*ширина диалогового окна*/
+.modal-dialog .modal-content {
+    width: 90%;
+}
+/*цвет кнопки по умолчанию*/
+.modal-content .btn-secondary {
+    background-color: #FF9933;
+    border-color: #FF9933;
+}
+/*цвет кнопки при наведении курсора*/
+.modal-content .btn-secondary:hover {
+    background-color: #FF9933;
+    border-color: #FF9933;
+
+}
+/*цвет кнопки при нажатии курсора*/
+.modal-content .btn:focus {
+    background-color: #FF9933;
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+    border-color: #FF9933;
+}
+
+#close-btn:active, #close-btn:focus {
+    color: #ffffff;
+    background-color: #FF9933;
+    border-color: #FF9933;
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+}
+/*кнопка регистрации*/
+.main_form .btn-enter {
+    width: 160px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: #FF6000;
+    color: white;
+    border: 1px solid #FF6000;
+}
