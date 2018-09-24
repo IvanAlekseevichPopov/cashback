@@ -12,6 +12,10 @@ body {
     font-size: 19px;
     width: 230px;
     padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+
 }
 /*цвет текста в каталоге*/
 .catalog .row_cat a {
