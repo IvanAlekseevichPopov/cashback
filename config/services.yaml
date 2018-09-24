@@ -40,4 +40,4 @@ services:
 
     App\Security\FOSUBUserProvider:
         arguments:
-            $properties: { google: googleId }
+            $properties: { google: googleId, vkontakte: vkontakteId }

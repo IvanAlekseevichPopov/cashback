@@ -70,7 +70,7 @@ div.carousel-color {
 }
 
 /*логотип и название*/
-.black{
+.black, svg {
     font-size: 28px;
     margin-bottom: 10px;
     color: #FF6000;

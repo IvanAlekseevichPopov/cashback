@@ -6,3 +6,7 @@ google_login:
     path: /login/google
 google_connect:
     path: /connect/google
+vk_login:
+    path: /login/vkontakte
+vk_connect:
+    path: /connect/vkontakte
