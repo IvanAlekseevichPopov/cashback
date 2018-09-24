@@ -32,6 +32,7 @@ class PagesAvailabilityTest extends WebTestCase
             '/catalog',
             '/register/',
             '/login',
+            '/login',
             '/faq',
             '/conditions',
         ];
