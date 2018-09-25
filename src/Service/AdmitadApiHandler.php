@@ -9,11 +9,11 @@ use App\Entity\CashBack;
 use App\Entity\CashBackCategory;
 use App\Entity\CashBackImage;
 use App\Entity\CashBackPlatform;
-use Doctrine\ORM\EntityManager;
-use Symfony\Bridge\Monolog\Logger;
+use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * AdmitadApiHandler.
@@ -33,20 +33,28 @@ class AdmitadApiHandler
     public const NEWEST_PAYMENT_CHECK = '-2 days';
     public const ADMITAD_MESSAGE_NOT_FOUND = 'Not Found';
 
+    /** @var LoggerInterface */
+    protected $logger;
+    /** @var EntityManagerInterface */
+    protected $manager;
+
     /** Самая ранняя дата для поиска выплат по кешбекам */
     private $startDate;
     /** Самая поздняя дата для поиска выплат по кешбекам */
     private $endDate;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(LoggerInterface $logger, EntityManagerInterface $manager)
     {
-        $this->setContainer($container);
+        $this->logger = $logger;
+        $this->manager = $manager;
     }
 
     /**
      * Запрос авторизационного токена у Admitad.
      *
      * @param CashBackPlatform $admitadCashBackPlatform
+     *
+     * @throws \Exception
      *
      * @return array|null
      */
@@ -68,7 +76,12 @@ class AdmitadApiHandler
         ]);
 
         $data = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
+        if (Response::HTTP_OK !== $httpcode) {
+            throw new \Exception('Invalid response api response: '.$data);
+        }
 
         return json_decode($data, true);
     }
@@ -90,8 +103,8 @@ class AdmitadApiHandler
                 ->setToken($tokenJson['access_token'])
                 ->setExpiredAt($now->add(new \DateInterval('PT'.$tokenJson['expires_in'].'S')));
 
-            $this->getManager()->persist($admitadPlatform);
-            $this->getManager()->flush();
+            $this->manager->persist($admitadPlatform);
+            $this->manager->flush();
         }
     }
 
@@ -256,7 +269,8 @@ class AdmitadApiHandler
      */
     public function getAdmitadPlatform(): CashBackPlatform
     {
-        return $this->container->get('doctrine.orm.default_entity_manager')->getRepository(CashBackPlatform::class)->find(CashBackPlatform::ADMITAD_PLATFORM_ID);
+        //TODO убрать менеджер, передавать cashbackplatform через factory
+        return $this->manager->getRepository(CashBackPlatform::class)->find(CashBackPlatform::ADMITAD_PLATFORM_ID);
     }
 
     /**
@@ -294,13 +308,13 @@ class AdmitadApiHandler
                     ->setTitle($action['name'])
                     ->setCash($action['payment_size'])
                     ->setCashBack($cashBack);
-                $this->getManager()->persist($cashBackCategory);
+                $this->manager->persist($cashBackCategory);
             }
         }
 
-        $this->getManager()->persist($cashBack);
+        $this->manager->persist($cashBack);
         if ($flushFlag) {
-            $this->getManager()->flush();
+            $this->manager->flush();
         }
 
         return $cashBack;
@@ -391,7 +405,7 @@ class AdmitadApiHandler
                                 ->setTitle($admitadAction['name'])
                                 ->setCash($admitadAction['payment_size']);
 
-                            $this->getManager()->persist($category);
+                            $this->manager->persist($category);
                         }
                     }
                 } else {
@@ -400,7 +414,7 @@ class AdmitadApiHandler
                         $updateFlag = true;
                         $category->setExternalId($admitadAction['id']);
 
-                        $this->getManager()->persist($category);
+                        $this->manager->persist($category);
                     }
                 }
             }
@@ -414,14 +428,14 @@ class AdmitadApiHandler
                     ->setTitle($admitadAction['name'])
                     ->setCash($admitadAction['payment_size']);
 
-                $this->getManager()->persist($category);
+                $this->manager->persist($category);
             }
         }
 
         //TODO проверка совпадения картинки
         if ($updateFlag) {
-            $this->getManager()->persist($cashBack);
-            $this->getManager()->flush();
+            $this->manager->persist($cashBack);
+            $this->manager->flush();
         }
 
         return $updateFlag;
@@ -442,16 +456,6 @@ class AdmitadApiHandler
     }
 
     /**
-     * Геттер менеджера.
-     *
-     * @return EntityManager
-     */
-    protected function getManager(): EntityManager
-    {
-        return $this->container->get('doctrine')->getManager();
-    }
-
-    /**
      * Создаем изображение кешбека.
      *
      * @param array $item
@@ -461,12 +465,11 @@ class AdmitadApiHandler
     protected function createCashBackImage(array $item): ?CashBackImage
     {
         file_put_contents(self::TMP_FILE, fopen($item['image'], 'rb'));
-        $fileName = substr($item['image'], strrpos($item['image'], '/'));
 
         $cashBackImage = new CashBackImage();
-        $cashBackImage->setFile(new File(self::TMP_FILE, $fileName));
-        $this->getManager()->persist($cashBackImage);
-        $this->getManager()->flush($cashBackImage);
+        $cashBackImage->setFile(new File(self::TMP_FILE));
+        $this->manager->persist($cashBackImage);
+        $this->manager->flush();
 
         return $cashBackImage;
     }
@@ -484,20 +487,15 @@ class AdmitadApiHandler
         if (self::ADMITAD_MESSAGE_NOT_FOUND === $admitadResponse['error']) {
             $cashBack->setActive(false);
 
-            $this->getManager()->persist($cashBack);
-            $this->getManager()->flush();
+            $this->manager->persist($cashBack);
+            $this->manager->flush();
 
             return true;
         }
 
-        $this->getLogger()->addCritical('Do not now how proceed error - '.$cashBack->getId());
+        $this->logger->critical('Do not now how proceed error - '.$cashBack->getId());
 
         return false;
-    }
-
-    protected function getLogger(): Logger
-    {
-        return $this->container->get('logger');
     }
 
     /**
