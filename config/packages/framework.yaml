@@ -16,9 +16,11 @@ framework:
     php_errors:
         log: true
 
-    cache:
-    assets:
-        version: 1
+#    cache:
+#    assets:
+#        version: 5
+#    assets:
+#        enabled:              true
         # Put the unique name of your app here: the prefix seed
         # is used to compute stable namespaces for cache keys.
         #prefix_seed: your_vendor_name/app_name

@@ -1,0 +1,60 @@
+body {
+    overflow-x: hidden;
+}
+
+/*список категорий*/
+.catalog .col-sm-4 .row_cat {
+    display: inline-block;
+    background-color: #FCD2A4;
+    margin-left: 380px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 19px;
+    width: 230px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+
+}
+/*цвет текста в каталоге*/
+.catalog .row_cat a {
+    color: black;
+}
+/*отступы в каталоге*/
+.catalog .row_cat .cell {
+    padding-bottom: 5px;
+}
+/*цвет текста при наведении в каталоге*/
+.catalog a:hover {
+    color: #FF6000;
+}
+/*отступы у магазинов*/
+.col-sm-8 .row {
+    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 400px;
+}
+/*окно поиска*/
+.col-sm-8 .row .find input {
+    width: 350px;
+    padding-left: 10px;
+    margin-left: 14px;
+}
+/*отступы между магазинами*/
+.col-sm-8 .col-sm-4 {
+    padding-bottom: 40px;
+    padding-right: 20px;
+}
+/*изображения магазинов*/
+.shop-window img {
+    max-width: 200px;
+    max-height: 200px;
+}
+/*цвет заголовка в футере*/
+body .pt-4 .row h5 {
+    color: #A4A4A4;
+}
+
+
