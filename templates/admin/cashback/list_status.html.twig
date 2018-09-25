@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{%- block field %}
+    <div class='cashback-status'>
+        {% if value is not empty %}
+            {{ admin.listFieldDescriptions.status.options.choices[value] }}
+        {% endif %}
+    </div>
+{% endblock -%}

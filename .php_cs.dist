@@ -12,6 +12,7 @@ return PhpCsFixer\Config::create()
         '@DoctrineAnnotation' => true,
         'phpdoc_order' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'phpdoc_no_empty_return' => false
     ])
     ->setFinder($finder)
 ;
