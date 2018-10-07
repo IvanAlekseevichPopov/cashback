@@ -30,6 +30,11 @@ abstract class AbstractImage
      */
     protected $file;
 
+    public function __toString()
+    {
+        return $this->getFilePath();
+    }
+
     /**
      * @return null|File
      */
@@ -42,8 +47,6 @@ abstract class AbstractImage
      * @param File $file
      *
      * @throws \Exception
-     *
-     * @return $this
      */
     public function setFile(File $file)
     {
@@ -59,6 +62,7 @@ abstract class AbstractImage
         if (empty($extension)) {
             $extension = $this->genExtension($file);
         }
+
         $this->setExtension($extension);
     }
 

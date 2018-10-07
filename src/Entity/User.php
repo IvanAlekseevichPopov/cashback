@@ -18,6 +18,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User extends FOSUser
 {
+    public const ROLE_MODERATOR = 'ROLE_MODERATOR';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -195,5 +197,10 @@ class User extends FOSUser
     public function setVkontakteAccessToken(?string $vkontakteAccessToken): void
     {
         $this->vkontakteAccessToken = $vkontakteAccessToken;
+    }
+
+    public function isModerator(): bool
+    {
+        return $this->hasRole(self::ROLE_SUPER_ADMIN) || $this->hasRole(self::ROLE_MODERATOR);
     }
 }

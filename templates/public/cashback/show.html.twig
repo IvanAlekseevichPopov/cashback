@@ -1,0 +1,194 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('static/page_shop.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="info row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 row">
+
+                <!--левая колонка-->
+                <div class="logo_shop col-sm-3">
+
+                    <img class="logo_img" src="/{{ cashback.cashBackImage }}">
+                    <!--процент кэшбэка-->
+                    <div class="cash_proc">
+                        <span class="word_cash">кэшбэк</span>
+                        <span class="do">до</span>
+                        <span class="cifra">{{ cashback.cash }}</span>
+                        <span class="znak_proc">%</span>
+                    </div>
+                    <!--кнопка-->
+                    {#TODO проверка авторизации#}
+                    <button type="submit" class="btn btn-shop">Перейти в магазин</button>
+                </div>
+                <div class="content_shop col-sm-9">
+                    <h4>Информация о магазине</h4>
+                    <p>
+                        {#TODO fixture cashback with image and description#}
+                        {{ cashback.condition }}
+                        {#OZON.ru – один из самых популярных на сегодня онлайн-мега или гипермаркетов на просторах Рунета.#}
+                        {#Компания начала свое развитие по аналогии с популярнейшим ресурсом уже мирового масштаба Amazon.com.#}
+                        {#Как и Amazon Ozon начинал с торговлей книгами. Позднее в ассортимент были добавлены товары других#}
+                        {#категорий, такие как: - электроника, детские товары и др. Кэшбэк скидки купоны промокоды cashback#}
+                        {#отзывы о Озон Ozon#}
+                    </p>
+                    {#<p></p>#}
+                    {#<h5>Условия и порядок оформления заказов</h5>#}
+                    {#<p>#}
+                    {#Для получения кэшбэк, товар необходимо добавить в корзину после перехода по ссылке со страницы&nbsp;#}
+                    {#нашего сервиса.#}
+                    {#</p>#}
+                    {#<p>#}
+                    {#Если Вы планируете заказать товары, которые уже лежали в Вашей Корзине (или в "Отложенных") для#}
+                    {#начисления кэшбэк необходимо вновь перейти на сайт Ozon.ru с нашего сайта, очистить корзину, снова#}
+                    {#добавить понравившиеся товары и оформить покупку.#}
+                    {#</p>#}
+                    {#<p>#}
+                    {#Если Вы аннулировали свой заказ, любой следующий или ПОВТОРНЫЙ заказ должен быть оформлен ЗАНОВО#}
+                    {#после перехода по ссылке с нашего сайта.#}
+                    {#</p>#}
+                    {#<h5>Время начисления кэшбэка</h5>#}
+                    {#<p>Среднее время ожидания:<b> 25 дней</b><br>#}
+                    {#Максимальное время ожидания:<b> 55 дней</b></p>#}
+                    {#<p></p>#}
+                    {#<h5>Кэшбэк не начисляется на следующие товары:</h5>#}
+                    {#<p>#}
+                    {#&nbsp;- на товарные позиции, продавцом которых не является ООО "Интернет Решения" (под кнопкой "в#}
+                    {#корзину" указан продавец);<br>#}
+                    {#&nbsp;- на товарные позиции раздела OZON.digital;<br>#}
+                    {#&nbsp;- подарочные сертификаты;<br>#}
+                    {#&nbsp;- билеты и гостиницы.#}
+                    {#</p>#}
+
+                    <!--отзывы-->
+                    <h4>Отзывы о магазине</h4>
+                    <div class="all-reviews">
+                        {% if app.user is defined %}
+                            <!--написать отзыв-->
+                            <div class="review row">
+                                <div class="avatar col-sm-1">
+                                    <img src="{{ asset('static/images/anonym.png') }}">
+                                </div>
+
+                                <div class="col-sm-8">
+                                    <div class="fio" id="fio">{{ app.user.username }}(Вы)</div>
+                                    <div class="rating_block">
+                                        <input name="rating" value="5" id="rating_5" type="radio"/>
+                                        <label for="rating_5" class="label_rating"></label>
+
+                                        <input name="rating" value="4" id="rating_4" type="radio"/>
+                                        <label for="rating_4" class="label_rating"></label>
+
+                                        <input name="rating" value="3" id="rating_3" type="radio"/>
+                                        <label for="rating_3" class="label_rating"></label>
+
+                                        <input name="rating" value="2" id="rating_2" type="radio"/>
+                                        <label for="rating_2" class="label_rating"></label>
+
+                                        <input name="rating" value="1" id="rating_1" type="radio"/>
+                                        <label for="rating_1" class="label_rating"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message">
+                            <textarea class="sm_textarea" rows="2" cols="85"
+                                      placeholder="Оставьте свой комментарий..."></textarea>
+                            </div>
+                        {% else %}
+                            <div class="button_r">
+                                <button type="submit" class="btn btn-reviews"> Авторизируйтесь, чтобы оставить отзыв
+                                </button>
+                            </div>
+                        {% endif %}
+
+                        <!--первый отзыв-->
+                        <div class="button row">
+
+                            <div class="col-sm-9"></div>
+                            <div class="button_en col-sm-3">
+                                <button type="submit" class="btn btn-send">Отправить</button>
+                            </div>
+
+                        </div>
+                        <div class="review row">
+                            <div class="avatar col-sm-1"><img src="{{ asset('static/images/anonym.png') }}">
+                            </div>
+
+                            <div class="col-sm-8">
+                                <div class="fio" id="fio">Ирина Демидова</div>
+                                <div class="rating_block">
+                                    <input name="rating" value="5" id="rating_5" type="radio"/>
+                                    <label for="rating_5" class="label_rating"></label>
+
+                                    <input name="rating" value="4" id="rating_4" type="radio"/>
+                                    <label for="rating_4" class="label_rating"></label>
+
+                                    <input name="rating" value="3" id="rating_3" type="radio"/>
+                                    <label for="rating_3" class="label_rating"></label>
+
+                                    <input name="rating" value="2" id="rating_2" type="radio"/>
+                                    <label for="rating_2" class="label_rating"></label>
+
+                                    <input name="rating" value="1" id="rating_1" type="radio"/>
+                                    <label for="rating_1" class="label_rating"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <div class="date col-sm-2">11.08.2018</div>
+                        </div>
+
+
+                        <div class="message">
+                            <p class="text_reviews">Давно пользуюсь услугами этого магазина. Огромный выбор товаров на
+                                любой вкус, даже если захочется что-то Такое.. можно найти. В редких случаях не
+                                "попадаю" в размер или не устраивает качество, но где такого не бывает. Покупаю без
+                                примерки. с возвратом - не было проблем. </p>
+                        </div>
+
+                        <!--второй отзыв-->
+                        <div class="review row">
+                            <div class="avatar col-sm-1"><img src="{{ asset('static/images/anonym.png') }}">
+                            </div>
+
+                            <div class="col-sm-8">
+                                <div class="fio" id="fio">Ярослав Жуков</div>
+                                <div class="rating_block">
+                                    <input name="rating" value="5" id="rating_5" type="radio"/>
+                                    <label for="rating_5" class="label_rating"></label>
+
+                                    <input name="rating" value="4" id="rating_4" type="radio"/>
+                                    <label for="rating_4" class="label_rating"></label>
+
+                                    <input name="rating" value="3" id="rating_3" type="radio"/>
+                                    <label for="rating_3" class="label_rating"></label>
+
+                                    <input name="rating" value="2" id="rating_2" type="radio"/>
+                                    <label for="rating_2" class="label_rating"></label>
+
+                                    <input name="rating" value="1" id="rating_1" type="radio"/>
+                                    <label for="rating_1" class="label_rating"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <div class="date col-sm-2">01.07.2018</div>
+                        </div>
+
+
+                        <div class="message">
+                            <p class="text_reviews">Сервис устраивает. Пользуюсь давно, если возникают вопросы, то они
+                                решаются, выплаты идут </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

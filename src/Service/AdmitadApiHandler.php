@@ -9,6 +9,7 @@ use App\Entity\CashBack;
 use App\Entity\CashBackCategory;
 use App\Entity\CashBackImage;
 use App\Entity\CashBackPlatform;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
@@ -287,6 +288,7 @@ class AdmitadApiHandler
         $cashBackImage = $this->createCashBackImage($item);
 
         $condition = html_entity_decode(strip_tags($item['description']), ENT_HTML5).'|'.html_entity_decode(strip_tags($item['more_rules']), ENT_HTML5);
+        $slugify = new Slugify();
 
         $cashBack = new CashBack();
         $cashBack
@@ -295,6 +297,7 @@ class AdmitadApiHandler
             ->setRating((int) $item['rating'])
             ->setCash('')
             ->setTitle($item['name'])
+            ->setSlug($slugify->slugify($item['name']))
             ->setCondition($condition)
             ->setCashBackPlatform($admitadPlatform)
             ->setUrl('Url появится после одобрения')

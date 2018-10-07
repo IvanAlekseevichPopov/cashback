@@ -1,14 +1,40 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
 use App\Entity\CashBackPlatform;
+use App\Entity\User;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
 
 class CashBackRepository extends EntityRepository
 {
+    public function getBySlug(string $slug, User $user = null)
+    {
+        $qb = $this->createQueryBuilder('cb');
+
+        $qb
+            ->select('cb, image')
+            ->join('cb.cashBackImage', 'image'); //TODO join comments
+
+        if (null === $user || !$user->isModerator()) {
+            $qb
+                ->andWhere($qb->expr()->eq('cb.active', ':active'))
+                ->andWhere($qb->expr()->isNotNull('cb.description'))
+                ->setParameter('active', true);
+        }
+
+        return $qb
+            ->andWhere($qb->expr()->eq('cb.slug', ':slug'))
+            ->setParameter('slug', $slug)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     /**
      * @param CashBackPlatform $cashBackPlatform
      *

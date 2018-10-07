@@ -25,13 +25,23 @@ class CashBack
      * @var string
      *
      * @ORM\Column(
-     *     name="title",
      *     type="string",
      *     length=128,
      *     nullable=false
      * )
      */
     private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(
+     *     type="string",
+     *     length=64,
+     *     nullable=false
+     * )
+     */
+    private $slug;
 
     /**
      * @ORM\Column(
@@ -503,6 +513,26 @@ class CashBack
     public function setSiteUrl($siteUrl)
     {
         $this->siteUrl = $siteUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return CashBack
+     */
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }
