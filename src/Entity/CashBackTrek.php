@@ -62,6 +62,12 @@ class CashBackTrek
      */
     private $transaction;
 
+    public function __construct(User $user, CashBack $cashBack)
+    {
+        $this->user = $user;
+        $this->cashBack = $cashBack;
+    }
+
     /**
      * @return User
      */
@@ -71,35 +77,11 @@ class CashBackTrek
     }
 
     /**
-     * @param User $user
-     *
-     * @return $this
-     */
-    public function setUser(User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
      * @return CashBack
      */
     public function getCashBack(): CashBack
     {
         return $this->cashBack;
-    }
-
-    /**
-     * @param CashBack $cashBack
-     *
-     * @return $this
-     */
-    public function setCashBack(CashBack $cashBack)
-    {
-        $this->cashBack = $cashBack;
-
-        return $this;
     }
 
     /**

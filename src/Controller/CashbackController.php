@@ -1,12 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Controller;
 
 use App\Entity\CashBack;
+use App\Entity\CashBackTrek;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,8 +20,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CashbackController extends Controller
 {
     /**
-     * @Route("/catalog/{slug}", name="cashback_page")
-     * @Method("GET")
+     * @Route("/catalog/{slug}", name="cashback_page", methods={"GET"})
      *
      * @param string $slug
      *
@@ -38,8 +39,7 @@ class CashbackController extends Controller
     }
 
     /**
-     * @Route("/catalog", name="catalog")
-     * @Method("GET")
+     * @Route("/catalog", name="catalog", methods={"GET"})
      *
      * @param EntityManagerInterface $manager
      *
@@ -55,5 +55,42 @@ class CashbackController extends Controller
         return $this->render('public/cashback/list.html.twig', [
             'cashbacks' => $cashBackCollection,
         ]);
+    }
+
+    /**
+     * @Route("/cashback/{id}", name="cashback_tracking")
+     * @Entity(name="cashback", expr="repository.findByUuid(id)")
+     *
+     * @param CashBack               $cashback
+     * @param EntityManagerInterface $entityManager
+     */
+    public function createCashbackTracking(Cashback $cashback, EntityManagerInterface $entityManager)
+    {
+        if(null === $this->getUser()){
+            //TODO ставим кэшбек, ведем статистику
+        }
+
+        dump($this->genUrl($this->getUser(), $cashback, $entityManager));
+//        $shopUrl =
+//        dump($cashback);
+
+
+    }
+
+    /**
+     * @param User                   $user
+     * @param CashBack               $cashBack
+     * @param EntityManagerInterface $manager
+     *
+     * @return string
+     */
+    private function genUrl(User $user, CashBack $cashBack, EntityManagerInterface $manager): string
+    {
+        $cashBackTrek = new CashBackTrek($user, $cashBack); Нужно хоть один одобренный партнер для продолжения
+
+        $manager->persist($cashBackTrek);
+        $manager->flush();
+
+        return sprintf('%s?subid=%s', $cashBack->getUrl(), $cashBackTrek->getId());
     }
 }

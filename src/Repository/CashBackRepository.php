@@ -7,11 +7,14 @@ namespace App\Repository;
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
 use App\Entity\CashBackPlatform;
 use App\Entity\User;
+use App\Traits\UuidFinderTrait;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
 
 class CashBackRepository extends EntityRepository
 {
+    use UuidFinderTrait;
+
     public function getBySlug(string $slug, User $user = null)
     {
         $qb = $this->createQueryBuilder('cb');
@@ -29,7 +32,9 @@ class CashBackRepository extends EntityRepository
 
         return $qb
             ->andWhere($qb->expr()->eq('cb.slug', ':slug'))
+            ->andWhere($qb->expr()->eq('cb.status', ':status'))
             ->setParameter('slug', $slug)
+            ->setParameter('status', CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP)
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
