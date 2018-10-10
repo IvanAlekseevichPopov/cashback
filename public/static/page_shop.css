@@ -50,14 +50,8 @@ body {
 }
 
 /*кнопка Перейти в магазин*/
-.logo_shop .btn {
-    width: 170px;
-    height: 60px;
-    font-size: 16px;
-    margin: 15px;
-    border-radius: 8px;
+.logo_shop .btn-shop {
     background-color: #FF9933;
-    color: white;
     border: 1px solid #FF9933;
 }
 
