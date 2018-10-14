@@ -258,7 +258,7 @@ class AdmitadApiHandler
      */
     public function getCampaigns(CashBackPlatform $admitadPlatform, int $offset, int $limit): array
     {
-        $url = $admitadPlatform->getBaseUrl().'advcampaigns/?offset='.$offset.'&limit='.$limit;
+        $url = $admitadPlatform->getBaseUrl().'advcampaigns/?offset='.$offset.'&limit='.$limit.'&has_tool=deeplink';
 
         return $this->getData($url, $admitadPlatform->getToken());
     }

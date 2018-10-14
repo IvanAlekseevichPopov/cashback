@@ -86,7 +86,7 @@ class CashbackController extends Controller
      */
     private function genUrl(User $user, CashBack $cashBack, EntityManagerInterface $manager): string
     {
-        $cashBackTrek = new CashBackTrek($user, $cashBack); Нужно хоть один одобренный партнер для продолжения
+        $cashBackTrek = new CashBackTrek($user, $cashBack);
 
         $manager->persist($cashBackTrek);
         $manager->flush();

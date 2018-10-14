@@ -107,13 +107,16 @@ class CashBackAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
+            ->add('externalId')
             ->add('rating')
             ->add('title');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')
+        $listMapper
+            ->addIdentifier('id')
+            ->addIdentifier('externalId')
             ->add('_action', null, [
                 'label' => 'Действия',
                 'actions' => [

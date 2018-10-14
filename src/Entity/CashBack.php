@@ -45,7 +45,6 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="description",
      *     type="text",
      *     length=65535,
      *     nullable=true,
@@ -72,7 +71,6 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="url",
      *     type="string",
      *     length=255,
      *     nullable=false,
@@ -84,7 +82,6 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="site_url",
      *     type="string",
      *     length=255,
      *     nullable=false,
@@ -99,7 +96,6 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="cash",
      *     type="string",
      *     length=255,
      *     nullable=false,
@@ -111,7 +107,6 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="external_id",
      *     type="integer",
      *     nullable=true
      * )
@@ -205,6 +200,13 @@ class CashBack
     private $rating = 0;
 
     /**
+     * @var \DateTimeImmutable
+     *
+     * @ORM\Column(type="date_immutable")
+     */
+    private $createdAt;
+
+    /**
      * @var string
      */
     private $trekUrl;
@@ -212,6 +214,7 @@ class CashBack
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     /**
@@ -535,5 +538,13 @@ class CashBack
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 }
