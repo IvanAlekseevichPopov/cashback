@@ -300,20 +300,29 @@ class AdmitadApiHandler
             ->setSlug($slugify->slugify($item['name']))
             ->setCondition($condition)
             ->setCashBackPlatform($admitadPlatform)
-            ->setUrl('Url появится после одобрения')
             ->setCashBackImage($cashBackImage);
 
-        if (!empty($item['actions'])) {
-            foreach ($item['actions'] as $action) {
-                $cashBackCategory = new CashBackCategory();
-                $cashBackCategory
-                    ->setExternalId($action['id'])
-                    ->setTitle($action['name'])
-                    ->setCash($action['payment_size'])
-                    ->setCashBack($cashBack);
-                $this->manager->persist($cashBackCategory);
-            }
+        if ($item['avg_money_transfer_time'] > 0) {
+            $cashBack->setAwaitingTime((int) $item['avg_money_transfer_time']);
         }
+
+        if ($item['connected']) {
+            $cashBack
+                ->setStatus(CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP);
+            //TODO set Uri for create query
+        }
+
+//        if (!empty($item['categories'])) { //TODO поиск уже существующих категорий
+//            foreach ($item['categories'] as $action) {
+//                $cashBackCategory = new CashBackCategory();
+//                $cashBackCategory
+        ////                    ->setExternalId($action['id'])
+//                    ->setTitle($action['name'])
+        ////                    ->setCash($action['payment_size'])
+//                    ->setCashBack($cashBack);
+//                $this->manager->persist($cashBackCategory);
+//            }
+//        }
 
         $this->manager->persist($cashBack);
         if ($flushFlag) {

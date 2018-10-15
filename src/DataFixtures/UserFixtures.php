@@ -19,8 +19,17 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $admin = self::getUserAdmin();
+        $ivan = new User();
+        $ivan
+            ->setPhone('89816988477')
+            ->setEmail('ivan.alekseevich.popov@gmail.com')
+            ->setUsername('Ivan Popov')
+            ->setPassword('$2y$13$h1PPDG8xcKntdGnHMNrZdOgAqK.B6EqYbsjHAW6HhKuhJvzM/Z2Mu')
+            ->setSuperAdmin(true)
+            ->setEnabled(true);
 
         $manager->persist($admin);
+        $manager->persist($ivan);
         $manager->flush();
     }
 

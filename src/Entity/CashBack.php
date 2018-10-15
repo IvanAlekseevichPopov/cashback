@@ -73,10 +73,10 @@ class CashBack
      * @ORM\Column(
      *     type="string",
      *     length=255,
-     *     nullable=false,
+     *     nullable=true
      * )
      *
-     * @var string
+     * @var string|null
      */
     private $url;
 
@@ -211,6 +211,13 @@ class CashBack
      */
     private $trekUrl;
 
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $awaitingTime;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -266,11 +273,11 @@ class CashBack
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return $this
      */
-    public function setUrl(string $url)
+    public function setUrl(?string $url)
     {
         $this->url = $url;
 
@@ -546,5 +553,21 @@ class CashBack
     public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getAwaitingTime(): ?int
+    {
+        return $this->awaitingTime;
+    }
+
+    /**
+     * @param int|null $awaitingTime
+     */
+    public function setAwaitingTime(?int $awaitingTime): void
+    {
+        $this->awaitingTime = $awaitingTime;
     }
 }

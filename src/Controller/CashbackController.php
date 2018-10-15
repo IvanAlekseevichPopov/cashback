@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -66,15 +66,13 @@ class CashbackController extends Controller
      */
     public function createCashbackTracking(Cashback $cashback, EntityManagerInterface $entityManager)
     {
-        if(null === $this->getUser()){
+        if (null === $this->getUser()) {
             //TODO ставим кэшбек, ведем статистику
         }
 
         dump($this->genUrl($this->getUser(), $cashback, $entityManager));
 //        $shopUrl =
 //        dump($cashback);
-
-
     }
 
     /**
