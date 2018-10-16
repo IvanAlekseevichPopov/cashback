@@ -50,12 +50,6 @@ class CashBackAdmin extends AbstractAdmin
         }
     }
 
-    public function configure()
-    {
-//        $this->setTemplate('list', 'AppBundle:Admin\Sonata\CashBack:cashback_list.html.twig');
-//        $this->setTemplate('edit', 'AppBundle:Admin\Sonata\CashBack:cashback_edit.html.twig');
-    }
-
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -185,5 +179,10 @@ class CashBackAdmin extends AbstractAdmin
         }
 
         return $fileFieldOptions;
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('list', 'admin/cashback/js_list.html.twig');
     }
 }

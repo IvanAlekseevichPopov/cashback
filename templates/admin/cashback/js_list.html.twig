@@ -1,0 +1,8 @@
+{% extends '@SonataAdmin/CRUD/base_list.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var CASHBACK_STATUSES = JSON.parse('{{ admin.listFieldDescriptions.status.options.choices | json_encode | raw }}');
+    </script>
+    <script type="text/javascript" src="{{ asset('js/admin/cashback_list.js') }}"></script>
+{% endblock %}
