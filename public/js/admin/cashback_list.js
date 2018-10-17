@@ -1,83 +1,82 @@
 //TODO refactoring
-function checkAwaitingStatus(button, platformId, cashBackExtId) {
-    if (0 === cashBackExtId.length) {
-        alert('Не найден внешний id кешбека - невозможно сделать запрос');
-        return;
-    }
-    $(button).button('loading');
-    $.ajax({
-               method : "POST",
-               url    : Routing.generate('sonata_admin_custom_check_cashback_status'),
-               data   : {'platformId': platformId, 'extId': cashBackExtId},
-               success: function (response) {
-                   if ('success' === response.status) {
-                       $(button).button('reset');
-                       processAwaitingResult(button, response);
-                   } else {
-                       alert('Error.');
-                       console.log(response);
-                   }
-               },
-               error  : function (response) {
-                   alert('Error. '.response.message);
-                   console.log('Error: ', response);
+// function checkAwaitingStatus(button, platformId, cashBackExtId) {
+//     if (0 === cashBackExtId.length) {
+//         alert('Не найден внешний id кешбека - невозможно сделать запрос');
+//         return;
+//     }
+//     $(button).button('loading');
+//     console.log($(button).attr('data-route'));
+//     // $.ajax({
+//     //            method : "POST",
+//     //            url    : ,
+//     //            data   : {'platformId': platformId, 'extId': cashBackExtId},
+//     //            success: function (response) {
+//     //                if ('success' === response.status) {
+//     //                    $(button).button('reset');
+//     //                    processAwaitingResult(button, response);
+//     //                } else {
+//     //                    alert('Error.');
+//     //                    console.log(response);
+//     //                }
+//     //            },
+//     //            error  : function (response) {
+//     //                alert('Error. '.response.message);
+//     //                console.log('Error: ', response);
+//     //
+//     //            }
+//     //        });
+// }
 
-               }
-           });
-}
-
-function sendPartnershipRequest(button, platformId, cashBackExtId) {
-    if (0 === cashBackExtId.length) {
-        alert('Не найден внешний id кешбека - невозможно сделать запрос');
-        return;
-    }
-
-    $(button).button('loading');
-    $.ajax({
-               method : "POST",
-               url    : Routing.generate('sonata_admin_custom_send_cooperation_offer'),
-               data   : {'platformId': platformId, 'extId': cashBackExtId},
-               success: function (response) {
-                   if ('success' === response.status) {
-                       $(button).button('reset');
-                       processPartnershipResult(button, response);
-                   } else {
-                       alert('Error.');
-                       console.log(response);
-                   }
-               },
-               error  : function (response) {
-                   alert('Error. '.response.responseJSON.message);
-                   console.log('Error: ', response);
-               }
-           });
-}
+// function sendPartnershipRequest(button, platformId, cashBackExtId) {
+//     if (0 === cashBackExtId.length) {
+//         alert('Не найден внешний id кешбека - невозможно сделать запрос');
+//         return;
+//     }
+//
+//     $(button).button('loading');
+//     $.ajax({
+//                method : "POST",
+//                url    : Routing.generate('sonata_admin_custom_send_cooperation_offer'),
+//                data   : {'platformId': platformId, 'extId': cashBackExtId},
+//                success: function (response) {
+//                    if ('success' === response.status) {
+//                        $(button).button('reset');
+//                        processPartnershipResult(button, response);
+//                    } else {
+//                        alert('Error.');
+//                        console.log(response);
+//                    }
+//                },
+//                error  : function (response) {
+//                    alert('Error. '.response.responseJSON.message);
+//                    console.log('Error: ', response);
+//                }
+//            });
+// }
 
 function updateInfo(button, platformId, cashBackExtId) {
-    if (0 === cashBackExtId.length) {
-        alert('Не найден внешний id кешбека - невозможно сделать запрос');
+    if (0 === cashBackExtId.length || 0 === platformId.length) {
+        bootbox.alert('Переданы пустые параметры');
+        console.log(platformId);
+        console.log(cashBackExtId);
+
         return;
     }
-
     $(button).button('loading');
+
     $.ajax({
-               method : "POST",
-               url    : Routing.generate('sonata_admin_custom_check_cashback_status'),
-               data   : {'platformId': platformId, 'extId': cashBackExtId},
-               success: function (response) {
-                   if ('success' === response.status) {
-                       $(button).button('reset');
-                       processUpdateResult(button, response);
-                   } else {
-                       alert('Error.');
-                       console.log(response);
-                   }
-               },
-               error  : function (response) {
-                   alert('Error. '.response.responseJSON.message);
-                   console.log('Error: ', response);
-               }
-           });
+        method: "POST",
+        url: $(button).attr('data-route'),
+        data: {'platformId': platformId, 'extId': cashBackExtId},
+        success: function (response) {
+                $(button).button('reset');
+                processUpdateResult(button, response);
+        },
+        error: function (response) {
+            bootbox.alert('Error. '.response.responseJSON.message);
+            console.log('Error: ', response);
+        }
+    });
 }
 
 function processAwaitingResult(button, data) {
@@ -92,14 +91,14 @@ function processAwaitingResult(button, data) {
     }
 
     bootbox.alert({
-                      'message' :
-                      '<h5>' + message + '</h5>' +
-                      '<button class="btn btn-primary btn-small" data-toggle="collapse" data-target="#demo">Посмотреть полный ответ</button>' +
-                      '<div id="demo" class="collapse">' +
-                      '<pre>' + JSON.stringify(data, null, 4) + '</pre>' +
-                      '</div>',
-                      'backdrop': true,
-                  });
+        'message':
+            '<h5>' + message + '</h5>' +
+            '<button class="btn btn-primary btn-small" data-toggle="collapse" data-target="#demo">Посмотреть полный ответ</button>' +
+            '<div id="demo" class="collapse">' +
+            '<pre>' + JSON.stringify(data, null, 4) + '</pre>' +
+            '</div>',
+        'backdrop': true,
+    });
 }
 
 function processPartnershipResult(button, data) {
@@ -116,14 +115,14 @@ function processPartnershipResult(button, data) {
     }
 
     bootbox.alert({
-                      'message' :
-                      '<h5>' + message + '</h5>' +
-                      '<button class="btn btn-primary btn-small" data-toggle="collapse" data-target="#demo">Посмотреть полный ответ</button>' +
-                      '<div id="demo" class="collapse">' +
-                      '<pre>' + JSON.stringify(data, null, 4) + '</pre>' +
-                      '</div>',
-                      'backdrop': true,
-                  });
+        'message':
+            '<h5>' + message + '</h5>' +
+            '<button class="btn btn-primary btn-small" data-toggle="collapse" data-target="#demo">Посмотреть полный ответ</button>' +
+            '<div id="demo" class="collapse">' +
+            '<pre>' + JSON.stringify(data, null, 4) + '</pre>' +
+            '</div>',
+        'backdrop': true,
+    });
     $(button).remove();
 }
 
@@ -141,14 +140,14 @@ function processUpdateResult(button, data) {
     }
 
     bootbox.alert({
-                      'message' :
-                      '<h5>' + message + '</h5>' +
-                      '<button class="btn btn-primary btn-small" data-toggle="collapse" data-target="#demo">Посмотреть полный ответ</button>' +
-                      '<div id="demo" class="collapse">' +
-                      '<pre>' + JSON.stringify(data, null, 4) + '</pre>' +
-                      '</div>',
-                      'backdrop': true,
-                  });
+        'message':
+            '<h5>' + message + '</h5>' +
+            '<button class="btn btn-primary btn-small" data-toggle="collapse" data-target="#demo">Посмотреть полный ответ</button>' +
+            '<div id="demo" class="collapse">' +
+            '<pre>' + JSON.stringify(data, null, 4) + '</pre>' +
+            '</div>',
+        'backdrop': true,
+    });
 }
 
 function updateCashback(button, data) {
@@ -158,16 +157,16 @@ function updateCashback(button, data) {
     var categories = parent.find('.cashback-categories').first();
     categories.html('');
     Object.keys(data['actions']).forEach(function (key) {
-        categories.append('<div class="cashback-categories">' + data['actions'][key]['name']+': '+data['actions'][key]['payment_size'] + '</div>');
+        categories.append('<div class="cashback-categories">' + data['actions'][key]['name'] + ': ' + data['actions'][key]['payment_size'] + '</div>');
     });
 
     //Обновление url
     var url = parent.find('.cashback-url').first();
-    url.html('<div class="cashback-url">'+data.gotolink+'</div>');
+    url.html('<div class="cashback-url">' + data.gotolink + '</div>');
 
     //Обновление рейтинга
     var rating = parent.find('.cashback-rating').first();
-    rating.html('<div class="cashback-rating">'+data.rating+'</div>');
+    rating.html('<div class="cashback-rating">' + data.rating + '</div>');
 
     //Обновление статуса
     var status = parent.find('.cashback-status').first();
@@ -186,5 +185,5 @@ function updateCashback(button, data) {
             newStatus = CASHBACK_STATUSES['STATUS_NOT_PARTNER'];
     }
 
-    status.html('<div class="cashback-status">'+newStatus+'</div>');
+    status.html('<div class="cashback-status">' + newStatus + '</div>');
 }

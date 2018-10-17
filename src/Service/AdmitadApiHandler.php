@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Service;
 
@@ -36,11 +36,13 @@ class AdmitadApiHandler
 
     /** @var LoggerInterface */
     protected $logger;
+
     /** @var EntityManagerInterface */
     protected $manager;
 
     /** Самая ранняя дата для поиска выплат по кешбекам */
     private $startDate;
+
     /** Самая поздняя дата для поиска выплат по кешбекам */
     private $endDate;
 
@@ -48,6 +50,30 @@ class AdmitadApiHandler
     {
         $this->logger = $logger;
         $this->manager = $manager;
+    }
+
+    /**
+     * Возвращает внутренний статус по строковому представлению внешнего статуса.
+     *
+     * @param array $admitadResponse
+     * @return string
+     * @throws \Exception
+     */
+    public static function getStatus(array $admitadResponse): string
+    {
+        if (true === $admitadResponse['connected']) {
+            return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
+        }
+        switch ($admitadResponse['connection_status']) {
+            case 'active':
+                return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
+            case 'pending':
+                return CashBackStatusEnumType::STATUS_AWAITING_PARTNERSHIP;
+            case 'declined':
+                return CashBackStatusEnumType::STATUS_REJECTED_PARTNERSHIP;
+            default:
+                throw new \Exception('unknown status - '.$admitadResponse['connection_status']);
+        }
     }
 
     /**
@@ -129,7 +155,7 @@ class AdmitadApiHandler
 
         $this->updateAccessToken($admitadPlatform);
         $admitadResponse = $this->getData(
-            $admitadPlatform->getBaseUrl().'advcampaigns/'.$cashBack->getExternalId().'/website/'.$admitadPlatform->getExternalPlatformId().'/', $admitadPlatform->getToken()
+            $admitadPlatform->getBaseUrl().'advcampaigns/'.$cashBack->getExternalId().'/', $admitadPlatform->getToken()
         );
 
         if (empty($admitadResponse)) {
@@ -158,29 +184,6 @@ class AdmitadApiHandler
         $this->updateAccessToken($admitadPlatform);
 
         return $this->getData($admitadPlatform->getBaseUrl().'websites/', $admitadPlatform->getToken());
-    }
-
-    /**
-     * Возвращает внутренний статус по строковому представлению внешнего статуса.
-     *
-     * @param string $externalStatus
-     *
-     * @throws \Exception
-     *
-     * @return string
-     */
-    public static function statusMatching(string $externalStatus): string
-    {
-        switch ($externalStatus) {
-            case 'active':
-                return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
-            case 'pending':
-                return CashBackStatusEnumType::STATUS_AWAITING_PARTNERSHIP;
-            case 'declined':
-                return CashBackStatusEnumType::STATUS_REJECTED_PARTNERSHIP;
-            default:
-                throw new \Exception('unknown status - '.$externalStatus);
-        }
     }
 
     /**
@@ -388,13 +391,14 @@ class AdmitadApiHandler
 //            $cashBack->setDescription($description);
 //        }
 
-        $status = $this->statusMatching($admitadResponse['connection_status']);
+        $status = $this->getStatus($admitadResponse);
         if ($cashBack->getStatus() !== $status) {
             $cashBack->setStatus($status);
             $updateFlag = true;
         }
 
-        if ($cashBack->getUrl() !== $admitadResponse['gotolink']) {
+        dump($admitadResponse)ж
+        if ($cashBack->getUrl() !== $admitadResponse['gotolink']) {   нет этой штуки в ответе(((
             $cashBack->setUrl($admitadResponse['gotolink']);
             $updateFlag = true;
         }
