@@ -121,16 +121,17 @@ class CashBackAdmin extends AbstractAdmin
             ->add('title')
             ->add('description')
             ->add('url')
+            ->add('siteUrl')
             ->add('condition', null, [
                 'collapse' => true,
                 'header_style' => 'width:10%;',
             ])
             ->add('cash')
-            ->add('categories', null, [
-                'associated_property' => 'title',
-//                'template' => 'admin/cashback/list_category.html.twig', //TODO починить это дерьмо(не работает замещение блока twig)
+//            ->add('categories', null, [
+//                'associated_property' => 'title',
+//                'template' => 'admin/cashback/list_category.html.twig',
 //                'collapse' => true
-            ])
+//            ])
             ->add('active', null, [
                 'editable' => true,
             ])

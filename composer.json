@@ -8,7 +8,6 @@
         "daniel-zahariev/php-aws-ses": "^0.9.1",
         "excelwebzone/recaptcha-bundle": "^1.5",
         "fresh/doctrine-enum-bundle": "^6.2",
-        "friendsofsymfony/jsrouting-bundle": "^2.2",
         "friendsofsymfony/user-bundle": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "hwi/oauth-bundle": "dev-master",

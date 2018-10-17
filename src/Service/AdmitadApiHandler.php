@@ -61,9 +61,9 @@ class AdmitadApiHandler
      */
     public static function getStatus(array $admitadResponse): string
     {
-        if (true === $admitadResponse['connected']) {
-            return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
-        }
+//        if (true === $admitadResponse['connected']) {
+//            return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
+//        }
         switch ($admitadResponse['connection_status']) {
             case 'active':
                 return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
@@ -99,7 +99,7 @@ class AdmitadApiHandler
         curl_setopt($ch, CURLOPT_POSTFIELDS, [
             'grant_type' => 'client_credentials',
             'client_id' => $admitadCashBackPlatform->getClientId(),
-            'scope' => 'advcampaigns arecords banners websites advcampaigns_for_website manage_advcampaigns statistics',
+            'scope' => 'advcampaigns arecords banners websites advcampaigns_for_website manage_advcampaigns statistics deeplink_generator',
         ]);
 
         $data = curl_exec($ch);
@@ -155,7 +155,7 @@ class AdmitadApiHandler
 
         $this->updateAccessToken($admitadPlatform);
         $admitadResponse = $this->getData(
-            $admitadPlatform->getBaseUrl().'advcampaigns/'.$cashBack->getExternalId().'/', $admitadPlatform->getToken()
+            $admitadPlatform->getBaseUrl() . 'advcampaigns/' . $cashBack->getExternalId() . '/website/' . $admitadPlatform->getExternalPlatformId() . '/', $admitadPlatform->getToken()
         );
 
         if (empty($admitadResponse)) {
@@ -383,70 +383,62 @@ class AdmitadApiHandler
             $updateFlag = true;
         }
 
-//      Description заполняется модератором, обновлять не нужно
-//        $description = html_entity_decode(strip_tags($admitadResponse['description']), ENT_HTML5);
-//        if($cashBack->getDescription() !== $description) {
-//            echo('new description for '.$cashBack->getId().PHP_EOL);
-//            $updateFlag = true;
-//            $cashBack->setDescription($description);
-//        }
-
         $status = $this->getStatus($admitadResponse);
         if ($cashBack->getStatus() !== $status) {
             $cashBack->setStatus($status);
             $updateFlag = true;
         }
 
-        dump($admitadResponse)ж
-        if ($cashBack->getUrl() !== $admitadResponse['gotolink']) {   нет этой штуки в ответе(((
+        if ($cashBack->getUrl() !== $admitadResponse['gotolink']) {
             $cashBack->setUrl($admitadResponse['gotolink']);
             $updateFlag = true;
         }
 
         if ($cashBack->getSiteUrl() !== $admitadResponse['site_url']) {
-            $cashBack->setUrl($admitadResponse['site_url']);
+            $cashBack->setSiteUrl($admitadResponse['site_url']);
             $updateFlag = true;
         }
 
-        /* @var CashBackCategory $category */
-        foreach ($admitadResponse['actions'] as $admitadAction) {
-            $founded = false;
-            foreach ($cashBack->getCategories() as $category) {
-                if (null !== $category->getExternalId()) {
-                    if ($category->getExternalId() === $admitadAction['id']) {
-                        $founded = true;
-                        if ($category->getTitle() !== $admitadAction['name'] || $category->getCash() !== $admitadAction['payment_size']) {
-                            $updateFlag = true;
-                            $category
-                                ->setTitle($admitadAction['name'])
-                                ->setCash($admitadAction['payment_size']);
-
-                            $this->manager->persist($category);
-                        }
-                    }
-                } else {
-                    if ($category->getTitle() === $admitadAction['name'] && $category->getCash() === $admitadAction['payment_size']) {
-                        $founded = true;
-                        $updateFlag = true;
-                        $category->setExternalId($admitadAction['id']);
-
-                        $this->manager->persist($category);
-                    }
-                }
-            }
-
-            if (!$founded) {
-                $updateFlag = true;
-                $category = new CashBackCategory();
-                $category
-                    ->setCashBack($cashBack)
-                    ->setExternalId($admitadAction['id'])
-                    ->setTitle($admitadAction['name'])
-                    ->setCash($admitadAction['payment_size']);
-
-                $this->manager->persist($category);
-            }
-        }
+//        /* @var CashBackCategory $category */ //TODO обновление категорий
+//        foreach ($admitadResponse['actions'] as $admitadAction) {
+//            $founded = false;
+//            foreach ($cashBack->getCategories() as $category) {
+//
+//                if (null !== $category->getExternalId()) {
+//                    if ($category->getExternalId() === $admitadAction['id']) {
+//                        $founded = true;
+//                        if ($category->getTitle() !== $admitadAction['name'] || $category->getCash() !== $admitadAction['payment_size']) {
+//                            $updateFlag = true;
+//                            $category
+//                                ->setTitle($admitadAction['name'])
+//                                ->setCash($admitadAction['payment_size']);
+//
+//                            $this->manager->persist($category);
+//                        }
+//                    }
+//                } else {
+//                    if ($category->getTitle() === $admitadAction['name'] && $category->getCash() === $admitadAction['payment_size']) {
+//                        $founded = true;
+//                        $updateFlag = true;
+//                        $category->setExternalId($admitadAction['id']);
+//
+//                        $this->manager->persist($category);
+//                    }
+//                }
+//            }
+//
+//            if (!$founded) {
+//                $updateFlag = true;
+//                $category = new CashBackCategory();
+//                $category
+//                    ->setCashBack($cashBack)
+//                    ->setExternalId($admitadAction['id'])
+//                    ->setTitle($admitadAction['name'])
+//                    ->setCash($admitadAction['payment_size']);
+//
+//                $this->manager->persist($category);
+//            }
+//        }
 
         //TODO проверка совпадения картинки
         if ($updateFlag) {
@@ -541,4 +533,6 @@ class AdmitadApiHandler
 
         return $this->endDate;
     }
+
+//    private function generateDeef
 }
