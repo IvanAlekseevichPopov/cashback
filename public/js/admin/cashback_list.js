@@ -27,32 +27,27 @@
 //     //        });
 // }
 
-// function sendPartnershipRequest(button, platformId, cashBackExtId) {
-//     if (0 === cashBackExtId.length) {
-//         alert('Не найден внешний id кешбека - невозможно сделать запрос');
-//         return;
-//     }
-//
-//     $(button).button('loading');
-//     $.ajax({
-//                method : "POST",
-//                url    : Routing.generate('sonata_admin_custom_send_cooperation_offer'),
-//                data   : {'platformId': platformId, 'extId': cashBackExtId},
-//                success: function (response) {
-//                    if ('success' === response.status) {
-//                        $(button).button('reset');
-//                        processPartnershipResult(button, response);
-//                    } else {
-//                        alert('Error.');
-//                        console.log(response);
-//                    }
-//                },
-//                error  : function (response) {
-//                    alert('Error. '.response.responseJSON.message);
-//                    console.log('Error: ', response);
-//                }
-//            });
-// }
+function sendPartnershipRequest(button, platformId, cashBackExtId) {
+    if (0 === cashBackExtId.length) {
+        alert('Не найден внешний id кешбека - невозможно сделать запрос');
+        return;
+    }
+
+    $(button).button('loading');
+    $.ajax({
+               method : "POST",
+               url    : $(button).attr('data-route'),
+               data   : {'platformId': platformId, 'extId': cashBackExtId},
+               success: function (response) {
+                   $(button).button('reset');
+                   processPartnershipResult(button, response);
+               },
+               error  : function (response) {
+                   bootbox.alert('Backend error! See console');
+                   console.log('Error: ', response);
+               }
+           });
+}
 
 function updateInfo(button, platformId, cashBackExtId) {
     if (0 === cashBackExtId.length || 0 === platformId.length) {

@@ -8,12 +8,11 @@ use App\Entity\CashBack;
 use App\Entity\CashBackPlatform;
 use App\Service\AdmitadApiHandler;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class AdminCashBackController
@@ -40,7 +39,7 @@ class AdminCashBackController extends Controller
     }
 
     /**
-     * Updates information about not connected cashback
+     * Updates information about already connected cashback
      *
      * @Route(
      *     "/cashback/check_status",
@@ -55,7 +54,7 @@ class AdminCashBackController extends Controller
      */
     public function cashBackCheckStatusAction(Request $request, EntityManagerInterface $manager)
     {
-        //TODO refactoring: symfony forms, remove platform id
+        //TODO refactoring: symfony forms, remove platform id, remove search cashback by id use exceptions
         $platformId = $request->get('platformId');
         $extId = $request->get('extId');
 
@@ -82,49 +81,47 @@ class AdminCashBackController extends Controller
         return JsonResponse::create($res);
     }
 
-//    /**
-//     * Обновляет информацию об акции с кешбек-сервиса
-//     *
-//     * @Method("POST")
-//     * @Route(
-//     *     "/cashback/send_cooperation_offer",
-//     *     name="sonata_admin_custom_send_cooperation_offer",
-//     *     options={
-//     *          "expose": true
-//     *     }
-//     * )
-//     *
-//     * @param Request $request
-//     *
-//     * @return JsonResponse
-//     */
-//    public function cashBackSendPartnerShipAction(Request $request): JsonResponse
-//    {
-//        $platformId = $request->get('platformId');
-//        $extId = $request->get('extId');
-//
-//        if (empty($platformId) || empty($extId)) {
-//            return $this->returnErrorJson(self::MESSAGE_NOT_ENOUGH_PARAMETERS, ApiControllerAbstract::RESPONSE_CODE_BAD_REQUEST);
-//        }
-//
-//        $cashBackPlatform = $this->get('doctrine.orm.default_entity_manager')->getRepository(CashBackPlatform::class)->find($platformId);
-//        if (empty($cashBackPlatform)) {
-//            return $this->returnErrorJson(self::MESSAGE_NOT_FOUND, ApiControllerAbstract::RESPONSE_CODE_NOT_FOUND);
-//        }
-//
-//        $cashBack = $this->get('doctrine.orm.default_entity_manager')->getRepository(CashBack::class)->findOneBy(['cashBackPlatform' => $cashBackPlatform, 'externalId' => $extId]);
-//        if (empty($cashBack)) {
-//            return $this->returnErrorJson(self::MESSAGE_NOT_FOUND, ApiControllerAbstract::RESPONSE_CODE_NOT_FOUND);
-//        }
-//        $res = $this->requirePartnership($cashBackPlatform, $cashBack);
-//
-//        if (empty($res)) {
-//            return $this->returnErrorJson(self::MESSAGE_INVALID_ANSWER, ApiControllerAbstract::RESPONSE_CODE_INTERNAL_SERVER_ERROR);
-//        }
-//
-//        return $this->returnSuccessJson($res);
-//    }
-//
+    /**
+     * Sends offer to cooperate
+     *
+     * @Route(
+     *     "/cashback/send_cooperation_offer",
+     *     name="admin_send_cooperation_offer",
+     *     methods={"POST"}
+     * )
+     *
+     * @param Request                $request
+     *
+     * @param EntityManagerInterface $entityManager
+     * @return JsonResponse
+     */
+    public function cashBackSendPartnerShipAction(Request $request, EntityManagerInterface $entityManager): JsonResponse
+    {
+        $platformId = $request->get('platformId');
+        $extId = $request->get('extId');
+
+        if (empty($platformId) || empty($extId)) {
+            return JsonResponse::create(self::MESSAGE_NOT_ENOUGH_PARAMETERS, Response::HTTP_BAD_REQUEST);
+        }
+
+        $cashBackPlatform = $entityManager->getRepository(CashBackPlatform::class)->find($platformId);
+        if (empty($cashBackPlatform)) {
+            return JsonResponse::create(self::MESSAGE_NOT_FOUND, Response::HTTP_BAD_REQUEST);
+        }
+
+        $cashBack = $entityManager->getRepository(CashBack::class)->findOneBy(['cashBackPlatform' => $cashBackPlatform, 'externalId' => $extId]);
+        if (empty($cashBack)) {
+            return JsonResponse::create(self::MESSAGE_NOT_FOUND, Response::HTTP_BAD_REQUEST);
+        }
+        $res = $this->requirePartnership($cashBackPlatform, $cashBack);
+
+        if (empty($res)) {
+            return JsonResponse::create(self::MESSAGE_INVALID_ANSWER, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return JsonResponse::create($res);
+    }
+
     /**
      * Отправка запроса в кешбек сервис для обновления данных кампании
      *
@@ -142,22 +139,22 @@ class AdminCashBackController extends Controller
                 throw new \LogicException('CashBack Platform unknown. Logic for it was not written');
         }
     }
-//
-//    /**
-//     * Отправка запроса на партнеку
-//     *
-//     * @param CashBackPlatform $cashBackPlatform
-//     * @param CashBack         $cashBack
-//     *
-//     * @return array
-//     */
-//    protected function requirePartnership(CashBackPlatform $cashBackPlatform, CashBack $cashBack): array
-//    {
-//        switch ($cashBackPlatform->getId()) {
-//            case CashBackPlatform::ADMITAD_PLATFORM_ID:
-//                return $this->getAdmitadApiHandler()->requirePartnership($cashBackPlatform, $cashBack);
-//            default:
-//                throw new UnknownCashBackPlatformException('CashBack Platform unknown. Logic for it was not written');
-//        }
-//    }
+
+    /**
+     * Отправка запроса на партнеку
+     *
+     * @param CashBackPlatform $cashBackPlatform
+     * @param CashBack         $cashBack
+     *
+     * @return array
+     */
+    protected function requirePartnership(CashBackPlatform $cashBackPlatform, CashBack $cashBack): array
+    {
+        switch ($cashBackPlatform->getId()) {
+            case CashBackPlatform::ADMITAD_PLATFORM_ID:
+                return $this->admitadApiHandler->requirePartnership($cashBackPlatform, $cashBack);
+            default:
+                throw new \LogicException('CashBack Platform unknown. Logic for it was not written');
+        }
+    }
 }

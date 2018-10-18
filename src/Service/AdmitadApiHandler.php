@@ -61,9 +61,6 @@ class AdmitadApiHandler
      */
     public static function getStatus(array $admitadResponse): string
     {
-//        if (true === $admitadResponse['connected']) {
-//            return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
-//        }
         switch ($admitadResponse['connection_status']) {
             case 'active':
                 return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;

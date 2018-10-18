@@ -17,9 +17,11 @@
     {% if(object.status == constant('App\\DBAL\\Types\\Enum\\CashBackStatusEnumType::STATUS_NOT_PARTNER')) %}
         <a class="btn btn-sm btn-danger" href="#"
            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
+           data-route="{{ path('admin_send_cooperation_offer') }}"
            onclick="sendPartnershipRequest(this, '{{ object.cashBackPlatform.id }}', '{{ object.externalId }}'); return false">Запросить
             партнерство</a>
     {% endif %}
+    {#//TODO отвергнутое партнерство изобразить#}
     </div>
 {% else %}
     <div>Реализовано только для admitad</div>
