@@ -160,11 +160,35 @@ body {
     background: url(images/rating.png) no-repeat 50% 0;
     cursor: pointer;
 }
+
 /*Пишем правила смены положения background-а*/
 .rating_block .label_rating:hover, /*Правило для ховера на текущий лейбл*/
 .rating_block .label_rating:hover ~ .label_rating, /*Правило для всех следующих лейблов по DOM дереву*/
 .rating_block input[type="radio"]:checked ~ .label_rating /*Правило для всех следующих лейблов после выбранного инпута, чтобы звездочки как бы зафиксировались*/
 {
     background-position: 50% -25px;
+}
+
+/*звездочки рейтинга в отзывах*/
+.rating_block_one {
+    width: 125px;
+    height: 25px;
+}
+
+/*звезда есть*/
+.starred {
+    float: right;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(images/rating.png) no-repeat 0 100%;
+}
+/*звезды нет*/
+.non_starred {
+    float: right;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(images/rating.png) no-repeat 50% 0;
 }
 
