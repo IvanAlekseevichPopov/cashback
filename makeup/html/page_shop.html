@@ -61,7 +61,13 @@
                     <span class="znak_proc">%</span>
                 </div>
                 <!--кнопка-->
-                <button type="submit" class="btn btn-shop">Перейти в магазин</button>
+                <div class="bu">
+                    <a href="#" class="btn btn-shop btn-primary btn-lg active" role="button" aria-pressed="true">В
+                        магазин</a>
+                    <a href="#" class="btn btn-secondary btn-pale btn-lg active" role="button" aria-pressed="true">В
+                        магазин</a>
+
+                </div>
             </div>
 
 
@@ -106,15 +112,15 @@
                 <h4>Отзывы о магазине</h4>
                 <div class="all-reviews">
                     <div class="button_r">
-                        <button type="submit" class="btn btn-reviews"> Авторизируйтесь, чтобы оставить отзыв
-                        </button>
+                        <a href="#" class="btn btn-reviews" role="button" aria-pressed="true">Авторизируйтесь, чтобы
+                            оставить отзыв</a>
                     </div>
-<!--написать отзыв-->
-                        <div class="review row">
-                            <div class="avatar col-sm-1"><img src="images/anonym.png">
-                            </div>
+                    <!--написать отзыв-->
+                    <div class="review row">
+                        <div class="avatar col-sm-1"><img src="images/anonym.png">
+                        </div>
 
-                            <div class="col-sm-8">
+                        <div class="col-sm-8">
                             <div class="fio" id="fio">Имя Фамилия</div>
                             <div class="rating_block">
                                 <input name="rating" value="5" id="rating_5" type="radio"/>
@@ -132,59 +138,47 @@
                                 <input name="rating" value="1" id="rating_1" type="radio"/>
                                 <label for="rating_1" class="label_rating"></label>
                             </div>
-                            </div>
-
-                            <div class="col-sm-1"></div>
-
-
-                            <div class="date col-sm-2">20.12.2018</div>
-
                         </div>
 
+                        <div class="col-sm-1"></div>
 
-                            <div class="message">
+
+                        <div class="date col-sm-2">20.12.2018</div>
+
+                    </div>
+
+
+                    <div class="message">
                             <textarea class="sm_textarea" rows="2" cols="85"
-                                  placeholder="Оставьте свой комментарий..."></textarea>
-                            </div>
-<!--первый отзыв-->
+                                      placeholder="Оставьте свой комментарий..."></textarea>
+                    </div>
+                    <!--первый отзыв-->
 
-                        <div class="button row">
+                    <div class="button row">
 
                         <div class="col-sm-9"></div>
                         <div class="button_en col-sm-3">
                             <button type="submit" class="btn btn-send">Отправить</button>
                         </div>
 
-                        </div>
+                    </div>
                     <div class="review row">
                         <div class="avatar col-sm-1"><img src="images/gerl.jpg">
                         </div>
 
                         <div class="col-sm-8">
-                            <div class="fio" id="fio">Ирина Демидова</div>
-                            <div class="rating_block">
-                                <input name="rating" value="5" id="rating_5" type="radio"/>
-                                <label for="rating_5" class="label_rating"></label>
-
-                                <input name="rating" value="4" id="rating_4" type="radio"/>
-                                <label for="rating_4" class="label_rating"></label>
-
-                                <input name="rating" value="3" id="rating_3" type="radio"/>
-                                <label for="rating_3" class="label_rating"></label>
-
-                                <input name="rating" value="2" id="rating_2" type="radio"/>
-                                <label for="rating_2" class="label_rating"></label>
-
-                                <input name="rating" value="1" id="rating_1" type="radio"/>
-                                <label for="rating_1" class="label_rating"></label>
+                            <div class="fio">Ирина Демидова</div>
+                            <div class="rating_block_one">
+                                <div class="non_starred"></div>
+                                <div class="starred"></div>
+                                <div class="starred"></div>
+                                <div class="starred"></div>
+                                <div class="starred"></div>
                             </div>
                         </div>
-
                         <div class="col-sm-1"></div>
-
                         <div class="date col-sm-2">11.08.2018</div>
                     </div>
-
 
                     <div class="message">
                         <p class="text_reviews">Давно пользуюсь услугами этого магазина. Огромный выбор товаров на
@@ -193,48 +187,34 @@
                             примерки. с возвратом - не было проблем. </p>
                     </div>
 
-<!--второй отзыв-->
-                      <div class="review row">
+                    <!--второй отзыв-->
+                    <div class="review row">
                         <div class="avatar col-sm-1"><img src="images/men.jpeg">
                         </div>
 
                         <div class="col-sm-8">
-                            <div class="fio" id="fio">Ярослав Жуков</div>
-                            <div class="rating_block">
-                                <input name="rating" value="5" id="rating_5" type="radio"/>
-                                <label for="rating_5" class="label_rating"></label>
-
-                                <input name="rating" value="4" id="rating_4" type="radio"/>
-                                <label for="rating_4" class="label_rating"></label>
-
-                                <input name="rating" value="3" id="rating_3" type="radio"/>
-                                <label for="rating_3" class="label_rating"></label>
-
-                                <input name="rating" value="2" id="rating_2" type="radio"/>
-                                <label for="rating_2" class="label_rating"></label>
-
-                                <input name="rating" value="1" id="rating_1" type="radio"/>
-                                <label for="rating_1" class="label_rating"></label>
+                            <div class="fio">Ярослав Жуков</div>
+                            <div class="rating_block_one">
+                                <div class="non_starred"></div>
+                                <div class="non_starred"></div>
+                                <div class="starred"></div>
+                                <div class="starred"></div>
+                                <div class="starred"></div>
                             </div>
                         </div>
-
                         <div class="col-sm-1"></div>
-
                         <div class="date col-sm-2">01.07.2018</div>
                     </div>
-
-
                     <div class="message">
                         <p class="text_reviews">Сервис устраивает. Пользуюсь давно, если возникают вопросы, то они
                             решаются, выплаты идут </p>
-                                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    </div>
-
+</div>
 
 
 <div class="col-sm-3"></div>
