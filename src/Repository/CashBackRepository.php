@@ -75,7 +75,7 @@ class CashBackRepository extends EntityRepository
             ->setParameter('active', true);
 //            ->orderBy('cb.rating', 'DESC');
 
-        if(null !== $query->title) {
+        if (null !== $query->title) {
             $qb
                 ->andWhere($qb->expr()->like($qb->expr()->lower('cb.title'), ':title'))
                 ->setParameter('title', '%'.mb_strtolower($query->title).'%');

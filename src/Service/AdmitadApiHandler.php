@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Service;
 
@@ -56,8 +56,10 @@ class AdmitadApiHandler
      * Возвращает внутренний статус по строковому представлению внешнего статуса.
      *
      * @param array $admitadResponse
-     * @return string
+     *
      * @throws \Exception
+     *
+     * @return string
      */
     public static function getStatus(array $admitadResponse): string
     {
@@ -152,7 +154,7 @@ class AdmitadApiHandler
 
         $this->updateAccessToken($admitadPlatform);
         $admitadResponse = $this->getData(
-            $admitadPlatform->getBaseUrl() . 'advcampaigns/' . $cashBack->getExternalId() . '/website/' . $admitadPlatform->getExternalPlatformId() . '/', $admitadPlatform->getToken()
+            $admitadPlatform->getBaseUrl().'advcampaigns/'.$cashBack->getExternalId().'/website/'.$admitadPlatform->getExternalPlatformId().'/', $admitadPlatform->getToken()
         );
 
         if (empty($admitadResponse)) {

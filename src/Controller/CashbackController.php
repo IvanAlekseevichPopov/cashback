@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\CashBack;
-use App\Entity\CashBackTrek;
-use App\Entity\User;
 use App\Form\Query\CashbackQueryType;
 use App\Model\Query\CashbackQuery;
 use App\Service\CashbackRedirectHandler;
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -41,7 +38,7 @@ class CashbackController extends Controller
 
         return $this->render('public/cashback/show.html.twig', [
             'cashback' => $cashBack,
-            'comments' => []
+            'comments' => [],
         ]);
     }
 
@@ -57,7 +54,7 @@ class CashbackController extends Controller
         $cashbackQuery = new CashbackQuery();
         $form = $this->createForm(CashbackQueryType::class, $cashbackQuery);
         $form->submit($request->query->all());
-        if(false === $form->isValid()) {
+        if (false === $form->isValid()) {
             throw new BadRequestHttpException('Bad request');
         }
 
@@ -65,7 +62,7 @@ class CashbackController extends Controller
 
         return $this->render('public/cashback/list.html.twig', [
             'cashbacks' => $cashBackCollection,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
@@ -85,6 +82,7 @@ class CashbackController extends Controller
         }
 
         $url = $redirectHandler->generateRedirectUrl($cashback, $this->getUser());
+
         return new RedirectResponse($url);
     }
 }

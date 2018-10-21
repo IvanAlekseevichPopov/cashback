@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
@@ -15,15 +15,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class AdminCashBackController
+ * Class AdminCashBackController.
  *
  * @Route("/admin")
  */
 class AdminCashBackController extends Controller
 {
-    const MESSAGE_NOT_ENOUGH_PARAMETERS = 'Переданы не все параметры';
-    const MESSAGE_NOT_FOUND = 'Не найдено в бд';
-    const MESSAGE_INVALID_ANSWER = 'Некорректный ответ от кешбек сервиса';
+    public const MESSAGE_NOT_ENOUGH_PARAMETERS = 'Переданы не все параметры';
+    public const MESSAGE_NOT_FOUND = 'Не найдено в бд';
+    public const MESSAGE_INVALID_ANSWER = 'Некорректный ответ от кешбек сервиса';
 
     /** @var AdmitadApiHandler */
     private $admitadApiHandler;
@@ -39,7 +39,7 @@ class AdminCashBackController extends Controller
     }
 
     /**
-     * Updates information about already connected cashback
+     * Updates information about already connected cashback.
      *
      * @Route(
      *     "/cashback/check_status",
@@ -82,7 +82,7 @@ class AdminCashBackController extends Controller
     }
 
     /**
-     * Sends offer to cooperate
+     * Sends offer to cooperate.
      *
      * @Route(
      *     "/cashback/send_cooperation_offer",
@@ -91,8 +91,8 @@ class AdminCashBackController extends Controller
      * )
      *
      * @param Request                $request
-     *
      * @param EntityManagerInterface $entityManager
+     *
      * @return JsonResponse
      */
     public function cashBackSendPartnerShipAction(Request $request, EntityManagerInterface $entityManager): JsonResponse
@@ -123,7 +123,7 @@ class AdminCashBackController extends Controller
     }
 
     /**
-     * Отправка запроса в кешбек сервис для обновления данных кампании
+     * Отправка запроса в кешбек сервис для обновления данных кампании.
      *
      * @param CashBackPlatform $cashBackPlatform
      * @param CashBack         $cashBack
@@ -141,7 +141,7 @@ class AdminCashBackController extends Controller
     }
 
     /**
-     * Отправка запроса на партнеку
+     * Отправка запроса на партнеку.
      *
      * @param CashBackPlatform $cashBackPlatform
      * @param CashBack         $cashBack
