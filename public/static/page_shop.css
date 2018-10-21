@@ -1,0 +1,194 @@
+body {
+    overflow-x: hidden;
+}
+.info{
+    min-height: calc(100vh - 225px);
+}
+.info .col-sm-6 {
+    background-color: #FCD2A4;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+/*колонка слева - логотип*/
+.info .col-sm-3 .logo_shop {
+    background-color: #FCD2A4;
+    margin-top: 10px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+/*колонка справа - текст*/
+.info .col-sm-9 {
+    width: auto;
+    background-color: #FCD2A4;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+/*логотип магазина*/
+.logo_img {
+    background-color: #ffffff;
+    max-width: 190px;
+    max-height: 120px;
+    margin-top: 40px;
+}
+
+/*слово кэшбэк*/
+.logo_shop .word_cash, .do {
+      font-size: 20px;
+}
+
+/*текст под лого*/
+.cash_proc .cifra, .znak_proc {
+    font-size: 25px;
+    font-weight: bold;
+}
+.cash_proc {
+    text-align: center;
+}
+/*кнопка Перейти в магазин*/
+.logo_shop .btn-shop {
+    margin: 15px;
+    border-radius: 8px;
+    background-color: #FF9933;
+    color: white;
+    border: 1px solid #FF9933;
+}
+
+.logo_shop .bu {
+    text-align: center;
+}
+.logo_shop .btn-shop:hover{
+    background-color: #FF9933;
+    border-color: rgba(255,96,0,.25);
+}
+/*цвет рамки кнопки при наведении*/
+
+.logo_shop .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    border-color: rgba(255,96,0,.25);
+    background-color: #FF9933;
+}
+
+.logo_shop .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+}
+
+.logo_shop .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    background-color: #848484;
+    border-color:  #848484;
+}
+
+.content_shop {
+    padding: 15px;
+}
+/*кнопка авторизации для отзыва*/
+.all-reviews .btn-reviews {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #FF9933;
+    color: white;
+    border: 1px solid #FF9933;
+}
+/*цвет рамки кнопки при наведении*/
+.all-reviews .btn-reviews:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+}
+
+.content_shop h4 {
+    text-align: center;
+}
+
+.review .avatar img {
+    width: 48px;
+    height: 48px;
+}
+
+.sm_textarea {
+    width: 100%;
+    border: 1px solid #FF6000;
+    border-radius: 5px;
+    background-color: #F8ECE0;
+    outline: none;
+}
+
+.review {
+    height: 60px;
+   margin-top: 30px;
+}
+
+.fio {
+    padding-left: 3px;
+}
+/*кнопка отправить отзыв*/
+.button_en .btn-send {
+    width: 120px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #FF9933;
+    color: white;
+    border: 1px solid #FF9933;
+    float: right;
+}
+/*цвет рамки кнопки при наведении*/
+.button_en .btn-send:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+}
+
+.message .text_reviews {
+    border: 1px solid #FF6000;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #F8ECE0;
+}
+
+/*звездочки рейтинга*/
+.rating_block {
+    width: 125px;
+    height: 25px;
+
+}
+.rating_block input[type="radio"] {
+    display: none;
+}
+.label_rating {
+    float: right;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(images/rating.png) no-repeat 50% 0;
+    cursor: pointer;
+}
+
+/*Пишем правила смены положения background-а*/
+.rating_block .label_rating:hover, /*Правило для ховера на текущий лейбл*/
+.rating_block .label_rating:hover ~ .label_rating, /*Правило для всех следующих лейблов по DOM дереву*/
+.rating_block input[type="radio"]:checked ~ .label_rating /*Правило для всех следующих лейблов после выбранного инпута, чтобы звездочки как бы зафиксировались*/
+{
+    background-position: 50% -25px;
+}
+
+/*звездочки рейтинга в отзывах*/
+.rating_block_one {
+    width: 125px;
+    height: 25px;
+}
+
+/*звезда есть*/
+.starred {
+    float: right;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(images/rating.png) no-repeat 0 100%;
+}
+/*звезды нет*/
+.non_starred {
+    float: right;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(images/rating.png) no-repeat 50% 0;
+}
+

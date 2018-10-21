@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\DBAL\Types\Enum\TransactionEnumType;
 use App\DBAL\Types\Enum\TransactionStatusEnumType;
 use App\Entity\CashBack;
 use App\Entity\CashBackPlatform;
@@ -14,7 +13,7 @@ use App\Manager\TransactionManager;
 use App\Repository\CashBackRepository;
 use App\Service\AdmitadApiHandler;
 use Doctrine\ORM\EntityManagerInterface;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,7 +23,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class GetCashBackAdmitadCommand extends ContainerAwareCommand
 {
-    public const TMP_FILE = '/tmp/temporary_image_cashback_tratata';
+    public const TMP_FILE = '/tmp/temporary_image_cashback';
 
     /** @var AdmitadApiHandler */
     protected $admitadApiHandler;
@@ -34,12 +33,15 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
     protected $em;
 
     protected $admitadIds = null;
+    /** @var LoggerInterface */
+    protected $logger;
 
-    public function __construct(AdmitadApiHandler $admitadApiHandler, EntityManagerInterface $manager, TransactionManager $transactionManager)
+    public function __construct(AdmitadApiHandler $admitadApiHandler, EntityManagerInterface $manager, TransactionManager $transactionManager, LoggerInterface $logger)
     {
         $this->admitadApiHandler = $admitadApiHandler;
         $this->em = $manager;
         $this->transactionManager = $transactionManager;
+        $this->logger = $logger;
 
         parent::__construct();
     }
@@ -50,8 +52,8 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:cashback:parse:admitad')
-            ->setDescription('Берет новые кешбеки с адмитада');
+            ->setName('app:cashback:update')
+            ->setDescription('Update cashback data from external sevice');
     }
 
     /**
@@ -96,12 +98,6 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
             $count = 0;
             foreach ($admitadResponse['results'] as $item) {
                 ++$count;
-
-                //Проверка, подходит ли нам кешбек
-                if ($item['connected']) {
-                    $this->logAndShow($item['id'].'.Already added');
-                    continue;
-                }
 
                 if (false === $item['allow_deeplink']) {
                     $this->logAndShow($item['id'].'.Deeplink not supported');
@@ -209,7 +205,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
 
             foreach ($paymentsCollection['results'] as $payment) {
                 if (empty($payment['subid'])) {
-                    $this->getLogger()->addWarning('empty SubID');
+                    $this->logger->warning('empty SubID');
                     continue;
                 }
 
@@ -225,7 +221,7 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
                 /** @var CashBackTrek $cashBackTrek */
                 $cashBackTrek = $this->getCashBackTrekRepository()->find($payment['subid']);
                 if (null === $cashBackTrek) {
-                    $this->getLogger()->addWarning('not found cashBack trek -'.$payment['subid']);
+                    $this->logger->warning('not found cashBack trek -'.$payment['subid']);
                     continue;
                 }
 
@@ -320,31 +316,13 @@ class GetCashBackAdmitadCommand extends ContainerAwareCommand
         return $this->em->getRepository(CashBackTrek::class);
     }
 
-//    /**
-//     * Геттер пуш сендера
-//     *
-//     * @return PushSender
-//     */
-//    protected function getPushSender(): PushSender
-//    {
-//        return $this->getContainer()->get('dionis.push_sender');
-//    }
-
-    /**
-     * @return Logger
-     */
-    protected function getLogger(): Logger
-    {
-        return $this->getContainer()->get('logger');
-    }
-
     /**
      * @param string $message
      */
     protected function logAndShow(string $message): void
     {
         echo $message.PHP_EOL;
-        $this->getLogger()->addInfo($message);
+        $this->logger->addInfo($message);
     }
 
     /**

@@ -15,7 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cash_back")
  *
  * @ORM\Entity(repositoryClass="App\Repository\CashBackRepository")
- * @ORM\HasLifecycleCallbacks
  */
 class CashBack
 {
@@ -25,7 +24,6 @@ class CashBack
      * @var string
      *
      * @ORM\Column(
-     *     name="title",
      *     type="string",
      *     length=128,
      *     nullable=false
@@ -34,8 +32,18 @@ class CashBack
     private $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(
-     *     name="description",
+     *     type="string",
+     *     length=64,
+     *     nullable=false
+     * )
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(
      *     type="text",
      *     length=65535,
      *     nullable=true,
@@ -62,19 +70,17 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="url",
      *     type="string",
      *     length=255,
-     *     nullable=false,
+     *     nullable=true
      * )
      *
-     * @var string
+     * @var string|null
      */
     private $url;
 
     /**
      * @ORM\Column(
-     *     name="site_url",
      *     type="string",
      *     length=255,
      *     nullable=false,
@@ -89,7 +95,6 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="cash",
      *     type="string",
      *     length=255,
      *     nullable=false,
@@ -101,7 +106,6 @@ class CashBack
 
     /**
      * @ORM\Column(
-     *     name="external_id",
      *     type="integer",
      *     nullable=true
      * )
@@ -195,13 +199,28 @@ class CashBack
     private $rating = 0;
 
     /**
+     * @var \DateTimeImmutable
+     *
+     * @ORM\Column(type="date_immutable")
+     */
+    private $createdAt;
+
+    /**
      * @var string
      */
     private $trekUrl;
 
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $awaitingTime;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     /**
@@ -253,11 +272,11 @@ class CashBack
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return $this
      */
-    public function setUrl(string $url)
+    public function setUrl(?string $url)
     {
         $this->url = $url;
 
@@ -505,5 +524,49 @@ class CashBack
         $this->siteUrl = $siteUrl;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return CashBack
+     */
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getAwaitingTime(): ?int
+    {
+        return $this->awaitingTime;
+    }
+
+    /**
+     * @param int|null $awaitingTime
+     */
+    public function setAwaitingTime(?int $awaitingTime): void
+    {
+        $this->awaitingTime = $awaitingTime;
     }
 }

@@ -30,6 +30,11 @@ abstract class AbstractImage
      */
     protected $file;
 
+    public function __toString()
+    {
+        return $this->getFilePath();
+    }
+
     /**
      * @return null|File
      */
@@ -42,8 +47,6 @@ abstract class AbstractImage
      * @param File $file
      *
      * @throws \Exception
-     *
-     * @return $this
      */
     public function setFile(File $file)
     {
@@ -52,9 +55,15 @@ abstract class AbstractImage
         }
 
         $this->file = $file;
-        $this->setExtension($this->genExtension($file));
+        $extension = $file->getExtension();
+        if (empty($extension) || strlen($extension) > 5) {
+            $extension = $file->guessExtension();
+        }
+        if (empty($extension)) {
+            $extension = $this->genExtension($file);
+        }
 
-        return $this;
+        $this->setExtension($extension);
     }
 
     /**
@@ -125,18 +134,10 @@ abstract class AbstractImage
     {
         list(, $type) = explode('/', $file->getMimeType(), 2);
         switch ($type) {
-            case 'pjpeg':
-            case 'jpeg':
-            case 'jpg':
-                return 'jpg';
-            case 'gif':
-                return 'gif';
-            case 'png':
-                return 'png';
-            case 'webp':
-                return 'webp';
+            case 'text/x-Algol68':
+                return 'sql';
             default:
-                return '';
+                return 'none';
         }
     }
 }

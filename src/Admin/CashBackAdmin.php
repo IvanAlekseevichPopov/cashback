@@ -50,12 +50,6 @@ class CashBackAdmin extends AbstractAdmin
         }
     }
 
-    public function configure()
-    {
-//        $this->setTemplate('list', 'AppBundle:Admin\Sonata\CashBack:cashback_list.html.twig');
-//        $this->setTemplate('edit', 'AppBundle:Admin\Sonata\CashBack:cashback_edit.html.twig');
-    }
-
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -107,13 +101,15 @@ class CashBackAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
+            ->add('externalId')
             ->add('rating')
             ->add('title');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')
+        $listMapper
+            ->addIdentifier('externalId')
             ->add('_action', null, [
                 'label' => 'Действия',
                 'actions' => [
@@ -122,18 +118,9 @@ class CashBackAdmin extends AbstractAdmin
             ])
             ->add('rating')
             ->add('title')
-            ->add('description')
             ->add('url')
-            ->add('condition', null, [
-                'collapse' => true,
-                'header_style' => 'width:10%;',
-            ])
+            ->add('siteUrl')
             ->add('cash')
-            ->add('categories', null, [
-                'associated_property' => 'title',
-//                'template' => 'admin/cashback/list_category.html.twig', //TODO починить это дерьмо(не работает замещение блока twig)
-//                'collapse' => true
-            ])
             ->add('active', null, [
                 'editable' => true,
             ])
@@ -182,5 +169,10 @@ class CashBackAdmin extends AbstractAdmin
         }
 
         return $fileFieldOptions;
+    }
+
+    public function configure()
+    {
+        $this->setTemplate('list', 'admin/cashback/js_list.html.twig');
     }
 }
