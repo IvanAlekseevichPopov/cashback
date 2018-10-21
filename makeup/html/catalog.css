@@ -3,58 +3,110 @@ body {
 }
 
 /*список категорий*/
-.catalog .col-sm-4 .row_cat {
+.catalog .cat {
     display: inline-block;
     background-color: #FCD2A4;
-    margin-left: 380px;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 19px;
-    width: 230px;
+    max-width: 100%;
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
-
 }
+
 /*цвет текста в каталоге*/
-.catalog .row_cat a {
+.catalog .cat a {
     color: black;
 }
 /*отступы в каталоге*/
-.catalog .row_cat .cell {
+.catalog .cat .cell {
     padding-bottom: 5px;
 }
 /*цвет текста при наведении в каталоге*/
 .catalog a:hover {
     color: #FF6000;
 }
-/*отступы у магазинов*/
-.col-sm-8 .row {
-    padding-bottom: 10px;
-    padding-top: 20px;
-    padding-left: 30px;
-    padding-right: 400px;
-}
+
 /*окно поиска*/
-.col-sm-8 .row .find input {
-    width: 350px;
-    padding-left: 10px;
-    margin-left: 14px;
+.find .form-control {
+    width: 300px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-/*отступы между магазинами*/
-.col-sm-8 .col-sm-4 {
-    padding-bottom: 40px;
-    padding-right: 20px;
+/*окно поиска при клике*/
+.find .form-control:focus {
+    border-color: rgba(255,96,0,.25);
+    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
 }
-/*изображения магазинов*/
-.shop-window img {
-    width: 200px;
-    height: 200px;
-}
+
 /*цвет заголовка в футере*/
-body .pt-4 .row h5 {
+body .pt-4 h5 {
     color: #A4A4A4;
 }
 
+.item .cash_proc span {
+    color: #343a40;
+   }
 
+.shop-window .item a:hover {
+    color: #343a40;
+    text-decoration: none;
+}
+
+/*отступы между магазинами*/
+.shopping .square {
+    padding-bottom: 40px;
+}
+/*окна*/
+.shop-window {
+    border: 1px solid #FF9933;
+    width: 220px;
+    height: 200px;
+    background-color: #ffffff;
+}
+
+/*рамка при наведении курсора*/
+.shop-window:hover {
+    border: 2px solid #FF6000;
+}
+/*размер изображения логотипа*/
+.shop-window .logo img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 20px;
+}
+/*кнопка перехода в магазин*/
+.shop-window .button_transition {
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #FF9933;
+    color: white;
+    border: 1px solid #FF9933;
+}
+/*кнопка перехода при клике*/
+.shop-window .button_transition:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
+    color: white;
+}
+/*кнопка в окне по центру*/
+.shop-window .or_but {
+    text-align: center;
+}
+.shop-window .item a:hover {
+    color: white;
+}
+/*расположение логотипа и текста по центру*/
+.shop-window .logo, .cash_proc {
+   text-align: center;
+}
+/*размер цифры кэшбэка*/
+.item .cash_proc .cifra, .znak_proc {
+    font-size: 30px;
+}
+/*отступ сверху от текста*/
+.cash_proc {
+    margin-top: 8px;
+}
