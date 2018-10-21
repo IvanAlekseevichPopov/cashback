@@ -6,48 +6,72 @@
 
 {% block body %}
     <div class="catalog row">
-        <div class="col-sm-4">
-            <div class="row_cat">
-                <div class="cell"><a href="#">Авто</a></div>
-                <div class="cell"><a href="#">Для дома и дачи</a></div>
-                <div class="cell"><a href="#">Доставка еды</a></div>
-                <div class="cell"><a href="#">Зоотовары</a></div>
-                <div class="cell"><a href="#">Книги</a></div>
-                <div class="cell"><a href="#">Красота и здоровье</a></div>
-                <div class="cell"><a href="#">Мебель</a></div>
-                <div class="cell"><a href="#">Одежда и обувь</a></div>
-                <div class="cell"><a href="#">Развлечения и досуг</a></div>
-                <div class="cell"><a href="#">Подарки и цветы</a></div>
-                <div class="cell"><a href="#">Спорт</a></div>
-                <div class="cell"><a href="#">Товары для детей</a></div>
-                <div class="cell"><a href="#">Товары для дома</a></div>
-                <div class="cell"><a href="#">Товары для творчества</a></div>
-                <div class="cell"><a href="#">Товары из Китая</a></div>
-                <div class="cell"><a href="#">Туризм и путешествия</a></div>
-                <div class="cell"><a href="#">Цифровая и <br>бытовая техника</a></div>
-            </div>
-        </div>
-
+        <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <div class="row">
-                <div class="find"><input type="text" name="find" id="find" placeholder="Искать по названию"></div>
-            </div>
-
-            <div class="row">
-                {% for cashback in cashbacks %}
-                    <div class="col-sm-4">
-                        <div class="shop-window">
-                            <img src="{{ cashback.cashBackImage.filePath }}">
-                            <div>
-                                <small>{{ cashback.id }}</small>
-                                <small>{{ cashback.title }}</small>
-                                <small>{{ cashback.url }}</small>
-                                <small>{{ cashback.cash }}</small>
-                            </div>
-                        </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <div class="row cat">
+                        <div class="cell"><a href="#">Авто</a></div>
+                        <div class="cell"><a href="#">Для дома и дачи</a></div>
+                        <div class="cell"><a href="#">Доставка еды</a></div>
+                        <div class="cell"><a href="#">Зоотовары</a></div>
+                        <div class="cell"><a href="#">Книги</a></div>
+                        <div class="cell"><a href="#">Красота и здоровье</a></div>
+                        <div class="cell"><a href="#">Мебель</a></div>
+                        <div class="cell"><a href="#">Одежда и обувь</a></div>
+                        <div class="cell"><a href="#">Развлечения и досуг</a></div>
+                        <div class="cell"><a href="#">Подарки и цветы</a></div>
+                        <div class="cell"><a href="#">Спорт</a></div>
+                        <div class="cell"><a href="#">Товары для детей</a></div>
+                        <div class="cell"><a href="#">Товары для дома</a></div>
+                        <div class="cell"><a href="#">Товары для творчества</a></div>
+                        <div class="cell"><a href="#">Товары из Китая</a></div>
+                        <div class="cell"><a href="#">Туризм и путешествия</a></div>
+                        <div class="cell"><a href="#">Цифровая и <br>бытовая техника</a></div>
                     </div>
-                {% endfor %}
+                </div>
+                <div class="col-sm-8">
+                    <div class="row find">
+                        {#TODO form flow#}
+                        {#{{ form_start(form, {'method': 'GET'}) }}#}
+                            {#{{ form_widget(form.title, {'class': 'form-controle', 'placeholder': 'Искать по названию'}) }}#}
+                        {#{{ form_end(form) }}#}
+                        <form method="GET">
+                            <input type="text" class="form-control" name="title" placeholder="Искать по названию" value="{{ app.request.get('title') }}">
+                        </form>
+                    </div>
+
+                    <div class="container shopping">
+                        <div class="row">
+                            {% for cashback in cashbacks %}
+                                <div class="col-sm square">
+                                    <div class="shop-window">
+                                        <div class="item">
+                                            <a href="{{ path('cashback_page', {'slug': cashback.slug}) }}">
+                                                <div class="logo">
+                                                    <img src="{{ cashback.cashBackImage.filePath }}" alt="gulliver-cashback" itemprop="image">
+                                                </div>
+                                            </a>
+                                            <div class="cash_proc">
+                                                <span class="word_cash">кэшбэк:</span>
+                                                <span class="do">до</span>
+                                                <span class="cifra">{{ cashback.cash }}</span>
+                                            </div>
+                                            <div class="or_but">
+                                                <a href="{{ path('cashback_tracking', {'id': cashback.id}) }}" class="btn button_transition" role="button" aria-pressed="true">В магазин</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
             </div>
+            <div class="col-sm-2"></div>
         </div>
     </div>
 {% endblock %}

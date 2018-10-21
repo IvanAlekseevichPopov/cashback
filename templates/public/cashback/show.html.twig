@@ -21,7 +21,6 @@
                         <span class="word_cash">кэшбэк</span>
                         <span class="do">до</span>
                         <span class="cifra">{{ cashback.cash }}</span>
-                        <span class="znak_proc">%</span>
                     </div>
                     {% if app.user is not null %}
                         <a href="{{ path('cashback_tracking', {"id": cashback.id}) }}" class="btn btn-secondary btn-lg btn-shop">В магазин</a>
@@ -35,9 +34,77 @@
                         {#TODO fixture cashback with image and description#}
                         {{ cashback.description }}
                     </p>
+                    <h4>Отзывы о магазине</h4>
+                    <div class="all-reviews">
+                        {% if app.user is null %}
+                            <div class="button_r">
+                                <a href="{{ path('fos_user_security_login') }}" class="btn btn-reviews" role="button" aria-pressed="true">Авторизируйтесь, чтобы оставить отзыв</a>
+                            </div>
+                        {% else %}
+                            <!--написать отзыв-->
+                            <div>
+                                <div class="review row">
+                                    <div class="avatar col-sm-1"><img src="{{ asset('static/images/anonym.png') }}">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="fio" id="fio">{{ app.user.username }}</div>
+                                        <div class="rating_block">
+                                            <input name="rating" value="5" id="rating_5" type="radio"/>
+                                            <label for="rating_5" class="label_rating"></label>
+                                            <input name="rating" value="4" id="rating_4" type="radio"/>
+                                            <label for="rating_4" class="label_rating"></label>
+                                            <input name="rating" value="3" id="rating_3" type="radio"/>
+                                            <label for="rating_3" class="label_rating"></label>
+                                            <input name="rating" value="2" id="rating_2" type="radio"/>
+                                            <label for="rating_2" class="label_rating"></label>
+                                            <input name="rating" value="1" id="rating_1" type="radio"/>
+                                            <label for="rating_1" class="label_rating"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+                                <div class="message">
+                                    <textarea class="sm_textarea" rows="2" cols="125" placeholder="Оставьте свой комментарий..."></textarea>
+                                </div>
+                                <div class="button row">
+                                    <div class="col-sm-9"></div>
+                                    <div class="button_en col-sm-3">
+                                        <button type="submit" class="btn btn-send">Отправить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {#{% for comment in comments %}#}
+                            <div class="review row">
+                                <div class="avatar col-sm-1"><img src="{{ asset('static/images/anonym.png') }}">
+                                </div>
+
+                                <div class="col-sm-8">
+                                    <div class="fio">Ирина Демидова</div>
+                                    <div class="rating_block_one">
+                                        <div class="non_starred"></div>
+                                        <div class="starred"></div>
+                                        <div class="starred"></div>
+                                        <div class="starred"></div>
+                                        <div class="starred"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="date col-sm-2">11.08.2018</div>
+                            </div>
+
+                            <div class="message">
+                                <p class="text_reviews">Давно пользуюсь услугами этого магазина. Огромный выбор товаров на
+                                    любой вкус, даже если захочется что-то Такое.. можно найти. В редких случаях не
+                                    "попадаю" в размер или не устраивает качество, но где такого не бывает. Покупаю без
+                                    примерки. с возвратом - не было проблем. </p>
+                            </div>
+                        {#{% endfor %}#}
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}

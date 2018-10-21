@@ -109,7 +109,6 @@ class CashBackAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
             ->addIdentifier('externalId')
             ->add('_action', null, [
                 'label' => 'Действия',
@@ -119,19 +118,9 @@ class CashBackAdmin extends AbstractAdmin
             ])
             ->add('rating')
             ->add('title')
-            ->add('description')
             ->add('url')
             ->add('siteUrl')
-            ->add('condition', null, [
-                'collapse' => true,
-                'header_style' => 'width:10%;',
-            ])
             ->add('cash')
-//            ->add('categories', null, [
-//                'associated_property' => 'title',
-//                'template' => 'admin/cashback/list_category.html.twig',
-//                'collapse' => true
-//            ])
             ->add('active', null, [
                 'editable' => true,
             ])

@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cash_back_trek")
  *
  * @ORM\Entity(repositoryClass="App\Repository\CashBack\CashBackTrekRepository")
- * @ORM\HasLifecycleCallbacks
  */
 class CashBackTrek
 {
@@ -62,10 +61,18 @@ class CashBackTrek
      */
     private $transaction;
 
+    /**
+     * @var \DateTimeImmutable
+     *
+     * @ORM\Column(type="date_immutable")
+     */
+    private $createdAt;
+
     public function __construct(User $user, CashBack $cashBack)
     {
         $this->user = $user;
         $this->cashBack = $cashBack;
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     /**
@@ -102,5 +109,13 @@ class CashBackTrek
         $this->transaction = $transaction;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 }

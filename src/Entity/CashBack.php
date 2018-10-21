@@ -15,7 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cash_back")
  *
  * @ORM\Entity(repositoryClass="App\Repository\CashBackRepository")
- * @ORM\HasLifecycleCallbacks
  */
 class CashBack
 {

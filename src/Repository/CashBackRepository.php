@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
 use App\Entity\CashBackPlatform;
 use App\Entity\User;
+use App\Model\Query\CashbackQuery;
 use App\Traits\UuidFinderTrait;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
@@ -59,15 +60,11 @@ class CashBackRepository extends EntityRepository
     }
 
     /**
-     * Возвращает коллекцию активных кешбеков.
-     *
-     * @param int        $offset
-     * @param int        $limit
-     * @param array|null $filters
+     * @param CashbackQuery $query
      *
      * @return array
      */
-    public function getActiveCashBacks(int $offset = 0, int $limit = 100, ?array $filters = null): array
+    public function getActiveCashBacks(CashbackQuery $query): array
     {
         $qb = $this->createQueryBuilder('cb');
 
@@ -75,34 +72,23 @@ class CashBackRepository extends EntityRepository
             ->andWhere($qb->expr()->in('cb.active', ':active'))
             ->andWhere($qb->expr()->in('cb.status', ':stat'))
             ->setParameter('stat', CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP)
-            ->setParameter('active', true)
-            ->orderBy('cb.rating', 'DESC');
+            ->setParameter('active', true);
+//            ->orderBy('cb.rating', 'DESC');
 
-        if (null !== $filters) {
-            foreach ($filters as $filter => $value) {
-                if ('title' === $filter) {
-                    $qb
-                        ->andWhere(
-                            $qb->expr()->orX(
-                                $qb->expr()->like('cb.title', ':'.$filter),
-                                $qb->expr()->like('cb.description', ':'.$filter)
-                            )
-                        )
-                        ->setParameter($filter, '%'.$value.'%');
-                }
-            }
+        if(null !== $query->title) {
+            $qb
+                ->andWhere($qb->expr()->like($qb->expr()->lower('cb.title'), ':title'))
+                ->setParameter('title', '%'.mb_strtolower($query->title).'%');
         }
 
         return $qb
-            ->setFirstResult($offset)
-            ->setMaxResults($limit)
+            ->setFirstResult($query->getFirstResult())
+            ->setMaxResults($query->getPerPage())
             ->getQuery()
             ->getResult();
     }
 
     /**
-     * Возвращает коллекцию для обновления с адмитада.
-     *
      * @param CashBackPlatform $admitadPlatform
      * @param \DateTime        $date
      *

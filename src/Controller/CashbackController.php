@@ -7,11 +7,17 @@ namespace App\Controller;
 use App\Entity\CashBack;
 use App\Entity\CashBackTrek;
 use App\Entity\User;
+use App\Form\Query\CashbackQueryType;
+use App\Model\Query\CashbackQuery;
+use App\Service\CashbackRedirectHandler;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -35,25 +41,31 @@ class CashbackController extends Controller
 
         return $this->render('public/cashback/show.html.twig', [
             'cashback' => $cashBack,
+            'comments' => []
         ]);
     }
 
     /**
      * @Route("/catalog", name="catalog", methods={"GET"})
      *
-     * @param EntityManagerInterface $manager
+     * @param Request $request
      *
      * @return Response
      */
-    public function cashbackListAction(EntityManagerInterface $manager)
+    public function cashbackListAction(Request $request)
     {
-        //TODO pagination
-        $cashBackCollection = $manager->getRepository(CashBack::class)->findBy([], null, 20);
+        $cashbackQuery = new CashbackQuery();
+        $form = $this->createForm(CashbackQueryType::class, $cashbackQuery);
+        $form->submit($request->query->all());
+        if(false === $form->isValid()) {
+            throw new BadRequestHttpException('Bad request');
+        }
 
-        //TODO только активные и подтвержденные
+        $cashBackCollection = $this->getDoctrine()->getRepository(CashBack::class)->getActiveCashBacks($cashbackQuery);
 
         return $this->render('public/cashback/list.html.twig', [
             'cashbacks' => $cashBackCollection,
+            'form' => $form->createView()
         ]);
     }
 
@@ -61,34 +73,18 @@ class CashbackController extends Controller
      * @Route("/cashback/{id}", name="cashback_tracking")
      * @Entity(name="cashback", expr="repository.findByUuid(id)")
      *
-     * @param CashBack               $cashback
-     * @param EntityManagerInterface $entityManager
+     * @param CashBack                $cashback
+     * @param CashbackRedirectHandler $redirectHandler
+     *
+     * @return Response
      */
-    public function createCashbackTracking(Cashback $cashback, EntityManagerInterface $entityManager)
+    public function createCashbackTracking(Cashback $cashback, CashbackRedirectHandler $redirectHandler)
     {
         if (null === $this->getUser()) {
             //TODO ставим кэшбек, ведем статистику
         }
 
-        dump($this->genUrl($this->getUser(), $cashback, $entityManager));
-//        $shopUrl =
-//        dump($cashback);
-    }
-
-    /**
-     * @param User                   $user
-     * @param CashBack               $cashBack
-     * @param EntityManagerInterface $manager
-     *
-     * @return string
-     */
-    private function genUrl(User $user, CashBack $cashBack, EntityManagerInterface $manager): string
-    {
-        $cashBackTrek = new CashBackTrek($user, $cashBack);
-
-        $manager->persist($cashBackTrek);
-        $manager->flush();
-
-        return sprintf('%s?subid=%s', $cashBack->getUrl(), $cashBackTrek->getId());
+        $url = $redirectHandler->generateRedirectUrl($cashback, $this->getUser());
+        return new RedirectResponse($url);
     }
 }
