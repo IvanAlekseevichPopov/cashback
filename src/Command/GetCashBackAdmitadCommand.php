@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\DBAL\Types\Enum\TransactionEnumType;
 use App\DBAL\Types\Enum\TransactionStatusEnumType;
 use App\Entity\CashBack;
 use App\Entity\CashBackPlatform;

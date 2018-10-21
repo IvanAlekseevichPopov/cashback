@@ -1,31 +1,23 @@
-//TODO refactoring
-// function checkAwaitingStatus(button, platformId, cashBackExtId) {
-//     if (0 === cashBackExtId.length) {
-//         alert('Не найден внешний id кешбека - невозможно сделать запрос');
-//         return;
-//     }
-//     $(button).button('loading');
-//     console.log($(button).attr('data-route'));
-//     // $.ajax({
-//     //            method : "POST",
-//     //            url    : ,
-//     //            data   : {'platformId': platformId, 'extId': cashBackExtId},
-//     //            success: function (response) {
-//     //                if ('success' === response.status) {
-//     //                    $(button).button('reset');
-//     //                    processAwaitingResult(button, response);
-//     //                } else {
-//     //                    alert('Error.');
-//     //                    console.log(response);
-//     //                }
-//     //            },
-//     //            error  : function (response) {
-//     //                alert('Error. '.response.message);
-//     //                console.log('Error: ', response);
-//     //
-//     //            }
-//     //        });
-// }
+function checkAwaitingStatus(button, platformId, cashBackExtId) {
+    if (0 === cashBackExtId.length) {
+        alert('Не найден внешний id кешбека - невозможно сделать запрос');
+        return;
+    }
+    $(button).button('loading');
+    $.ajax({
+        method: "POST",
+        url: $(button).attr('data-route'),
+        data: {'platformId': platformId, 'extId': cashBackExtId},
+        success: function (response) {
+            $(button).button('reset');
+            processAwaitingResult(button, response);
+        },
+        error: function (response) {
+            bootbox.alert('Error. '.response.responseJSON.message);
+            console.log('Error: ', response);
+        }
+    });
+}
 
 function sendPartnershipRequest(button, platformId, cashBackExtId) {
     if (0 === cashBackExtId.length) {
@@ -35,18 +27,18 @@ function sendPartnershipRequest(button, platformId, cashBackExtId) {
 
     $(button).button('loading');
     $.ajax({
-               method : "POST",
-               url    : $(button).attr('data-route'),
-               data   : {'platformId': platformId, 'extId': cashBackExtId},
-               success: function (response) {
-                   $(button).button('reset');
-                   processPartnershipResult(button, response);
-               },
-               error  : function (response) {
-                   bootbox.alert('Backend error! See console');
-                   console.log('Error: ', response);
-               }
-           });
+        method: "POST",
+        url: $(button).attr('data-route'),
+        data: {'platformId': platformId, 'extId': cashBackExtId},
+        success: function (response) {
+            $(button).button('reset');
+            processPartnershipResult(button, response);
+        },
+        error: function (response) {
+            bootbox.alert('Backend error! See console');
+            console.log('Error: ', response);
+        }
+    });
 }
 
 function updateInfo(button, platformId, cashBackExtId) {
@@ -64,8 +56,8 @@ function updateInfo(button, platformId, cashBackExtId) {
         url: $(button).attr('data-route'),
         data: {'platformId': platformId, 'extId': cashBackExtId},
         success: function (response) {
-                $(button).button('reset');
-                processUpdateResult(button, response);
+            $(button).button('reset');
+            processUpdateResult(button, response);
         },
         error: function (response) {
             bootbox.alert('Error. '.response.responseJSON.message);
@@ -75,7 +67,7 @@ function updateInfo(button, platformId, cashBackExtId) {
 }
 
 function processAwaitingResult(button, data) {
-    var message = 'В обработке.';
+    var message = 'По прежнему в обработке.'; //TODO translator
     if ('active' === data['connection_status']) {
         message = 'Сотрудничество подтверждено! Статус обновлен';
         $(button).remove();
