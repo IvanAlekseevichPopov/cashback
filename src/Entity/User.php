@@ -96,6 +96,34 @@ class User extends FOSUser
     protected $vkontakteAccessToken;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $odnoklassnikiId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $odnoklassnikiAccessToken;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $facebookId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $facebookAccessToken;
+
+    /**
      * @return Balance
      */
     public function getBalance(): ?Balance
@@ -202,5 +230,37 @@ class User extends FOSUser
     public function isModerator(): bool
     {
         return $this->hasRole(self::ROLE_SUPER_ADMIN) || $this->hasRole(self::ROLE_MODERATOR);
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getOdnoklassnikiId(): ?string
+    {
+        return $this->odnoklassnikiId;
+    }
+
+    /**
+     * @param null|string $odnoklassnikiId
+     */
+    public function setOdnoklassnikiId(?string $odnoklassnikiId): void
+    {
+        $this->odnoklassnikiId = $odnoklassnikiId;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getOdnoklassnikiAccessToken(): ?string
+    {
+        return $this->odnoklassnikiAccessToken;
+    }
+
+    /**
+     * @param null|string $odnoklassnikiAccessToken
+     */
+    public function setOdnoklassnikiAccessToken(?string $odnoklassnikiAccessToken): void
+    {
+        $this->odnoklassnikiAccessToken = $odnoklassnikiAccessToken;
     }
 }

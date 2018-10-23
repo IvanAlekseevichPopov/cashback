@@ -10,3 +10,11 @@ vk_login:
     path: /login/vkontakte
 vk_connect:
     path: /connect/vkontakte
+ok_login:
+    path: /login/odnoklassniki
+ok_connect:
+    path: /connect/odnoklassniki
+facebook_login:
+    path: /login/facebook
+facebook_connect:
+    path: /connect/facebook

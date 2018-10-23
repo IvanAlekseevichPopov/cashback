@@ -3,6 +3,9 @@ hwi_oauth:
         username_iterations: 30
         properties:
             google: googleId
+            odnoklassniki: okId
+            vkontakte: vkontakteId
+            facebook: facebookId
     firewall_name: [main]
     # https://github.com/hwi/HWIOAuthBundle/blob/master/Resources/doc/2-configuring_resource_owners.md
     resource_owners:
@@ -16,3 +19,18 @@ hwi_oauth:
             client_id:           '%env(VK_ID)%'
             client_secret:       '%env(VK_SECRET)%'
             scope:               'email status'
+        odnoklassniki:
+            type:                odnoklassniki
+            client_id:           '%env(OK_ID)%'
+            client_secret:       '%env(OK_SECRET)%'
+            scope:               'email'
+            options:
+                application_key: '%env(OK_KEY)%'
+        facebook:
+            type:                facebook
+            client_secret:       '%env(FB_SECRET)%'
+            client_id:           '%env(FB_ID)%'
+            scope:               'email'
+            options:
+                display: popup #dialog is optimized for popup window
+                auth_type: rerequest # Re-asking for Declined Permissions
