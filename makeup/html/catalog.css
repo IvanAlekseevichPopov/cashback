@@ -47,18 +47,19 @@ body .pt-4 h5 {
     color: #A4A4A4;
 }
 
-.item .cash_proc span {
+.shop-window .cash_proc span {
     color: #343a40;
-   }
+}
 
-.shop-window .item a:hover {
+.shop-window a:hover {
     color: #343a40;
     text-decoration: none;
 }
 
 /*отступы между магазинами*/
 .shopping .square {
-    padding-bottom: 40px;
+    padding-bottom: 30px;
+    flex-grow: 0;
 }
 /*окна*/
 .shop-window {
@@ -67,25 +68,42 @@ body .pt-4 h5 {
     height: 200px;
     background-color: #ffffff;
 }
-
+.item {
+    width: 220px;
+    height: 200px;
+}
+.shop-window .blok1 {
+    width: 220px;
+    height: 80px;
+}
+.shop-window .blok2 {
+    width: 220px;
+    height: 60px;
+}
+.shop-window .blok3 {
+    width: 220px;
+    height: 60px;
+}
 /*рамка при наведении курсора*/
 .shop-window:hover {
     border: 2px solid #FF6000;
 }
 /*размер изображения логотипа*/
-.shop-window .logo img {
-    max-width: 100%;
-    max-height: 100%;
+.shop-window .blok1 img {
+    max-width: 70%;
+    max-height: 70%;
     margin-top: 20px;
+    min-width: 50%;
+    min-height: 50%;
 }
 /*кнопка перехода в магазин*/
 .shop-window .button_transition {
-    margin-top: 10px;
     border-radius: 5px;
     background-color: #FF9933;
     color: white;
     border: 1px solid #FF9933;
 }
+
 /*кнопка перехода при клике*/
 .shop-window .button_transition:focus {
     box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
@@ -94,8 +112,9 @@ body .pt-4 h5 {
 /*кнопка в окне по центру*/
 .shop-window .or_but {
     text-align: center;
+    /*padding-top: 15px;*/
 }
-.shop-window .item a:hover {
+.shop-window a:hover {
     color: white;
 }
 /*расположение логотипа и текста по центру*/
@@ -103,10 +122,7 @@ body .pt-4 h5 {
    text-align: center;
 }
 /*размер цифры кэшбэка*/
-.item .cash_proc .cifra, .znak_proc {
+.shop-window .cash_proc .cifra, .znak_proc {
     font-size: 30px;
 }
-/*отступ сверху от текста*/
-.cash_proc {
-    margin-top: 8px;
-}
+
