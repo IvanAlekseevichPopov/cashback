@@ -25,7 +25,8 @@ security:
                 resource_owners:
                     google: google_login
                     vkontakte: vk_login
-                    odnoklassniki: ok_login
+                    mailru: mailru_login
+                    yandex: yandex_login
                     facebook: facebook_login
                 login_path: /login
 #                use_forward:       false

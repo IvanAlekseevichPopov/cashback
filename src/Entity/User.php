@@ -100,14 +100,28 @@ class User extends FOSUser
      *
      * @ORM\Column(nullable=true)
      */
-    protected $odnoklassnikiId;
+    protected $mailruId;
 
     /**
      * @var string|null
      *
      * @ORM\Column(nullable=true)
      */
-    protected $odnoklassnikiAccessToken;
+    protected $mailruAccessToken;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $yandexId;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $yandexAccessToken;
 
     /**
      * @var string|null
@@ -235,32 +249,64 @@ class User extends FOSUser
     /**
      * @return null|string
      */
-    public function getOdnoklassnikiId(): ?string
+    public function getMailruId(): ?string
     {
-        return $this->odnoklassnikiId;
+        return $this->mailruId;
     }
 
     /**
-     * @param null|string $odnoklassnikiId
+     * @param null|string $mailruId
      */
-    public function setOdnoklassnikiId(?string $odnoklassnikiId): void
+    public function setMailruId(?string $mailruId): void
     {
-        $this->odnoklassnikiId = $odnoklassnikiId;
+        $this->mailruId = $mailruId;
     }
 
     /**
      * @return null|string
      */
-    public function getOdnoklassnikiAccessToken(): ?string
+    public function getMailruAccessToken(): ?string
     {
-        return $this->odnoklassnikiAccessToken;
+        return $this->mailruAccessToken;
     }
 
     /**
-     * @param null|string $odnoklassnikiAccessToken
+     * @param null|string $mailruAccessToken
      */
-    public function setOdnoklassnikiAccessToken(?string $odnoklassnikiAccessToken): void
+    public function setMailruAccessToken(?string $mailruAccessToken): void
     {
-        $this->odnoklassnikiAccessToken = $odnoklassnikiAccessToken;
+        $this->mailruAccessToken = $mailruAccessToken;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getYandexId(): ?string
+    {
+        return $this->yandexId;
+    }
+
+    /**
+     * @param null|string $yandexId
+     */
+    public function setYandexId(?string $yandexId): void
+    {
+        $this->yandexId = $yandexId;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getYandexAccessToken(): ?string
+    {
+        return $this->yandexAccessToken;
+    }
+
+    /**
+     * @param null|string $yandexAccessToken
+     */
+    public function setYandexAccessToken(?string $yandexAccessToken): void
+    {
+        $this->yandexAccessToken = $yandexAccessToken;
     }
 }
