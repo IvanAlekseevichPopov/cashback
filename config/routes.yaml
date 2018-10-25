@@ -10,3 +10,15 @@ vk_login:
     path: /login/vkontakte
 vk_connect:
     path: /connect/vkontakte
+mailru_login:
+    path: /login/mailru
+mailru_connect:
+    path: /connect/mailru
+yandex_login:
+    path: /login/yandex
+yandex_connect:
+    path: /connect/yandex
+facebook_login:
+    path: /login/facebook
+facebook_connect:
+    path: /connect/facebook

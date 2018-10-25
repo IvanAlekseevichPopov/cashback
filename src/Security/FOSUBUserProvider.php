@@ -8,13 +8,16 @@ use App\Entity\User;
 use App\Event\AppEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\GoogleResourceOwner;
+use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\MailRuResourceOwner;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\VkontakteResourceOwner;
+use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\YandexResourceOwner;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\Exception\AccountNotLinkedException;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseUserProvider;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 /**
@@ -43,9 +46,6 @@ class FOSUBUserProvider extends BaseUserProvider
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
-//        dump($response->getResourceOwner());
-//        dump($response->getData());
-//        dump($response->getUserName());
         $userName = $this->getUserName($response);
 
         try {
@@ -53,7 +53,6 @@ class FOSUBUserProvider extends BaseUserProvider
         } catch (AccountNotLinkedException $e) {
             $user = $this->userManager->findUserByEmail($response->getEmail());
             //TODO add profile picture
-//            dump($user);
 
             if (!$user) {
                 /** @var User $user */
@@ -91,9 +90,10 @@ class FOSUBUserProvider extends BaseUserProvider
             return $response->getFirstName().' '.$response->getLastName();
         } elseif ($response->getResourceOwner() instanceof GoogleResourceOwner) {
             return $response->getNickname();
+        } elseif ($response->getResourceOwner() instanceof MailRuResourceOwner || $response->getResourceOwner() instanceof YandexResourceOwner) {
+            return $response->getRealName();
         }
 
-        //TODO other social networks
-        return $response->getNickname();
+        throw new LogicException('cannot be here');
     }
 }
