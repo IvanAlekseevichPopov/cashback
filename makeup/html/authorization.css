@@ -64,7 +64,7 @@ body {
 }
 
 /*кнопки соц. сетей*/
-.social_buttons .btn {
+.social_buttons .btn-auto {
     width: 45px;
     height: 45px;
     padding-top: 12px;
@@ -83,10 +83,9 @@ body {
     position: relative;
     left: -2px;
 }
-
-/*кнопка одноклассники*/
-.social_buttons .btn-od {
-    background-color: #f58220;
+/*кнопка яндекс*/
+.social_buttons .btn-ya {
+    background-color: #e61400;
     border: none;
 }
 /*кнопка фейсбук*/
@@ -99,12 +98,16 @@ body {
     background-color: #d6492e;
     border: none;
 }
-
+/*кнопка mail*/
+.social_buttons .btn-ml {
+    background-color: #005BD1;
+    border: none;
+}
 /*цвет svg на всех кнопках*/
 .social_buttons, svg {
     color: white;
 }
 /*при клике на кнопку соц.сетей*/
-.social_buttons .btn:focus {
+.social_buttons .btn-auto:focus {
     box-shadow: none;
 }
