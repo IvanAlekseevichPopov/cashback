@@ -140,7 +140,8 @@ svg {
     border-color: #FF9933;
     box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
 }
-/*кнопка регистрации*/
+
+/*кнопка регистрации и авторизации*/
 .main_form .btn-enter {
     width: 160px;
     height: 60px;
