@@ -108,3 +108,16 @@ div.carousel-color {
     height: 30px;
     margin-bottom: 10px;
 }
+
+/*кнопка регистрации и авторизации*/
+.main_form .btn-enter {
+    width: 160px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: #FF6000;
+    color: white;
+    border: 1px solid #FF6000;
+}

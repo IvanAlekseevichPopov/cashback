@@ -1,18 +1,68 @@
 <h2>или через социальные сети</h2>
-<div class="btn-socseti">
-    <a href="{{ path('vk_connect') }}" class="btn btn-vk" title="ВКонтакте">
+<div class="social_buttons">
+    <a href="{{ path('vk_connect') }}" class="btn btn-auto btn-vk" title="ВКонтакте">
         <i class="fab fa-vk"></i>
     </a>
-    <a href="{{ path('mailru_connect') }}" class="btn btn-primary" title="Mail.ru">
-        <i class="fas fa-at"></i>
+    <a href="{{ path('yandex_connect') }}" class="btn btn-auto btn-ya" title="Яндекс">
+        <i class="fab fa-yandex"></i>
     </a>
-    <a href="{{ path('yandex_connect') }}" class="btn btn-danger" title="Яндекс">
-        <i class="fab fa-yahoo"></i>
-    </a>
-    <a href="{{ path('facebook_connect') }}" class="btn btn-fb" title="Facebook">
+    <a href="{{ path('facebook_connect') }}" class="btn btn-auto btn-fb" title="Facebook">
         <i class="fab fa-facebook-f"></i>
     </a>
-    <a href="{{ path('google_connect') }}" class="btn btn-gg" title="Google">
+    <a href="{{ path('google_connect') }}" class="btn btn-auto btn-gg" title="Google">
         <i class="fab fa-google"></i>
     </a>
+    <a href="{{ path('mailru_connect') }}" class="btn btn-auto btn-ml" title="Mail.ru">
+        <i class="fas fa-at"></i>
+    </a>
 </div>
+<style>
+    /*кнопки соц. сетей*/
+    .social_buttons .btn-auto {
+        width: 45px;
+        height: 45px;
+        padding-top: 12px;
+        font-size: 22px;
+        margin-right: 3px;
+        margin-left: 3px;
+    }
+
+    /*кнопка вконтакте*/
+    .social_buttons .btn-vk {
+        background-color: #5f83a9;
+        border: none;
+    }
+
+    .btn-vk svg {
+        position: relative;
+        left: -2px;
+    }
+    /*кнопка яндекс*/
+    .social_buttons .btn-ya {
+        background-color: #e61400;
+        border: none;
+    }
+    /*кнопка фейсбук*/
+    .social_buttons .btn-fb {
+        background-color: #395a99;
+        border: none;
+    }
+    /*кнопка гугл*/
+    .social_buttons .btn-gg {
+        background-color: #d6492e;
+        border: none;
+    }
+    /*кнопка mail*/
+    .social_buttons .btn-ml {
+        background-color: #005BD1;
+        border: none;
+    }
+    /*цвет svg на всех кнопках*/
+    .social_buttons, svg {
+        color: white;
+    }
+    /*при клике на кнопку соц.сетей*/
+    .social_buttons .btn-auto:focus {
+        box-shadow: none;
+    }
+</style>

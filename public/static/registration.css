@@ -13,7 +13,7 @@ body {
     height: 680px;
     background-color: #FCD2A4;
     vertical-align: middle;
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
@@ -27,15 +27,17 @@ body {
 
 /*второй заголовок*/
 .main_form h2 {
- padding-top: 30px;
+    padding-top: 10px;
     font-size: 22px;
     margin-bottom: 20px;
 }
+
 /*поля ввода*/
 .main_form .form-group {
     margin-right: 100px;
     margin-left: 100px;
 }
+
 /*цвет шрифта у чекбокса*/
 .main_form .fields a {
     color: #FF6000;
@@ -43,73 +45,18 @@ body {
 
 /*cодержимое окна регистрации*/
 .main_form .fields {
-text-align: center;
+    text-align: center;
 }
 
-/*кнопка регистрации*/
-.main_form .btn {
-    width: 160px;
-    height: 60px;
-    margin-top: 10px;
-    font-size: 20px;
-    border-radius: 8px;
-    background-color: #FF6000;
-    color: white;
-    border: 1px solid #FF6000;
-}
 /*цвет рамки кнопки при наведении*/
-.main_form .btn:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+.main_form .btn-enter:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
 }
+
 /*цвет рамок окон при нажатии*/
 .main_form .form-control:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
-    border-color: rgba(255,96,0,.25);
-}
-
-/*кнопки соц. сетей*/
-.btn-socseti .btn {
-    width: 45px;
-    height: 45px;
-    padding-top: 12px;
-    font-size: 22px;
-    margin-right: 3px;
-    margin-left: 3px;
-}
-
-/*кнопка вконтакте*/
-.btn-socseti .btn-vk {
-    background-color: #5f83a9;
-    border: none;
-}
-/*кнопка одноклассники*/
-.btn-socseti .btn-od {
-    background-color: #f58220;
-    border: none;
-}
-/*кнопка фейсбук*/
-.btn-socseti .btn-fb {
-    background-color: #395a99;
-    border: none;
-}
-/*кнопка гугл*/
-.btn-socseti .btn-gg {
-    background-color: #d6492e;
-    border: none;
-}
-
-/*цвет svg на всех кнопках*/
-.btn-socseti, svg {
-    color: white;
-}
-/*при клике на кнопку соц.сетей*/
-.btn-socseti .btn:focus {
-    box-shadow: none;
-}
-
-.btn-vk svg {
-    position: relative;
-    left: -2px;
+    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
+    border-color: rgba(255, 96, 0, .25);
 }
 
 .g-recaptcha {
