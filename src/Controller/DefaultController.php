@@ -12,8 +12,6 @@ class DefaultController extends Controller
      */
     public function index()
     {
-        //TODO передать пользователя если есть без субзапроса во все шаблоны
-
         return $this->render('public/main.html.twig');
     }
 
@@ -23,6 +21,14 @@ class DefaultController extends Controller
     public function faqAction()
     {
         return $this->render('public/faq.html.twig');
+    }
+
+    /**
+     * @Route("/policy", name="policy")
+     */
+    public function policyAction()
+    {
+        return $this->render('public/policy.html.twig');
     }
 
     /**
