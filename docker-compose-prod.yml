@@ -24,7 +24,7 @@ services:
             - ./config/docker/nginx/symfony.prod.conf:/etc/nginx/sites-available/symfony.conf
             - .:/var/www/html
             - ${VENDOR_DIR}:/var/www/html/vendor
-            - ${IMAGES_DIR}:/var/www/html/public/static/images
+            - ${IMAGES_DIR}:/var/www/html/public/static/cashback
             - ./var/log:/var/log/nginx
     db:
         image: mariadb:10.1
