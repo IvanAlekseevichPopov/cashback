@@ -9,7 +9,7 @@ services:
             - ${SESSIONS_DIR}:/var/www/html/var/sessions
             - ${IMAGES_DIR}:/var/www/html/public/static/cashback
             - ./config/docker/php/symfony-prod.ini:/usr/local/etc/php/conf.d/symfony.ini
-            - ./config/docker/php/symfony.pool-prod.conf:/usr/local/etc/php-fpm.d/symfony.pool.conf
+            - ./config/docker/php/symfony.pool-prod.conf:/usr/local/etc/php-fpm.d/www.conf
         env_file:
           - .env
         environment: #Variables does not extract for another variable from ^
