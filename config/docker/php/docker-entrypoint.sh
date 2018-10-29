@@ -4,4 +4,4 @@
 mkdir -p /var/www/.composer
 chmod -R 777 /var/www/.composer
 
-php-fpm
+php-fpm -R
