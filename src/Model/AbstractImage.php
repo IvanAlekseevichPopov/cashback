@@ -16,7 +16,7 @@ abstract class AbstractImage
 {
     use UuidColumn;
 
-    public const BASE_PATH = 'static/images';
+    public const BASE_PATH = 'static';
 
     /**
      * @var string
