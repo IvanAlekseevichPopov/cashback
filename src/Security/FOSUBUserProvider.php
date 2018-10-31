@@ -7,6 +7,7 @@ namespace App\Security;
 use App\Entity\User;
 use App\Event\AppEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
+use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\FacebookResourceOwner;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\GoogleResourceOwner;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\MailRuResourceOwner;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\VkontakteResourceOwner;
@@ -90,7 +91,7 @@ class FOSUBUserProvider extends BaseUserProvider
             return $response->getFirstName().' '.$response->getLastName();
         } elseif ($response->getResourceOwner() instanceof GoogleResourceOwner) {
             return $response->getNickname();
-        } elseif ($response->getResourceOwner() instanceof MailRuResourceOwner || $response->getResourceOwner() instanceof YandexResourceOwner) {
+        } elseif ($response->getResourceOwner() instanceof MailRuResourceOwner || $response->getResourceOwner() instanceof YandexResourceOwner || $response->getResourceOwner() instanceof  FacebookResourceOwner) {
             return $response->getRealName();
         }
 
