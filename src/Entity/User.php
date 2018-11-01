@@ -309,4 +309,36 @@ class User extends FOSUser
     {
         $this->yandexAccessToken = $yandexAccessToken;
     }
+
+    /**
+     * @return null|string
+     */
+    public function getFacebookId(): ?string
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param null|string $facebookId
+     */
+    public function setFacebookId(?string $facebookId): void
+    {
+        $this->facebookId = $facebookId;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getFacebookAccessToken(): ?string
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * @param null|string $facebookAccessToken
+     */
+    public function setFacebookAccessToken(?string $facebookAccessToken): void
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+    }
 }

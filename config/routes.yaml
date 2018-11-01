@@ -20,5 +20,6 @@ yandex_connect:
     path: /connect/yandex
 facebook_login:
     path: /login/facebook
+    schemes: ["https"]
 facebook_connect:
     path: /connect/facebook
