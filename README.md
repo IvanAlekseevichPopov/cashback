@@ -13,13 +13,12 @@ Fast start
 * `docker-compose build`
 * `docker-compose up -d`
 * `docker-compose exec php composer install`
-* set `127.0.0.1 cb.tk` to hosts
 * Done ) Go to [local server](http://localhost)
 
 Run tests
 =========
-* `docker-compose exec php bash`
-* `APP_ENV=test bin/phpunit`
+* `docker-compose exec --user=www-data php bash`
+* `APP_ENV=test vendor/bin/phpunit`
 
 More docks
 ==========
