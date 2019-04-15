@@ -4,141 +4,562 @@
     <meta charset="UTF-8">
     <title>CashTan</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
             integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width">
+
 </head>
 
 
-<body class="container-color">
-<header>
-    <div class="navbar bg-white box-shadow">
-        <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <img class="logo_menu" src="images/cashtan-min.png">
-                <strong class="black">CashTan</strong>
-            </a>
-            <p class="all_menu">
-                <a class="p-2 main-menu" href="#">Главная</a>
-                <a class="p-2 main-menu" href="#">Каталог магазинов</a>
-                <a class="p-2 main-menu" href="#">Вопросы и ответы</a>
-            <p class="lost-menu">
-                <a class="p-2 m4" href="#">Вход</a>
-                <a class="p-2 m5" href="#">Регистрация</a>
-            </p>
-            </p>
-        </div>
-    </div>
-</header>
+<body class="frontpage">
 
-<div>
-    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-right: 17px; display: block;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Сообщение</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Для завершения регистрации подтвердите e-mail
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-btn">Закрыть</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="page_wrapper">
+    <header class="tosh">
 
-<div class="ccont">
-    <div class="container">
-        <div class="stels-block"></div>
-        <div class="row jumbotron p-3 p-md-5 text-black rounded carousel-color">
-            <div class="col-md-6 px-0">
-                <h1 class="display-4 "><span>Совершайте</span><br>
-                    <span1>покупки</span1>
+        <div class="header">
+
+            <!--карусель-->
+            <div class="welcome">
+                <img class="img-fluid" src="images/laptop-compressor.png">
+                <div class="tagline">
+                    <span>Совершай покупки</span><br>
+                    <span>в любимых магазинах</span><br>
+                    <span>и возвращай</span><br>
+                    <span class="num">до 30%</span>
                     <br>
-                    <span2>в любимых</span2>
-                    <br>
-                    <span3>магазинах</span3>
-                </h1>
-                <p class="lead my-2">и возвращайте до 90% от стоимости</p>
+                    <span>от стоимости</span>
+                    <div>
+                        <button type="submit" href="#" class="entry">Регистрация</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 px-0">
-                <img class="img-fluid" src="images/shoping.jpg">
+
+            <!--процесс-->
+            <div class="title how">КAК ЭТО РАБОТАЕТ</div>
+            <div class="process-block">
+
+                <div class="desctop process-shopping">
+                    <i class="fas fa-7x fa-desktop "></i>
+                    <p>1. ВЫБИРАЙ ЛЮБОЙ МАГАЗИН</p>
+                </div>
+
+                <div class="basket process-shopping">
+                    <i class="fas fa-7x fa-shopping-basket"></i>
+                    <p>2. СОВЕРШАЙ ПОКУПКИ</p>
+                </div>
+
+                <div class="card process-shopping">
+                    <i class="fas fa-7x fa-credit-card"></i>
+                    <p>3. ПОЛУЧАЙ ЧАСТЬ ДЕНЕГ ОБРАТНО</p>
+                </div>
+
+            </div>
+            <!--каталог магазинов-->
+            <div class="title shops">КAТАЛОГ МАГАЗИНОВ</div>
+            <div class="shop-block">
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1">
+                                    <img src="images/logo-gulliver.png" alt="gulliver-cashback" itemprop="image">
+                                </div>
+
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/flora_express.jpeg" alt="flora-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/karatov.jpeg" alt="karatov-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/eset.jpeg" alt="eset-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/samsung.jpeg" alt="samsung-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/newchic.jpeg" alt="newchic-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/bebakids.jpeg" alt="bebakids-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/bekker.jpeg" alt="bekker-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/nozhikov.jpeg" alt="nozhikov-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/tom_tailor.png" alt="tom_tailor-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/procanvas.jpeg" alt="procanvas-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/royal_forest.jpeg"
+                                                             alt="royal_forest-cashback" itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/just.png" alt="just-cashback"
+                                                             itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/sammudress.jpeg"
+                                                             alt="sammudress-cashback" itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="square">
+                    <div class="shop-window">
+                        <div class="item">
+                            <a href="//">
+                                <div class="logo blok1"><img src="images/sitilink.jpeg"
+                                                             alt="sammudress-cashback" itemprop="image"></div>
+                                <div class="cash_proc blok2">
+                                    <span class="word_cash">кэшбэк</span>
+                                    <span class="do">до</span>
+                                    <span class="cifra">5.2</span>
+                                    <span class="znak_proc">%</span>
+                                </div>
+                                <div class="or_but blok3">
+                                    <button type="submit" href="#" class="button_t">Перейти в магазин</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="blok4">
+                <button type="submit" href="#" class="buttons">Смотреть все магазины</button>
             </div>
         </div>
 
-        <div class="row p-3">
-            <div class="col-lg-4 text-center font-icon-color">
-                <i class="fas fa-6x fa-desktop "></i>
-                <h4>Выбирайте любой магазин</h4>
+        <!--вопросы и ответы-->
+        <div class="title ques">ВОПРОСЫ И ОТВЕТЫ</div>
+        <div class="faq">
 
-            </div>
-            <div class="col-lg-4 text-center font-icon-color">
-                <i class="fas fa-6x fa-shopping-basket"></i>
-                <h4>Совершайте покупки</h4>
 
+            <!--1-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Что такое кэшбэк?</a>
+                    <div class="panel-answer">
+                        <span>
+                            Cashback (Кэшбэк) — это скидка в виде возврата части стоимости покупки на счёт покупателя в личном кабинете.
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4 text-center font-icon-color">
-                <i class="fas fa-6x fa-credit-card"></i>
-                <h4>Получайте часть денег обратно</h4>
 
+            <!--2-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Как пользоваться кэшбэк-сервисом?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                            Для того, чтобы получать кэшбэк, необходимо:<br>1. Зарегистрироваться.<br>2. Выбрать любимый магазин на сайте CashTan в меню Каталог магазинов.<br>3. Ознакомиться с правилами и условиями выплаты кэшбэка в выбранном магазине, после чего нажать на кнопку "Перейти в магазин".<br>4. Выбрать товар, оплатить его.<br>5.	Через некоторое время кэшбэк будет начислен на баланс в личном кабинете.
+                        </span>
+                    </div>
+                </div>
             </div>
+
+            <!--3-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Сколько денег возвращается с покупок?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                            Процент возврата указан в описании каждого предложения на странице магазина.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--4-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Через какое время я получу деньги?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                        Возврат cashback занимает примерно от 45-60 дней с момента оплаты покупки, в некоторых случаях срок может достигать 120 дней.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--5-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Какие способы вывода доступны для получения кэшбэка?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                        В данный момент доступен вывод на мобильный телефон российских операторов связи.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--6-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">По какой причине размер сэкономленных средств за покупку меньше, чем я
+                        рассчитывал?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                        Возможно, это связано с тем, что размер сэкономленных средств рассчитывается на основе цены покупки, которая не включает доставку, налоги, возврат, гарантию и другие расходы.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--7-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">В каких случаях cashback может не начисляться?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                        Использование программы Adblock и других аналогичных программ блокировки всплывающих окон, рекламы может повлиять на начисление кэшбэка.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--8-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Можно ли получить cashback за ранее осуществленные покупки в тех же
+                        магазинах, что и представленные
+                        на вашем сайте?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                        К сожалению, за те покупки, которые были сделаны до регистрации на сайте CashTan.ru, нельзя сделать возврат денежных средств.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--9-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Безопасно ли это?</a>
+
+                    <div class="panel-answer">
+                        <span>
+                        Это совершенно безопасно, поскольку наш сервис работает только с открытыми данными, необходимыми для осуществления перевода денежных средств на Ваш мобильный номер.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--10-->
+            <div class="panel-body">
+                <div class="panel-question">
+                    <a href="#" class="link-faq">Я не нашел ответа на свой вопрос.</a>
+
+                    <div class="panel-answer">
+                        <span>
+                       Вы можете задать свой вопрос, написав нам письмо по адресу help@cashtan.ru. Будем рады ответить на все Ваши вопросы.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
+        <div class="title"></div>
+
+        <div id="to-top">
+            <i class="fas fa-caret-square-up fa-4x"></i>
+        </div>
+    </header>
 </div>
-</div>
+<!--FAQ-->
+<script type="text/javascript">
+    $(function () {
+        $(".link-faq").click(function (event) {
+            event.preventDefault();
+            let panel = $(this).next();
+            if (panel.css('display') === 'none') {
+                console.log('hidden');
+                $('.panel-answer').slideUp();
+                panel.slideDown();
+            } else {
+                console.log('visible');
+                panel.slideUp();
+            }
+        });
+    });
+</script>
 
-<footer class="pt-4 border-top bg-dark">
-    <div class="container">
+<!--кнопка-скролл-->
+<script type="text/javascript">
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() != 0) {
+                $('#to-top').fadeIn();
+            } else {
+                $('#to-top').fadeOut();
+            }
+        });
+        $('#to-top').click(function () {
+            $('body,html').animate({scrollTop: 0}, 800);
+        });
+    });
+</script>
 
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h5>Информация</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Условия использования</a></li>
-                    <li><a class="text-muted" href="#">Партнерская программа</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Сервисы</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Все магазины</a></li>
-                    <li><a class="text-muted" href="#">Личный кабинет</a></li>
 
-
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Обратная связь</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Частые вопросы</a></li>
-                    <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
-
-                </ul>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-12 col-md text-center">
-                <small class="d-block mb-12 text-muted">© CashTan 2018</small>
-            </div>
-        </div>
-    </div>
-</footer>
 </body>
+
 </html>
+

@@ -1,154 +1,464 @@
-.ccont {
-    min-height: calc(100vh - 250px);
-}
+/*МЕНЮ-----------------------------------------*/
 
-/*цвет шрифта в подвале*/
-body .pt-4 .row h5 {
-    color: #A4A4A4;
-}
-/*шапка*/
-.bg-white {
-    background-color: #ffffff;
+.title {
     height: 60px;
-}
-
-/*цвет текста в шапке*/
-.bg-white a.navbar-brand {
-    color: #FF6000;
-}
-/*карусель*/
-div.carousel-color {
     background-color: #FCD2A4;
-    color: #212529;
-    font-family: Roboto;
-    font-weight: bold;
-    margin-top: 30px;
-}
-/*цвет фона контейнера*/
-.container-color {
-    background-color: #E6E6E6;
-}
-/*расположение текста в карусели*/
-.container h1 span {
-    padding-top: 0px;
-}
-
-.container h1 span1 {
-    padding-left: 70px;
-}
-
-.container h1 span2 {
-    padding-left: 140px;
-}
-
-.container h1 span3 {
-    padding-left: 220px;
-}
-/*нижний текст в карусели*/
-.container div p {
-    font-family: Roboto;
-    font-size: 28px;
-    padding-top: 30px;
-}
-/*текст в карусели*/
-.container .display-4 {
-    font-weight: 500;
-    font-size: 54px;
-}
-/*текст в шапке*/
-.navbar a {
+    /*margin-top: -4px;*/
+    font-family: Roboto, sans-serif;
+    font-size: 33px;
     color: #FF6000;
-    font-size: 20px;
-    font-weight: bolder;
-  }
+    text-align: center;
+    line-height: 1.8em;
+}
 
-/*текст в шапке при наведении курсора*/
-.container .p-2:hover {
-    border-bottom: 3px solid #FF6000;
-    text-decoration: none;
+/*КАРУСЕЛЬ-----------------------------------------------*/
+.welcome img {
+    position: relative;
+    width: 100%;
+    margin-bottom: -4px;
+}
+
+.tagline .num {
     color: #FF6000;
+    font-size: 90px;
 }
 
-/*логотип и название*/
-svg {
-    margin-bottom: 10px;
-}
-
-.black {
-    font-size: 28px;
-    margin-bottom: 7px;
-    color: #FF6000;
-}
-/*цвет текста нижних блоков*/
-.font-icon-color {
-    color: #FF6000;
-}
-
-/*шапка, всё меню*/
-.all_menu {
-    diplay: inline-block;
-    margin-top: 10px;
-    padding-left: 50px;
-    width: 600px;
-}
-
-/*шапка, вход-рег*/
-.lost-menu {
-    margin-top: 10px;
-    width: 300px;
-    padding-left: 60px;
-}
-
-/*нижний отступ в футере*/
-.container .row .d-block {
-    padding-bottom: 25px;
-}
-
-/*листик*/
-.logo_menu {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 10px;
-    margin-right: 3px;
-}
-
-/*ширина диалогового окна*/
-.modal-dialog .modal-content {
-    width: 90%;
-}
-/*цвет кнопки по умолчанию*/
-.modal-content .btn-secondary {
-    background-color: #FF9933;
-    border-color: #FF9933;
-}
-/*цвет кнопки при наведении курсора*/
-.modal-content .btn-secondary:hover {
-    background-color: #FF9933;
-    border-color: #FF9933;
-
-}
-/*цвет кнопки при нажатии курсора*/
-.modal-content .btn:focus {
-    background-color: #FF9933;
-    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
-    border-color: #FF9933;
-}
-
-#close-btn:active, #close-btn:focus {
-    color: #ffffff;
-    background-color: #FF9933;
-    border-color: #FF9933;
-    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
-}
-/*кнопка регистрации*/
-.main_form .btn-enter {
-    width: 160px;
-    height: 60px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    border-radius: 8px;
+.tagline .entry {
+    margin-top: 40px;
+    border-radius: 11px;
     background-color: #FF6000;
     color: white;
-    border: 1px solid #FF6000;
+    font-size: 30px;
+    width: 222px;
+    height: 67px;
+    border: 3px solid #FF6000;
 }
+
+.tagline .entry:hover {
+    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0);
+    background-color: rgba(255, 96, 0);
+    border: none;
+}
+
+.tagline .entry:focus {
+    outline: 0 !important;
+}
+
+.tagline {
+    position: absolute;
+    font-family: Roboto, sans-serif;
+    color: #585858;
+    text-align: center;
+    text-shadow:
+            -0   -2px 2px #FFDFC6,
+            0   -2px 2px #FFDFC6,
+            -0    2px 2px #FFDFC6,
+            0    2px 2px #FFDFC6,
+            -2px -0   2px #FFDFC6,
+            2px -0   2px #FFDFC6,
+            -2px  0   2px #FFDFC6,
+            2px  0   2px #FFDFC6,
+            -1px -2px 2px #FFDFC6,
+            1px -2px 2px #FFDFC6,
+            -1px  2px 2px #FFDFC6,
+            1px  2px 2px #FFDFC6,
+            -2px -1px 2px #FFDFC6,
+            2px -1px 2px #FFDFC6,
+            -2px  1px 2px #FFDFC6,
+            2px  1px 2px #FFDFC6,
+            -2px -2px 2px #FFDFC6,
+            2px -2px 2px #FFDFC6,
+            -2px  2px 2px #FFDFC6,
+            2px  2px 2px #FFDFC6,
+            -2px -2px 2px #FFDFC6,
+            2px -2px 2px #FFDFC6,
+            -2px  2px 2px #FFDFC6,
+            2px  2px 2px #FFDFC6;
+}
+/*ПРОЦЕСС-----------------------------------------------*/
+.process-block {
+    height: 100%;
+    text-align: center;
+}
+
+.process-block > div {
+    display: inline-block;
+}
+
+.process-shopping {
+    width: 460px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    color: #FF6000;
+}
+
+.process-block p {
+    font-size: 17px;
+    font-family: Roboto, sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+/*КАТАЛОГ МАГАЗИНОВ---------------------------------------*/
+.header .shops {
+    margin-bottom: 40px;
+}
+
+.shop-block {
+    display: table;
+    height: 525px;
+    padding-right: 15%;
+    padding-left: 15%;
+    text-align: center;
+}
+
+.shop-block > div {
+    display: inline-block;
+}
+
+.shop-window .cash_proc span {
+    color: #343a40;
+}
+
+.shop-window a:hover {
+    color: #343a40;
+}
+
+/*отступы между магазинами*/
+.shopping .square {
+    flex-grow: 0;
+}
+
+/*окна*/
+.shop-window {
+    border: 1px solid #FF9933;
+    background-color: #ffffff;
+    margin: 10px 10px 10px 10px;
+}
+
+.item {
+    width: 220px;
+    height: 200px;
+}
+
+.shop-window .blok1 {
+    width: 220px;
+    height: 80px;
+}
+
+.shop-window .blok2 {
+    width: 220px;
+    height: 60px;
+    font-family: Roboto, sans-serif;
+}
+
+.shop-window .blok3 {
+    width: 220px;
+    height: 60px;
+}
+
+/*рамка при наведении курсора*/
+.shop-window:hover {
+    background-color: #F8ECE0;
+}
+
+/*размер изображения логотипа*/
+.shop-window .blok1 img {
+    max-width: 70%;
+    max-height: 70%;
+    margin-top: 20px;
+    /*min-width: 50%;*/
+    min-height: 50%;
+}
+
+/*кнопка перехода в магазин*/
+.shop-window .blok3 .button_t {
+    border-radius: 5px;
+    background-color: #FF9933;
+    color: white;
+    font-size: 16px;
+    width: 168px;
+    height: 38px;
+    border: 1px solid #FF9933;
+}
+
+.shop-window .button_t:hover {
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 51);
+}
+
+/*кнопка в окне по центру*/
+.shop-window .or_but {
+    text-align: center;
+}
+
+/*расположение логотипа и текста по центру*/
+.shop-window .logo, .cash_proc {
+    text-align: center;
+}
+
+/*размер цифры кэшбэка*/
+.shop-window .cash_proc .cifra, .znak_proc {
+    font-size: 30px;
+}
+
+.shop-window a {
+    text-decoration: none;
+}
+
+.shop-window .button_t:focus {
+    outline: 0 !important;
+}
+
+.blok4 {
+    text-align: center;
+}
+
+.blok4 .buttons {
+    margin-top: 33px;
+    border-radius: 9px;
+    background-color: #FF9933;
+    color: white;
+    font-size: 30px;
+    width: 372px;
+    height: 50px;
+    border: 1px solid #FF9933;
+}
+
+.blok4 .buttons:hover {
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 51);
+}
+
+.blok4 .buttons:focus {
+    outline: 0 !important;
+}
+
+/*ВОПРОСЫ И ОТВЕТЫ-------------------------------------------*/
+.ques {
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.faq {
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 100%;
+    margin-bottom: 60px;
+}
+
+/*вопрос*/
+.faq .panel-question {
+    padding: 5px 10px 3px 10px;
+    border: 1px solid #FF6000;
+    margin-top: 20px;
+    background-color: #FCD2A4;
+    color: #4e555b;
+    border-radius: 5px;
+    height: 26px;
+    width: 100%;
+    font-weight: bolder;
+    font-family: Roboto, sans-serif;
+    display: table;
+    padding-bottom: 0;
+}
+
+/*ответ*/
+.faq .panel-answer {
+    padding: 5px 10px 3px 10px;
+    margin-top: 3px;
+    margin-left: -11px;
+    border: 1px solid #FF6000;
+    background-color: #F8ECE0;
+    color: #4e555b;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    display: none;
+    width: 100%;
+    font-weight: normal;
+    margin-bottom: -1px;
+}
+
+.link-faq {
+    color: #4e555b;
+    text-decoration: none;
+}
+
+.link-faq:hover {
+    text-decoration: underline;
+}
+
+/*рамка*/
+.main_form {
+    border: 1px solid #FF6000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    background-color: #F2F2F2;
+}
+
+#to-top {
+    color: #FF6000;
+    border-radius: 4px;
+    right: 4%;
+    bottom: 5%;
+    cursor: pointer;
+    position: fixed;
+    text-align: center;
+}
+
+#to-top:before {
+    content: "";
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    position: absolute;
+    line-height: 50px;
+    left: 5px;
+    top: 9px;
+    z-index: -1;
+}
+
+
+@media (min-width: 1440px) {
+    .welcome .tagline {
+        font-size: 58px;
+        top: 111px;
+        margin-left: 49%;
+    }
+    .welcome .tagline .num {
+        font-size: 74px;
+    }
+    .process-shopping {
+        width: 450px;
+    }
+    .shop-block {
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+    .faq {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 20px;
+    }
+}
+
+
+@media (min-width: 1140px) and (max-width: 1439px) {
+    .welcome .tagline {
+        font-size: 48px;
+        top: 77px;
+        margin-left: 46%;
+    }
+    .welcome .tagline .num{
+         font-size: 63px;
+    }
+    .process-shopping {
+        width: 348px;
+    }
+    .fa-7x {
+        font-size: 6em;
+    }
+    .shop-block {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .faq {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 20px;
+    }
+    #to-top {
+        right: 2%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1139px) {
+    .welcome .tagline {
+        font-size: 37px;
+        top: 32px;
+        margin-left: 35%;
+    }
+
+    .welcome .tagline .num{
+        font-size: 51px;
+    }
+    .tagline .entry {
+        margin-top: 25px;
+        width: 176px;
+        height: 45px;
+        font-size: 26px;
+    }
+    .process-shopping {
+        width: 248px;
+    }
+    .fa-7x {
+        font-size: 5em;
+    }
+    .shop-block {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .shop-block .shop-window {
+        width: 280px;
+        height: 260px;
+    }
+    .shop-window .blok1 {
+        width: 280px;
+        height: 100px;
+    }
+    .shop-window .blok2 {
+        width: 280px;
+        height: 80px;
+        font-family: Roboto, sans-serif;
+        font-size: 24px;
+    }
+    .shop-window .blok3 {
+        width: 280px;
+        height: 80px;
+    }
+    .shop-window .blok3 .button_t{
+        font-size: 20px;
+        width: 201px;
+        height: 52px;
+    }
+    .shop-window img {
+        min-width: 60%;
+    }
+    .faq {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 24px;
+    }
+    #to-top {
+        right: 1%;
+    }
+}
+
+
+@media  screen and (max-width: 767px) {
+    .tosh{
+        min-width: 767px;
+    }
+    .tagline .num {
+        font-size: 30px;
+    }
+
+    .welcome .tagline {
+        font-size: 37px;
+        top: 32px;
+        margin-left: 25%;
+
+    }
+    .tagline .entry {
+        margin-top: 10px;
+        width: 176px;
+        height: 45px;
+        font-size: 26px;
+    }
+.tagline{
+    width: 100%;
+}
+}
+
