@@ -36,7 +36,7 @@ abstract class AbstractImage
     }
 
     /**
-     * @return null|File
+     * @return File|null
      */
     public function getFile(): ?File
     {
@@ -97,7 +97,7 @@ abstract class AbstractImage
     /**
      * Puts file to filesystem.
      *
-     * @param null|string $projectPath
+     * @param string|null $projectPath
      */
     final public function saveFile(?string $projectPath = null)
     {
@@ -110,7 +110,7 @@ abstract class AbstractImage
     /**
      * Removes reference file.
      *
-     * @param null|string $projectPath
+     * @param string|null $projectPath
      */
     final public function removeFile(?string $projectPath = null)
     {
