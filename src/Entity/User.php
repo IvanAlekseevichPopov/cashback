@@ -186,7 +186,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getGoogleId(): ?string
     {
@@ -194,7 +194,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getGoogleAccessToken(): ?string
     {
@@ -202,7 +202,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $googleAccessToken
+     * @param string|null $googleAccessToken
      */
     public function setGoogleAccessToken(?string $googleAccessToken): void
     {
@@ -210,7 +210,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getVkontakteId(): ?string
     {
@@ -218,7 +218,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $vkontakteId
+     * @param string|null $vkontakteId
      */
     public function setVkontakteId(?string $vkontakteId): void
     {
@@ -226,7 +226,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getVkontakteAccessToken(): ?string
     {
@@ -234,7 +234,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $vkontakteAccessToken
+     * @param string|null $vkontakteAccessToken
      */
     public function setVkontakteAccessToken(?string $vkontakteAccessToken): void
     {
@@ -247,7 +247,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getMailruId(): ?string
     {
@@ -255,7 +255,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $mailruId
+     * @param string|null $mailruId
      */
     public function setMailruId(?string $mailruId): void
     {
@@ -263,7 +263,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getMailruAccessToken(): ?string
     {
@@ -271,7 +271,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $mailruAccessToken
+     * @param string|null $mailruAccessToken
      */
     public function setMailruAccessToken(?string $mailruAccessToken): void
     {
@@ -279,7 +279,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getYandexId(): ?string
     {
@@ -287,7 +287,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $yandexId
+     * @param string|null $yandexId
      */
     public function setYandexId(?string $yandexId): void
     {
@@ -295,7 +295,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getYandexAccessToken(): ?string
     {
@@ -303,7 +303,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $yandexAccessToken
+     * @param string|null $yandexAccessToken
      */
     public function setYandexAccessToken(?string $yandexAccessToken): void
     {
@@ -311,7 +311,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getFacebookId(): ?string
     {
@@ -319,7 +319,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $facebookId
+     * @param string|null $facebookId
      */
     public function setFacebookId(?string $facebookId): void
     {
@@ -327,7 +327,7 @@ class User extends FOSUser
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getFacebookAccessToken(): ?string
     {
@@ -335,7 +335,7 @@ class User extends FOSUser
     }
 
     /**
-     * @param null|string $facebookAccessToken
+     * @param string|null $facebookAccessToken
      */
     public function setFacebookAccessToken(?string $facebookAccessToken): void
     {
