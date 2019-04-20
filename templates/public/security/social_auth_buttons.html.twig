@@ -1,13 +1,10 @@
 <h2>или через социальные сети</h2>
 <div class="social_buttons">
+    <a href="{{ path('facebook_connect') }}" class="btn btn-auto btn-fb" title="Вход через Facebook">
+        <i class="fab fa-facebook"></i>
+    </a>
     <a href="{{ path('vk_connect') }}" class="btn btn-auto btn-vk" title="ВКонтакте">
         <i class="fab fa-vk"></i>
-    </a>
-    <a href="{{ path('yandex_connect') }}" class="btn btn-auto btn-ya" title="Яндекс">
-        <i class="fab fa-yandex"></i>
-    </a>
-    <a href="{{ path('facebook_connect') }}" class="btn btn-auto btn-fb" title="Facebook">
-        <i class="fab fa-facebook-f"></i>
     </a>
     <a href="{{ path('google_connect') }}" class="btn btn-auto btn-gg" title="Google">
         <i class="fab fa-google"></i>
@@ -15,52 +12,61 @@
     <a href="{{ path('mailru_connect') }}" class="btn btn-auto btn-ml" title="Mail.ru">
         <i class="fas fa-at"></i>
     </a>
+    <a href="{{ path('yandex_connect') }}" class="btn btn-auto btn-ya" title="Яндекс">
+        <i class="fab fa-yandex"></i>
+    </a>
 </div>
 <style>
     /*кнопки соц. сетей*/
-    .social_buttons .btn-auto {
-        width: 45px;
-        height: 45px;
-        padding-top: 12px;
-        font-size: 22px;
-        margin-right: 3px;
-        margin-left: 3px;
-    }
 
     /*кнопка вконтакте*/
-    .social_buttons .btn-vk {
-        background-color: #5f83a9;
-        border: none;
+    .social_buttons .fa-vk {
+        color: #5f83a9;
+        font-size: 50px;
     }
 
-    .btn-vk svg {
-        position: relative;
-        left: -2px;
-    }
     /*кнопка яндекс*/
-    .social_buttons .btn-ya {
-        background-color: #e61400;
-        border: none;
+    .social_buttons .fa-yandex {
+        color: #e61400;
+        font-size: 46px;
     }
+
     /*кнопка фейсбук*/
+    .social_buttons .fa-facebook {
+        font-size: 52px;
+        color: #4267B2;
+    }
+
     .social_buttons .btn-fb {
-        background-color: #395a99;
-        border: none;
+        position: relative;
+        z-index: 2;
     }
+
+    .btn-fb:before {
+        content: "";
+        background-color: white;
+        width: 31px;
+        height: 45px;
+        display: inline-block;
+        position: absolute;
+        line-height: 50px;
+        z-index: -1;
+        top: 10px;
+        left: 22px;
+    }
+
     /*кнопка гугл*/
-    .social_buttons .btn-gg {
-        background-color: #d6492e;
-        border: none;
+    .social_buttons .fa-google {
+        color: #d6492e;
+        font-size: 50px;
     }
+
     /*кнопка mail*/
-    .social_buttons .btn-ml {
-        background-color: #005BD1;
-        border: none;
+    .social_buttons .fa-at {
+        color: #005BD1;
+        font-size: 50px;
     }
-    /*цвет svg на всех кнопках*/
-    .social_buttons, svg {
-        color: white;
-    }
+
     /*при клике на кнопку соц.сетей*/
     .social_buttons .btn-auto:focus {
         box-shadow: none;
