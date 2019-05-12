@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use App\Traits\Column\UuidColumn;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 
-/**
- * AbstractImage.
- */
 abstract class AbstractImage
 {
-    use UuidColumn;
-
     public const BASE_PATH = 'static';
+
+    /**
+     * @var UuidInterface
+     *
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     */
+    protected $id;
 
     /**
      * @var string
@@ -33,6 +37,11 @@ abstract class AbstractImage
     public function __toString()
     {
         return $this->getFilePath();
+    }
+
+    public function __construct()
+    {
+        $this->id = Uuid::uuid4();
     }
 
     /**
@@ -90,8 +99,6 @@ abstract class AbstractImage
     public function setExtension(string $extension)
     {
         $this->extension = $extension;
-
-        return $this;
     }
 
     /**
@@ -116,6 +123,11 @@ abstract class AbstractImage
     {
         $fs = new FileSystem();
         $fs->remove($projectPath.$this->getFilePath());
+    }
+
+    public function getId(): UuidInterface
+    {
+        return $this->id;
     }
 
     final protected function getBasePath(): string

@@ -30,8 +30,6 @@ trait IntegerAutoIncrementIdColumn
     public function setId(int $id)
     {
         $this->id = (int) $id;
-
-        return $this;
     }
 
     /**

@@ -6,10 +6,11 @@ namespace App\Service;
 
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
 use App\Entity\CashBack;
-use App\Entity\CashBackCategory;
 use App\Entity\CashBackImage;
 use App\Entity\CashBackPlatform;
 use Cocur\Slugify\Slugify;
+use DateInterval;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
@@ -65,11 +66,11 @@ class AdmitadApiHandler
     {
         switch ($admitadResponse['connection_status']) {
             case 'active':
-                return CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP;
+                return CashBackStatusEnumType::APPROVED_PARTNERSHIP;
             case 'pending':
-                return CashBackStatusEnumType::STATUS_AWAITING_PARTNERSHIP;
+                return CashBackStatusEnumType::AWAITING_PARTNERSHIP;
             case 'declined':
-                return CashBackStatusEnumType::STATUS_REJECTED_PARTNERSHIP;
+                return CashBackStatusEnumType::REJECTED_PARTNERSHIP;
             default:
                 throw new \Exception('unknown status - '.$admitadResponse['connection_status']);
         }
@@ -119,15 +120,15 @@ class AdmitadApiHandler
      */
     public function updateAccessToken(CashBackPlatform $admitadPlatform): void
     {
-        $now = new \DateTime(self::TIME_APPROXIMATION);
+        $now = new DateTimeImmutable(self::TIME_APPROXIMATION);
 
         $token = $admitadPlatform->getToken();
         $expiredAt = $admitadPlatform->getExpiredAt();
         if (empty($token) || $expiredAt < $now) {
             $tokenJson = $this->getAccessToken($admitadPlatform);
-            $admitadPlatform
-                ->setToken($tokenJson['access_token'])
-                ->setExpiredAt($now->add(new \DateInterval('PT'.$tokenJson['expires_in'].'S')));
+
+            $admitadPlatform->setToken($tokenJson['access_token']);
+            $admitadPlatform->setExpiredAt($now->add(new DateInterval('PT'.$tokenJson['expires_in'].'S')));
 
             $this->manager->persist($admitadPlatform);
             $this->manager->flush();
@@ -293,16 +294,15 @@ class AdmitadApiHandler
         $slugify = new Slugify();
 
         $cashBack = new CashBack();
-        $cashBack
-            ->setActive(false)
-            ->setExternalId($item['id'])
-            ->setRating((int) $item['rating'])
-            ->setCash('')
-            ->setTitle($item['name'])
-            ->setSlug($slugify->slugify($item['name']))
-            ->setCondition($condition)
-            ->setCashBackPlatform($admitadPlatform)
-            ->setCashBackImage($cashBackImage);
+        $cashBack->setActive(false);
+        $cashBack->setExternalId($item['id']);
+        $cashBack->setRating((int) $item['rating']);
+        $cashBack->setCash('');
+        $cashBack->setTitle($item['name']);
+        $cashBack->setSlug($slugify->slugify($item['name']));
+        $cashBack->setCondition($condition);
+        $cashBack->setCashBackPlatform($admitadPlatform);
+        $cashBack->setCashBackImage($cashBackImage);
 
         if ($item['avg_money_transfer_time'] > 0) {
             $cashBack->setAwaitingTime((int) $item['avg_money_transfer_time']);
@@ -310,7 +310,7 @@ class AdmitadApiHandler
 
         if ($item['connected']) {
             $cashBack
-                ->setStatus(CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP);
+                ->setStatus(CashBackStatusEnumType::APPROVED_PARTNERSHIP);
             //TODO set Uri for create query
         }
 
@@ -532,6 +532,4 @@ class AdmitadApiHandler
 
         return $this->endDate;
     }
-
-//    private function generateDeef
 }

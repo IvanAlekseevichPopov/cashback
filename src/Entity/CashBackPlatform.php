@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Traits\Column\IntegerAutoIncrementIdColumn;
+use DateTimeImmutable;
+use Deployer\Collection\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CashBackPlatform.
- *
  * @ORM\Table(name="cash_back_platform")
  *
  * @ORM\Entity
@@ -90,14 +90,11 @@ class CashBackPlatform
 
     /**
      * @ORM\Column(
-     *     type="datetime",
+     *     type="datetime_immutable",
      *     nullable=true,
-     *     options={
-     *         "comment": "Дата протухания токена"
-     *     }
      * )
      *
-     * @var \DateTime
+     * @var DateTimeImmutable
      */
     private $expiredAt;
 
@@ -107,7 +104,7 @@ class CashBackPlatform
      *     mappedBy="cashBackPlatform",
      * )
      *
-     * @var ArrayCollection|Cashback[]
+     * @var Collection|Cashback[]
      */
     private $cashBacks;
 
@@ -121,162 +118,91 @@ class CashBackPlatform
         return (string) $this->getName();
     }
 
-    /**
-     * @return string
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
     public function getBaseUrl(): ?string
     {
         return $this->baseUrl;
     }
 
-    /**
-     * @param string $baseUrl
-     */
-    public function setBaseUrl(string $baseUrl)
+    public function setBaseUrl(string $baseUrl): void
     {
         $this->baseUrl = $baseUrl;
     }
 
-    /**
-     * @return string
-     */
     public function getAuthHeader(): ?string
     {
         return $this->authHeader;
     }
 
-    /**
-     * @param string $authHeader
-     */
-    public function setAuthHeader(string $authHeader)
+    public function setAuthHeader(string $authHeader): void
     {
         $this->authHeader = $authHeader;
     }
 
-    /**
-     * @return string
-     */
     public function getClientId(): ?string
     {
         return $this->clientId;
     }
 
-    /**
-     * @param string $clientId
-     */
     public function setClientId(string $clientId)
     {
         $this->clientId = $clientId;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getCashBacks(): ArrayCollection
+    public function getCashBacks(): Collection
     {
         return $this->cashBacks;
     }
 
-    /**
-     * @param CashBack $cashBack
-     *
-     * @return $this
-     */
-    public function addCashBack(CashBack $cashBack)
+    public function addCashBack(CashBack $cashBack): void
     {
         if (false === $this->cashBacks->contains($cashBack)) {
             $cashBack->setCashBackPlatform($this);
             $this->cashBacks->add($cashBack);
         }
-
-        return $this;
     }
 
-    /**
-     * @param CashBack $cashBack
-     *
-     * @return $this
-     */
-    public function removeCashBack(CashBack $cashBack)
+    public function removeCashBack(CashBack $cashBack): void
     {
         $this->cashBacks->removeElement($cashBack);
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getToken(): ?string
     {
         return $this->token;
     }
 
-    /**
-     * @param string $token
-     *
-     * @return $this
-     */
-    public function setToken(?string $token)
+    public function setToken(?string $token): void
     {
         $this->token = $token;
-
-        return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getExpiredAt(): ?\DateTime
+    public function getExpiredAt(): ?DateTimeImmutable
     {
         return $this->expiredAt;
     }
 
-    /**
-     * @param \DateTime $expiredAt
-     *
-     * @return $this
-     */
-    public function setExpiredAt(?\DateTime $expiredAt)
+    public function setExpiredAt(?DateTimeImmutable $expiredAt): void
     {
         $this->expiredAt = $expiredAt;
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getExternalPlatformId(): ?string
     {
         return $this->externalPlatformId;
     }
 
-    /**
-     * @param string $externalPlatformId
-     *
-     * @return $this
-     */
-    public function setExternalPlatformId(?string $externalPlatformId)
+    public function setExternalPlatformId(?string $externalPlatformId): void
     {
         $this->externalPlatformId = $externalPlatformId;
-
-        return $this;
     }
 }

@@ -18,9 +18,6 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-/**
- * CashBackAdmin.
- */
 class CashBackAdmin extends AbstractAdmin
 {
     public const MESSAGE_NO_IMAGE_UPLOADED = 'Вы должны прикрепить изображение!';
@@ -50,6 +47,11 @@ class CashBackAdmin extends AbstractAdmin
         }
     }
 
+    public function configure()
+    {
+        $this->setTemplate('list', 'admin/cashback/js_list.html.twig');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -69,6 +71,7 @@ class CashBackAdmin extends AbstractAdmin
             ->add('title', null, [
                 'label' => 'Название кешбека/магазина',
             ])
+            ->add('slug') //TODO slug bundle or on create listener
             ->add('cashBackImage', FileType::class, $this->getImageOptions())
             ->add('description', TextareaType::class, [
                 'label' => 'Описание(для пользователя)',
@@ -93,8 +96,7 @@ class CashBackAdmin extends AbstractAdmin
             ])
             ->add('cashBackPlatform', null, [
                 'label' => 'Платформа',
-            ])
-        ;
+            ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -125,10 +127,8 @@ class CashBackAdmin extends AbstractAdmin
                 'editable' => true,
             ])
             ->add('status', 'choice', [
-                'choices' => CashBackStatusEnumType::getChoices(),
-                'template' => 'admin/cashback/list_status.html.twig',
-            ])
-        ;
+                'choices' => CashBackStatusEnumType::getReadableValues(),
+            ]);
     }
 
     /**
@@ -169,10 +169,5 @@ class CashBackAdmin extends AbstractAdmin
         }
 
         return $fileFieldOptions;
-    }
-
-    public function configure()
-    {
-        $this->setTemplate('list', 'admin/cashback/js_list.html.twig');
     }
 }
