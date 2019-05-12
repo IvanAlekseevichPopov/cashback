@@ -14,7 +14,7 @@ use Ramsey\Uuid\Uuid;
  * @ORM\EntityListeners({"App\Listener\EntityListener\TransactionListener"})
  * @ORM\HasLifecycleCallbacks
  */
-final class Transaction
+class Transaction
 {
     /**
      * @var Uuid

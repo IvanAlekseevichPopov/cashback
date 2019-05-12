@@ -1,17 +1,20 @@
 monolog:
     handlers:
-        main:
-            type: stream
+        filter_for_errors:
+            type: fingers_crossed
             action_level: error
-            path: "%kernel.logs_dir%/%kernel.environment%.log"
-#            handler: nested
+            handler: nested
             excluded_404s:
                 # regex: exclude all 404 errors from the logs
                 - ^/
-#        nested:
-#            type: stream
-#            path: "%kernel.logs_dir%/%kernel.environment%.log"
-#            level: error
+        nested:
+            type: rotating_file
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            max_files: 10
+        parpetrail:
+            action_level: error
+            type: socket
+            connection_string: '%env(LOGGER_PATH)%'
         console:
             type:   console
             process_psr_3_messages: false
