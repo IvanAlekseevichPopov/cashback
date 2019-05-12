@@ -42,7 +42,7 @@ class CashbackFixtures extends Fixture
 
     private function generateImage(): CashBackImage
     {
-        $localPath = 'public/static/images/'.uniqid('img', true).'.jpg';
+        $localPath = sys_get_temp_dir().'/'.uniqid('img', true).'.jpg';
 
         $im = imagecreate(100, 100);
         imagecolorallocate($im, 255, 255, 0);
