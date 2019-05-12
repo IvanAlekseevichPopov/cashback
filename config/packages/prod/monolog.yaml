@@ -11,7 +11,7 @@ monolog:
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
             max_files: 10
-        parpetrail:
+        papertrail:
             action_level: error
             type: socket
             connection_string: '%env(LOGGER_PATH)%'
