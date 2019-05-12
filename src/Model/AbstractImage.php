@@ -7,12 +7,13 @@ namespace App\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\Filesystem\Filesystem;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\File\File;
 
 abstract class AbstractImage
 {
-    public const BASE_PATH = 'static';
+    public const BASE_PATH = 'content';
+    public const MAX_EXT_LENGTH = 5;
 
     /**
      * @var UuidInterface
@@ -34,14 +35,19 @@ abstract class AbstractImage
      */
     protected $file;
 
+    public function __construct()
+    {
+        $this->id = Uuid::uuid4();
+    }
+
     public function __toString()
     {
         return $this->getFilePath();
     }
 
-    public function __construct()
+    public function getId(): UuidInterface
     {
-        $this->id = Uuid::uuid4();
+        return $this->id;
     }
 
     /**
@@ -55,17 +61,17 @@ abstract class AbstractImage
     /**
      * @param File $file
      *
-     * @throws \Exception
+     * @throws RuntimeException
      */
-    public function setFile(File $file)
+    public function setFile(File $file): void
     {
         if (!$file->isReadable()) {
-            throw new \Exception('file read error');
+            throw new RuntimeException('File read error');
         }
 
         $this->file = $file;
         $extension = $file->getExtension();
-        if (empty($extension) || strlen($extension) > 5) {
+        if (empty($extension) || strlen($extension) > self::MAX_EXT_LENGTH) {
             $extension = $file->guessExtension();
         }
         if (empty($extension)) {
@@ -75,67 +81,27 @@ abstract class AbstractImage
         $this->setExtension($extension);
     }
 
-    /**
-     * @return string
-     */
-    final public function getFilePath()
+    final public function getFilePath(): string
     {
         return sprintf('%s/%s', $this->getBasePath(), $this->getFileName());
     }
 
-    /**
-     * @return string|null
-     */
     public function getExtension(): ?string
     {
         return $this->extension;
     }
 
-    /**
-     * @param string $extension
-     *
-     * @return $this
-     */
-    public function setExtension(string $extension)
+    public function setExtension(string $extension): void
     {
         $this->extension = $extension;
     }
 
-    /**
-     * Puts file to filesystem.
-     *
-     * @param string|null $projectPath
-     */
-    final public function saveFile(?string $projectPath = null)
-    {
-        $fs = new FileSystem();
-        $fs->mkdir($this->getBasePath());
-
-        $this->file->move($projectPath.$this->getBasePath(), $this->getFileName());
-    }
-
-    /**
-     * Removes reference file.
-     *
-     * @param string|null $projectPath
-     */
-    final public function removeFile(?string $projectPath = null)
-    {
-        $fs = new FileSystem();
-        $fs->remove($projectPath.$this->getFilePath());
-    }
-
-    public function getId(): UuidInterface
-    {
-        return $this->id;
-    }
-
-    final protected function getBasePath(): string
+    final public function getBasePath(): string
     {
         return sprintf('%s/%s', self::BASE_PATH, $this->getSubDir());
     }
 
-    final protected function getFileName(): string
+    final public function getFileName(): string
     {
         return sprintf('%s.%s', $this->getId(), $this->getExtension());
     }

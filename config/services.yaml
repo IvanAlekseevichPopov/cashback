@@ -29,7 +29,8 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Listener\EntityListener\CashbackImageListener:
-        arguments: [ '%kernel.project_dir%' ]
+        arguments:
+            $fileManager: '@App\Service\FileManager'
         tags:
             - { name: doctrine.orm.entity_listener }
             - { name: doctrine.orm.entity_listener, entity_manager: custom }
@@ -41,3 +42,7 @@ services:
     App\Security\FOSUBUserProvider:
         arguments:
             $properties: { google: googleId, vkontakte: vkontakteId, mailru: mailruId, yandex: yandexId, facebook: facebookId }
+
+    App\Service\FileManager:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
