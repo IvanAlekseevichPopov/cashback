@@ -1,0 +1,323 @@
+body{
+    margin:0;
+}
+/*МЕНЮ-----------------------------------------*/
+.main-menu > div {
+    display: inline-block;
+}
+.main-menu {
+    height: 60px;
+    text-align: center;
+    background-color: #F8ECE0;
+}
+.point {
+    color: #FF6000;
+}
+/*листик*/
+.logo-menu {
+    width: 30px;
+    height: 30px;
+}
+.main-menu .leaf-name .black {
+    font-size: 36px;
+    color: #FF6000;
+    font-family: Roboto, sans-serif;
+}
+.main-menu .list-name {
+    text-decoration: none;
+}
+.main-menu .hat {
+    color: #FF6000;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+}
+/*текст в шапке при наведении курсора*/
+.main-menu .hat:hover {
+    border-bottom: 3px solid #FF6000;
+    color: #FF6000;
+}
+.main-menu .point {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.center-menu, .right-menu{
+    font-weight: bolder;
+    padding-top: 19px;
+}
+
+/*ЛИЧНЫЙ КАБИНЕТ---------------------------------------------*/
+
+.title {
+    height: 60px;
+    background-color: #FCD2A4;
+    font-family: Roboto, sans-serif;
+    font-size: 33px;
+    color: #FF6000;
+    text-align: center;
+    line-height: 1.8em;
+}
+.privat{
+    height: 100%;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+.my-profile .avatar img {
+    width: 100px;
+    height: 100px;
+    padding: 20px 20px 0px 15px;
+}
+.avatar .download{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    padding: 20px 20px 0px 15px;
+    text-align: center;
+}
+.avatar .download a{
+    font-size: 14px;
+    color: #5a6268;
+}
+
+.field-entry {
+    height: 28px;
+    width: 380px;
+    margin-bottom: 10px;
+    border: 1px solid #FF6000;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+.fields .field-entry:focus{
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+    border-color: rgba(255,96,0,.25);
+}
+.field-entry:focus{
+    outline: 0 !important;
+}
+.data-profile > div {
+    display: inline-block;
+}
+.fields {
+    display: inline-block;
+    margin-top: 10px;
+}
+.save {
+    height: 40px;
+    width: 130px;
+    font-size: 16px;
+    margin-left: 20px;
+    border: 1px solid #FF6000;
+    border-radius: 4px;
+    background-color: #FF6000;
+    color: #FFFFFF;
+}
+.save-but .save:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0);
+    background-color: rgba(255, 96, 0);
+    border: none;
+}
+.save-but .save:focus {
+    outline: 0 !important;
+}
+/*вопрос*/
+.privat .form {
+    padding: 5px 10px 3px 10px;
+    border: 1px solid #FF6000;
+    margin-top: 20px;
+    background-color: #FCD2A4;
+    border-radius: 5px;
+    height: 26px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: Roboto, sans-serif;
+    display: table;
+    padding-bottom: 0;
+}
+
+/*ответ*/
+.privat .data {
+    padding: 5px 10px 3px 10px;
+    margin-top: 3px;
+    margin-left: -11px;
+    border: 1px solid #FF6000;
+    background-color: #F8ECE0;
+    color: #4e555b;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    width: 100%;
+    font-weight: normal;
+    margin-bottom: -1px;
+}
+.form .link-office {
+    color: #FF6000;
+    text-align: center;
+}
+
+/*orders*/
+.table-orders {
+    background: #f5ffff;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+.table-orders th {
+    box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
+    background-color: #b2b2b2;
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+}
+.table-orders th:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 25%;
+    width: 100%;
+}
+.table-orders tr:nth-child(odd) {
+    background: #ebf3f9;
+}
+.table-orders th:first-child {
+    box-shadow: inset 1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-orders th:last-child {
+    box-shadow: inset -1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-orders td {
+    border: 1px solid #e3eef7;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+.table-orders tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #a09f9d;
+}
+.table-orders tbody:hover tr:hover td {
+    color: #444444;
+    text-shadow: none;
+}
+/*payouts*/
+.table-payouts {
+    background: #f5ffff;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+.table-payouts th {
+    box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
+    background: #b2b2b2;
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+}
+.table-payouts th:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 25%;
+    width: 100%;
+}
+.table-payouts tr:nth-child(odd) {
+    background: #ebf3f9;
+}
+.table-payouts th:first-child {
+    box-shadow: inset 1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-payouts th:last-child {
+    box-shadow: inset -1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-payouts td {
+    border: 1px solid #e3eef7;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+.table-payouts tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #a09f9d;
+}
+.table-payouts tbody:hover tr:hover td {
+    color: #444444;
+    text-shadow: none;
+}
+
+/*ФУТЕР------------------------------------------------------*/
+.footer-block {
+    height: 150px;
+    background-color: #5a6268;
+    color: #BDBDBD;
+    width: 100%;
+    margin-top: 20px;
+    font-family: Roboto,sans-serif;
+}
+.name-menu{
+    font-size: 18px;
+    color: #BDBDBD;
+}
+.three-columns li{
+    list-style-type: none;
+}
+.text-small{
+    margin-left: 0;
+    padding-left: 0;
+}
+.three-columns > div {
+    display: inline-block;
+}
+
+.three-columns{
+    text-align: center;
+}
+.one-column  {
+    text-align: center;
+}
+.footer-block .down {
+    width: 400px;
+    font-size: 16px;
+}
+.text-muted {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+@media (min-width: 1440px) {
+    .privat {
+        margin-right: 25%;
+        margin-left: 25%;
+    }
+
+    .footer-block .down {
+        width: 400px;
+    }
+}
+
+@media (min-width: 1140px) and (max-width: 1439px) {
+.privat{
+    margin-right: 20%;
+    margin-left: 20%;
+    }
+.footer-block .down {
+    width: 300px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1139px) {
+    .privat{
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+    .footer-block .down {
+        width: 210px;
+    }
+}
+
+
+
+
+
