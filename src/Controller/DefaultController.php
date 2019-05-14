@@ -2,23 +2,34 @@
 
 namespace App\Controller;
 
+use App\Repository\CashBackRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="main")
+     *
+     * @param CashBackRepository $cashBackRepository
+     *
+     * @return Response
      */
-    public function index()
+    public function index(CashBackRepository $cashBackRepository): Response
     {
-        return $this->render('public/main.html.twig');
+        $cashbacks = $cashBackRepository->getCashbackTop();
+
+        return $this->render('public/main.html.twig', [
+                'cashbacks' => $cashbacks,
+            ]
+        );
     }
 
     /**
      * @Route("/faq", name="faq")
      */
-    public function faqAction()
+    public function faqAction(): Response
     {
         return $this->render('public/faq.html.twig');
     }
@@ -26,7 +37,7 @@ class DefaultController extends Controller
     /**
      * @Route("/policy", name="policy")
      */
-    public function policyAction()
+    public function policyAction(): Response
     {
         return $this->render('public/policy.html.twig');
     }
@@ -34,7 +45,7 @@ class DefaultController extends Controller
     /**
      * @Route("/conditions", name="conditions")
      */
-    public function conditionsAction()
+    public function conditionsAction(): Response
     {
         return $this->render('public/conditions.html.twig');
     }

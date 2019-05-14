@@ -13,3 +13,4 @@
 ###< friendsofphp/php-cs-fixer ###
 /makeup/node_modules/
 /public/static/images/cashback
+/public/content/

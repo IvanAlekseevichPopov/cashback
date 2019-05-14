@@ -2,22 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\CashBack;
+namespace App\Repository;
 
 use App\DBAL\Types\Enum\TransactionStatusEnumType;
+use App\Entity\CashBackTrek;
 use App\Entity\User;
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * CashBackTrekRepository.
- */
-class CashBackTrekRepository extends EntityRepository
+class CashBackTrekRepository extends ServiceEntityRepository
 {
-    /**
-     * @param User $user
-     *
-     * @return int
-     */
+    public function __construct(RegistryInterface $registry)
+    {
+        parent::__construct($registry, CashBackTrek::class);
+    }
+
     public function getAwaitingCount(User $user): int
     {
         $qb = $this->createQueryBuilder('cbt');
@@ -33,11 +32,6 @@ class CashBackTrekRepository extends EntityRepository
             ->getSingleScalarResult();
     }
 
-    /**
-     * @param User $user
-     *
-     * @return int
-     */
     public function getConfirmedCount(User $user): int
     {
         $qb = $this->createQueryBuilder('cbt');

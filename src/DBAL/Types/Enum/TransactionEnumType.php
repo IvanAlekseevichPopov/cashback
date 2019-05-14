@@ -6,9 +6,6 @@ namespace App\DBAL\Types\Enum;
 
 use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
-/**
- * TransactionEnumType.
- */
 class TransactionEnumType extends AbstractEnumType
 {
     public const CREATE = 'create';

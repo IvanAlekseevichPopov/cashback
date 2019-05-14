@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Traits\Column\UuidColumn;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 
 /**
- * CashBackTrek.
- *
  * @ORM\Table(name="cash_back_trek")
- *
- * @ORM\Entity(repositoryClass="App\Repository\CashBack\CashBackTrekRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CashBackTrekRepository")
  */
 class CashBackTrek
 {
-    use UuidColumn;
+    /**
+     * @var Uuid
+     *
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     */
+    private $id;
 
     /**
      * @ORM\ManyToOne(
@@ -62,7 +66,7 @@ class CashBackTrek
     private $transaction;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      *
      * @ORM\Column(type="date_immutable")
      */
@@ -70,51 +74,38 @@ class CashBackTrek
 
     public function __construct(User $user, CashBack $cashBack)
     {
+        $this->id = Uuid::uuid4();
         $this->user = $user;
         $this->cashBack = $cashBack;
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
     }
 
-    /**
-     * @return User
-     */
+    public function getId(): Uuid
+    {
+        return $this->id;
+    }
+
     public function getUser(): User
     {
         return $this->user;
     }
 
-    /**
-     * @return CashBack
-     */
     public function getCashBack(): CashBack
     {
         return $this->cashBack;
     }
 
-    /**
-     * @return Transaction|null
-     */
     public function getTransaction(): ?Transaction
     {
         return $this->transaction;
     }
 
-    /**
-     * @param Transaction $transaction
-     *
-     * @return $this
-     */
-    public function setTransaction(Transaction $transaction)
+    public function setTransaction(Transaction $transaction): void
     {
         $this->transaction = $transaction;
-
-        return $this;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }

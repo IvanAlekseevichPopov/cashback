@@ -8,8 +8,6 @@ use App\Traits\Column\IntegerAutoIncrementIdColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CashBackCategory.
- *
  * @ORM\Table(name="cash_back_category")
  *
  * @ORM\Entity
@@ -17,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CashBackCategory
 {
-    use IntegerAutoIncrementIdColumn;
+    use IntegerAutoIncrementIdColumn; //TODO uuid + slug
 
     /**
      * @ORM\Column(
@@ -70,83 +68,43 @@ class CashBackCategory
      */
     private $cashBack;
 
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     *
-     * @return $this
-     */
     public function setTitle(string $title)
     {
         $this->title = $title;
-
-        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCash(): ?string
     {
         return $this->cash;
     }
 
-    /**
-     * @param string $cash
-     *
-     * @return $this
-     */
-    public function setCash(string $cash)
+    public function setCash(string $cash): void
     {
         $this->cash = $cash;
-
-        return $this;
     }
 
-    /**
-     * @return CashBack
-     */
     public function getCashBack(): CashBack
     {
         return $this->cashBack;
     }
 
-    /**
-     * @param CashBack $cashBack
-     *
-     * @return $this
-     */
-    public function setCashBack(CashBack $cashBack)
+    public function setCashBack(CashBack $cashBack): void
     {
         $this->cashBack = $cashBack;
-
-        return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getExternalId(): ?int
     {
         return $this->externalId;
     }
 
-    /**
-     * @param int $externalId
-     *
-     * @return $this
-     */
-    public function setExternalId(int $externalId)
+    public function setExternalId(int $externalId): void
     {
         $this->externalId = $externalId;
-
-        return $this;
     }
 }

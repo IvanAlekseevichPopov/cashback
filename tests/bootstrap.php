@@ -10,7 +10,7 @@ $runCommand = function ($command) {
     );
 
     if (0 !== $code) {
-        throw new \Exception('Database preparing failed');
+        throw new \RuntimeException('Database preparing failed');
     }
 };
 

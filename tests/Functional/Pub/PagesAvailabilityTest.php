@@ -4,15 +4,12 @@ namespace App\Tests\Functional\Pub;
 
 use App\Tests\WebTestCase;
 
-/**
- * Class PagesAvailabilityTest.
- */
 class PagesAvailabilityTest extends WebTestCase
 {
     /**
      * @test
      */
-    public function pagesAreAvailable()
+    public function pagesAreAvailable(): void
     {
         $client = static::createClient();
 

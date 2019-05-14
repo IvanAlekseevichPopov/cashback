@@ -3,7 +3,6 @@
 .title {
     height: 60px;
     background-color: #FCD2A4;
-    /*margin-top: -4px;*/
     font-family: Roboto, sans-serif;
     font-size: 33px;
     color: #FF6000;
@@ -168,7 +167,6 @@
     max-width: 70%;
     max-height: 70%;
     margin-top: 20px;
-    /*min-width: 50%;*/
     min-height: 50%;
 }
 
