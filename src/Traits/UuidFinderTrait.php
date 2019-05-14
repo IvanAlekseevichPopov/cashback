@@ -15,7 +15,7 @@ trait UuidFinderTrait
     /**
      * @param string $id
      *
-     * @return null|object|CashBack
+     * @return object|CashBack|null
      */
     public function findByUuid(string $id)
     {

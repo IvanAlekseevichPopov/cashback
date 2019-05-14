@@ -10,9 +10,6 @@ use FOS\UserBundle\Model\User as FOSUser;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * User.
- *
- * @ORM\Table(name="user")
  * @UniqueEntity(fields={"email"}, message="email.already_used")
  * @ORM\Entity
  */
@@ -20,17 +17,14 @@ class User extends FOSUser
 {
     public const ROLE_MODERATOR = 'ROLE_MODERATOR';
 
+    //TODO migrate on uuid
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * @ORM\Column(
@@ -42,7 +36,7 @@ class User extends FOSUser
      *
      * @var string
      */
-    protected $phone; //TODO https://github.com/misd-service-development/phone-number-bundle
+    protected $phone;
 
     /**
      * @ORM\OneToOne(
@@ -55,7 +49,7 @@ class User extends FOSUser
      *
      * @var Balance
      */
-    protected $balance;
+    protected $balance; //TODO https://github.com/misd-service-development/phone-number-bundle
 
     /**
      * @ORM\OneToMany(
@@ -137,105 +131,61 @@ class User extends FOSUser
      */
     protected $facebookAccessToken;
 
-    /**
-     * @return Balance
-     */
     public function getBalance(): ?Balance
     {
         return $this->balance;
     }
 
-    /**
-     * @param Balance $balance
-     *
-     * @return User
-     */
-    public function setBalance(Balance $balance): User
+    public function setBalance(Balance $balance): void
     {
         $this->balance = $balance;
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getPhone(): string
     {
         return $this->phone;
     }
 
-    /**
-     * @param string $phone
-     *
-     * @return User
-     */
-    public function setPhone(string $phone): User
+    public function setPhone(string $phone): void
     {
         $this->phone = $phone;
-
-        return $this;
     }
 
-    /**
-     * @param string|null $googleId
-     */
-    public function setGoogleId(?string $googleId): void
-    {
-        $this->googleId = $googleId;
-    }
-
-    /**
-     * @return null|string
-     */
     public function getGoogleId(): ?string
     {
         return $this->googleId;
     }
 
-    /**
-     * @return null|string
-     */
+    public function setGoogleId(?string $googleId): void
+    {
+        $this->googleId = $googleId;
+    }
+
     public function getGoogleAccessToken(): ?string
     {
         return $this->googleAccessToken;
     }
 
-    /**
-     * @param null|string $googleAccessToken
-     */
     public function setGoogleAccessToken(?string $googleAccessToken): void
     {
         $this->googleAccessToken = $googleAccessToken;
     }
 
-    /**
-     * @return null|string
-     */
     public function getVkontakteId(): ?string
     {
         return $this->vkontakteId;
     }
 
-    /**
-     * @param null|string $vkontakteId
-     */
     public function setVkontakteId(?string $vkontakteId): void
     {
         $this->vkontakteId = $vkontakteId;
     }
 
-    /**
-     * @return null|string
-     */
     public function getVkontakteAccessToken(): ?string
     {
         return $this->vkontakteAccessToken;
     }
 
-    /**
-     * @param null|string $vkontakteAccessToken
-     */
     public function setVkontakteAccessToken(?string $vkontakteAccessToken): void
     {
         $this->vkontakteAccessToken = $vkontakteAccessToken;
@@ -246,97 +196,61 @@ class User extends FOSUser
         return $this->hasRole(self::ROLE_SUPER_ADMIN) || $this->hasRole(self::ROLE_MODERATOR);
     }
 
-    /**
-     * @return null|string
-     */
     public function getMailruId(): ?string
     {
         return $this->mailruId;
     }
 
-    /**
-     * @param null|string $mailruId
-     */
     public function setMailruId(?string $mailruId): void
     {
         $this->mailruId = $mailruId;
     }
 
-    /**
-     * @return null|string
-     */
     public function getMailruAccessToken(): ?string
     {
         return $this->mailruAccessToken;
     }
 
-    /**
-     * @param null|string $mailruAccessToken
-     */
     public function setMailruAccessToken(?string $mailruAccessToken): void
     {
         $this->mailruAccessToken = $mailruAccessToken;
     }
 
-    /**
-     * @return null|string
-     */
     public function getYandexId(): ?string
     {
         return $this->yandexId;
     }
 
-    /**
-     * @param null|string $yandexId
-     */
     public function setYandexId(?string $yandexId): void
     {
         $this->yandexId = $yandexId;
     }
 
-    /**
-     * @return null|string
-     */
     public function getYandexAccessToken(): ?string
     {
         return $this->yandexAccessToken;
     }
 
-    /**
-     * @param null|string $yandexAccessToken
-     */
     public function setYandexAccessToken(?string $yandexAccessToken): void
     {
         $this->yandexAccessToken = $yandexAccessToken;
     }
 
-    /**
-     * @return null|string
-     */
     public function getFacebookId(): ?string
     {
         return $this->facebookId;
     }
 
-    /**
-     * @param null|string $facebookId
-     */
     public function setFacebookId(?string $facebookId): void
     {
         $this->facebookId = $facebookId;
     }
 
-    /**
-     * @return null|string
-     */
     public function getFacebookAccessToken(): ?string
     {
         return $this->facebookAccessToken;
     }
 
-    /**
-     * @param null|string $facebookAccessToken
-     */
     public function setFacebookAccessToken(?string $facebookAccessToken): void
     {
         $this->facebookAccessToken = $facebookAccessToken;

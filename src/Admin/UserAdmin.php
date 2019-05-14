@@ -12,9 +12,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-/**
- * Class UserAdmin.
- */
 class UserAdmin extends AbstractAdmin
 {
     /**
@@ -42,6 +39,7 @@ class UserAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->addIdentifier('username')
+            ->add('lastLogin')
             ->add('email')
             ->add('enabled')
             ->add('roles');
@@ -66,9 +64,6 @@ class UserAdmin extends AbstractAdmin
         ;
     }
 
-    /**
-     * @param DatagridMapper $filter
-     */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter
@@ -77,10 +72,7 @@ class UserAdmin extends AbstractAdmin
             ->add('enabled');
     }
 
-    /**
-     * @return array
-     */
-    private function getRoles()
+    private function getRoles(): array
     {
         $rolesHierarchy = $this->getConfigurationPool()->getContainer()->getParameter('security.role_hierarchy.roles');
 
@@ -98,10 +90,7 @@ class UserAdmin extends AbstractAdmin
         return $flatRoles;
     }
 
-    /**
-     * @param User $user
-     */
-    private function updatePassword(User $user)
+    private function updatePassword(User $user): void
     {
         if ($user->getPlainPassword()) {
             $this->getConfigurationPool()->getContainer()->get('fos_user.user_manager')->updateUser($user, false);
