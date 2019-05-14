@@ -2,9 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="кэшбек, высокий кэшбэк, cash back, cashback, скидки, скидки интернет магазинов, покупки в интернет-магазинах, возврат суммы, выгодные покупки, возврат денег">
+    <meta name="keywords"
+          content="кэшбек, высокий кэшбэк, cash back, cashback, скидки, скидки интернет магазинов, покупки в интернет-магазинах, возврат суммы, выгодные покупки, возврат денег">
     <meta name="title" content="Cashtan - выгодные покупки через кэшбэк-сервис">
-    <meta name="description" content="Удобный кэшбэк-сервис для выгодных покупок. Выбирайте  товары и услуги в любимых интернет-магазинах и экономьте до 90% вместе с Cashtan.">
+    <meta name="description"
+          content="Удобный кэшбэк-сервис для выгодных покупок. Выбирайте  товары и услуги в любимых интернет-магазинах и экономьте до 90% вместе с Cashtan.">
     <title>{% block title %}CashTan{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -22,7 +24,7 @@
                 integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
                 crossorigin="anonymous"></script>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" href="{{ asset('static/images/cashtan_favicon.ico') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('img/cashtan_favicon.ico') }}" type="image/x-icon">
     {% endblock %}
 </head>
 <body class="container-color">
@@ -31,7 +33,7 @@
         <div class="navbar bg-white box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="{{ path('main') }}" class="navbar-brand d-flex align-items-center">
-                    <img class="logo_menu" src="{{ asset('static/images/cashtan-min.png') }}">
+                    <img class="logo_menu" src="{{ asset('img/cashtan-min.png') }}">
                     <strong class="black">CashTan</strong>
                 </a>
                 <p class="all_menu">
@@ -72,14 +74,14 @@
             </div>
         </div>
         <script type="text/javascript">
-            $(window).on('load',function(){
+            $(window).on('load', function () {
                 $('#exampleModal').modal('show');
             });
         </script>
     {% endfor %}
-{% block body %}
+    {% block body %}
 
-{% endblock %}
+    {% endblock %}
 </div>
 {% block footer %}
     <footer class="pt-4 border-top bg-dark">
@@ -114,7 +116,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md text-center">
-                    <small class="d-block mb-12 text-muted">© CashTan 2018</small>
+                    <small class="d-block mb-12 text-muted">© CashTan {{ 'now' | date('Y') }}</small>
                 </div>
             </div>
         </div>

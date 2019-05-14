@@ -5,16 +5,26 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
+use App\Entity\CashBack;
 use App\Entity\CashBackPlatform;
 use App\Entity\User;
 use App\Model\Query\CashbackQuery;
 use App\Traits\UuidFinderTrait;
+use DateTime;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Type;
-use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class CashBackRepository extends EntityRepository
+class CashBackRepository extends ServiceEntityRepository
 {
     use UuidFinderTrait;
+
+    private const TOP_QUANTITY = 10;
+
+    public function __construct(RegistryInterface $registry)
+    {
+        parent::__construct($registry, CashBack::class);
+    }
 
     public function getBySlug(string $slug, User $user = null)
     {
@@ -35,17 +45,12 @@ class CashBackRepository extends EntityRepository
             ->andWhere($qb->expr()->eq('cb.slug', ':slug'))
             ->andWhere($qb->expr()->eq('cb.status', ':status'))
             ->setParameter('slug', $slug)
-            ->setParameter('status', CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP)
+            ->setParameter('status', CashBackStatusEnumType::APPROVED_PARTNERSHIP)
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
     }
 
-    /**
-     * @param CashBackPlatform $cashBackPlatform
-     *
-     * @return array
-     */
     public function findPlatformIds(CashBackPlatform $cashBackPlatform): array
     {
         $qb = $this->createQueryBuilder('cb');
@@ -59,11 +64,6 @@ class CashBackRepository extends EntityRepository
             ->getArrayResult();
     }
 
-    /**
-     * @param CashbackQuery $query
-     *
-     * @return array
-     */
     public function getActiveCashBacks(CashbackQuery $query): array
     {
         $qb = $this->createQueryBuilder('cb');
@@ -71,7 +71,7 @@ class CashBackRepository extends EntityRepository
         $qb
             ->andWhere($qb->expr()->in('cb.active', ':active'))
             ->andWhere($qb->expr()->in('cb.status', ':stat'))
-            ->setParameter('stat', CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP)
+            ->setParameter('stat', CashBackStatusEnumType::APPROVED_PARTNERSHIP)
             ->setParameter('active', true);
 //            ->orderBy('cb.rating', 'DESC');
 
@@ -88,13 +88,7 @@ class CashBackRepository extends EntityRepository
             ->getResult();
     }
 
-    /**
-     * @param CashBackPlatform $admitadPlatform
-     * @param \DateTime        $date
-     *
-     * @return array
-     */
-    public function getCashBackCollectionForUpdate(CashBackPlatform $admitadPlatform, \DateTime $date): ?array
+    public function getCashBackCollectionForUpdate(CashBackPlatform $admitadPlatform, DateTime $date): ?array
     {
         $qb = $this->createQueryBuilder('cb');
 
@@ -111,11 +105,27 @@ class CashBackRepository extends EntityRepository
                 )
             )
             ->andWhere()
-            ->setParameter('approved', CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP)
-            ->setParameter('awaiting', CashBackStatusEnumType::STATUS_AWAITING_PARTNERSHIP)
+            ->setParameter('approved', CashBackStatusEnumType::APPROVED_PARTNERSHIP)
+            ->setParameter('awaiting', CashBackStatusEnumType::AWAITING_PARTNERSHIP)
             ->setParameter('active', true)
             ->setParameter('date', $date, Type::DATETIME)
             ->setParameter('cashback_platform', $admitadPlatform)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getCashbackTop(): array
+    {
+        $qb = $this->createQueryBuilder('cb');
+
+        $qb
+            ->andWhere($qb->expr()->in('cb.active', ':active'))
+            ->andWhere($qb->expr()->in('cb.status', ':stat'))
+            ->setParameter('stat', CashBackStatusEnumType::APPROVED_PARTNERSHIP)
+            ->setParameter('active', true);
+
+        return $qb
+            ->setMaxResults(self::TOP_QUANTITY)
             ->getQuery()
             ->getResult();
     }

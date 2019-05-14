@@ -5,20 +5,25 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\DBAL\Types\Enum\CashBackStatusEnumType;
-use App\Traits\Column\UuidColumn;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 
 /**
- * CashBack.
- *
  * @ORM\Table(name="cash_back")
- *
  * @ORM\Entity(repositoryClass="App\Repository\CashBackRepository")
  */
 class CashBack
 {
-    use UuidColumn;
+    /**
+     * @var Uuid
+     *
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     */
+    private $id;
 
     /**
      * @var string
@@ -26,7 +31,6 @@ class CashBack
      * @ORM\Column(
      *     type="string",
      *     length=128,
-     *     nullable=false
      * )
      */
     private $title;
@@ -37,7 +41,6 @@ class CashBack
      * @ORM\Column(
      *     type="string",
      *     length=64,
-     *     nullable=false
      * )
      */
     private $slug;
@@ -47,9 +50,6 @@ class CashBack
      *     type="text",
      *     length=65535,
      *     nullable=true,
-     *     options={
-     *         "fixed": false
-     *     }
      * )
      *
      * @var string
@@ -84,9 +84,6 @@ class CashBack
      *     type="string",
      *     length=255,
      *     nullable=false,
-     *     options={
-     *         "comment": "адрес сайта-заказчика"
-     *     }
      * )
      *
      * @var string
@@ -110,7 +107,7 @@ class CashBack
      *     nullable=true
      * )
      *
-     * @var int
+     * @var int?
      */
     private $externalId;
 
@@ -156,7 +153,7 @@ class CashBack
      *     fetch="EXTRA_LAZY"
      * )
      *
-     * @var ArrayCollection
+     * @var Collection
      */
     private $categories;
 
@@ -174,14 +171,11 @@ class CashBack
      * @ORM\Column(
      *     name="status",
      *     type="CashBackStatusEnumType",
-     *     options={
-     *         "comment": "Статус кешбека"
-     *     }
      * )
      *
      * @var string
      */
-    private $status = CashBackStatusEnumType::STATUS_NOT_PARTNER;
+    private $status = CashBackStatusEnumType::NOT_PARTNER;
 
     /**
      * @ORM\Column(
@@ -189,9 +183,6 @@ class CashBack
      *     precision=4,
      *     scale=1,
      *     nullable=false,
-     *     options={
-     *         "comment": "Рейтинг площадки"
-     *     }
      * )
      *
      * @var float
@@ -199,7 +190,7 @@ class CashBack
     private $rating = 0;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      *
      * @ORM\Column(type="date_immutable")
      */
@@ -219,171 +210,97 @@ class CashBack
 
     public function __construct()
     {
+        $this->id = Uuid::uuid4();
         $this->categories = new ArrayCollection();
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
     }
 
-    /**
-     * @return string
-     */
+    public function getId(): Uuid
+    {
+        return $this->id;
+    }
+
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     *
-     * @return $this
-     */
-    public function setTitle(string $title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
-        return (string) $this->description;
+        return $this->description;
     }
 
-    /**
-     * @param string $description
-     *
-     * @return $this
-     */
-    public function setDescription(string $description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @param string|null $url
-     *
-     * @return $this
-     */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
-
-        return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getTrekUrl(): ?string
     {
         return $this->trekUrl;
     }
 
-    /**
-     * @param $url
-     *
-     * @return $this
-     */
-    public function setTrekUrl($url)
+    public function setTrekUrl($url): void
     {
         $this->trekUrl = $url;
-
-        return $this;
     }
 
-    /**
-     * @return CashBackImage
-     */
     public function getCashBackImage(): ?CashBackImage
     {
         return $this->cashBackImage;
     }
 
-    /**
-     * @param CashBackImage $cashBackImage
-     *
-     * @return $this
-     */
-    public function setCashBackImage(CashBackImage $cashBackImage)
+    public function setCashBackImage(CashBackImage $cashBackImage): void
     {
         $this->cashBackImage = $cashBackImage;
-
-        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCash()
+    public function getCash(): ?string
     {
         return $this->cash;
     }
 
-    /**
-     * @param mixed $cash
-     *
-     * @return $this
-     */
-    public function setCash($cash)
+    public function setCash(?string $cash): void
     {
         $this->cash = $cash;
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCondition(): ?string
     {
         return $this->condition;
     }
 
-    /**
-     * @param string $condition
-     *
-     * @return $this
-     */
-    public function setCondition($condition)
+    public function setCondition(?string $condition): void
     {
         $this->condition = $condition;
-
-        return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getCategories()
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
 
-    /**
-     * @param CashBackCategory $cashBackCategory
-     *
-     * @return $this
-     */
-    public function addCategory(CashBackCategory $cashBackCategory)
+    public function addCategory(CashBackCategory $cashBackCategory): void
     {
         if (false === $this->categories->contains($cashBackCategory)) {
             $cashBackCategory->setCashBack($this);
             $this->categories->add($cashBackCategory);
         }
-
-        return $this;
     }
 
     /**
@@ -394,177 +311,88 @@ class CashBack
     public function removeCategory(CashBackCategory $cashBackCategory)
     {
         $this->categories->removeElement($cashBackCategory);
-
-        return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->active;
-    }
-
-    /**
-     * @param bool $active
-     *
-     * @return $this
-     */
-    public function setActive(bool $active)
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
     public function getExternalId(): ?int
     {
         return $this->externalId;
     }
 
-    /**
-     * @param int $externalId
-     *
-     * @return $this
-     */
-    public function setExternalId(int $externalId)
+    public function setExternalId(int $externalId): void
     {
         $this->externalId = $externalId;
-
-        return $this;
     }
 
-    /**
-     * @return CashBackPlatform
-     */
     public function getCashBackPlatform(): ?CashBackPlatform
     {
         return $this->cashBackPlatform;
     }
 
-    /**
-     * @param CashBackPlatform $cashBackPlatform
-     *
-     * @return $this
-     */
-    public function setCashBackPlatform(CashBackPlatform $cashBackPlatform)
+    public function setCashBackPlatform(CashBackPlatform $cashBackPlatform): void
     {
         $this->cashBackPlatform = $cashBackPlatform;
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getStatus(): string
     {
         return $this->status;
     }
 
-    /**
-     * @param string $status
-     *
-     * @return $this
-     */
-    public function setStatus(string $status)
+    public function setStatus(string $status): void
     {
         $this->status = $status;
-
-        return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getRating(): float
     {
         return (float) $this->rating;
     }
 
-    /**
-     * @param float $rating
-     *
-     * @return $this
-     */
-    public function setRating(float $rating)
+    public function setRating(float $rating): void
     {
         $this->rating = $rating;
-
-        return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function getActive()
+    public function isActive(): bool
     {
         return $this->active;
     }
 
-    /**
-     * @return string
-     */
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
+    }
+
     public function getSiteUrl(): string
     {
         return $this->siteUrl;
     }
 
-    /**
-     * @param string $siteUrl
-     *
-     * @return $this
-     */
-    public function setSiteUrl($siteUrl)
+    public function setSiteUrl($siteUrl): void
     {
         $this->siteUrl = $siteUrl;
-
-        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
-    /**
-     * @param string $slug
-     *
-     * @return CashBack
-     */
-    public function setSlug(string $slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
-
-        return $this;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    /**
-     * @return int|null
-     */
     public function getAwaitingTime(): ?int
     {
         return $this->awaitingTime;
     }
 
-    /**
-     * @param int|null $awaitingTime
-     */
     public function setAwaitingTime(?int $awaitingTime): void
     {
         $this->awaitingTime = $awaitingTime;

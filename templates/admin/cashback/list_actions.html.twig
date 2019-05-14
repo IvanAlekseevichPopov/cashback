@@ -1,5 +1,5 @@
 {% if object.cashBackPlatform is not null and object.cashBackPlatform.id == constant('App\\Entity\\CashBackPlatform::ADMITAD_PLATFORM_ID') %}
-    {% if object.status == constant('App\\DBAL\\Types\\Enum\\CashBackStatusEnumType::STATUS_APPROVED_PARTNERSHIP') %}
+    {% if object.status == constant('App\\DBAL\\Types\\Enum\\CashBackStatusEnumType::APPROVED_PARTNERSHIP') %}
         <div class="btn-group-vertical">
         <a class="btn btn-sm btn-success" href="#"
            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
@@ -8,14 +8,14 @@
             Обновить инфо сейчас
         </a>
     {% endif %}
-    {% if(object.status == constant('App\\DBAL\\Types\\Enum\\CashBackStatusEnumType::STATUS_AWAITING_PARTNERSHIP')) %}
+    {% if(object.status == constant('App\\DBAL\\Types\\Enum\\CashBackStatusEnumType::AWAITING_PARTNERSHIP')) %}
         <a class="btn btn-sm btn-info" href="#"
            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
            data-route="{{ path('admin_check_cashback_status') }}"
            onclick="checkAwaitingStatus(this, '{{ object.cashBackPlatform.id }}', '{{ object.externalId }}'); return false">Проверить
             статус</a>
     {% endif %}
-    {% if(object.status == constant('App\\DBAL\\Types\\Enum\\CashBackStatusEnumType::STATUS_NOT_PARTNER')) %}
+    {% if(object.status == constant('App\\DBAL\\Types\\Enum\\CashBackStatusEnumType::NOT_PARTNER')) %}
         <a class="btn btn-sm btn-danger" href="#"
            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
            data-route="{{ path('admin_send_cooperation_offer') }}"

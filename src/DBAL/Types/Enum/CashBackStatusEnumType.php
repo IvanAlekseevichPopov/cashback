@@ -1,26 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DBAL\Types\Enum;
 
 use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
-/**
- * CashBackStatusEnumType.
- */
 class CashBackStatusEnumType extends AbstractEnumType
 {
-    public const STATUS_NOT_PARTNER = 'NOT_PARTNER';
-    public const STATUS_AWAITING_PARTNERSHIP = 'AWAITING_PARTNERSHIP';
-    public const STATUS_APPROVED_PARTNERSHIP = 'APPROVED_PARTNERSHIP';
-    public const STATUS_REJECTED_PARTNERSHIP = 'REJECTED_PARTNERSHIP';
-    public const STATUS_CLOSES_COMPANY = 'CLOSES_COMPANY';
+    public const NOT_PARTNER = 'not_partner';
+    public const AWAITING_PARTNERSHIP = 'awaiting_partnership';
+    public const APPROVED_PARTNERSHIP = 'approved_partnership';
+    public const REJECTED_PARTNERSHIP = 'rejected_partnership';
+    public const CLOSED_COMPANY = 'closed_company';
 
     /** @var array */
     protected static $choices = [
-        self::STATUS_NOT_PARTNER => 'Не является партнером',
-        self::STATUS_AWAITING_PARTNERSHIP => 'Ожидание ответа на запрос партнерки',
-        self::STATUS_APPROVED_PARTNERSHIP => 'Подтвержденная партнерка',
-        self::STATUS_REJECTED_PARTNERSHIP => 'Отклонено',
-        self::STATUS_CLOSES_COMPANY => 'Закрытая кампания',
+        self::NOT_PARTNER => 'Не является партнером',
+        self::AWAITING_PARTNERSHIP => 'Ожидание ответа на запрос партнерки',
+        self::APPROVED_PARTNERSHIP => 'Подтвержденная партнерка',
+        self::REJECTED_PARTNERSHIP => 'Отклонено',
+        self::CLOSED_COMPANY => 'Закрытая кампания',
     ];
 }
