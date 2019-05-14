@@ -1,72 +1,130 @@
-body {
-    overflow-x: hidden;
+body{
+    margin:0;
 }
-
-/*список категорий*/
-.catalog .cat {
+/*МЕНЮ-----------------------------------------*/
+.main-menu > div {
     display: inline-block;
-    background-color: #FCD2A4;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 19px;
-    max-width: 100%;
-    padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 5px;
 }
-
+.main-menu {
+    height: 60px;
+    text-align: center;
+    background-color: #F8ECE0;
+}
+.point {
+    color: #FF6000;
+}
+/*листик*/
+.logo-menu {
+    width: 30px;
+    height: 30px;
+}
+.main-menu .leaf-name .black {
+    font-size: 36px;
+    color: #FF6000;
+    font-family: Roboto, sans-serif;
+}
+.main-menu .list-name {
+    text-decoration: none;
+}
+.main-menu .hat {
+    color: #FF6000;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+}
+/*текст в шапке при наведении курсора*/
+.main-menu .hat:hover {
+    border-bottom: 3px solid #FF6000;
+    color: #FF6000;
+}
+.main-menu .point {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.center-menu, .right-menu{
+    font-weight: bolder;
+    padding-top: 19px;
+}
+/*список категорий*/
+.filling{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 30px;
+}
+.content .list {
+    width: 250px;
+    height: 660px;
+    background-color: #F8ECE0;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid #FF9933;
+    border-radius: 5px;
+    float: left;
+}
+.empty {
+    width: 250px;
+    height: 100%;
+}
+.twocol{
+    display: flow-root;
+}
 /*цвет текста в каталоге*/
-.catalog .cat a {
+.content .list a {
     color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 19px;
+    text-decoration: none;
 }
 /*отступы в каталоге*/
-.catalog .cat .cell {
-    padding-bottom: 5px;
+.content .list .cell {
+    padding-bottom: 15px;
 }
 /*цвет текста при наведении в каталоге*/
-.catalog a:hover {
+.content a:hover {
     color: #FF6000;
 }
 
 /*окно поиска*/
 .find .form-control {
     width: 300px;
-    margin-left: 30px;
-    margin-top: 20px;
+    height: 30px;
+    border: 1px solid #FF9933;
+    font-size: 19px;
+    border-radius: 5px;
+    margin-left: 59px;
     margin-bottom: 20px;
+    padding-left: 15px;
 }
 /*окно поиска при клике*/
 .find .form-control:focus {
-    border-color: rgba(255,96,0,.25);
-    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
+    outline: 0 !important;
 }
 
-/*цвет заголовка в футере*/
-body .pt-4 h5 {
-    color: #A4A4A4;
+/*КАТАЛОГ МАГАЗИНОВ---------------------------------------*/
+.header .shops {
+    margin-bottom: 40px;
 }
-
+.shops {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.shops > div {
+    display: inline-block;
+}
 .shop-window .cash_proc span {
     color: #343a40;
 }
-
 .shop-window a:hover {
     color: #343a40;
-    text-decoration: none;
 }
-
 /*отступы между магазинами*/
 .shopping .square {
-    padding-bottom: 30px;
     flex-grow: 0;
 }
 /*окна*/
 .shop-window {
     border: 1px solid #FF9933;
-    width: 220px;
-    height: 200px;
     background-color: #ffffff;
+    margin: 10px 10px 10px 10px;
 }
 .item {
     width: 220px;
@@ -79,6 +137,7 @@ body .pt-4 h5 {
 .shop-window .blok2 {
     width: 220px;
     height: 60px;
+    font-family: Roboto, sans-serif;
 }
 .shop-window .blok3 {
     width: 220px;
@@ -86,43 +145,146 @@ body .pt-4 h5 {
 }
 /*рамка при наведении курсора*/
 .shop-window:hover {
-    border: 2px solid #FF6000;
+    background-color: #F8ECE0;
 }
 /*размер изображения логотипа*/
 .shop-window .blok1 img {
     max-width: 70%;
     max-height: 70%;
     margin-top: 20px;
-    min-width: 50%;
     min-height: 50%;
 }
 /*кнопка перехода в магазин*/
-.shop-window .button_transition {
+.shop-window .blok3 .button_t {
+    padding: 10px;
     border-radius: 5px;
     background-color: #FF9933;
     color: white;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    width: 168px;
+    height: 38px;
     border: 1px solid #FF9933;
 }
-
-/*кнопка перехода при клике*/
-.shop-window .button_transition:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
-    color: white;
+.shop-window .button_t:hover {
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 51);
 }
 /*кнопка в окне по центру*/
 .shop-window .or_but {
     text-align: center;
-    /*padding-top: 15px;*/
-}
-.shop-window a:hover {
-    color: white;
 }
 /*расположение логотипа и текста по центру*/
 .shop-window .logo, .cash_proc {
-   text-align: center;
+    text-align: center;
 }
 /*размер цифры кэшбэка*/
 .shop-window .cash_proc .cifra, .znak_proc {
     font-size: 30px;
 }
+.shop-window a {
+    text-decoration: none;
+}
+.shop-window .button_t:focus {
+    outline: 0 !important;
+}
+.blok4 {
+    text-align: center;
+}
+.blok4 .buttons {
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 9px;
+    background-color: #FF9933;
+    color: white;
+    font-size: 30px;
+    font-family: Roboto, sans-serif;
+    width: 372px;
+    height: 50px;
+    border: 1px solid #FF9933;
+}
+.blok4 .buttons:hover {
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 51);
+}
+.blok4 .buttons:focus {
+    outline: 0 !important;
+}
+
+/*ФУТЕР------------------------------------------------------*/
+.footer-block {
+    height: 150px;
+    background-color: #5a6268;
+    color: #BDBDBD;
+    width: 100%;
+    margin-top: 20px;
+    font-family: Roboto,sans-serif;
+}
+.name-menu{
+    font-size: 18px;
+    color: #BDBDBD;
+}
+.three-columns li{
+    list-style-type: none;
+}
+.text-small{
+    margin-left: 0;
+    padding-left: 0;
+}
+.three-columns > div {
+    display: inline-block;
+}
+.three-columns{
+    text-align: center;
+}
+.one-column  {
+    text-align: center;
+}
+.footer-block .down {
+    width: 400px;
+    font-size: 16px;
+}
+.text-muted {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+@media (min-width: 1440px) {
+    .content .list{
+        width: 210px;
+        height: 726px;
+    }
+    .footer-block .down {
+        width: 400px;
+    }
+}
+
+@media (min-width: 1140px) and (max-width: 1439px) {
+    .footer-block .down {
+        width: 300px;
+    }
+    #to-top {
+        right: 5%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1139px) {
+    .main-menu {
+        height: 100px;
+    }
+    .content .list {
+        width: 235px;
+        height: 700px;
+    }
+    .find .form-control {
+        width: 207px;
+        margin-left: 24px;
+    }
+    .footer-block .down {
+        width: 210px;
+    }
+    #to-top {
+        right: 4%;
+    }
+}
+
+
 
