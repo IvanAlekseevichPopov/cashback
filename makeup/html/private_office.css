@@ -45,9 +45,7 @@ body{
     font-weight: bolder;
     padding-top: 19px;
 }
-
 /*ЛИЧНЫЙ КАБИНЕТ---------------------------------------------*/
-
 .title {
     height: 60px;
     background-color: #FCD2A4;
@@ -78,7 +76,6 @@ body{
     font-size: 14px;
     color: #5a6268;
 }
-
 .field-entry {
     height: 28px;
     width: 380px;
@@ -134,7 +131,6 @@ body{
     display: table;
     padding-bottom: 0;
 }
-
 /*ответ*/
 .privat .data {
     padding: 5px 10px 3px 10px;
@@ -153,7 +149,6 @@ body{
     color: #FF6000;
     text-align: center;
 }
-
 /*orders*/
 .table-orders {
     background: #f5ffff;
@@ -246,7 +241,6 @@ body{
     color: #444444;
     text-shadow: none;
 }
-
 /*ФУТЕР------------------------------------------------------*/
 .footer-block {
     height: 150px;
@@ -270,7 +264,6 @@ body{
 .three-columns > div {
     display: inline-block;
 }
-
 .three-columns{
     text-align: center;
 }
@@ -285,18 +278,15 @@ body{
     color: #FFFFFF;
     text-decoration: none;
 }
-
 @media (min-width: 1440px) {
     .privat {
         margin-right: 25%;
         margin-left: 25%;
     }
-
     .footer-block .down {
         width: 400px;
     }
 }
-
 @media (min-width: 1140px) and (max-width: 1439px) {
 .privat{
     margin-right: 20%;
@@ -306,7 +296,6 @@ body{
     width: 300px;
     }
 }
-
 @media (min-width: 768px) and (max-width: 1139px) {
     .privat{
         margin-right: 10%;
