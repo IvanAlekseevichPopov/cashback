@@ -5,50 +5,47 @@
     <title>CashTan</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="conditions.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
             integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width">
 </head>
 
 
-<body class="container-color">
+<body>
+<div class="container-color">
 <header>
-    <div class="navbar bg-white box-shadow">
-        <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <img class="logo_menu" src="images/cashtan-min.png">
-                <strong class="black">CashTan</strong>
-            </a>
-            <p class="all_menu">
-                <a class="p-2 main-menu" href="#">Главная</a>
-                <a class="p-2 main-menu" href="#">Каталог магазинов</a>
-                <a class="p-2 main-menu" href="#">Вопросы и ответы</a>
-            <p class="lost-menu">
-                <a class="p-2 m4" href="#">Вход</a>
-                <a class="p-2 m5" href="#">Регистрация</a>
-            </p>
-            </p>
+    <!--menu-->
+    <div class="up-menu">
+        <div class="main-menu">
+            <div class="leaf-name">
+                <a href="#" class="list-name">
+                    <img class="logo-menu" src="images/cashtan-min.png">
+                    <strong class="black">CashTan</strong>
+                </a>
+            </div>
+            <div class="center-menu">
+                <a class="point">*</a>
+                <a class="general hat" href="#">ГЛАВНАЯ</a>
+                <a class="point">*</a>
+                <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                <a class="point">*</a>
+            </div>
+            <div class="right-menu">
+                <a class="entrance hat" href="#">ВХОД</a>
+                <a class="point">*</a>
+                <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+            </div>
         </div>
     </div>
 </header>
 
-<div>
-    <div class="cond row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 row">
-            <h3>Условия использования сервиса</h3>
+    <div class="title condi">УСЛОВИЯ ИСПОЛЬЗОВАНИЯ СЕРВИСА</div>
+    <!--content page-->
+        <div class="text-con">
             <h5>1. Введение</h5>
             <p></p>
             <p>1.1. Настоящие Условия определяют порядок использования web-сайта Cashtan.tk (именуемой в дальнейшем
@@ -57,7 +54,6 @@
             <p>1.2. Для осуществления регистрации на кэшбэк-сервисе пользователь должен ознакомиться с настоящими
                 условиями, и принять их. Условия могут периодически меняться без уведомления пользователей, Изменения
                 условий вступают в силу после их публикации на сайте.</p>
-
 
                 <h5>2. Термины и определения</h5>
                 <p></p>
@@ -69,7 +65,6 @@
                 получившее возможность пользоваться его услугами.</p>
                 <p><i>Личный кабинет</i> – страница на сайте кэшбэк-сервиса с указанием данных пользователя.</p>
                 <p></p>
-
                 <h5>3. Начисление Кэшбэка</h5>
                 <p></p>
                 <p>3.1. Для получения кэшбэка Пользователю необходимо перейти на сайт магазина по ссылке с сайта CashTan.tk
@@ -83,7 +78,6 @@
                 <p>3.5. Существует вероятность, по которой магазин не сможет отследить совершенную Пользователем покупку и
                 перечислить вознаграждение. Например, при наличии технических проблем на стороне магазина.</p>
                 <p></p>
-
                 <h5> 4. Регистрация пользователя</h5>
                 <p></p>
                 <p>4.1. Пользователями кэшбэк-сервиса могут быть физические лица, достигшие возраста 18 лет. Регистрация на
@@ -100,7 +94,6 @@
                 <p>4.6. Администрация кэшбэк-сервиса оставляет за собой право удалить учетную запись пользователя, в случае
                 если со стороны пользователя будут выявлены действия мошеннического и/или обманного характера.</p>
                 <p></p>
-
                 <h5> 5. Конфиденциальность</h5>
                 <p></p>
                 <p>5.1. Пользуясь сайтом CashTan.tk, пользователь предоставляет информацию об электронной почте, пароле,
@@ -111,48 +104,43 @@
                 несанкционированного доступа к личной информации пользователей. Но нужно иметь ввиду, что в случае
                 обнаружения сбоев и ошибок при работе портала из-за действия любых вредоносных программ администрация
                 портала не несет ответственности за возможные убытки пользователей.</p>
-
         </div>
-        <div class="col-sm-3"></div>
-    </div>
-</div>
-<!--//футер-->
-<footer class="pt-4 border-top bg-dark">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h5>Информация</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Условия использования</a></li>
-                    <li><a class="text-muted" href="#">Партнерская программа</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Сервисы</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Все магазины</a></li>
-                    <li><a class="text-muted" href="#">Личный кабинет</a></li>
-
-
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Обратная связь</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Частые вопросы</a></li>
-                    <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
-
-                </ul>
+<!--//footer-->
+<footer>
+    <div class="down-menu">
+        <div class="footer-block">
+            <div class="three-columns">
+                <div class="info down">
+                    <p class="name-menu">Информация</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Условия использования</a></li>
+                        <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="service down">
+                    <p class="name-menu">Сервисы</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Все магазины</a></li>
+                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                    </ul>
+                </div>
+                <div class="call down">
+                    <p class="name-menu">Обратная связь</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+                    </ul>
+                </div>
             </div>
 
-        </div>
-        <div class="row">
-            <div class="col-12 col-md text-center">
-                <small class="d-block mb-12 text-muted">© CashTan 2018</small>
+            <div class="one-column">
+                <div class="text-center">
+                    <small class="text-logo">© CashTan 2019</small>
+                </div>
             </div>
         </div>
     </div>
 </footer>
+
 </body>
 </html>
