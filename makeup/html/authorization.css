@@ -1,9 +1,51 @@
-body {
-    overflow-x: hidden;
+/*МЕНЮ-----------------------------------------*/
+.main-menu > div {
+    display: inline-block;
+}
+.main-menu {
+    height: 60px;
+}
+.point {
+    color: #FF6000;
+}
+/*листик*/
+.logo-menu {
+    width: 30px;
+    height: 30px;
+}
+.main-menu .list-name img {
+    vertical-align: inherit;
+}
+.main-menu .leaf-name .black {
+    font-size: 36px;
+    color: #FF6000;
+}
+.main-menu .list-name {
+    text-decoration: none;
+}
+.main-menu .hat {
+    color: #FF6000;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+}
+.main-menu {
+    text-align: center;
 }
 
-.ccont {
-    min-height: calc(100vh - 225px);
+/*текст в шапке при наведении курсора*/
+.main-menu .hat:hover {
+    border-bottom: 3px solid #FF6000;
+    color: #FF6000;
+}
+.title {
+    height: 60px;
+    background-color: #FCD2A4;
+    font-family: Roboto, sans-serif;
+    font-size: 33px;
+    color: #FF6000;
+    text-align: center;
+    line-height: 1.8em;
 }
 
 /*главная форма регистрации*/
@@ -15,39 +57,67 @@ body {
     vertical-align: middle;
     margin-top: 50px;
     margin-bottom: 50px;
-}
-
-/*заголовок*/
-.main_form h1 {
-    text-align: center;
-    padding-top: 30px;
-    font-size: 30px;
-    padding-bottom: 20px;
+    margin-left: 35%;
+    margin-right: 30%;
 }
 
 /*второй заголовок*/
 .main_form h2 {
-    padding-top: 40px;
-    font-size: 22px;
+    padding-top: 30px;
+    font-size: 18px;
     margin-bottom: 20px;
 }
 /*поля ввода*/
 .main_form .form-group {
     margin-right: 100px;
     margin-left: 100px;
+    margin-bottom: 25px;
 }
-
+/*главная форма регистрации*/
+.main_form {
+    display: inline-block;
+    width: 600px;
+    height: 478px;
+    background-color: #F8ECE0;
+    vertical-align: middle;
+    padding-top: 50px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    font-family: Roboto, sans-serif;
+}
 /*cодержимое окна регистрации*/
 .main_form .fields {
     text-align: center;
 }
-
-
+.btn-enter {
+    height: 50px;
+    width: 160px;
+    font-size: 18px;
+    border: 1px solid #FF6000;
+    border-radius: 4px;
+    background-color: #FF6000;
+    color: #FFFFFF;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.btn-enter:focus {
+    outline: 0 !important;
+}
 /*цвет рамки кнопки при наведении*/
 .main_form .btn-enter:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0);
+    background-color: rgba(255, 96, 0);
+    border: none;
 }
-
+.form-control {
+    height: 47px;
+    width: 380px;
+    margin-bottom: 10px;
+    border: 1px solid #FF6000;
+    border-radius: 4px;
+    padding-left: 10px;
+    font-size: 17px;
+}
 
 /*цвет рамок окон при нажатии*/
 .main_form .form-control:focus {
@@ -64,50 +134,91 @@ body {
 }
 
 /*кнопки соц. сетей*/
-.social_buttons .btn-auto {
-    width: 45px;
-    height: 45px;
-    padding-top: 12px;
-    font-size: 22px;
+.social_buttons .btn-reg {
     margin-right: 3px;
     margin-left: 3px;
- }
-
-/*кнопка вконтакте*/
-.social_buttons .btn-vk {
-    background-color: #5f83a9;
-    border: none;
+    text-decoration: none;
 }
 
-.btn-vk svg {
-    position: relative;
-    left: -2px;
+.fa-facebook-square {
+    color: #395a99;
+    font-size: 47px;
+    background-color: white;
 }
-/*кнопка яндекс*/
-.social_buttons .btn-ya {
-    background-color: #e61400;
-    border: none;
+.fa-facebook-square:before {
+    content: "";
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    position: absolute;
+    line-height: 50px;
+    left: 5px;
+    top: 9px;
+    z-index: -1;
 }
-/*кнопка фейсбук*/
-.social_buttons .btn-fb {
-    background-color: #395a99;
-    border: none;
+
+.fa-vk{
+    color: #5f83a9;
+    font-size: 47px;
 }
-/*кнопка гугл*/
-.social_buttons .btn-gg {
-    background-color: #d6492e;
-    border: none;
+.fa-yandex{
+    color: #e61400;
+    font-size: 40px;
+    margin-bottom: 2px;
 }
-/*кнопка mail*/
-.social_buttons .btn-ml {
-    background-color: #005BD1;
-    border: none;
+.fa-google{
+    color: #d6492e;
+    font-size: 40px;
+    margin-bottom: 2px;
 }
-/*цвет svg на всех кнопках*/
-.social_buttons, svg {
-    color: white;
+.fa-at{
+    color: #005BD1;
+    font-size: 43px;
+    margin-bottom: 2px;
 }
 /*при клике на кнопку соц.сетей*/
 .social_buttons .btn-auto:focus {
     box-shadow: none;
+}
+
+/*ФУТЕР------------------------------------------------------*/
+.footer-block {
+    height: 150px;
+    background-color: #5a6268;
+    color: #BDBDBD;
+    width: 100%;
+    /*margin-top: 10px;*/
+    font-family: Roboto,sans-serif;
+    /*padding-top: 10px;*/
+}
+.name-menu{
+    font-size: 18px;
+    color: #BDBDBD;
+}
+.three-columns li{
+    list-style-type: none;
+}
+.text-small{
+    margin-left: 0;
+    padding-left: 0;
+}
+.three-columns > div {
+    display: inline-block;
+}
+
+.three-columns{
+    text-align: center;
+
+}
+.one-column  {
+    text-align: center;
+}
+.footer-block .down {
+    width: 400px;
+    font-size: 16px;
+}
+.text-small .text-muted {
+    color: #FFFFFF;
+    text-decoration: none;
 }
