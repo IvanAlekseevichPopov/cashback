@@ -23,6 +23,9 @@
 }
 
 .tagline .entry {
+    padding: 10px;
+    text-shadow: none;
+    text-decoration: none;
     margin-top: 40px;
     border-radius: 11px;
     background-color: #FF6000;
@@ -106,10 +109,11 @@
 
 .shop-block {
     display: table;
-    height: 525px;
+    /*height: 525px;*/
     padding-right: 15%;
     padding-left: 15%;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .shop-block > div {
@@ -172,10 +176,12 @@
 
 /*кнопка перехода в магазин*/
 .shop-window .blok3 .button_t {
+    padding: 10px;
     border-radius: 5px;
     background-color: #FF9933;
     color: white;
     font-size: 16px;
+    font-family: Roboto, sans-serif;
     width: 168px;
     height: 38px;
     border: 1px solid #FF9933;
@@ -213,11 +219,14 @@
 }
 
 .blok4 .buttons {
-    margin-top: 33px;
+    padding: 10px;
+    text-decoration: none;
+    /*margin-top: 43px;*/
     border-radius: 9px;
     background-color: #FF9933;
     color: white;
     font-size: 30px;
+    font-family: Roboto, sans-serif;
     width: 372px;
     height: 50px;
     border: 1px solid #FF9933;
@@ -246,7 +255,7 @@
 
 /*вопрос*/
 .faq .panel-question {
-    padding: 5px 10px 3px 10px;
+    padding: 5px 10px 0px 10px;
     border: 1px solid #FF6000;
     margin-top: 20px;
     background-color: #FCD2A4;
@@ -257,7 +266,6 @@
     font-weight: bolder;
     font-family: Roboto, sans-serif;
     display: table;
-    padding-bottom: 0;
 }
 
 /*ответ*/
@@ -455,8 +463,8 @@
         height: 45px;
         font-size: 26px;
     }
-.tagline{
-    width: 100%;
-}
+    .tagline{
+          width: 100%;
+    }
 }
 

@@ -5,16 +5,14 @@
     <title>CashTan</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="authorization.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
             integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
             crossorigin="anonymous"></script>
@@ -25,34 +23,42 @@
 
 <body class="container-color">
 <header>
-    <div class="navbar bg-white box-shadow">
-        <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <img class="logo_menu" src="images/cashtan-min.png">
-                <strong class="black">CashTan</strong>
-            </a>
-            <p class="all_menu">
-                <a class="p-2 main-menu" href="#">Главная</a>
-                <a class="p-2 main-menu" href="#">Каталог магазинов</a>
-                <a class="p-2 main-menu" href="#">Вопросы и ответы</a>
-            <p class="lost-menu">
-                <a class="p-2 m4" href="#">Вход</a>
-                <a class="p-2 m5" href="#">Регистрация</a>
-            </p>
-            </p>
+    <!--меню-->
+    <div class="up-menu">
+        <div class="main-menu">
+            <div class="leaf-name">
+                <a href="#" class="list-name">
+                    <img class="logo-menu" src="images/cashtan-min.png">
+                    <strong class="black">CashTan</strong>
+                </a>
+            </div>
+            <div class="center-menu">
+                <a class="point">*</a>
+                <a class="general hat" href="#">ГЛАВНАЯ</a>
+                <a class="point">*</a>
+                <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                <a class="point">*</a>
+            </div>
+            <div class="right-menu">
+                <a class="entrance hat" href="#">ВХОД</a>
+                <a class="point">*</a>
+                <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+
+            </div>
         </div>
+
     </div>
 </header>
 
 <div>
-    <div class="ccont row">
-        <div class="col-md-4"></div>
-        <div class="main_form col-md-4">
-            <h1 class="title">Вход для зарегистрированного <br> пользователя</h1>
+    <div class="ccont">
+        <div class="title reg">ВХОД ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ</div>
+        <div class="main_form">
+
             <div class="fields">
                 <form name="regis" method="post" action="url">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        <input type="email" class="form-control" id="exampleInputEmail1"
                                placeholder="Введите e-mail">
                     </div>
                     <div class="form-group">
@@ -60,7 +66,7 @@
                                placeholder="Введите пароль">
                     </div>
 
-                    <button type="submit" class="btn btn-enter">Вход</button>
+                    <button type="submit" class="btn-enter">Вход</button>
                     <div>
                         <a href="pass">Забыли пароль?</a>
                     </div>
@@ -68,59 +74,67 @@
                     <!--кнопки соц.сетей-->
                     <h2>или через социальные сети</h2>
                     <div class="social_buttons">
-                        <a href="#" class="btn btn-auto btn-vk" title="ВКонтакте">
+                        <a href="#" class="btn-reg btn-vk" title="ВКонтакте">
                             <i class="fab fa-vk"></i>
                         </a>
-                        <a href="#" class="btn btn-auto btn-ya" title="Яндекс">
-                            <i class="fab fa-yandex"></i>
+                        <a href="#" class="btn-reg btn-fb" title="Facebook">
+                            <i class="fab fa-facebook-square"></i>
                         </a>
-                        <a href="#" class="btn btn-auto btn-fb" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="btn btn-auto btn-gg" title="Google">
+                        <a href="#" class="btn-reg btn-gg" title="Google">
                             <i class="fab fa-google"></i>
                         </a>
-                        <a href="#" class="btn btn-auto btn-ml" title="Mail.ru">
+
+                        <a href="#" class="btn-reg btn-ya" title="Яндекс">
+                            <i class="fab fa-yandex"></i>
+                        </a>
+
+                        <a href="#" class="btn-reg btn-ml" title="Mail.ru">
                             <i class="fas fa-at"></i>
                         </a>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="col-md-4"></div>
+
     </div>
 </div>
 
-<!--//футер-->
-<footer class="pt-4 border-top bg-dark">
-    <div class="container">
+<!--футер-->
+<footer>
+    <div class="down-menu">
 
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h5>Информация</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Условия использования</a></li>
-                    <li><a class="text-muted" href="#">Партнерская программа</a></li>
-                </ul>
+        <div class="footer-block">
+            <div class="three-columns">
+                <div class="info down">
+                    <p class="name-menu">Информация</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Условия использования</a></li>
+                        <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="service down">
+                    <p class="name-menu">Сервисы</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Все магазины</a></li>
+                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="call down">
+                    <p class="name-menu">Обратная связь</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4 text-center">
-                <h5>Сервисы</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Все магазины</a></li>
-                    <li><a class="text-muted" href="#">Личный кабинет</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Обратная связь</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Частые вопросы</a></li>
-                    <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md text-center">
-                <small class="d-block mb-12 text-muted">© CashTan 2018</small>
+
+            <div class="one-column">
+                <div class="text-center">
+                    <small class="text-logo">© CashTan 2019</small>
+                </div>
             </div>
         </div>
     </div>
