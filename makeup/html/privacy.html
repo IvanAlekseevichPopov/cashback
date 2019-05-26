@@ -5,50 +5,44 @@
     <title>CashTan</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="privacy.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
             integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width">
 </head>
-
-
-<body class="container-color">
-<header>
-    <div class="navbar bg-white box-shadow">
-        <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <img class="logo_menu" src="images/cashtan-min.png">
-                <strong class="black">CashTan</strong>
-            </a>
-            <p class="all_menu">
-                <a class="p-2 main-menu" href="#">Главная</a>
-                <a class="p-2 main-menu" href="#">Каталог магазинов</a>
-                <a class="p-2 main-menu" href="#">Вопросы и ответы</a>
-            <p class="lost-menu">
-                <a class="p-2 m4" href="#">Вход</a>
-                <a class="p-2 m5" href="#">Регистрация</a>
-            </p>
-            </p>
+<body>
+<div class="container-color">
+    <header>
+        <!--menu-->
+        <div class="up-menu">
+            <div class="main-menu">
+                <div class="leaf-name">
+                    <a href="#" class="list-name">
+                        <img class="logo-menu" src="images/cashtan-min.png">
+                        <strong class="black">CashTan</strong>
+                    </a>
+                </div>
+                <div class="center-menu">
+                    <a class="point">*</a>
+                    <a class="general hat" href="#">ГЛАВНАЯ</a>
+                    <a class="point">*</a>
+                    <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                    <a class="point">*</a>
+                </div>
+                <div class="right-menu">
+                    <a class="entrance hat" href="#">ВХОД</a>
+                    <a class="point">*</a>
+                    <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                </div>
+            </div>
         </div>
-    </div>
-</header>
-
-<div>
-    <div class="cond row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 row">
-            <h3>Правила защиты информации о пользователях сайта https://cashtan.tk</h3>
+    </header>
+        <div class="title rules">ПРАВИЛА ЗАЩИТЫ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЯХ САЙТА https://cashtan.tk</div>
+        <!--content page-->
+        <div class="text-rules">
             <h5>1. Общие положения</h5>
             <p></p>
             <p>1.1. Настоящие Правила определяют порядок обработки и защиты информации о физических лицах, пользующихся
@@ -180,7 +174,7 @@
             <h5>8. Файлы cookie и как они используются</h5>
             <p>8.1. Cookie являются маленькими текстовыми файлами, которые веб-сайты могут приписывать к вашему
                 компьютеру. Мы можем использовать файлы cookie для того, чтобы определить вас и позволить вам войти в
-                Cash4brands.ru один раз и совершать покупки без повторного входа. Файлы cookie также используются
+                cashtan.tk один раз и совершать покупки без повторного входа. Файлы cookie также используются
                 многими нашими партнерскими магазинами для того, чтобы определить вас как участника
                 https://cashtan.tk.</p>
             <h5>9. Меры по защите информации о Пользователях</h5>
@@ -196,43 +190,38 @@
                 Администрация Сайта не несет ответственности за действия третьих лиц, получивших в результате
                 использования Интернета или Услуг Сайта доступ к информации о Пользователей.</p>
         </div>
-        <div class="col-sm-3"></div>
-    </div>
 </div>
-<!--//футер-->
-<footer class="pt-4 border-top bg-dark">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h5>Информация</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Условия использования</a></li>
-                    <li><a class="text-muted" href="#">Политика защиты информации</a></li>
-                </ul>
+<!--//footer-->
+<footer>
+    <div class="down-menu">
+        <div class="footer-block">
+            <div class="three-columns">
+                <div class="info down">
+                    <p class="name-menu">Информация</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Условия использования</a></li>
+                        <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="service down">
+                    <p class="name-menu">Сервисы</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Все магазины</a></li>
+                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                    </ul>
+                </div>
+                <div class="call down">
+                    <p class="name-menu">Обратная связь</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4 text-center">
-                <h5>Сервисы</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Все магазины</a></li>
-                    <li><a class="text-muted" href="#">Личный кабинет</a></li>
-
-
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Обратная связь</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Частые вопросы</a></li>
-                    <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
-
-                </ul>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-12 col-md text-center">
-                <small class="d-block mb-12 text-muted">© CashTan 2018</small>
+            <div class="one-column">
+                <div class="text-center">
+                    <small class="text-logo">© CashTan 2019</small>
+                </div>
             </div>
         </div>
     </div>
