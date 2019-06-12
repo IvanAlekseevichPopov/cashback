@@ -46,3 +46,12 @@ services:
     App\Service\FileManager:
         arguments:
             $projectDir: '%kernel.project_dir%'
+
+    App\Model\Config\AdmitadConfig:
+        arguments:
+            $webmasterId: '%env(WEBMASTER_ID)%'
+            $clientId: '%env(ADMITAD_ID)%'
+            $clientSecret: '%env(ADMITAD_SECRET)%'
+
+    Doctrine\Common\Cache\PhpFileCache:
+        arguments: ['%kernel.project_dir%/var/cache/doctrine']

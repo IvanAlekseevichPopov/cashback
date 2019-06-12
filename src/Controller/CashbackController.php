@@ -29,7 +29,7 @@ class CashbackController extends Controller
      *
      * @return Response
      */
-    public function cashbackShowAction(string $slug)
+    public function cashbackShowAction(string $slug): Response
     {
         $cashBack = $this->getDoctrine()->getRepository(CashBack::class)->getBySlug($slug, $this->getUser());
         if (null === $cashBack) {
@@ -49,7 +49,7 @@ class CashbackController extends Controller
      *
      * @return Response
      */
-    public function cashbackListAction(Request $request)
+    public function cashbackListAction(Request $request): Response
     {
         $cashbackQuery = new CashbackQuery();
         $form = $this->createForm(CashbackQueryType::class, $cashbackQuery);
@@ -75,7 +75,7 @@ class CashbackController extends Controller
      *
      * @return Response
      */
-    public function createCashbackTracking(Cashback $cashback, CashbackRedirectHandler $redirectHandler)
+    public function createCashbackTracking(Cashback $cashback, CashbackRedirectHandler $redirectHandler): Response
     {
         if (null === $this->getUser()) {
             //TODO ставим кэшбек, ведем статистику

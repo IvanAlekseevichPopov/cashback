@@ -76,64 +76,64 @@ class AdmitadApiHandler
         }
     }
 
-    /**
-     * Запрос авторизационного токена у Admitad.
-     *
-     * @param CashBackPlatform $admitadCashBackPlatform
-     *
-     * @throws \Exception
-     *
-     * @return array|null
-     */
-    public function getAccessToken(CashBackPlatform $admitadCashBackPlatform): ?array
-    {
-        $this->checkPlatformId($admitadCashBackPlatform);
+//    /**
+//     * Запрос авторизационного токена у Admitad.
+//     *
+//     * @param CashBackPlatform $admitadCashBackPlatform
+//     *
+//     * @throws \Exception
+//     *
+//     * @return array|null
+//     */
+//    public function getAccessToken(CashBackPlatform $admitadCashBackPlatform): ?array
+//    {
+//        $this->checkPlatformId($admitadCashBackPlatform);
+//
+//        $ch = curl_init();
+//
+//        curl_setopt($ch, CURLOPT_URL, $admitadCashBackPlatform->getBaseUrl().'token/');
+//        curl_setopt($ch, CURLOPT_HEADER, false);
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Basic '.$admitadCashBackPlatform->getAuthHeader()]);
+//        curl_setopt($ch, CURLOPT_POST, true);
+//        curl_setopt($ch, CURLOPT_POSTFIELDS, [
+//            'grant_type' => 'client_credentials',
+//            'client_id' => $admitadCashBackPlatform->getClientId(),
+//            'scope' => 'advcampaigns arecords banners websites advcampaigns_for_website manage_advcampaigns statistics deeplink_generator',
+//        ]);
+//
+//        $data = curl_exec($ch);
+//        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+//
+//        curl_close($ch);
+//        if (Response::HTTP_OK !== $httpcode) {
+//            throw new \Exception('Invalid response api response: '.$data);
+//        }
+//
+//        return json_decode($data, true);
+//    }
 
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $admitadCashBackPlatform->getBaseUrl().'token/');
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Basic '.$admitadCashBackPlatform->getAuthHeader()]);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, [
-            'grant_type' => 'client_credentials',
-            'client_id' => $admitadCashBackPlatform->getClientId(),
-            'scope' => 'advcampaigns arecords banners websites advcampaigns_for_website manage_advcampaigns statistics deeplink_generator',
-        ]);
-
-        $data = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        curl_close($ch);
-        if (Response::HTTP_OK !== $httpcode) {
-            throw new \Exception('Invalid response api response: '.$data);
-        }
-
-        return json_decode($data, true);
-    }
-
-    /**
-     * Обновление временного токена авторизации адмитада.
-     *
-     * @param CashBackPlatform $admitadPlatform
-     */
-    public function updateAccessToken(CashBackPlatform $admitadPlatform): void
-    {
-        $now = new DateTimeImmutable(self::TIME_APPROXIMATION);
-
-        $token = $admitadPlatform->getToken();
-        $expiredAt = $admitadPlatform->getExpiredAt();
-        if (empty($token) || $expiredAt < $now) {
-            $tokenJson = $this->getAccessToken($admitadPlatform);
-
-            $admitadPlatform->setToken($tokenJson['access_token']);
-            $admitadPlatform->setExpiredAt($now->add(new DateInterval('PT'.$tokenJson['expires_in'].'S')));
-
-            $this->manager->persist($admitadPlatform);
-            $this->manager->flush();
-        }
-    }
+//    /**
+//     * Обновление временного токена авторизации адмитада.
+//     *
+//     * @param CashBackPlatform $admitadPlatform
+//     */
+//    public function updateAccessToken(CashBackPlatform $admitadPlatform): void
+//    {
+//        $now = new DateTimeImmutable(self::TIME_APPROXIMATION);
+//
+//        $token = $admitadPlatform->getToken();
+//        $expiredAt = $admitadPlatform->getExpiredAt();
+//        if (empty($token) || $expiredAt < $now) {
+//            $tokenJson = $this->getAccessToken($admitadPlatform);
+//
+//            $admitadPlatform->setToken($tokenJson['access_token']);
+//            $admitadPlatform->setExpiredAt($now->add(new DateInterval('PT'.$tokenJson['expires_in'].'S')));
+//
+//            $this->manager->persist($admitadPlatform);
+//            $this->manager->flush();
+//        }
+//    }
 
     /**
      * Проверяет статус выбранной компании.
@@ -153,7 +153,7 @@ class AdmitadApiHandler
             return null;
         }
 
-        $this->updateAccessToken($admitadPlatform);
+//        $this->updateAccessToken($admitadPlatform);
         $admitadResponse = $this->getData(
             $admitadPlatform->getBaseUrl().'advcampaigns/'.$cashBack->getExternalId().'/website/'.$admitadPlatform->getExternalPlatformId().'/', $admitadPlatform->getToken()
         );
