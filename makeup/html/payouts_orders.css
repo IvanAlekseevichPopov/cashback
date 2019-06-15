@@ -1,0 +1,229 @@
+
+/*ЛИЧНЫЙ КАБИНЕТ---------------------------------------------*/
+.title {
+    height: 60px;
+    background-color: #FCD2A4;
+    font-family: Roboto, sans-serif;
+    font-size: 33px;
+    color: #FF6000;
+    text-align: center;
+    line-height: 1.8em;
+}
+.privat{
+    min-height: 650px;
+    max-height: 100%;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+.data-orders, .data-payouts {
+    width: 100%;
+}
+/*orders--------------------------------------*/
+.number{
+    width: 6%;
+}
+.when{
+    width: 14%;
+}
+.store{
+    width: 19%;
+}
+.sum {
+    width: 19%;
+}
+.discount{
+    width: 13%;
+}
+.status{
+    width: 27%;
+}
+/*payout-----------------------------------------*/
+.z-number{
+    width: 6%;
+}
+.z-when{
+    width: 17%;
+}
+.z-store{
+    width: 20%;
+}
+.z-sum {
+    width: 20%;
+}
+.z-discount{
+    width: 14%;
+}
+.z-status{
+    width: 23%;
+}
+.privat .form {
+    padding: 5px 10px 3px 10px;
+    border: 1px solid #FF6000;
+    margin-top: 20px;
+    background-color: #FCD2A4;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: Roboto, sans-serif;
+    display: table;
+    padding-bottom: 0;
+}
+.privat .data {
+    padding: 5px 10px 3px 10px;
+    margin-top: 3px;
+    margin-left: -11px;
+    border: 1px solid #FF6000;
+    background-color: #F8ECE0;
+    color: #4e555b;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    width: 100%;
+    font-weight: normal;
+    margin-bottom: -1px;
+}
+.form .link-office {
+    color: #FF6000;
+    text-align: center;
+}
+/*orders*/
+.table-orders {
+    background: #f5ffff;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+.all-table-orders{
+    width: 100%;
+}
+.all-orders{
+    height: 224px;
+    width: 100%;
+}
+.table-orders th {
+    box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
+    background-color: #b2b2b2;
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+}
+.table-orders th:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 25%;
+    width: 100%;
+}
+.table-orders tr:nth-child(odd) {
+    background: #ebf3f9;
+}
+.table-orders th:first-child {
+    box-shadow: inset 1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-orders th:last-child {
+    box-shadow: inset -1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-orders td {
+    border: 1px solid #e3eef7;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+.table-orders tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #a09f9d;
+}
+.table-orders tbody:hover tr:hover td {
+    color: #444444;
+    text-shadow: none;
+}
+/*payouts*/
+.table-payouts {
+    background: #f5ffff;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+.table-payouts th {
+    box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
+    background: #b2b2b2;
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+}
+.table-payouts th:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 25%;
+    width: 100%;
+}
+.table-payouts tr:nth-child(odd) {
+    background: #ebf3f9;
+}
+.table-payouts th:first-child {
+    box-shadow: inset 1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-payouts th:last-child {
+    box-shadow: inset -1px 1px 0 #999999, inset 0 -1px 0 #999999;
+}
+.table-payouts td {
+    border: 1px solid #e3eef7;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+.table-payouts tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #a09f9d;
+}
+.table-payouts tbody:hover tr:hover td {
+    color: #444444;
+    text-shadow: none;
+}
+
+@media (min-width: 1440px) {
+    .privat {
+        margin-right: 25%;
+        margin-left: 25%;
+    }
+}
+@media (min-width: 1140px) and (max-width: 1439px) {
+    .privat{
+        margin-right: 15%;
+        margin-left: 15%;
+    }
+    .privat .form{
+        font-size: 19px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1139px) {
+    .privat{
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+    .privat .form{
+        font-size: 18px;
+    }
+    .number{
+        width: 4%;
+    }
+    .when{
+        width: 20%;
+    }
+    .z-when{
+        width: 20%;
+    }
+    .z-status{
+        width: 20%;
+    }
+}
+
+
+
+
+

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CashTan</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="payouts_orders.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+            integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<div class="page_wrapper">
+        <!--menu-->
+        <div class="up-menu">
+            <div class="main-menu">
+                <div class="words-href">
+                    <div class="leaf-name">
+                        <a href="#" class="list-name">
+                            <img class="logo-menu" src="images/cashtan-min.png">
+                            <strong class="black">CashTan</strong>
+                        </a>
+                    </div>
+                    <div class="center-menu">
+                        <a class="point">*</a>
+                        <a class="general hat" href="#">ГЛАВНАЯ</a>
+                        <a class="point">*</a>
+                        <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                        <a class="point">*</a>
+                    </div>
+                </div>
+                <div class="img-href">
+                    <div class="right-menu">
+                        <a class="entrance hat" href="#">ВХОД</a>
+                        <a class="point">*</a>
+                        <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--личный кабинет-->
+        <div class="section">
+            <div class="title office">ЛИЧНЫЙ КАБИНЕТ</div>
+            <div class="privat">
+                <div class="form">
+                    <div class="my-orders">
+                        <div class="link-office">Мои заказы</div>
+                        <div class="data data-orders">
+                            <table class="all-table-orders" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td>
+                                        <table class="table-orders menu-orders" cellspacing="0" cellpadding="1">
+                                            <tr>
+                                                <th class="number">№</th>
+                                                <th class="when">Дата</th>
+                                                <th class="store">Магазин</th>
+                                                <th class="sum">Сумма покупки</th>
+                                                <th class="discount">Кэшбэк</th>
+                                                <th class="status">Статус покупки</th>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="table-orders all-orders" style="overflow:auto; width: auto" >
+                                            <table cellspacing="0" cellpadding="1" border="1">
+                                                <tr>
+                                                    <td class="number">1</td>
+                                                    <td class="when">08.12.2018</td>
+                                                    <td class="store">Ситилинк</td>
+                                                    <td class="sum">1250 руб.</td>
+                                                    <td class="discount">22 руб</td>
+                                                    <td class="status">Завершен</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>29.12.2018</td>
+                                                    <td>Буквоед</td>
+                                                    <td>800 руб.</td>
+                                                    <td>43 руб.</td>
+                                                    <td>Завершен</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>19.01.2019</td>
+                                                    <td>Flora Express</td>
+                                                    <td>2800 руб.</td>
+                                                    <td>117 руб</td>
+                                                    <td>Завершен</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>03.03.2019</td>
+                                                    <td>Sammy dress</td>
+                                                    <td>1600 руб.</td>
+                                                    <td>81 руб.</td>
+                                                    <td>Ожидается выплата кэшбэка</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>03.03.2019</td>
+                                                    <td>Sammy dress</td>
+                                                    <td>1600 руб.</td>
+                                                    <td>81 руб.</td>
+                                                    <td>Ожидается выплата кэшбэка</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>03.03.2019</td>
+                                                    <td>Sammy dress</td>
+                                                    <td>1600 руб.</td>
+                                                    <td>81 руб.</td>
+                                                    <td>Ожидается выплата кэшбэка</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="my-payouts">
+                        <div class="link-office">Мои выплаты</div>
+                        <div class="data data-payouts">
+                            <table class="all-table-orders" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td>
+                                        <table class="table-payouts menu-orders" cellspacing="0" cellpadding="1">
+                                            <tr>
+                                                <th class="z-number">№</th>
+                                                <th class="z-when">Дата заказа</th>
+                                                <th class="z-store">Дата выплаты</th>
+                                                <th class="z-sum">Сумма покупки</th>
+                                                <th class="z-discount">Кэшбэк</th>
+                                                <th class="z-status">Статус</th>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="table-payouts all-orders" style="overflow:auto; width: auto" >
+                                            <table cellspacing="0" cellpadding="1" border="1">
+                                                 <tr>
+                                                    <td class="z-number">1</td>
+                                                    <td class="z-when">08.12.2018</td>
+                                                    <td class="z-store">02.01.2019</td>
+                                                    <td class="z-sum">1250 руб.</td>
+                                                    <td class="z-discount">22 руб</td>
+                                                    <td class="z-status">Выплачено</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>29.12.2018</td>
+                                                    <td>15.02.2019</td>
+                                                    <td>800 руб.</td>
+                                                    <td>43 руб.</td>
+                                                    <td>Выплачено</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>19.01.2019</td>
+                                                    <td>07.03.2019</td>
+                                                    <td>2800 руб.</td>
+                                                    <td>117 руб</td>
+                                                    <td>Выплачено</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>03.03.2019</td>
+                                                    <td></td>
+                                                    <td>1600 руб.</td>
+                                                    <td>81 руб.</td>
+                                                    <td>Ожидается выплата</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>03.03.2019</td>
+                                                    <td></td>
+                                                    <td>1600 руб.</td>
+                                                    <td>81 руб.</td>
+                                                    <td>Ожидается выплата</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>03.03.2019</td>
+                                                    <td></td>
+                                                    <td>1600 руб.</td>
+                                                    <td>81 руб.</td>
+                                                    <td>Ожидается выплата</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>03.03.2019</td>
+                                                    <td></td>
+                                                    <td>1600 руб.</td>
+                                                    <td>81 руб.</td>
+                                                    <td>Ожидается выплата</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--footer-->
+    <footer>
+        <div class="down-menu">
+            <div class="footer-block">
+                <div class="three-columns">
+                    <div class="info down">
+                        <p class="name-menu">Информация</p>
+                        <ul class="text-small">
+                            <li><a class="text-muted" href="#">Условия использования</a></li>
+                            <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                        </ul>
+                    </div>
+                    <div class="service down">
+                        <p class="name-menu">Сервисы</p>
+                        <ul class="text-small">
+                            <li><a class="text-muted" href="#">Все магазины</a></li>
+                            <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                        </ul>
+                    </div>
+                    <div class="call down">
+                        <p class="name-menu">Обратная связь</p>
+                        <ul class="text-small">
+                            <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                            <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="one-column">
+                    <div class="text-center">
+                        <small class="text-logo">© CashTan 2019</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        function showFrm() {
+            document.getElementById("FlDr").click();
+        }
+    </script>
+</body>
+</html>
