@@ -18,9 +18,9 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+                default_target_path: catalog
             logout:       true
             anonymous:    true
-            logout_on_user_change: true
             oauth:
                 resource_owners:
                     google: google_login
@@ -31,7 +31,7 @@ security:
                 login_path: /login
 #                use_forward:       false
 #                failure_path:      /login
-#                default_target_path: after_login
+                default_target_path: catalog
                 provider: hwi_oauth.user.provider
                 oauth_user_provider:
                     service: App\Security\FOSUBUserProvider
