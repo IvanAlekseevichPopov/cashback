@@ -1,50 +1,4 @@
-body{
-    margin:0;
-}
-/*МЕНЮ-----------------------------------------*/
-.main-menu > div {
-    display: inline-block;
-}
-.main-menu {
-    height: 60px;
-    text-align: center;
-    background-color: #F8ECE0;
-}
-.point {
-    color: #FF6000;
-}
-/*листик*/
-.logo-menu {
-    width: 30px;
-    height: 30px;
-}
-.main-menu .leaf-name .black {
-    font-size: 36px;
-    color: #FF6000;
-    font-family: Roboto, sans-serif;
-}
-.main-menu .list-name {
-    text-decoration: none;
-}
-.main-menu .hat {
-    color: #FF6000;
-    font-size: 20px;
-    font-family: Roboto, sans-serif;
-    text-decoration: none;
-}
-/*текст в шапке при наведении курсора*/
-.main-menu .hat:hover {
-    border-bottom: 3px solid #FF6000;
-    color: #FF6000;
-}
-.main-menu .point {
-    margin-left: 7px;
-    margin-right: 7px;
-}
-.center-menu, .right-menu{
-    font-weight: bolder;
-    padding-top: 19px;
-}
+
 /*список категорий*/
 .filling{
     margin-left: 15%;
@@ -57,7 +11,6 @@ body{
     background-color: #F8ECE0;
     padding: 10px 15px 10px 15px;
     border: 1px solid #FF9933;
-    border-radius: 5px;
     float: left;
 }
 .empty {
@@ -89,7 +42,6 @@ body{
     height: 30px;
     border: 1px solid #FF9933;
     font-size: 19px;
-    border-radius: 5px;
     margin-left: 59px;
     margin-bottom: 20px;
     padding-left: 15px;
@@ -209,67 +161,21 @@ body{
     outline: 0 !important;
 }
 
-/*ФУТЕР------------------------------------------------------*/
-.footer-block {
-    height: 150px;
-    background-color: #5a6268;
-    color: #BDBDBD;
-    width: 100%;
-    margin-top: 20px;
-    font-family: Roboto,sans-serif;
-}
-.name-menu{
-    font-size: 18px;
-    color: #BDBDBD;
-}
-.three-columns li{
-    list-style-type: none;
-}
-.text-small{
-    margin-left: 0;
-    padding-left: 0;
-}
-.three-columns > div {
-    display: inline-block;
-}
-.three-columns{
-    text-align: center;
-}
-.one-column  {
-    text-align: center;
-}
-.footer-block .down {
-    width: 400px;
-    font-size: 16px;
-}
-.text-muted {
-    color: #FFFFFF;
-    text-decoration: none;
-}
+
 
 @media (min-width: 1440px) {
     .content .list{
         width: 210px;
         height: 726px;
     }
-    .footer-block .down {
-        width: 400px;
-    }
 }
 
 @media (min-width: 1140px) and (max-width: 1439px) {
-    .footer-block .down {
-        width: 300px;
-    }
-    #to-top {
-        right: 5%;
-    }
+
 }
 
 @media (min-width: 768px) and (max-width: 1139px) {
-    .main-menu {
-        height: 100px;
-    }
+
     .content .list {
         width: 235px;
         height: 700px;
@@ -277,12 +183,6 @@ body{
     .find .form-control {
         width: 207px;
         margin-left: 24px;
-    }
-    .footer-block .down {
-        width: 210px;
-    }
-    #to-top {
-        right: 4%;
     }
 }
 
