@@ -7,7 +7,7 @@
     background-color: #F8ECE0;
     font-family: Roboto, sans-serif;
     padding-top: 40px;
-}
+   }
 /*поля ввода*/
 .main_form .form-group {
     margin-right: 100px;
@@ -27,7 +27,6 @@
     width: 160px;
     font-size: 18px;
     border: 1px solid #FF6000;
-    border-radius: 4px;
     background-color: #FF6000;
     color: #FFFFFF;
     margin-top: 30px;
@@ -36,18 +35,11 @@
 .btn-enter:focus {
     outline: 0 !important;
 }
-/*цвет рамки кнопки при наведении*/
-.main_form .btn-enter:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0);
-    background-color: rgba(255, 96, 0);
-    border: none;
-}
 .form-control {
     height: 47px;
     width: 380px;
     margin-bottom: 10px;
     border: 1px solid #FF6000;
-    border-radius: 4px;
     padding-left: 10px;
     font-size: 17px;
 }
@@ -132,8 +124,6 @@
 div.content{
     min-height: 570px;
 }
-
-/*при клике на кнопку соц.сетей*/
 .social_buttons .btn-auto:focus {
     box-shadow: none;
 }
