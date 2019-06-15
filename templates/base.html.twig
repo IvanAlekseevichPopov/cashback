@@ -14,38 +14,50 @@
 <div class="page-cat">
     {% block header %}
         <header>
-            <!--menu-->
             <div class="up-menu">
                 <div class="main-menu">
-                    <div class="leaf-name">
-                        <a href="#" class="list-name">
-                            <img class="logo-menu" src="{{ asset('img/cashtan-min.png') }}">
-                            <strong class="black">CashTan</strong>
-                        </a>
+                    <div class="words-href">
+                        <div class="leaf-name">
+                            <a href="#" class="list-name">
+                                <img class="logo-menu" src="{{ asset('img/cashtan-min.png') }}">
+                                <strong class="black">CashTan</strong>
+                            </a>
+                        </div>
+                        <div class="center-menu">
+                            <a class="point">*</a>
+                            <a class="general hat" href="{{ path('main') }}">ГЛАВНАЯ</a>
+                            <a class="point">*</a>
+                            <a class="catalog-shop hat" href="{{ path('catalog') }}">КАТАЛОГ МАГАЗИНОВ</a>
+                            <a class="point">*</a>
+                        </div>
                     </div>
-                    <div class="center-menu">
-                        <a class="point">*</a>
-                        <a class="general hat" href="{{ path('main') }}">ГЛАВНАЯ</a>
-                        <a class="point">*</a>
-                        <a class="catalog-shop hat" href="{{ path('catalog') }}">КАТАЛОГ МАГАЗИНОВ</a>
-                        <a class="point">*</a>
-                    </div>
-                    {% if app.user is not null %}
-                        <div class="right-menu">
-
-{#                            <a class="entrance hat" href="{{ path('fos_user_security_login') }}">ВХОД</a>#}
-{#                            <a class="point">*</a>#}
-{#                            <a class="checkin hat" href="{{ path('fos_user_registration_register') }}">РЕГИСТРАЦИЯ</a>#}
+                    {% if app.user is null %}
+                        <div class="img-href">
+                            <div class="right-menu">
+                                <a class="entrance hat" href="{{ path('fos_user_security_login') }}">ВХОД</a>
+                                <a class="point">*</a>
+                                <a class="checkin hat" href="{{ path('fos_user_registration_register') }}">РЕГИСТРАЦИЯ</a>
+                            </div>
                         </div>
                     {% else %}
-                    <div class="right-menu">
-                        <a class="entrance hat" href="{{ path('fos_user_security_login') }}">ВХОД</a>
-                        <a class="point">*</a>
-                        <a class="checkin hat" href="{{ path('fos_user_registration_register') }}">РЕГИСТРАЦИЯ</a>
-                    </div>
+                        <div class="img-href">
+                            <div class="right-menu">
+                                <div class="win-fio">
+                                    <img class="avat" src="{{ asset('img/anonym.png') }}">
+                                </div>
+                            </div>
+                            <div class="arrow-up">
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <div class="submenu" id="submenu">
+                                <a class="fio">Username</a>
+                                <li><a href="">Мой профиль</a></li>
+                                <li><a href="">Мой кэшбэк</a></li>
+                                <li><a href="">Выход</a></li>
+                            </div>
+                        </div>
                     {% endif %}
                 </div>
-
             </div>
         </header>
     {% endblock %}
@@ -127,6 +139,7 @@
                 integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
                 crossorigin="anonymous"></script>
         <script type="text/javascript">
+            //scroll to top
             $(function () {
                 $(window).scroll(function () {
                     if ($(this).scrollTop() != 0) {
@@ -137,6 +150,13 @@
                 });
                 $('#to-top').click(function () {
                     $('body,html').animate({scrollTop: 0}, 800);
+                });
+            });
+            //user menu
+            $(function () {
+                $(".avat, .arrow-up").click(function () {
+                    $("#submenu").slideToggle();
+                    $(".arrow-up").toggleClass("arrow-down", 800);
                 });
             });
         </script>
