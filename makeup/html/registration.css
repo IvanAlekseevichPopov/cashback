@@ -1,50 +1,3 @@
-body{
-    margin:0;
-}
-/*МЕНЮ-----------------------------------------*/
-.main-menu > div {
-    display: inline-block;
-}
-.main-menu {
-    height: 60px;
-    text-align: center;
-    background-color: #F8ECE0;
-}
-.point {
-    color: #FF6000;
-}
-/*листик*/
-.logo-menu {
-    width: 30px;
-    height: 30px;
-}
-.main-menu .leaf-name .black {
-    font-size: 36px;
-    color: #FF6000;
-    font-family: Roboto, sans-serif;
-}
-.main-menu .list-name {
-    text-decoration: none;
-}
-.main-menu .hat {
-    color: #FF6000;
-    font-size: 20px;
-    font-family: Roboto, sans-serif;
-    text-decoration: none;
-}
-/*текст в шапке при наведении курсора*/
-.main-menu .hat:hover {
-    border-bottom: 3px solid #FF6000;
-    color: #FF6000;
-}
-.main-menu .point {
-    margin-left: 7px;
-    margin-right: 7px;
-}
-.center-menu, .right-menu{
-    font-weight: bolder;
-    padding-top: 19px;
-}
 /*главная форма регистрации*/
 .main_form {
     width: 600px;
@@ -69,6 +22,11 @@ body{
 .form-control:focus {
     outline: 0 !important;
 }
+/*цвет рамок окон при нажатии*/
+.main_form .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+    border-color: rgba(255,96,0,.25);
+}
 .enter {
     margin-top: 25px;
     height: 48px;
@@ -87,21 +45,18 @@ body{
 .enter:focus {
     outline: 0 !important;
 }
-/*cодержимое окна регистрации*/
 .main_form .fields {
     text-align: center;
 }
 /*кнопки соц. сетей*/
 .social_buttons .btn-reg {
-    padding-top: 12px;
-    font-size: 22px;
     margin-right: 3px;
     margin-left: 3px;
 }
 .or_social{
     font-size: 20px;
     font-weight: bolder;
-    margin-top: 70px;
+    margin-top: 60px;
 }
 /*кнопка вконтакте*/
 .social_buttons .fa-vk {
@@ -158,58 +113,6 @@ body{
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-/*footer------------------------------------------------------*/
-.footer-block {
-    height: 150px;
-    background-color: #5a6268;
-    color: #BDBDBD;
-    width: 100%;
-    font-family: Roboto,sans-serif;
+div.content{
+    min-height: 570px;
 }
-.name-menu{
-    font-size: 18px;
-    color: #BDBDBD;
-}
-.three-columns li{
-    list-style-type: none;
-}
-.text-small{
-    margin-left: 0;
-    padding-left: 0;
-}
-.three-columns > div {
-    display: inline-block;
-}
-.three-columns{
-    text-align: center;
-}
-.one-column  {
-    text-align: center;
-}
-.footer-block .down {
-    width: 400px;
-    font-size: 16px;
-}
-.text-muted {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-@media (min-width: 1440px) {
-    .footer-block .down {
-        width: 400px;
-    }
-}
-@media (min-width: 1140px) and (max-width: 1439px) {
-    .footer-block .down {
-        width: 300px;
-    }
-}
-@media (min-width: 768px) and (max-width: 1139px) {
-    .main-menu {
-        height: 100px;
-    }
-    .footer-block .down {
-        width: 210px;
-    }
-}
-

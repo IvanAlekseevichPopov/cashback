@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CashTan</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="shared.css">
     <link rel="stylesheet" href="authorization.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
@@ -13,41 +13,44 @@
     <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width">
 </head>
+
 <body>
-<div class="page">
-    <header>
+<div class="container">
         <!--menu-->
         <div class="up-menu">
             <div class="main-menu">
-                <div class="leaf-name">
-                    <a href="#" class="list-name">
-                        <img class="logo-menu" src="images/cashtan-min.png">
-                        <strong class="black">CashTan</strong>
-                    </a>
+                <div class="words-href">
+                    <div class="leaf-name">
+                        <a href="#" class="list-name">
+                            <img class="logo-menu" src="images/cashtan-min.png">
+                            <strong class="black">CashTan</strong>
+                        </a>
+                    </div>
+                    <div class="center-menu">
+                        <a class="point">*</a>
+                        <a class="general hat" href="#">ГЛАВНАЯ</a>
+                        <a class="point">*</a>
+                        <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                        <a class="point">*</a>
+                    </div>
                 </div>
-                <div class="center-menu">
-                    <a class="point">*</a>
-                    <a class="general hat" href="#">ГЛАВНАЯ</a>
-                    <a class="point">*</a>
-                    <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
-                    <a class="point">*</a>
-                </div>
-                <div class="right-menu">
-                    <a class="entrance hat" href="#">ВХОД</a>
-                    <a class="point">*</a>
-                    <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                <div class="img-href">
+                    <div class="right-menu">
+                        <a class="entrance hat" href="#">ВХОД</a>
+                        <a class="point">*</a>
+                        <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                    </div>
                 </div>
             </div>
         </div>
         <!--content page-->
         <div class="title reg">ВХОД ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ</div>
-        <div class="con">
+        <div class="content">
             <div class="main_form">
                 <div class="fields">
                     <form name="regis" method="post" action="url">
                         <div class="form-group">
                             <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp"
                                    placeholder="Введите e-mail">
                         </div>
                         <div class="form-group">
@@ -57,7 +60,7 @@
 
                         <button type="submit" class="btn-enter">Вход</button>
                         <div>
-                            <a href="pass" style="color: #FF6000">Забыли пароль?</a>
+                            <a href="pass">Забыли пароль?</a>
                         </div>
                         <!--кнопки соц.сетей-->
                         <p class="or_social">или через социальные сети</p>
@@ -82,9 +85,8 @@
                 </div>
             </div>
         </div>
-    </header>
 </div>
-<!--//footer-->
+<!--футер-->
 <footer>
     <div class="down-menu">
         <div class="footer-block">
