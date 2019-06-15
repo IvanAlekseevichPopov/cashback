@@ -30,11 +30,20 @@
                         <a class="catalog-shop hat" href="{{ path('catalog') }}">КАТАЛОГ МАГАЗИНОВ</a>
                         <a class="point">*</a>
                     </div>
+                    {% if app.user is not null %}
+                        <div class="right-menu">
+
+{#                            <a class="entrance hat" href="{{ path('fos_user_security_login') }}">ВХОД</a>#}
+{#                            <a class="point">*</a>#}
+{#                            <a class="checkin hat" href="{{ path('fos_user_registration_register') }}">РЕГИСТРАЦИЯ</a>#}
+                        </div>
+                    {% else %}
                     <div class="right-menu">
                         <a class="entrance hat" href="{{ path('fos_user_security_login') }}">ВХОД</a>
                         <a class="point">*</a>
                         <a class="checkin hat" href="{{ path('fos_user_registration_register') }}">РЕГИСТРАЦИЯ</a>
                     </div>
+                    {% endif %}
                 </div>
 
             </div>
