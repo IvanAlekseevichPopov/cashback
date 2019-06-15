@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CashTan</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="shared.css">
     <link rel="stylesheet" href="page_shop.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
@@ -13,192 +13,216 @@
     <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width">
 </head>
+
 <body>
-<div class="page-info">
-    <header>
-        <!--menu-->
+<div class="container">
+    <!--menu-->
         <div class="up-menu">
             <div class="main-menu">
-                <div class="leaf-name">
-                    <a href="#" class="list-name">
-                        <img class="logo-menu" src="images/cashtan-min.png">
-                        <strong class="black">CashTan</strong>
-                    </a>
+                <div class="words-href">
+                    <div class="leaf-name">
+                        <a href="#" class="list-name">
+                            <img class="logo-menu" src="images/cashtan-min.png">
+                            <strong class="black">CashTan</strong>
+                        </a>
+                    </div>
+                    <div class="center-menu">
+                        <a class="point">*</a>
+                        <a class="general hat" href="#">ГЛАВНАЯ</a>
+                        <a class="point">*</a>
+                        <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                        <a class="point">*</a>
+                    </div>
                 </div>
-                <div class="center-menu">
-                    <a class="point">*</a>
-                    <a class="general hat" href="#">ГЛАВНАЯ</a>
-                    <a class="point">*</a>
-                    <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
-                    <a class="point">*</a>
-                </div>
-                <div class="right-menu">
-                    <a class="entrance hat" href="#">ВХОД</a>
-                    <a class="point">*</a>
-                    <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                <div class="img-href">
+                    <div class="right-menu">
+                        <div class="win-fio">
+                            <img class="avat" src="images/anonym.png">
+                        </div>
+                    </div>
+                    <div class="arrow-up">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div class="submenu" id="submenu">
+                        <a class="fio">Username</a>
+                        <li><a href="">Мой профиль</a></li>
+                        <li><a href="">Мой кэшбэк</a></li>
+                        <li><a href="">Выход</a></li>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="title infoshop">ИНФОРМАЦИЯ О МАГАЗИНЕ</div>
-        <div class="all-info">
-            <!--левая колонка-->
-            <div class="logo_shop one">
-                <img class="logo_img" src="images/ozon-logo.png">
-                <!--процент кэшбэка-->
-                <div class="cash_proc">
-                    <span class="word_cash">кэшбэк</span>
-                    <span class="do">до</span>
-                    <span class="cifra">5</span>
-                    <span class="znak_proc">%</span>
-                </div>
-                <!--кнопка-->
-                <div class="bu-a">
-                    <a href="#" class="active act-t">Перейти в магазин</a>
-                </div>
-                <div class="bu-b">
-                    <a href="#" class="active act-f">Перейти в магазин</a>
-                </div>
-            </div>
-            <div class="content_shop two">
-                <p>
-                    OZON.ru – один из самых популярных на сегодня онлайн-мега или гипермаркетов на просторах Рунета.
-                    Компания начала свое развитие по аналогии с популярнейшим ресурсом уже мирового масштаба Amazon.com.
-                    Как и Amazon Ozon начинал с торговлей книгами. Позднее в ассортимент были добавлены товары других
-                    категорий, такие как: - электроника, детские товары и др. Кэшбэк скидки купоны промокоды cashback
-                    отзывы о Озон Ozon
-                </p>
-                <p></p>
-                <h5>Условия и порядок оформления заказов</h5>
-                <p>
-                    Для получения кэшбэк, товар необходимо добавить в корзину после перехода по ссылке со страницы&nbsp;
-                    нашего сервиса.
-                </p>
-                <p>
-                    Если Вы планируете заказать товары, которые уже лежали в Вашей Корзине (или в "Отложенных") для
-                    начисления кэшбэк необходимо вновь перейти на сайт Ozon.ru с нашего сайта, очистить корзину, снова
-                    добавить понравившиеся товары и оформить покупку.
-                </p>
-                <p>
-                    Если Вы аннулировали свой заказ, любой следующий или ПОВТОРНЫЙ заказ должен быть оформлен ЗАНОВО
-                    после перехода по ссылке с нашего сайта.
-                </p>
-                <h5>Время начисления кэшбэка</h5>
-                <p>Среднее время ожидания:<b> 25 дней</b><br>
-                    Максимальное время ожидания:<b> 55 дней</b></p>
-                <p></p>
-                <h5>Кэшбэк не начисляется на следующие товары:</h5>
-                <p>
-                    &nbsp;- на товарные позиции, продавцом которых не является ООО "Интернет Решения" (под кнопкой "в
-                    корзину" указан продавец);<br>
-                    &nbsp;- на товарные позиции раздела OZON.digital;<br>
-                    &nbsp;- подарочные сертификаты;<br>
-                    &nbsp;- билеты и гостиницы.
-                </p>
-                <!--отзывы-->
-                <h4>Отзывы о магазине</h4>
-                <div class="all-reviews">
-                    <div class="button_r">
-                        <a href="#" class="btn-reviews">Авторизируйтесь, чтобы оставить отзыв</a>
+        <div class="content">
+            <div class="all-info">
+                <!--левая колонка-->
+                <div class="logo_shop one">
+                    <img class="logo_img" src="images/ozon-logo.png">
+                    <!--процент кэшбэка-->
+                    <div class="cash_proc">
+                        <span class="word_cash">кэшбэк</span>
+                        <span class="do">до</span>
+                        <span class="cifra">5</span>
+                        <span class="znak_proc">%</span>
                     </div>
-                    <!--написать отзыв-->
-                    <div class="rev-who">
-                        <!--1-->
-                        <div class="panel-body">
-                            <div class="panel-who">
-                                <div class="avatar">
-                                    <div class="up">
-                                        <div class="ava"><img src="images/anonym.png"></div>
-                                        <div class="fiostar">
-                                            <div class="fio" id="fio">Имя Фамилия</div>
-                                            <div class="rating_block">
-                                                <input name="rating" value="5" id="rating_5" type="radio"/>
-                                                <label for="rating_5" class="label_rating"></label>
+                    <!--кнопка-->
+                    <div class="bu-a">
+                        <a href="#" class="active act-t">Перейти в магазин</a>
+                    </div>
+                    <div class="bu-b">
+                        <a href="#" class="active act-f">Перейти в магазин</a>
+                    </div>
+                </div>
+                <div class="content_shop two">
+                    <p>
+                        OZON.ru – один из самых популярных на сегодня онлайн-мега или гипермаркетов на просторах Рунета.
+                        Компания начала свое развитие по аналогии с популярнейшим ресурсом уже мирового масштаба
+                        Amazon.com.
+                        Как и Amazon Ozon начинал с торговлей книгами. Позднее в ассортимент были добавлены товары
+                        других
+                        категорий, такие как: - электроника, детские товары и др. Кэшбэк скидки купоны промокоды
+                        cashback
+                        отзывы о Озон Ozon
+                    </p>
+                    <p></p>
+                    <h5>Условия и порядок оформления заказов</h5>
+                    <p>
+                        Для получения кэшбэк, товар необходимо добавить в корзину после перехода по ссылке со страницы&nbsp;
+                        нашего сервиса.
+                    </p>
+                    <p>
+                        Если Вы планируете заказать товары, которые уже лежали в Вашей Корзине (или в "Отложенных") для
+                        начисления кэшбэк необходимо вновь перейти на сайт Ozon.ru с нашего сайта, очистить корзину,
+                        снова
+                        добавить понравившиеся товары и оформить покупку.
+                    </p>
+                    <p>
+                        Если Вы аннулировали свой заказ, любой следующий или ПОВТОРНЫЙ заказ должен быть оформлен ЗАНОВО
+                        после перехода по ссылке с нашего сайта.
+                    </p>
+                    <h5>Время начисления кэшбэка</h5>
+                    <p>Среднее время ожидания:<b> 25 дней</b><br>
+                        Максимальное время ожидания:<b> 55 дней</b></p>
+                    <p></p>
+                    <h5>Кэшбэк не начисляется на следующие товары:</h5>
+                    <p>
+                        &nbsp;- на товарные позиции, продавцом которых не является ООО "Интернет Решения" (под кнопкой
+                        "в
+                        корзину" указан продавец);<br>
+                        &nbsp;- на товарные позиции раздела OZON.digital;<br>
+                        &nbsp;- подарочные сертификаты;<br>
+                        &nbsp;- билеты и гостиницы.
+                    </p>
+                    <!--отзывы-->
+                    <h4>Отзывы о магазине</h4>
+                    <div class="all-reviews">
+                        <div class="button_r">
+                            <a href="#" class="btn-reviews">Авторизируйтесь, чтобы оставить отзыв</a>
+                        </div>
+                        <!--написать отзыв-->
+                        <div class="rev-who">
+                            <!--1-->
+                            <div class="panel-body">
+                                <div class="panel-who">
+                                    <div class="avatar">
+                                        <div class="up">
+                                            <div class="ava"><img src="images/anonym.png"></div>
+                                            <div class="fiostar">
+                                                <div class="fio" id="fio">Имя Фамилия</div>
+                                                <div class="rating_block">
+                                                    <input name="rating" value="5" id="rating_5" type="radio"/>
+                                                    <label for="rating_5" class="label_rating"></label>
 
-                                                <input name="rating" value="4" id="rating_4" type="radio"/>
-                                                <label for="rating_4" class="label_rating"></label>
+                                                    <input name="rating" value="4" id="rating_4" type="radio"/>
+                                                    <label for="rating_4" class="label_rating"></label>
 
-                                                <input name="rating" value="3" id="rating_3" type="radio"/>
-                                                <label for="rating_3" class="label_rating"></label>
+                                                    <input name="rating" value="3" id="rating_3" type="radio"/>
+                                                    <label for="rating_3" class="label_rating"></label>
 
-                                                <input name="rating" value="2" id="rating_2" type="radio"/>
-                                                <label for="rating_2" class="label_rating"></label>
+                                                    <input name="rating" value="2" id="rating_2" type="radio"/>
+                                                    <label for="rating_2" class="label_rating"></label>
 
-                                                <input name="rating" value="1" id="rating_1" type="radio"/>
-                                                <label for="rating_1" class="label_rating"></label>
+                                                    <input name="rating" value="1" id="rating_1" type="radio"/>
+                                                    <label for="rating_1" class="label_rating"></label>
+                                                </div>
                                             </div>
-                                        </div>
                                             <div class="date">20.12.2018</div>
-                                    </div>
-                                    <div class="panel-what">
+                                        </div>
+                                        <div class="panel-what">
                                     <textarea class="sm_textarea" rows="2" cols="85"
                                               placeholder="Оставьте свой комментарий...">
                                     </textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="button_en">
-                            <button type="submit" class="btn-send">Отправить</button>
-                        </div>
-                        <!--2-->
-                        <div class="panel-body">
-                            <div class="panel-who">
-                                <div class="avatar">
-                                    <div class="up">
-                                        <div class="ava"><img src="images/men.jpeg"></div>
-                                        <div class="fiostar">
-                                            <div class="fio">Ярослав Жуков</div>
-                                            <div class="rating_block_one">
-                                                <div class="non_starred"></div>
-                                                <div class="non_starred"></div>
-                                                <div class="starred"></div>
-                                                <div class="starred"></div>
-                                                <div class="starred"></div>
+                            <div class="button_en">
+                                <button type="submit" class="btn-send">Отправить</button>
+                            </div>
+                            <!--2-->
+                            <div class="panel-body">
+                                <div class="panel-who">
+                                    <div class="avatar">
+                                        <div class="up">
+                                            <div class="ava"><img src="images/men.jpeg"></div>
+                                            <div class="fiostar">
+                                                <div class="fio">Ярослав Жуков</div>
+                                                <div class="rating_block_one">
+                                                    <div class="non_starred"></div>
+                                                    <div class="non_starred"></div>
+                                                    <div class="starred"></div>
+                                                    <div class="starred"></div>
+                                                    <div class="starred"></div>
+                                                </div>
                                             </div>
+                                            <div class="date">01.07.2018</div>
                                         </div>
-                                        <div class="date">01.07.2018</div>
                                     </div>
-                                </div>
-                                <div class="panel-what">
-                                    <p class="text_reviews">Сервис устраивает. Пользуюсь давно, если возникают вопросы,
-                                        то они
-                                        решаются, выплаты идут </p>
+                                    <div class="panel-what">
+                                        <p class="text_reviews">Сервис устраивает. Пользуюсь давно, если возникают
+                                            вопросы,
+                                            то они
+                                            решаются, выплаты идут </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--3-->
-                        <div class="panel-body">
-                            <div class="panel-who">
-                                <div class="avatar">
-                                    <div class="up">
-                                        <div class="ava"><img src="images/gerl.jpg"></div>
-                                        <div class="fiostar">
-                                            <div class="fio">Ирина Демидова</div>
-                                            <div class="rating_block_one">
-                                                <div class="non_starred"></div>
-                                                <div class="starred"></div>
-                                                <div class="starred"></div>
-                                                <div class="starred"></div>
-                                                <div class="starred"></div>
+                            <!--3-->
+                            <div class="panel-body">
+                                <div class="panel-who">
+                                    <div class="avatar">
+                                        <div class="up">
+                                            <div class="ava"><img src="images/gerl.jpg"></div>
+                                            <div class="fiostar">
+                                                <div class="fio">Ирина Демидова</div>
+                                                <div class="rating_block_one">
+                                                    <div class="non_starred"></div>
+                                                    <div class="starred"></div>
+                                                    <div class="starred"></div>
+                                                    <div class="starred"></div>
+                                                    <div class="starred"></div>
+                                                </div>
                                             </div>
+                                            <div class="date">11.08.2018</div>
                                         </div>
-                                        <div class="date">11.08.2018</div>
                                     </div>
-                                </div>
-                                <div class="panel-what">
-                                    <p class="text_reviews">Давно пользуюсь услугами этого магазина. Огромный выбор
-                                        товаров на
-                                        любой вкус, даже если захочется что-то Такое.. можно найти. В редких случаях не
-                                        "попадаю" в размер или не устраивает качество, но где такого не бывает. Покупаю
-                                        без
-                                        примерки. с возвратом - не было проблем. </p>
+                                    <div class="panel-what">
+                                        <p class="text_reviews">Давно пользуюсь услугами этого магазина. Огромный выбор
+                                            товаров на
+                                            любой вкус, даже если захочется что-то Такое.. можно найти. В редких случаях
+                                            не
+                                            "попадаю" в размер или не устраивает качество, но где такого не бывает.
+                                            Покупаю
+                                            без
+                                            примерки. с возвратом - не было проблем. </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </header>
+        </div>
 </div>
 <!--//footer-->
 <footer>
@@ -235,5 +259,13 @@
         </div>
     </div>
 </footer>
+<script type="text/javascript">
+    $(function () {
+        $(".avat, .arrow-up").click(function () {
+            $("#submenu").slideToggle();
+            $(".arrow-up").toggleClass("arrow-down", 800);
+        });
+    });
+</script>
 </body>
 </html>
