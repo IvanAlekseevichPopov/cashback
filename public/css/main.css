@@ -157,8 +157,10 @@ body {
     font-size: 18px;
     color: #BDBDBD;
 }
+
 .three-columns li {
     list-style-type: none;
+    margin: 6px;
 }
 .text-small {
     margin-left: 0;
