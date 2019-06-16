@@ -50,9 +50,9 @@
                                 <i class="fas fa-chevron-up"></i>
                             </div>
                             <div class="submenu" id="submenu">
-                                <a class="fio">Username</a>
-                                <li><a href="">Мой профиль</a></li>
-                                <li><a href="">Мой кэшбэк</a></li>
+                                <a class="fio">{{ app.user.username }}</a>
+                                <li><a href="{{ path('cabinet') }}">Мой профиль</a></li>
+                                <li><a href="#">Мой кэшбэк</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}">Выход</a></li>
                             </div>
                         </div>
@@ -99,15 +99,15 @@
                         <div class="info down">
                             <p class="name-menu">Информация</p>
                             <ul class="text-small">
-                                <li><a class="text-muted" href="#">Условия использования</a></li>
+                                <li><a class="text-muted" href="{{ path('conditions') }}">Условия использования</a></li>
                                 <li><a class="text-muted" href="#">Партнерская программа</a></li>
                             </ul>
                         </div>
                         <div class="service down">
                             <p class="name-menu">Сервисы</p>
                             <ul class="text-small">
-                                <li><a class="text-muted" href="#">Все магазины</a></li>
-                                <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                                <li><a class="text-muted" href="{{ path('catalog') }}">Все магазины</a></li>
+                                <li><a class="text-muted" href="{{ path('cabinet') }}">Личный кабинет</a></li>
 
 
                             </ul>
@@ -115,7 +115,7 @@
                         <div class="call down">
                             <p class="name-menu">Обратная связь</p>
                             <ul class="text-small">
-                                <li><a class="text-muted" href="{{ path('faq') }}">Частые вопросы</a></li>
+                                <li><a class="text-muted" href="{{ path('main', {'_fragment':'faq'}) }}">Частые вопросы</a></li>
                                 <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
 
                             </ul>
