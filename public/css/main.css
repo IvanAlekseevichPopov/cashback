@@ -1,123 +1,209 @@
-.ccont {
-    min-height: calc(100vh - 250px);
+body {
+    margin: 0;
+}
+/*menu-----------------------------------------*/
+.main-menu > div {
+    display: inline-block;
 }
 
-/*цвет шрифта в подвале*/
-body .pt-4 .row h5 {
-    color: #A4A4A4;
+.words-href > div {
+    display: inline-block;
 }
-/*шапка*/
-.bg-white {
-    background-color: #ffffff;
+.main-menu {
     height: 60px;
+    text-align: center;
+    background-color: #F8ECE0;
 }
-
-/*цвет текста в шапке*/
-.bg-white a.navbar-brand {
+.words-href {
+    padding-top: 7px;
+}
+.img-href .win-fio {
+    margin-bottom: 5px;
+}
+.point {
     color: #FF6000;
 }
-/*карусель*/
-div.carousel-color {
-    background-color: #FCD2A4;
-    color: #212529;
-    font-family: Roboto;
-    font-weight: bold;
-    margin-top: 30px;
-}
-/*цвет фона контейнера*/
-.container-color {
-    background-color: #E6E6E6;
-}
-/*расположение текста в карусели*/
-.container h1 span {
-    padding-top: 0px;
-}
-
-.container h1 span1 {
-    padding-left: 70px;
-}
-
-.container h1 span2 {
-    padding-left: 140px;
-}
-
-.container h1 span3 {
-    padding-left: 220px;
-}
-/*нижний текст в карусели*/
-.container div p {
-    font-family: Roboto;
-    font-size: 28px;
-    padding-top: 30px;
-}
-/*текст в карусели*/
-.container .display-4 {
-    font-weight: 500;
-    font-size: 54px;
-}
-/*текст в шапке*/
-.navbar a {
-    color: #FF6000;
-    font-size: 20px;
-    font-weight: bolder;
-}
-
-/*текст в шапке при наведении курсора*/
-.container .p-2:hover {
-    border-bottom: 3px solid #FF6000;
-    text-decoration: none;
-    color: #FF6000;
-}
-
-/*логотип и название*/
-.black, svg {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: #FF6000;
-}
-
-/*цвет текста нижних блоков*/
-.font-icon-color {
-    color: #FF6000;
-}
-
-/*шапка, всё меню*/
-.all_menu {
-    diplay: inline-block;
-    margin-top: 10px;
-    padding-left: 50px;
-    width: 600px;
-}
-
-/*шапка, вход-рег*/
-.lost-menu {
-    margin-top: 10px;
-    width: 300px;
-    padding-left: 60px;
-}
-
-/*нижний отступ в футере*/
-.container .row .d-block {
-    padding-bottom: 25px;
-}
-
-/*листик*/
-.logo_menu {
-    margin-right: 3px;
+/*leaf*/
+.logo-menu {
     width: 30px;
     height: 30px;
-    margin-bottom: 10px;
+}
+.main-menu .leaf-name .black {
+    font-size: 36px;
+    color: #FF6000;
+    font-family: Roboto, sans-serif;
+}
+.main-menu .list-name {
+    text-decoration: none;
+}
+.main-menu .hat {
+    color: #FF6000;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+}
+.main-menu .hat:hover {
+    border-bottom: 3px solid #FF6000;
+    color: #FF6000;
+}
+.main-menu .point {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.center-menu, .right-menu {
+    font-weight: bolder;
+    padding-top: 5px;
+}
+.win-fio img {
+    width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    vertical-align: middle;
+}
+.avat {
+    border: 1px solid #FF6000;
+    border-radius: 25px;
+    position: absolute;
+    margin-top: -30px;
+}
+.submenu li {
+    list-style-type: none;
+    padding-bottom: 3px;
+}
+.submenu {
+    display: none;
+    top: 60px;
+    position: absolute;
+    width: 182px;
+    height: 90px;
+    background-color: #F8ECE0;
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 19px;
+    text-decoration: none;
+    padding: 6px 10px 10px 10px;
+    border: 1px solid #FF9933;
+    text-align: left;
+    margin-left: -130px;
+}
+.submenu .fio {
+    font-weight: bolder;
+    color: #FF6000;
+}
+.submenu a {
+    color: black;
+    text-decoration: none;
+}
+.submenu a:hover {
+    color: #FF6000;
+}
+.avat:hover {
+    border: 2px solid #FF6000;
+}
+.arrow-up {
+    position: absolute;
+    top: 23px;
+    margin-left: 57px;
+    color: #FF6000;
+    transition:all 0.5s
+}
+.arrow-down {
+    transform: scaleY(-1);
+    transition:all 0.5s;
+}
+#to-top {
+    color: #FF6000;
+    border-radius: 4px;
+    right: 4%;
+    bottom: 5%;
+    cursor: pointer;
+    position: fixed;
+    text-align: center;
+}
+#to-top:before {
+    content: "";
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    position: absolute;
+    line-height: 50px;
+    left: 5px;
+    top: 9px;
+    z-index: -1;
+}
+.title {
+    height: 60px;
+    background-color: #FCD2A4;
+    font-family: Roboto, sans-serif;
+    font-size: 33px;
+    color: #FF6000;
+    text-align: center;
+    line-height: 1.8em;
+}
+.content {
+    min-height: 760px;
+}
+/*footer------------------------------------------------------*/
+.footer-block {
+    height: 150px;
+    background-color: #5a6268;
+    color: #BDBDBD;
+    width: 100%;
+    margin-top: 20px;
+    font-family: Roboto, sans-serif;
+}
+.name-menu {
+    font-size: 18px;
+    color: #BDBDBD;
 }
 
-/*кнопка регистрации и авторизации*/
-.main_form .btn-enter {
-    width: 160px;
-    height: 60px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    border-radius: 8px;
-    background-color: #FF6000;
-    color: white;
-    border: 1px solid #FF6000;
+.three-columns li {
+    list-style-type: none;
+    margin: 6px;
+}
+.text-small {
+    margin-left: 0;
+    padding-left: 0;
+}
+.three-columns > div {
+    display: inline-block;
+}
+.three-columns {
+    text-align: center;
+}
+.one-column {
+    text-align: center;
+}
+.footer-block .down {
+    width: 400px;
+    font-size: 16px;
+}
+.text-muted {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+@media (min-width: 1440px) {
+    .footer-block .down {
+        width: 400px;
+    }
+}
+@media (min-width: 1140px) and (max-width: 1439px) {
+    .footer-block .down {
+        width: 300px;
+    }
+    #to-top {
+        right: 5%;
+    }
+}
+@media (min-width: 768px) and (max-width: 1139px) {
+    .main-menu {
+        height: 100px;
+    }
+    .footer-block .down {
+        width: 210px;
+    }
+    #to-top {
+        right: 4%;
+    }
 }

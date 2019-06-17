@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 /*МЕНЮ-----------------------------------------*/
 
 .title {
@@ -83,6 +87,7 @@
     color: #585858;
     text-align: center;
 }
+
 /*ПРОЦЕСС-----------------------------------------------*/
 .process-block {
     height: 100%;
@@ -299,16 +304,20 @@
         top: 111px;
         margin-left: 49%;
     }
+
     .welcome .tagline .num {
         font-size: 74px;
     }
+
     .process-shopping {
         width: 450px;
     }
+
     .shop-block {
         padding-left: 7%;
         padding-right: 7%;
     }
+
     .faq {
         margin-left: 10%;
         margin-right: 10%;
@@ -323,24 +332,30 @@
         top: 77px;
         margin-left: 46%;
     }
-    .welcome .tagline .num{
+
+    .welcome .tagline .num {
         font-size: 63px;
     }
+
     .process-shopping {
         width: 348px;
     }
+
     .fa-7x {
         font-size: 6em;
     }
+
     .shop-block {
         padding-left: 5%;
         padding-right: 5%;
     }
+
     .faq {
         margin-left: 10%;
         margin-right: 10%;
         font-size: 20px;
     }
+
     #to-top {
         right: 2%;
     }
@@ -353,66 +368,79 @@
         margin-left: 35%;
     }
 
-    .welcome .tagline .num{
+    .welcome .tagline .num {
         font-size: 51px;
     }
+
     .tagline .entry {
         margin-top: 25px;
         width: 176px;
         height: 45px;
         font-size: 26px;
     }
+
     .process-shopping {
         width: 248px;
     }
+
     .fa-7x {
         font-size: 5em;
     }
+
     .shop-block {
         padding-left: 5%;
         padding-right: 5%;
     }
+
     .shop-block .shop-window {
         width: 280px;
         height: 260px;
     }
+
     .shop-window .blok1 {
         width: 280px;
         height: 100px;
     }
+
     .shop-window .blok2 {
         width: 280px;
         height: 80px;
         font-family: Roboto, sans-serif;
         font-size: 24px;
     }
+
     .shop-window .blok3 {
         width: 280px;
         height: 80px;
     }
-    .shop-window .blok3 .button_t{
+
+    .shop-window .blok3 .button_t {
         font-size: 20px;
         width: 201px;
         height: 52px;
     }
+
     .shop-window img {
         min-width: 60%;
     }
+
     .faq {
         margin-left: 10%;
         margin-right: 10%;
         font-size: 24px;
     }
+
     #to-top {
         right: 1%;
     }
 }
 
 
-@media  screen and (max-width: 767px) {
-    .tosh{
+@media screen and (max-width: 767px) {
+    .tosh {
         min-width: 767px;
     }
+
     .tagline .num {
         font-size: 30px;
     }
@@ -423,13 +451,15 @@
         margin-left: 25%;
 
     }
+
     .tagline .entry {
         margin-top: 10px;
         width: 176px;
         height: 45px;
         font-size: 26px;
     }
-    .tagline{
+
+    .tagline {
         width: 100%;
     }
 }

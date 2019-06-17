@@ -1,24 +1,16 @@
-body {
-    overflow-x: hidden;
-}
-/*.info{*/
-    /*min-height: calc(100vh - 225px);*/
-/*}*/
-
-/*колонка текст*/
-.cond .col-sm-6 {
-    width: auto;
-    height: 1600px;
-    background-color: #FCD2A4;
-    margin-bottom: 20px;
-    margin-top: 20px;
+/*content page---------------------------------------------------*/
+.text-con{
+    font-size: 18px;
+    border: 1px solid #FF9933;
+    background-color: #F8ECE0;
     text-align: justify;
     display: block;
     padding-left: 30px;
     padding-right: 30px;
+    margin: 20px 15% 20px 15%;
 }
-
-.col-sm-6 h3 {
-    padding-top: 10px;
-    text-align: center;
+h5 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }

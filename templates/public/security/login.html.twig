@@ -5,37 +5,30 @@
 {% endblock %}
 
 {% block body %}
-    <div>
-        <div class="ccont row">
-            <div class="col-md-4"></div>
-            <div class="main_form col-md-4">
-                <h1 class="title">Вход</h1>
-                <div class="fields">
-                    <form action="{{ path("fos_user_security_check") }}" method="post">
-                        {% if csrf_token %}
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-                        {% endif %}
-
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" placeholder="Введите e-mail">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="_password" required="required" autocomplete="current-password" placeholder="Введите пароль">
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                            <label for="remember_me">Запомнить меня</label>
-                        </div>
-
-                        <input type="submit" class="btn btn-enter" value="Вход"/>
-                    </form>
+    <div class="title reg">ВХОД ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ</div>
+    <div class="content">
+        <div class="main_form">
+            <div class="fields">
+                {% if error is not null %}
+                    <p>Неверные данные авторизации</p>
+                {% endif %}
+                <form name="regis" action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                    {% endif %}
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="_username" placeholder="Введите e-mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="_password" placeholder="Введите пароль">
+                    </div>
+                    <button type="submit" class="btn-enter">Вход</button>
                     <div>
                         <a href="{{ path('fos_user_resetting_request') }}">Забыли пароль?</a>
                     </div>
                     {% include 'public/security/social_auth_buttons.html.twig' %}
-                </div>
+                </form>
             </div>
-            <div class="col-md-4"></div>
         </div>
     </div>
 {% endblock %}
