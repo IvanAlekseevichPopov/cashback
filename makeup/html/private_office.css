@@ -1,4 +1,14 @@
 /*ЛИЧНЫЙ КАБИНЕТ---------------------------------------------*/
+.message{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: -14px;
+    border: 1px solid #FF6000;
+    background-color: #F8ECE0;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+    padding: 5px 18px 5px 8px;
+}
 .privat{
     height: 100%;
     margin-right: 25%;
@@ -93,22 +103,26 @@
     line-height: 1;
     background: none;
     outline: none;
-    padding: 0px;
+    padding: 0;
     border-width: initial;
     border-style: none;
     border-color: initial;
     border-image: initial;
     transition: color 0.25s ease 0s;
 }
+.but-ok {
+    margin-top: 40px;
+    text-align: center;
+}
 .but-up{
     margin-top: 45px;
-    margin-left: 30px;
+    margin-left: 27px;
 }
 .but-save-right{
     margin-left: 50px;
 }
 .line-up .user-profile{
-    width: 380px;
+    min-width: 230px;
 }
 .data-profile .line-up {
     margin-top: 15px;
@@ -118,6 +132,20 @@
     font-size: 12px;
     margin-top: 3px;
     text-align: right;
+}
+.cross:focus {
+    outline: 0 !important;
+}
+.message .cross{
+    position: absolute;
+    margin-right: -2px;
+    top: 0;
+    right: 0;
+    color: #FF6000;
+    background: none;
+    border-width: initial;
+    border-style: none;
+
 }
 /*profile*/
 .my-profile .avatar img {
@@ -140,7 +168,7 @@
 .data-profile{
     min-height: 163px;
     display: grid;
-    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-columns: 25% 45% 30%;
 }
 .data-email .window-email {
     display: grid;
@@ -150,13 +178,18 @@
     display: grid;
     grid-template-rows: 250px 80px;
 }
+.profile-phone{
+    display: grid;
+    grid-template-columns: 66% 30%;
+    grid-column-gap: 4%;
+}
 .submenu-ques li {
     list-style-type: none;
     padding-bottom: 3px;
 }
 .submenu-ques {
     display: none;
-    top: 291px;
+    top: 66px;
     margin-left: 92px;
     z-index: 1;
     position: absolute;
@@ -175,11 +208,9 @@
     text-decoration: none;
 }
 .avatar {
+    position: relative;
     margin-top: 30px;
-    margin-left: 30px;
-}
-.all-name{
-    width: 100%;
+    margin-left: 10px;
 }
 .button-under-up {
     margin-left: 0;
@@ -197,6 +228,12 @@
 .data-email, .data-pass {
     min-height: 250px;
     padding: 20px;
+}
+.data-phone{
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 148px;
 }
 .but-left, .but-right{
     margin-top: 40px;
@@ -235,6 +272,22 @@
     }
     .mail-pass{
         display: block;
+    }
+    .data-phone{
+        padding: 7px;
+    }
+    .avatar {
+         margin-left: 0;
+    }
+    .but-up {
+        margin-left: 14px;
+    }
+    .but-ok{
+        margin-top: 30px;
+    }
+    .data-phone .telephone{
+        display: grid;
+        grid-template-rows: 50% 50%;
     }
     .window-email{
         display: grid;
@@ -278,9 +331,6 @@
     }
     .mail-left, .pass-right {
         width: 100%;
-    }
-    .submenu-ques {
-        top: 330px;
     }
     .content {
         min-height: 775px;
@@ -327,6 +377,26 @@
     }
     .pa-center{
         margin-top: 86px;
+    }
+    .profile-phone {
+        display: block;
+    }
+    .profile-phone .all-name{
+        width: 100%;
+    }
+    .but-up{
+        margin-left: 25px;
+    }
+    .data-phone .telephone{
+        display: grid;
+        grid-template-columns: 60% 40%;
+    }
+    .data-phone{
+        min-height: 80px;
+    }
+    .but-ok {
+        margin-top: 0;
+        margin-left: 60px;
     }
 }
 

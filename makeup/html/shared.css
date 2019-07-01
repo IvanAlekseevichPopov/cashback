@@ -71,6 +71,7 @@ body {
     padding-bottom: 3px;
 }
 .submenu {
+    z-index: 1;
     display: none;
     top: 60px;
     position: absolute;

@@ -55,67 +55,96 @@
     <div class="title office">ЛИЧНЫЙ КАБИНЕТ</div>
     <div class="content">
         <div class="privat">
+            <div class="message">
+                    <span>На Ваш почтовый ящик отправлено сообщение, содержащее ссылку для подтверждения правильности e-mail адреса. Пожалуйста, перейдите по ссылке для завершения подписки.</span>
+                    <button type="submit" class="cross">
+                        <i class="fas fa-times"></i>
+                    </button>
+            </div>
             <!--мой профиль-------------------------------------------------------->
-            <div class="form all-name">
-                <div class="my-profile">
-                    <div class="banner">
-                        <div class="link-office">ПРОФИЛЬ</div>
-                        <div class="edit-banner">
-                            <button type="submit" class="word open-win">
-                                <i class="fas fa-pencil-alt"></i>
-                                <span class="b-edit">Редактировать</span>
-                            </button>
+            <div class="profile-phone">
+                <div class="form all-name">
+                    <div class="my-profile">
+                        <div class="banner">
+                            <div class="link-office">ПРОФИЛЬ</div>
+                        </div>
+                        <div class="data data-profile">
+                            <div class="ava-up">
+                                <div class="user-ava">
+                                    <div class="avatar">
+                                        <div class="download">
+                                            <a href="javascript:showFrm()">Загрузить фото</a>
+                                            <i class="far fa-question-circle"></i>
+                                        </div>
+                                        <div class="submenu-ques" id="submenu-ques">
+                                            <li><a href="">1.Файл может быть формата: JPEG, JPG, PNG.</a></li>
+                                            <li><a href="">2.Файл не должен превышать 5 мб</a></li>
+                                            <li><a href="">3.Максимальный размер файла не должен превышать 500*500px</a>
+                                            </li>
+                                        </div>
+                                        <img src="images/anonym.png">
+                                        <input type="file" style="position: absolute; visibility: hidden;" id="FlDr">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fields line-up">
+                                <div class="user-profile">
+                                    <div class="label-profile">
+                                        <label for="login" class="input-label">ЛОГИН:</label>
+                                        <input type="text" id="login" name="login" class="input-text" value="alt"
+                                               autocomplete="off">
+                                    </div>
+                                    <div class="error">Такой логин уже существует</div>
+                                    <div class="label-profile">
+                                        <label for="name" class="input-label">ИМЯ:</label>
+                                        <input type="text" id="name" name="name" class="input-text" value="Наталья"
+                                               autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cancel-save but-up">
+                                <div class="buttons">
+                                    <div>
+                                        <button type="submit" class="word">
+                                            <i class="fas fa-ban"></i>
+                                            <span class="b-cancel">Отменить</span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="word but-save-right button-under-up">
+                                            <i class="fas fa-check"></i>
+                                            <span class="b-save">Сохранить</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="data data-profile">
-                        <div class="ava-up">
-                            <div class="user-ava">
-                                <div class="avatar">
-                                    <div class="download">
-                                        <a href="javascript:showFrm()">Загрузить фото</a>
-                                        <i class="far fa-question-circle"></i>
-                                    </div>
-                                    <div class="submenu-ques" id="submenu-ques">
-                                        <li><a href="">1.Файл может быть формата: JPEG, JPG, PNG.</a></li>
-                                        <li><a href="">2.Файл не должен превышать 5 мб</a></li>
-                                        <li><a href="">3.Максимальный размер файла не должен превышать 500*500px</a>
-                                        </li>
-                                    </div>
-                                    <img src="images/anonym.png">
-                                    <input type="file" style="position: absolute; visibility: hidden;" id="FlDr">
-                                </div>
-                            </div>
+                </div>
+                <div class="form all-name">
+                    <div class="my-phone">
+                        <div class="banner">
+                            <div class="link-office">№ ТЕЛЕФОНА</div>
                         </div>
-                        <div class="fields line-up">
-                            <div class="user-profile">
-                                <div class="label-profile">
-                                    <label for="login" class="input-label">ЛОГИН:</label>
-                                    <input type="text" id="login" name="login" class="input-text" value="alt"
-                                           autocomplete="off">
+                        <div class="data data-phone">
+                            <form class="telephone">
+                                <div class="fields line-left">
+                                    <div class="user-profile">
+                                        <div class="label-profile">
+                                            <label for="login" class="input-label">№ ТЕЛ:</label>
+                                            <input type="text" id="email" name="email" class="input-text"
+                                                   value="895311234567"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="error">Такой логин уже существует</div>
-                                <div class="label-profile">
-                                    <label for="name" class="input-label">ИМЯ:</label>
-                                    <input type="text" id="name" name="name" class="input-text" value="Наталья"
-                                           autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cancel-save but-up">
-                            <div class="buttons">
-                                <div>
-                                    <button type="submit" class="word">
-                                        <i class="fas fa-ban"></i>
-                                        <span class="b-cancel">Отменить</span>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button type="submit" disabled="" class="word but-save-right button-under-up">
+                                <div class="cancel-save but-ok">
+                                    <button type="submit" class="word gribu mark">
                                         <i class="fas fa-check"></i>
-                                        <span class="b-save">Сохранить</span>
+                                        <span class="b-save">Подтвердить</span>
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -126,12 +155,6 @@
                     <div class="my-email">
                         <div class="banner">
                             <div class="link-office">E-MAIL</div>
-                            <div>
-                                <button type="submit" class="word open-win">
-                                    <i class="fas fa-pencil-alt"></i>
-                                    <span class="b-edit">Редактировать</span>
-                                </button>
-                            </div>
                         </div>
                         <div class="data data-email">
                             <form class="window-email">
@@ -156,7 +179,7 @@
                                         <i class="fas fa-ban"></i>
                                         <span class="b-cancel">Отменить</span>
                                     </button>
-                                    <button type="submit" disabled="" class="word but-save-right gribu">
+                                    <button type="submit" class="word but-save-right gribu">
                                         <i class="fas fa-check"></i>
                                         <span class="b-save">Сохранить</span>
                                     </button>
@@ -170,12 +193,6 @@
                     <div class="my-pass">
                         <div class="banner">
                             <div class="link-office">ПАРОЛЬ</div>
-                            <div>
-                                <button type="submit" class="word open-win">
-                                    <i class="fas fa-pencil-alt"></i>
-                                    <span class="b-edit">Редактировать</span>
-                                </button>
-                            </div>
                         </div>
                         <div class="data data-pass">
                             <form class="window-email">
@@ -210,7 +227,7 @@
                                         <i class="fas fa-ban"></i>
                                         <span class="b-cancel">Отменить</span>
                                     </button>
-                                    <button type="submit" disabled="" class="word but-save-right gribu">
+                                    <button type="submit" class="word but-save-right gribu">
                                         <i class="fas fa-check"></i>
                                         <span class="b-save">Сохранить</span>
                                     </button>
@@ -277,7 +294,6 @@
     $(function () {
         $(".fa-question-circle").click(function () {
             $("#submenu-ques").slideToggle();
-            // $(".arrow-up").toggleClass("arrow-down", 800);
         });
     });
 </script>
