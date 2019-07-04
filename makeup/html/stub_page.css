@@ -12,7 +12,7 @@ body{
     margin-right: auto;
     margin-top: 90px;
 }
-.animated.logo{
+.animated.logo-name{
     animation-duration: 2.2s;
     animation-delay: 2s;
 }
@@ -20,7 +20,8 @@ body{
     width: 65px;
     height: 65px;
 }
-.black{
+.list-name .logo-name{
+    font-weight: 600;
     font-size: 80px;
     font-family: sans-serif, Roboto;
     color: #FF6000;
@@ -36,10 +37,16 @@ body{
 }
 
 
-
-
-
-
+@media (min-width: 768px) and (max-width: 1139px) {
+    .container{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .text-error{
+        width: 502px;
+    }
+}
 
 
 
