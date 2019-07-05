@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CashTan</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="modal_page.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+            integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="back">
+        <div class="message-block">
+            <div class="message-cross"><a href="#"><i class="fas fa-times"></i></a></div>
+            <div class="message-text">Здесь будет выводиться текст сообщения об ошибке. После прочтения необходимо нажать на крестик справа вверху или на кнопку "ОК" справа внизу</div>
+            <div class="message-button"> <button type="submit" class="btn-ok">ОК</button></div>
+        </div>
+    </div>
+    <!--menu-->
+    <div class="up-menu">
+        <div class="main-menu">
+            <div class="words-href">
+                <div class="leaf-name">
+                    <a href="#" class="list-name">
+                        <img class="logo-menu" src="images/cashtan-min.png">
+                        <strong class="black">CashTan</strong>
+                    </a>
+                </div>
+                <div class="center-menu">
+                    <a class="point">*</a>
+                    <a class="general hat" href="#">ГЛАВНАЯ</a>
+                    <a class="point">*</a>
+                    <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                    <a class="point">*</a>
+                </div>
+            </div>
+            <div class="img-href">
+                <div class="right-menu">
+                    <a class="entrance hat" href="#">ВХОД</a>
+                    <a class="point">*</a>
+                    <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--content page-->
+    <div class="title reg">ВХОД ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ</div>
+    <div class="content">
+        <div class="main_form">
+            <div class="fields">
+                <form name="regis" method="post" action="url">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1"
+                               placeholder="Введите e-mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Введите пароль">
+                    </div>
+
+                    <button type="submit" class="btn-enter">Вход</button>
+                    <div>
+                        <a href="pass">Забыли пароль?</a>
+                    </div>
+                    <!--кнопки соц.сетей-->
+                    <p class="or_social">или через социальные сети</p>
+                    <div class="social_buttons">
+                        <a href="#" class="btn-auto btn-fb" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="btn-auto btn-vk" title="ВКонтакте">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="btn-auto btn-gg" title="Google">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="btn-auto btn-ml" title="Mail.ru">
+                            <i class="fas fa-at"></i>
+                        </a>
+                        <a href="#" class="btn-auto btn-ya" title="Яндекс">
+                            <i class="fab fa-yandex"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--футер-->
+    <footer>
+        <div class="down-menu">
+            <div class="footer-block">
+                <div class="three-columns">
+                    <div class="info down">
+                        <p class="name-menu">Информация</p>
+                        <ul class="text-small">
+                            <li><a class="text-muted" href="#">Условия использования</a></li>
+                            <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                        </ul>
+                    </div>
+                    <div class="service down">
+                        <p class="name-menu">Сервисы</p>
+                        <ul class="text-small">
+                            <li><a class="text-muted" href="#">Все магазины</a></li>
+                            <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                        </ul>
+                    </div>
+                    <div class="call down">
+                        <p class="name-menu">Обратная связь</p>
+                        <ul class="text-small">
+                            <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                            <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="one-column">
+                    <div class="text-center">
+                        <small class="text-logo">© CashTan 2019</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
