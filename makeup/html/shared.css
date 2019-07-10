@@ -29,18 +29,9 @@
     text-align: justify;
     color: black;
 }
-.btn-ok {
-    height: 50px;
-    width: 160px;
-    font-size: 18px;
-    border: 1px solid #FF6000;
-    background-color: #FF6000;
-    color: #FFFFFF;
+.message-button .btn-ok {
     margin-top: 20px;
     margin-left: 240px;
-}
-.btn-ok:focus {
-    outline: 0 !important;
 }
 
 body {
