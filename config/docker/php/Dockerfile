@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.3.11-fpm
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
