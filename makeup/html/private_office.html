@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>CashTan</title>
+    <link rel="stylesheet" href="shared.css">
     <link rel="stylesheet" href="private_office.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
-            integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
-            crossorigin="anonymous"></script>
+    <script src="libs/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="libs/fontawesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width">
-
 </head>
+
 <body>
-<div class="page_wrapper">
-    <header>
-        <!--меню-->
-        <div class="up-menu">
-            <div class="main-menu">
+<div class="container">
+    <!--menu-->
+    <div class="up-menu">
+        <div class="main-menu">
+            <div class="words-href">
                 <div class="leaf-name">
                     <a href="#" class="list-name">
                         <img class="logo-menu" src="images/cashtan-min.png">
@@ -32,185 +32,271 @@
                     <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
                     <a class="point">*</a>
                 </div>
+            </div>
+            <div class="img-href">
                 <div class="right-menu">
-                    <a class="entrance hat" href="#">ВХОД</a>
-                    <a class="point">*</a>
-                    <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                    <div class="win-fio">
+                        <img class="avat" src="images/anonym.png">
+                    </div>
+                </div>
+                <div class="arrow-up">
+                    <i class="fas fa-chevron-up"></i>
+                </div>
+                <div class="submenu" id="submenu">
+                    <a class="fio">Username</a>
+                    <li><a href="">Мой профиль</a></li>
+                    <li><a href="">Мой кэшбэк</a></li>
+                    <li><a href="">Выход</a></li>
                 </div>
             </div>
         </div>
-        <!--личный кабинет-->
-        <div class="section">
-            <div class="title office">ЛИЧНЫЙ КАБИНЕТ</div>
-            <div class="privat">
-                <div class="form">
+    </div>
+    <!--личный кабинет-->
+    <div class="title office">ЛИЧНЫЙ КАБИНЕТ</div>
+    <div class="content">
+        <div class="privat">
+            <div class="message">
+                    <span>На Ваш почтовый ящик отправлено сообщение, содержащее ссылку для подтверждения правильности e-mail адреса. Пожалуйста, перейдите по ссылке для завершения подписки.</span>
+                    <button type="submit" class="cross">
+                        <i class="fas fa-times"></i>
+                    </button>
+            </div>
+            <!--мой профиль-------------------------------------------------------->
+            <div class="profile-phone">
+                <div class="form all-name">
                     <div class="my-profile">
-                        <div class="link-office">Мой профиль</div>
-                        <div class=" data data-profile">
-                            <div class="avatar">
-                                <div class="download">
-                                    <a href="javascript:showFrm()">Загрузить фото</a>
+                        <div class="banner">
+                            <div class="link-office">ПРОФИЛЬ</div>
+                        </div>
+                        <div class="data data-profile">
+                            <div class="ava-up">
+                                <div class="user-ava">
+                                    <div class="avatar">
+                                        <div class="download">
+                                            <a href="javascript:showFrm()">Загрузить фото</a>
+                                            <i class="far fa-question-circle"></i>
+                                        </div>
+                                        <div class="submenu-ques" id="submenu-ques">
+                                            <li><a href="">1.Файл может быть формата: JPEG, JPG, PNG.</a></li>
+                                            <li><a href="">2.Файл не должен превышать 5 мб</a></li>
+                                            <li><a href="">3.Максимальный размер файла не должен превышать 500*500px</a>
+                                            </li>
+                                        </div>
+                                        <img src="images/anonym.png">
+                                        <input type="file" style="position: absolute; visibility: hidden;" id="FlDr">
+                                    </div>
                                 </div>
-                                <img src="images/anonym.png">
-                                <input type="file" style="position: absolute; visibility: hidden;" id="FlDr">
                             </div>
-                            <div class="fields">
-                                <div>
-                                    <input type="text" name="login" class="field-entry" placeholder="ЛОГИН">
-                                </div>
-                                <div>
-                                    <input type="text" name="name" class="field-entry" placeholder="ИМЯ">
-                                </div>
-                                <div>
-                                    <input type="tel" name="tel-x" class="field-entry" placeholder="№ ТЕЛЕФОНА">
+                            <div class="fields line-up">
+                                <div class="user-profile">
+                                    <div class="label-profile">
+                                        <label for="login" class="input-label">ЛОГИН:</label>
+                                        <input type="text" id="login" name="login" class="input-text" value="alt"
+                                               autocomplete="off">
+                                    </div>
+                                    <div class="error">Такой логин уже существует</div>
+                                    <div class="label-profile">
+                                        <label for="name" class="input-label">ИМЯ:</label>
+                                        <input type="text" id="name" name="name" class="input-text" value="Наталья"
+                                               autocomplete="off">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="save-but">
-                                <button type="submit" class="save">Сохранить</button>
+                            <div class="cancel-save but-up">
+                                <div class="buttons">
+                                    <div>
+                                        <button type="submit" class="word">
+                                            <i class="fas fa-ban"></i>
+                                            <span class="b-cancel">Отменить</span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="word but-save-right button-under-up">
+                                            <i class="fas fa-check"></i>
+                                            <span class="b-save">Сохранить</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form">
-                    <div class="my-orders">
-                        <div class="link-office">Мои заказы</div>
-                        <div class="data data-orders">
-                            <table class="table-orders">
-                                <tr>
-                                    <th>№</th>
-                                    <th>Дата</th>
-                                    <th>Магазин</th>
-                                    <th>Сумма покупки</th>
-                                    <th>Кэшбэк</th>
-                                    <th>Статус покупки</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>08.12.2018</td>
-                                    <td>Ситилинк</td>
-                                    <td>1250 руб.</td>
-                                    <td>22 руб</td>
-                                    <td>Завершен</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>29.12.2018</td>
-                                    <td>Буквоед</td>
-                                    <td>800 руб.</td>
-                                    <td>43 руб.</td>
-                                    <td>Завершен</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>19.01.2019</td>
-                                    <td>Flora Express</td>
-                                    <td>2800 руб.</td>
-                                    <td>117 руб</td>
-                                    <td>Завершен</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>03.03.2019</td>
-                                    <td>Sammy dress</td>
-                                    <td>1600 руб.</td>
-                                    <td>81 руб.</td>
-                                    <td>Ожидается выплата кэшбэка</td>
-                                </tr>
-                            </table>
+                <div class="form all-name">
+                    <div class="my-phone">
+                        <div class="banner">
+                            <div class="link-office">№ ТЕЛЕФОНА</div>
+                        </div>
+                        <div class="data data-phone">
+                            <form class="telephone">
+                                <div class="fields line-left">
+                                    <div class="user-profile">
+                                        <div class="label-profile">
+                                            <label for="login" class="input-label">№ ТЕЛ:</label>
+                                            <input type="text" id="email" name="email" class="input-text"
+                                                   value="895311234567"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cancel-save but-ok">
+                                    <button type="submit" class="word gribu mark">
+                                        <i class="fas fa-check"></i>
+                                        <span class="b-save">Подтвердить</span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="form">
-                    <div class="my-payouts">
-                        <div class="link-office">Мои выплаты</div>
-                        <div class="data data-payouts">
-                            <table class="table-payouts">
-                                <tr>
-                                    <th>№</th>
-                                    <th>Дата заказа</th>
-                                    <th>Дата выплаты</th>
-                                    <th>Сумма покупки</th>
-                                    <th>Кэшбэк</th>
-                                    <th>Статус</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>08.12.2018</td>
-                                    <td>02.01.2019</td>
-                                    <td>1250 руб.</td>
-                                    <td>22 руб</td>
-                                    <td>Выплачено</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>29.12.2018</td>
-                                    <td>15.02.2019</td>
-                                    <td>800 руб.</td>
-                                    <td>43 руб.</td>
-                                    <td>Выплачено</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>19.01.2019</td>
-                                    <td>07.03.2019</td>
-                                    <td>2800 руб.</td>
-                                    <td>117 руб</td>
-                                    <td>Выплачено</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>03.03.2019</td>
-                                    <td></td>
-                                    <td>1600 руб.</td>
-                                    <td>81 руб.</td>
-                                    <td>Ожидается выплата</td>
-                                </tr>
-                            </table>
+            </div>
+            <div class="mail-pass">
+                <!-мой e-mail------------------------------------------------------------------------>
+                <div class="form mail-left">
+                    <div class="my-email">
+                        <div class="banner">
+                            <div class="link-office">E-MAIL</div>
+                        </div>
+                        <div class="data data-email">
+                            <form class="window-email">
+                                <div class="fields line-left">
+                                    <div class="user-profile">
+                                        <div class="label-profile">
+                                            <label for="login" class="input-label">E-MAIL:</label>
+                                            <input type="text" id="email" name="email" class="input-text" value="alt"
+                                                   autocomplete="off">
+                                        </div>
+                                        <div class="error">Неверный адрес электронной почты</div>
+                                        <div class="label-profile">
+                                            <label for="name" class="input-label">ПАРОЛЬ:</label>
+                                            <input type="password" id="pass" name="password" class="input-text" value=""
+                                                   autocomplete="off">
+                                        </div>
+                                        <div class="error">Пароль должен содержать не менее 6 символов</div>
+                                    </div>
+                                </div>
+                                <div class="cancel-save but-left ma-center">
+                                    <button type="submit" class="word">
+                                        <i class="fas fa-ban"></i>
+                                        <span class="b-cancel">Отменить</span>
+                                    </button>
+                                    <button type="submit" class="word but-save-right gribu">
+                                        <i class="fas fa-check"></i>
+                                        <span class="b-save">Сохранить</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-мой пароль------------------------------------------------------------------------>
+                <div class="form pass-right">
+                    <div class="my-pass">
+                        <div class="banner">
+                            <div class="link-office">ПАРОЛЬ</div>
+                        </div>
+                        <div class="data data-pass">
+                            <form class="window-email">
+                                <div class="fields line-right">
+                                    <div class="user-profile">
+                                        <div class="label-profile">
+                                            <label for="name" class="input-label">СТАРЫЙ ПАРОЛЬ:</label>
+                                            <input type="password" id="oldpass" name="oldpass" class="input-text"
+                                                   value="alt"
+                                                   autocomplete="off">
+                                        </div>
+                                        <div class="error">Неверный пароль</div>
+                                        <div class="label-profile">
+                                            <label for="name" class="input-label"> НОВЫЙ ПАРОЛЬ:</label>
+                                            <input type="password" id="newpass" name="newpassword" class="input-text"
+                                                   value=""
+                                                   autocomplete="off">
+                                        </div>
+                                        <div class="error">Пароль должен содержать не менее 6 символов</div>
+                                        <div class="label-profile">
+                                            <label for="name" class="input-label">ПОВТОРИТЬ ПАРОЛЬ:</label>
+                                            <input type="password" id="newpasstwo" name="newpasstwo" class="input-text"
+                                                   value=""
+                                                   autocomplete="off">
+                                        </div>
+                                        <div class="error">Пароли не совпадают друг с другом</div>
+                                    </div>
+                                </div>
+                                <div class="cancel-save but-right pa-center">
+
+                                    <button type="submit" class="word">
+                                        <i class="fas fa-ban"></i>
+                                        <span class="b-cancel">Отменить</span>
+                                    </button>
+                                    <button type="submit" class="word but-save-right gribu">
+                                        <i class="fas fa-check"></i>
+                                        <span class="b-save">Сохранить</span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
-    <!--футер-->
-    <footer>
-        <div class="down-menu">
-            <div class="footer-block">
-                <div class="three-columns">
-                    <div class="info down">
-                        <p class="name-menu">Информация</p>
-                        <ul class="text-small">
-                            <li><a class="text-muted" href="#">Условия использования</a></li>
-                            <li><a class="text-muted" href="#">Партнерская программа</a></li>
-                        </ul>
-                    </div>
-                    <div class="service down">
-                        <p class="name-menu">Сервисы</p>
-                        <ul class="text-small">
-                            <li><a class="text-muted" href="#">Все магазины</a></li>
-                            <li><a class="text-muted" href="#">Личный кабинет</a></li>
-                        </ul>
-                    </div>
-                    <div class="call down">
-                        <p class="name-menu">Обратная связь</p>
-                        <ul class="text-small">
-                            <li><a class="text-muted" href="#">Частые вопросы</a></li>
-                            <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
-                        </ul>
-                    </div>
+    </div>
+</div>
+<!--footer-->
+<footer>
+    <div class="down-menu">
+        <div class="footer-block">
+            <div class="three-columns">
+                <div class="info down">
+                    <p class="name-menu">Информация</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Условия использования</a></li>
+                        <li><a class="text-muted" href="#">Партнерская программа</a></li>
+                    </ul>
                 </div>
-                <div class="one-column">
-                    <div class="text-center">
-                        <small class="text-logo">© CashTan 2019</small>
-                    </div>
+                <div class="service down">
+                    <p class="name-menu">Сервисы</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Все магазины</a></li>
+                        <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                    </ul>
+                </div>
+                <div class="call down">
+                    <p class="name-menu">Обратная связь</p>
+                    <ul class="text-small">
+                        <li><a class="text-muted" href="#">Частые вопросы</a></li>
+                        <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="one-column">
+                <div class="text-center">
+                    <small class="text-logo">© CashTan 2019</small>
                 </div>
             </div>
         </div>
-    </footer>
-    <script type="text/javascript">
-        function showFrm() {
-            document.getElementById("FlDr").click();
-        }
-    </script>
+    </div>
+</footer>
+<script type="text/javascript">
+    function showFrm() {
+        document.getElementById("FlDr").click();
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".avat, .arrow-up").click(function () {
+            $("#submenu").slideToggle();
+            $(".arrow-up").toggleClass("arrow-down", 800);
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".fa-question-circle").click(function () {
+            $("#submenu-ques").slideToggle();
+        });
+    });
+</script>
+
 </body>
 </html>

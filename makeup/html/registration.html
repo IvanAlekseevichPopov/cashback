@@ -3,117 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>CashTan</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="shared.css">
     <link rel="stylesheet" href="registration.css">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
             integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="images/cashtan_favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width">
 </head>
 
-
-<body class="container-color">
-<header>
-    <!--меню-->
-    <div class="up-menu">
-        <div class="main-menu">
-            <div class="leaf-name">
-                <a href="#" class="list-name">
-                    <img class="logo-menu" src="images/cashtan-min.png">
-                    <strong class="black">CashTan</strong>
-                </a>
-            </div>
-            <div class="center-menu">
-                <a class="point">*</a>
-                <a class="general hat" href="#">ГЛАВНАЯ</a>
-                <a class="point">*</a>
-                <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
-                <a class="point">*</a>
-            </div>
-            <div class="right-menu">
-                <a class="entrance hat" href="#">ВХОД</a>
-                <a class="point">*</a>
-                <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
-
+<body>
+<div class="container">
+        <!--menu-->
+        <div class="up-menu">
+            <div class="main-menu">
+                <div class="words-href">
+                    <div class="leaf-name">
+                        <a href="#" class="list-name">
+                            <img class="logo-menu" src="images/cashtan-min.png">
+                            <strong class="black">CashTan</strong>
+                        </a>
+                    </div>
+                    <div class="center-menu">
+                        <a class="point">*</a>
+                        <a class="general hat" href="#">ГЛАВНАЯ</a>
+                        <a class="point">*</a>
+                        <a class="catalog-shop hat" href="#">КАТАЛОГ МАГАЗИНОВ</a>
+                        <a class="point">*</a>
+                    </div>
+                </div>
+                <div class="img-href">
+                    <div class="right-menu">
+                        <a class="entrance hat" href="#">ВХОД</a>
+                        <a class="point">*</a>
+                        <a class="checkin hat" href="#">РЕГИСТРАЦИЯ</a>
+                    </div>
+                </div>
             </div>
         </div>
-
-    </div>
-</header>
-
-<div>
-    <div class="ccont">
+        <!--content page-->
         <div class="title reg">РЕГИСТРАЦИЯ НОВОГО ПОЛЬЗОВАТЕЛЯ</div>
-        <div class="main_form">
-
-            <div class="fields">
-                <form name="regis" method="post" action="url">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1"
-                               placeholder="Введите e-mail">
-
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Введите пароль">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword2"
-                               placeholder="Введите пароль еще раз">
-                    </div>
-                    <!--чекбокс-->
-                    <div class="agree">
-                    <label>
-                        <input type="checkbox" name="conditions">
-                        я принимаю <a href="" target=""> условия использования сервиса</a>
-                    </label><br>
-                    </div>
-                    <button type="submit" class="btn-enter">Регистрация</button>
-                    <!--кнопки соц.сетей-->
-                    <h2>или через социальные сети</h2>
-                    <div class="social_buttons">
-
-                        <a href="#" class="btn-reg btn-vk" title="ВКонтакте">
-                            <i class="fab fa-vk"></i>
-                        </a>
-                        <a href="#" class="btn-reg btn-fb" title="Facebook">
-                            <i class="fab fa-facebook-square"></i>
-                        </a>
-                        <a href="#" class="btn-reg btn-gg" title="Google">
-                            <i class="fab fa-google"></i>
-                        </a>
-
-                        <a href="#" class="btn-reg btn-ya" title="Яндекс">
-                            <i class="fab fa-yandex"></i>
-                        </a>
-
-                        <a href="#" class="btn-reg btn-ml" title="Mail.ru">
-                            <i class="fas fa-at"></i>
-                        </a>
-
-
-                    </div>
-
-                </form>
+        <div class="content">
+            <div class="main_form">
+                <div class="fields">
+                    <form name="regis" method="post" action="url">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="Введите e-mail">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                   placeholder="Введите пароль">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword2"
+                                   placeholder="Введите пароль еще раз">
+                        </div>
+                        <!--чекбокс-->
+                        <label>
+                            <input type="checkbox" name="conditions">
+                            я принимаю <a href="" target="" style="color: #FF6000"> условия использования сервиса</a>
+                        </label><br>
+                        <button type="submit" class="enter">Регистрация</button>
+                        <!--кнопки соц.сетей-->
+                        <p class="or_social">или через социальные сети</p>
+                        <div class="social_buttons">
+                            <a href="#" class="btn-auto btn-fb" title="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="btn-auto btn-vk" title="ВКонтакте">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="#" class="btn-auto btn-gg" title="Google">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class=" btn-auto btn-ml" title="Mail.ru">
+                                <i class="fas fa-at"></i>
+                            </a>
+                            <a href="#" class="btn-auto btn-ya" title="Яндекс">
+                                <i class="fab fa-yandex"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
-    </div>
 </div>
-
-<!--футер-->
+<!--//footer-->
 <footer>
     <div class="down-menu">
-
         <div class="footer-block">
             <div class="three-columns">
                 <div class="info down">
@@ -128,8 +108,6 @@
                     <ul class="text-small">
                         <li><a class="text-muted" href="#">Все магазины</a></li>
                         <li><a class="text-muted" href="#">Личный кабинет</a></li>
-
-
                     </ul>
                 </div>
                 <div class="call down">
@@ -137,11 +115,9 @@
                     <ul class="text-small">
                         <li><a class="text-muted" href="#">Частые вопросы</a></li>
                         <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
-
                     </ul>
                 </div>
             </div>
-
             <div class="one-column">
                 <div class="text-center">
                     <small class="text-logo">© CashTan 2019</small>

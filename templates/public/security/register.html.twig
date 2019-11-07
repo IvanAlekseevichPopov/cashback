@@ -5,40 +5,37 @@
 {% endblock %}
 
 {% block body %}
-    <div>
-        <div class="ccont row">
-            <div class="col-md-4"></div>
-            <div class="main_form col-md-4">
-                <h1 class="title">Регистрация нового<br> пользователя</h1>
-                <div class="fields">
-                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-                        <div class="form-group">
-                            {{ form_errors(form.email) }}
-                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Введите e-mail'}}) }}
-                        </div>
-                        {% for passwordField in form.plainPassword %}
-                        <div class="form-group">
-                            {{ form_errors(passwordField) }}
-                            {{ form_widget(passwordField, {'attr': {'class': 'form-control', 'placeholder': 'Введите пароль'}}) }}
-                        </div>
-                        {% endfor %}
-                        <div class="form-group">
-                            {{ form_errors(form.recaptcha) }}
-                            {{ form_widget(form.recaptcha, {'attr': {'class': 'form-control', 'style': 'display: inline-block'}}) }}
-                        </div>
-                        <!--чекбокс-->
-                        <label>
-                            {{ form_errors(form.conditions) }}
-                            {{ form_widget(form.conditions) }}
-                            я принимаю <a href="{{ path('conditions') }}" target="_blank">условия использования сервиса</a>
-                        </label><br>
-
-                        <input type="submit" class="btn btn-enter" value="Регистрация" />
-                    {{ form_end(form) }}
-                    {% include 'public/security/social_auth_buttons.html.twig' %}
+    <div class="title reg">РЕГИСТРАЦИЯ НОВОГО ПОЛЬЗОВАТЕЛЯ</div>
+    <div class="content">
+        <div class="main_form">
+            <div class="fields">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                <div class="form-group">
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Введите e-mail'}}) }}
                 </div>
+                {% for passwordField in form.plainPassword %}
+                    <div class="form-group">
+                        {{ form_errors(passwordField) }}
+                        {{ form_widget(passwordField, {'attr': {'class': 'form-control', 'placeholder': 'Введите пароль'}}) }}
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    {{ form_errors(form.recaptcha) }}
+                    {{ form_widget(form.recaptcha, {'attr': {'class': 'form-control', 'style': 'display: inline-block'}}) }}
+                </div>
+                <div class="form-group">
+                    <label>
+                        {{ form_errors(form.conditions) }}
+                        {{ form_widget(form.conditions) }}
+                        я принимаю <a href="{{ path('conditions') }}" target="_blank">условия использования сервиса</a>
+                    </label>
+                </div>
+                <button type="submit" class="enter">Регистрация</button>
+                {{ form_end(form) }}
+                <!--кнопки соц.сетей-->
+                {% include 'public/security/social_auth_buttons.html.twig' %}
             </div>
-            <div class="col-md-4"></div>
         </div>
     </div>
 {% endblock %}

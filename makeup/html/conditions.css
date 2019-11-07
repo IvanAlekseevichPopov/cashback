@@ -1,55 +1,7 @@
-body{
-    margin:0;
-}
-/*МЕНЮ-----------------------------------------*/
-.main-menu > div {
-    display: inline-block;
-}
-.main-menu {
-    height: 60px;
-    text-align: center;
-    background-color: #F8ECE0;
-}
-.point {
-    color: #FF6000;
-}
-/*листик*/
-.logo-menu {
-    width: 30px;
-    height: 30px;
-}
-.main-menu .leaf-name .black {
-    font-size: 36px;
-    color: #FF6000;
-    font-family: Roboto, sans-serif;
-}
-.main-menu .list-name {
-    text-decoration: none;
-}
-.main-menu .hat {
-    color: #FF6000;
-    font-size: 20px;
-    font-family: Roboto, sans-serif;
-    text-decoration: none;
-}
-/*текст в шапке при наведении курсора*/
-.main-menu .hat:hover {
-    border-bottom: 3px solid #FF6000;
-    color: #FF6000;
-}
-.main-menu .point {
-    margin-left: 7px;
-    margin-right: 7px;
-}
-.center-menu, .right-menu{
-    font-weight: bolder;
-    padding-top: 19px;
-}
 /*content page---------------------------------------------------*/
 .text-con{
     font-size: 18px;
     border: 1px solid #FF9933;
-    border-radius: 5px;
     background-color: #F8ECE0;
     text-align: justify;
     display: block;
@@ -62,60 +14,3 @@ h5 {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-/*ФУТЕР------------------------------------------------------*/
-.footer-block {
-    height: 150px;
-    background-color: #5a6268;
-    color: #BDBDBD;
-    width: 100%;
-    margin-top: 20px;
-    font-family: Roboto,sans-serif;
-}
-.name-menu{
-    font-size: 18px;
-    color: #BDBDBD;
-}
-.three-columns li{
-    list-style-type: none;
-}
-.text-small{
-    margin-left: 0;
-    padding-left: 0;
-}
-.three-columns > div {
-    display: inline-block;
-}
-.three-columns{
-    text-align: center;
-}
-.one-column  {
-    text-align: center;
-}
-.footer-block .down {
-    width: 400px;
-    font-size: 16px;
-}
-.text-muted {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-@media (min-width: 1440px) {
-    .footer-block .down {
-        width: 400px;
-    }
-}
-@media (min-width: 1140px) and (max-width: 1439px) {
-    .footer-block .down {
-        width: 300px;
-    }
-}
-@media (min-width: 768px) and (max-width: 1139px) {
-    .main-menu {
-        height: 100px;
-    }
-    .footer-block .down {
-        width: 210px;
-    }
-}
-
-

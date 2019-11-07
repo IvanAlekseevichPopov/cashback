@@ -14,29 +14,50 @@
 <div class="page-cat">
     {% block header %}
         <header>
-            <!--menu-->
             <div class="up-menu">
                 <div class="main-menu">
-                    <div class="leaf-name">
-                        <a href="#" class="list-name">
-                            <img class="logo-menu" src="{{ asset('img/cashtan-min.png') }}">
-                            <strong class="black">CashTan</strong>
-                        </a>
+                    <div class="words-href">
+                        <div class="leaf-name">
+                            <a href="#" class="list-name">
+                                <img class="logo-menu" src="{{ asset('img/cashtan-min.png') }}">
+                                <strong class="black">CashTan</strong>
+                            </a>
+                        </div>
+                        <div class="center-menu">
+                            <a class="point">*</a>
+                            <a class="general hat" href="{{ path('main') }}">ГЛАВНАЯ</a>
+                            <a class="point">*</a>
+                            <a class="catalog-shop hat" href="{{ path('catalog') }}">КАТАЛОГ МАГАЗИНОВ</a>
+                            <a class="point">*</a>
+                        </div>
                     </div>
-                    <div class="center-menu">
-                        <a class="point">*</a>
-                        <a class="general hat" href="{{ path('main') }}">ГЛАВНАЯ</a>
-                        <a class="point">*</a>
-                        <a class="catalog-shop hat" href="{{ path('catalog') }}">КАТАЛОГ МАГАЗИНОВ</a>
-                        <a class="point">*</a>
-                    </div>
-                    <div class="right-menu">
-                        <a class="entrance hat" href="{{ path('fos_user_security_login') }}">ВХОД</a>
-                        <a class="point">*</a>
-                        <a class="checkin hat" href="{{ path('fos_user_registration_register') }}">РЕГИСТРАЦИЯ</a>
-                    </div>
+                    {% if app.user is null %}
+                        <div class="img-href">
+                            <div class="right-menu">
+                                <a class="entrance hat" href="{{ path('fos_user_security_login') }}">ВХОД</a>
+                                <a class="point">*</a>
+                                <a class="checkin hat" href="{{ path('fos_user_registration_register') }}">РЕГИСТРАЦИЯ</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="img-href">
+                            <div class="right-menu">
+                                <div class="win-fio">
+                                    <img class="avat" src="{{ asset('img/anonym.png') }}">
+                                </div>
+                            </div>
+                            <div class="arrow-up">
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <div class="submenu" id="submenu">
+                                <a class="fio">{{ app.user.username }}</a>
+                                <li><a href="{{ path('cabinet') }}">Мой профиль</a></li>
+                                <li><a href="#">Мой кэшбэк</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Выход</a></li>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
-
             </div>
         </header>
     {% endblock %}
@@ -78,15 +99,15 @@
                         <div class="info down">
                             <p class="name-menu">Информация</p>
                             <ul class="text-small">
-                                <li><a class="text-muted" href="#">Условия использования</a></li>
+                                <li><a class="text-muted" href="{{ path('conditions') }}">Условия использования</a></li>
                                 <li><a class="text-muted" href="#">Партнерская программа</a></li>
                             </ul>
                         </div>
                         <div class="service down">
                             <p class="name-menu">Сервисы</p>
                             <ul class="text-small">
-                                <li><a class="text-muted" href="#">Все магазины</a></li>
-                                <li><a class="text-muted" href="#">Личный кабинет</a></li>
+                                <li><a class="text-muted" href="{{ path('catalog') }}">Все магазины</a></li>
+                                <li><a class="text-muted" href="{{ path('cabinet') }}">Личный кабинет</a></li>
 
 
                             </ul>
@@ -94,7 +115,7 @@
                         <div class="call down">
                             <p class="name-menu">Обратная связь</p>
                             <ul class="text-small">
-                                <li><a class="text-muted" href="{{ path('faq') }}">Частые вопросы</a></li>
+                                <li><a class="text-muted" href="{{ path('main', {'_fragment':'faq'}) }}">Частые вопросы</a></li>
                                 <li><a class="text-muted" href="#">help@cashtan.ru</a></li>
 
                             </ul>
@@ -118,6 +139,7 @@
                 integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
                 crossorigin="anonymous"></script>
         <script type="text/javascript">
+            //scroll to top
             $(function () {
                 $(window).scroll(function () {
                     if ($(this).scrollTop() != 0) {
@@ -128,6 +150,13 @@
                 });
                 $('#to-top').click(function () {
                     $('body,html').animate({scrollTop: 0}, 800);
+                });
+            });
+            //user menu
+            $(function () {
+                $(".avat, .arrow-up").click(function () {
+                    $("#submenu").slideToggle();
+                    $(".arrow-up").toggleClass("arrow-down", 800);
                 });
             });
         </script>

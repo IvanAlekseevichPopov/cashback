@@ -1,65 +1,134 @@
-body {
-    overflow-x: hidden;
-}
-
-.ccont {
-    min-height: calc(100vh - 225px);
-}
-
 /*главная форма регистрации*/
 .main_form {
-    display: inline-block;
     width: 600px;
-    height: 575px;
-    background-color: #FCD2A4;
+    height: 500px;
     vertical-align: middle;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 40px auto 80px auto;
+    background-color: #F8ECE0;
+    font-family: Roboto, sans-serif;
+    padding-top: 40px;
 }
-
-/*заголовок*/
-.main_form h1 {
-    text-align: center;
-    padding-top: 30px;
-    font-size: 30px;
-    padding-bottom: 20px;
-}
-
-/*второй заголовок*/
-.main_form h2 {
-    padding-top: 20px;
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
 /*поля ввода*/
 .main_form .form-group {
     margin-right: 100px;
     margin-left: 100px;
+    margin-bottom: 25px;
 }
-
+/*окно поиска при клике*/
+.form-control:focus {
+    outline: 0 !important;
+}
 /*cодержимое окна регистрации*/
 .main_form .fields {
     text-align: center;
 }
-
-/*цвет рамки кнопки при наведении*/
-.main_form .btn-enter:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
+.btn-enter {
+    height: 50px;
+    width: 160px;
+    font-size: 18px;
+    border: 1px solid #FF6000;
+    background-color: #FF6000;
+    color: #FFFFFF;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
-
+.btn-enter:focus {
+    outline: 0 !important;
+}
+.form-control {
+    height: 47px;
+    width: 380px;
+    margin-bottom: 10px;
+    border: 1px solid #FF6000;
+    padding-left: 10px;
+    font-size: 17px;
+}
 /*цвет рамок окон при нажатии*/
 .main_form .form-control:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 96, 0, .25);
-    border-color: rgba(255, 96, 0, .25);
+    box-shadow: 0 0 0 0.2rem rgba(255,96,0,.25);
+    border-color: rgba(255,96,0,.25);
 }
-
 /*цвет ссылки на вос. пароля*/
 .fields a {
     color: #FF6000;
 }
-
 /*цвет ссылки при наведении курсора*/
 .fields a:hover {
     color: #FF6000;
+}
+.or_social{
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 70px;
+}
+/*кнопки соц. сетей*/
+.social_buttons .btn-reg {
+    margin-right: 3px;
+    margin-left: 3px;
+}
+/*кнопка вконтакте*/
+.social_buttons .fa-vk {
+    color: #5f83a9;
+    font-size: 60px;
+}
+/*кнопка яндекс*/
+.social_buttons .fa-yandex {
+    color: #e61400;
+    font-size: 46px;
+}
+/*кнопка фейсбук*/
+.social_buttons .fa-facebook {
+    font-size: 52px;
+    color: #4267B2;
+}
+/*кнопка гугл*/
+.social_buttons .fa-google {
+    color: #d6492e;
+    font-size: 50px;
+}
+/*кнопка mail*/
+.social_buttons .fa-at {
+    color: #005BD1;
+    font-size: 50px;
+}
+.btn-fb:before {
+    content: "";
+    background-color: white;
+    width: 31px;
+    height: 45px;
+    display: inline-block;
+    position: absolute;
+    line-height: 50px;
+    z-index: -1;
+    top: 10px;
+    left: 22px;
+}
+.social_buttons .btn-fb {
+    position: relative;
+    z-index: 2;
+}
+.btn-auto {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+div.content{
+    min-height: 570px;
+}
+.social_buttons .btn-auto:focus {
+    box-shadow: none;
+}
+@media (min-width: 768px) and (max-width: 1139px) {
+    .title {
+        height: 115px;
+    }
 }
