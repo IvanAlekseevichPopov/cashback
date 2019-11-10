@@ -11,7 +11,6 @@ services:
         expose:
             - 9000
         environment:
-          - PARENT_USER_ID
           - APP_ENV
         entrypoint:
           - "./config/docker/php/docker-entrypoint.sh"
@@ -22,7 +21,6 @@ services:
         volumes:
             - ./config/docker/nginx/symfony.conf:/etc/nginx/sites-available/symfony.conf
             - .:/var/www/html
-            - ./var/log:/var/log/nginx
     db:
         image: mariadb:10.1
         ports:
