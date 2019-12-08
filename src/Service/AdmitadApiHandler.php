@@ -17,9 +17,6 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * AdmitadApiHandler.
- */
 class AdmitadApiHandler
 {
     use ContainerAwareTrait;

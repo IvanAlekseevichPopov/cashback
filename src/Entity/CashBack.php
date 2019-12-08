@@ -303,12 +303,7 @@ class CashBack
         }
     }
 
-    /**
-     * @param CashBackCategory $cashBackCategory
-     *
-     * @return $this
-     */
-    public function removeCategory(CashBackCategory $cashBackCategory)
+    public function removeCategory(CashBackCategory $cashBackCategory): void
     {
         $this->categories->removeElement($cashBackCategory);
     }

@@ -7,22 +7,19 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Version20180922191956.
- */
-final class Version20180922191956 extends AbstractMigration
+class Version20181015193555 extends AbstractMigration
 {
     public function up(Schema $schema): void
     {
         $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user ADD vkontakte_id VARCHAR(255) DEFAULT NULL, ADD vkontakte_access_token VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE cash_back ADD awaiting_time INT DEFAULT NULL, CHANGE url url VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user DROP vkontakte_id, DROP vkontakte_access_token');
+        $this->addSql('ALTER TABLE cash_back DROP awaiting_time, CHANGE url url VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }

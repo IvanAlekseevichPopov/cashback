@@ -8,7 +8,6 @@ use App\Model\AbstractImage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="cash_back_image")
  * @ORM\EntityListeners({"App\Listener\EntityListener\CashbackImageListener"})
  * @ORM\Entity
  */

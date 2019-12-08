@@ -27,7 +27,7 @@ class Balance
      *     }
      * )
      *
-     * @var ArrayCollection|Transaction[]
+     * @var Collection|Transaction[]
      */
     protected $transactions;
 

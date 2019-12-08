@@ -21,9 +21,6 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
-/**
- * Class FOSUBUserProvider.
- */
 class FOSUBUserProvider extends BaseUserProvider
 {
     /** @var EventDispatcher */

@@ -11,9 +11,6 @@ use Swift_Events_EventListener;
 use Swift_Mime_SimpleMessage;
 use Swift_Transport;
 
-/**
- * AmazonSesTransport.
- */
 class AmazonSesTransport implements Swift_Transport
 {
     /** @var LoggerInterface */
