@@ -73,7 +73,6 @@ class CashBackRepository extends ServiceEntityRepository
             ->andWhere($qb->expr()->in('cb.status', ':stat'))
             ->setParameter('stat', CashBackStatusEnumType::APPROVED_PARTNERSHIP)
             ->setParameter('active', true);
-//            ->orderBy('cb.rating', 'DESC');
 
         if (null !== $query->title) {
             $qb

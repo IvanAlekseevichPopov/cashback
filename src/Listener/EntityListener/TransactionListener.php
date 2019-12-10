@@ -8,9 +8,6 @@ use App\Entity\Transaction;
 use App\Manager\TransactionManager;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
-/**
- * TransactionListener.
- */
 class TransactionListener
 {
     /** @var TransactionManager */

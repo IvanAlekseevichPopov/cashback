@@ -1,12 +1,4 @@
-FROM php:7.3.11-fpm
-
-ENV COMPOSER_ALLOW_SUPERUSER 1
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
-    chmod +x /usr/local/bin/composer
-
-RUN usermod -s /bin/bash www-data; \
-    touch /var/www/.bash_history; \
-    chmod 777 /var/www/.bash_history
+FROM php:7.3.12-fpm
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -39,9 +31,17 @@ RUN apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-png-dir=/usr/include/ --with-webp-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
+COPY --from=composer:1.9 /usr/bin/composer /usr/bin/
+RUN composer global require hirak/prestissimo
+
+RUN usermod -s /bin/bash www-data
+
 ENV PROMPT_COMMAND="history -a"
 ENV HISTTIMEFORMAT="%h %d %H:%M:%S "
 ENV HISTFILESIZE=20000
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+
+ENV COMPOSER_MEMORY_LIMIT=-1
+ENV COMPOSER_ALLOW_SUPERUSER 1

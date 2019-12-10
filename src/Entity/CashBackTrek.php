@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @ORM\Table(name="cash_back_trek")
  * @ORM\Entity(repositoryClass="App\Repository\CashBackTrekRepository")
  */
 class CashBackTrek

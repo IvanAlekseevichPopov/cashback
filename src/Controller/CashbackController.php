@@ -9,18 +9,15 @@ use App\Form\Query\CashbackQueryType;
 use App\Model\Query\CashbackQuery;
 use App\Service\CashbackRedirectHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * Class CashbackController.
- */
-class CashbackController extends Controller
+class CashbackController extends AbstractController
 {
     /**
      * @Route("/catalog/{slug}", name="cashback_page", methods={"GET"})

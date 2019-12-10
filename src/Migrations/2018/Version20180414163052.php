@@ -7,10 +7,7 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Version20180414163052.
- */
-final class Version20180414163052 extends AbstractMigration
+class Version20180414163052 extends AbstractMigration
 {
     /**
      * @param Schema $schema

@@ -8,8 +8,6 @@ use App\Traits\Column\IntegerAutoIncrementIdColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="cash_back_category")
- *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
