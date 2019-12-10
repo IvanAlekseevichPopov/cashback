@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\DBAL\Types\Enum\TransactionEnumType;
 use App\DBAL\Types\Enum\TransactionStatusEnumType;
 use App\Entity\CashBack;
 use App\Entity\CashBackPlatform;
@@ -14,25 +15,25 @@ use App\Repository\CashBackRepository;
 use App\Service\AdmitadApiHandler;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * GetCashBackAdmitadCommand.
- */
-class GetCashBackAdmitadCommand extends ContainerAwareCommand
+class GetCashBackAdmitadCommand extends Command
 {
     public const TMP_FILE = '/tmp/temporary_image_cashback';
 
     /** @var AdmitadApiHandler */
     protected $admitadApiHandler;
+
     /** @var TransactionManager */
     protected $transactionManager;
+
     /** @var EntityManagerInterface */
     protected $em;
 
     protected $admitadIds = null;
+
     /** @var LoggerInterface */
     protected $logger;
 

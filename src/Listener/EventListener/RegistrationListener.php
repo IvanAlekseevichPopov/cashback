@@ -11,13 +11,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
-/**
- * Class RegistrationListener.
- */
 class RegistrationListener implements EventSubscriberInterface
 {
     /** @var FlashBagInterface */
     protected $flashBag;
+
     /** @var TranslatorInterface */
     protected $translator;
 

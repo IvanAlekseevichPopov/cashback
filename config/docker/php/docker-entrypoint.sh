@@ -11,4 +11,4 @@ if [ "`id -u www-data`" != "$WWW_DATA_UID" ]; then
     usermod -u $WWW_DATA_UID www-data
 fi
 
-php-fpm
+php-fpm -R

@@ -9,9 +9,6 @@ use App\Entity\Transaction;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
-/**
- * TransactionManager.
- */
 class TransactionManager
 {
     /** @var EntityManagerInterface */
@@ -48,38 +45,37 @@ class TransactionManager
     }
 
     /**
-     * @param User  $user
-     * @param float $amount
-     * @param       $type
-     * @param       $status
+     * @param User   $user
+     * @param float  $amount
+     * @param string $type
+     * @param string $status
      *
      * @return Transaction
      */
-    public function changeBalance(User $user, float $amount, $type, $status): Transaction
+    public function changeBalance(User $user, float $amount, string $type, string $status): Transaction
     {
-        $transaction = (new Transaction())
-            ->setAmount($amount)
-            ->setUser($user)
-            ->setType($type)
-            ->setStatus($status);
+        $transaction = new Transaction();
+        $transaction->setAmount($amount);
+        $transaction->setUser($user);
+        $transaction->setType($type);
+        $transaction->setStatus($status);
 
-        $this->persist($transaction);
-        $this->flush();
+        $this->persistAndSave($transaction);
 
         return $transaction;
     }
 
-    public function persist($entity)
+    public function persist($entity): void
     {
         $this->em->persist($entity);
     }
 
-    public function flush()
+    public function flush(): void
     {
         $this->em->flush();
     }
 
-    public function persistAndSave($entity)
+    public function persistAndSave($entity): void
     {
         $this->persist($entity);
         $this->flush();

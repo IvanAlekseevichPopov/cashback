@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields={"email"}, message="email.already_used")
  * @ORM\Entity
  */
-class User extends FOSUser
+class User extends FOSUser //TODO migrate on symfony UserInterface
 {
     public const ROLE_MODERATOR = 'ROLE_MODERATOR';
 

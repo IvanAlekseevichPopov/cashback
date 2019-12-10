@@ -7,7 +7,7 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-final class Version20190512181649 extends AbstractMigration
+class Version20190512181649 extends AbstractMigration
 {
     private const CASHBACK_STATUS_MAPPINGS = [
         'NOT_PARTNER ' => 'not_partner',

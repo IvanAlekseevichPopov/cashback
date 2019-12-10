@@ -81,7 +81,7 @@ abstract class AbstractImage
         $this->setExtension($extension);
     }
 
-    final public function getFilePath(): string
+    public function getFilePath(): string
     {
         return sprintf('%s/%s', $this->getBasePath(), $this->getFileName());
     }
@@ -96,12 +96,12 @@ abstract class AbstractImage
         $this->extension = $extension;
     }
 
-    final public function getBasePath(): string
+    public function getBasePath(): string
     {
         return sprintf('%s/%s', self::BASE_PATH, $this->getSubDir());
     }
 
-    final public function getFileName(): string
+    public function getFileName(): string
     {
         return sprintf('%s.%s', $this->getId(), $this->getExtension());
     }
