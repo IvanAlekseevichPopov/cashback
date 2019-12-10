@@ -6,7 +6,7 @@ namespace App\Service\Api;
 
 use GuzzleHttp\ClientInterface;
 
-interface AdmitadAuthenticatorInterface
+interface ApiAuthenticatorInterface
 {
     public function getAuthenticatedClient(): ClientInterface;
 

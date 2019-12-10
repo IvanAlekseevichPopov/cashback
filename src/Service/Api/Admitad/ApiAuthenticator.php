@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Api;
+namespace App\Service\Api\Admitad;
 
 use App\Model\Config\AdmitadConfig;
+use App\Service\Api\ApiAuthenticatorInterface;
 use Doctrine\Common\Cache\PhpFileCache;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
-class AdmitadAuthenticator implements AdmitadAuthenticatorInterface
+class ApiAuthenticator implements ApiAuthenticatorInterface
 {
     private const TOKEN_VAULT_KEY = 'admitad.bearer_token';
 
@@ -29,10 +30,8 @@ class AdmitadAuthenticator implements AdmitadAuthenticatorInterface
         $this->config = $config;
     }
 
-
     public function getAuthenticatedClient(): ClientInterface
     {
-
         $token = $this->fileCache->fetch(self::TOKEN_VAULT_KEY);
         if (false === $token) {
             $token = $this->updateToken();
@@ -72,7 +71,7 @@ class AdmitadAuthenticator implements AdmitadAuthenticatorInterface
                 'grant_type' => 'client_credentials',
                 'client_id' => $this->config->getClientId(),
                 'scope' => $this->config->getScope(),
-            ])
+            ]),
         ]);
 
         $response = \json_decode((string) $response->getBody(), true, JSON_UNESCAPED_UNICODE);
@@ -82,5 +81,4 @@ class AdmitadAuthenticator implements AdmitadAuthenticatorInterface
 
         return $token;
     }
-
 }
