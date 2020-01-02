@@ -7,9 +7,6 @@ namespace App\Traits;
 use App\Entity\CashBack;
 use Ramsey\Uuid\Uuid;
 
-/**
- * Trait UuidFinderTrait.
- */
 trait UuidFinderTrait
 {
     /**

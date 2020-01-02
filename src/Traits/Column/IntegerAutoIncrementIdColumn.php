@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Traits\Column;
 
-/**
- * IntegerAutoIncrementIdColumn trait.
- */
 trait IntegerAutoIncrementIdColumn
 {
     /**
@@ -24,12 +21,10 @@ trait IntegerAutoIncrementIdColumn
 
     /**
      * @param int $id
-     *
-     * @return $this
      */
     public function setId(int $id)
     {
-        $this->id = (int) $id;
+        $this->id = $id;
     }
 
     /**
@@ -37,6 +32,6 @@ trait IntegerAutoIncrementIdColumn
      */
     public function getId(): int
     {
-        return (int) $this->id;
+        return $this->id;
     }
 }
